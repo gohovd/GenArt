@@ -111,15 +111,15 @@ public class Animate extends PApplet implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        switch (e.getActionCommand()) {
-            case "run":
-                loop();
-                break;
-            case "stop":
-                noLoop();
-                break;
-            case "custom":
-                custom();
+        String s = e.getActionCommand();
+        if (s.equals("run")) {
+            loop();
+
+        } else if (s.equals("stop")) {
+            noLoop();
+
+        } else if (s.equals("custom")) {
+            custom();
         }
     }
 
