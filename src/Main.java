@@ -1,15 +1,13 @@
+import processing.core.PApplet;
 
-/**
- * @author nikla_000
- */
-public class Main
+public class Main extends PApplet
 {
 
     /**
      * @param args the command line arguments
      */
-    public static void main (String[] args)
-    {
-        DisplayFrame df = new DisplayFrame ();
+    public static void main (String[] args){
+        testMethod();
     }
+
 }
