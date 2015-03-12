@@ -5,45 +5,56 @@ import java.io.File;
 import java.util.ArrayList;
 import processing.core.*;
 /**
- * A simple Processing Demo Applet
- *
- * Used to demonstrate the combination of JFrame, JButton, JFileChooser
- * and PApplet
- *
- * Moves and displays a list of balls on the applet's screen
- * A background image can be loaded
- *
- * This applet can be used as ActionListener for Java Applications.
+ * A once, simple demonstration Applet.
  * @author georg munkel
- *
+ * Seeing as implementing actions across files/classes,
+ * was difficult and/or impossible. I'll try to do everything
+ * in a singular file.
  */
 public class MyApplet extends PApplet implements ActionListener{
-    //list of all balls
+    // Variables related to the "bouncing ball".
     ArrayList <Ball> ballList;
-    //the background image
+    boolean ballbutton = false;
+    // Variables related to the mover/vector.
+    ArrayList <Mover> movers;
+    boolean vectorButton = false;
+    // Variable holding the background image.
     PImage bgImg = null;
+    // Defining the applets screen size (-300 to make room for toolbar).
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    //@Override
+
     public void setup() {
         size(screenSize.width-300, screenSize.height);
+        // Set up the bouncing balls.
         ballList = new ArrayList<Ball>();
-//creates a first ball
-        createNewBall();
+        // Set up the movers/vectors.
+        movers = new ArrayList<Mover>();
     }
-   // @Override
+
     public void draw() {
-//check if the background image is already loaded
-//if not, the background is painted white
+        // Checks whether or not a background image is loaded.
         if (bgImg == null) {
             background(255);
         } else {
             image(bgImg,0,0, width, height);
         }
-//move and display all balls
-        for (int i=0; i<ballList.size(); i++) {
-            Ball ball = ballList.get(i);
-            ball.move();
-            ball.display();
+        // Draw method "never" ends, here we iterate through all
+        // the objects we want to display. Whether or not we display
+        // them or not, is decided by the push of the button.
+        if(ballbutton) {
+            for (int i = 0; i < ballList.size(); i++) {
+                Ball ball = ballList.get(i);
+                ball.move();
+                ball.display();
+            }
+        }
+        if(vectorButton){
+            for (int i=0; i<movers.size(); i++) {
+                Mover mover = movers.get(i);
+                mover.update();
+                mover.checkEdges();
+                mover.display();
+            }
         }
     }
     /**
@@ -54,12 +65,17 @@ public class MyApplet extends PApplet implements ActionListener{
     public void actionPerformed(ActionEvent evt) {
         if (evt.getActionCommand().equals("create ball")) {
             createNewBall();
-        } else {
+        }
+        else if(evt.getActionCommand().equals("create vector")){
+            createNewMover();
+        }
+        else {
             println("actionPerformed(): can't handle " +evt.getActionCommand());
         }
     }
+
     /**
-     * this method is called by the ActionListener asigned to
+     * this method is called by the ActionListener assigned to
      * the JButton buttonLoad in Application
      */
     public void loadBgImage(File selectedFile) {
@@ -71,6 +87,16 @@ public class MyApplet extends PApplet implements ActionListener{
     private void createNewBall() {
         Ball nBall = new Ball();
         ballList.add(nBall);
+        ballbutton = true; // Set to true, when button (create ball) is pressed.
+    }
+
+    /**
+     * Creates a new instance of mover, adds it to array.
+     */
+    public void createNewMover(){
+        Mover nMov = new Mover();
+        movers.add(nMov);
+        vectorButton = true; // Set to true, when button (create vector) is pressed.
     }
     /*
     * simple inner class Ball
@@ -105,6 +131,72 @@ public class MyApplet extends PApplet implements ActionListener{
             stroke(color.getRGB());
             fill(color.getRGB(), 120);
             ellipse(x, y, size, size);
+        }
+    }
+
+    /**
+     * Second inner class 'Mover'. Makes something
+     * similar to the bouncing balls, really. Supposed to be several vectors
+     * moving in a circle or another pattern of motion.
+     */
+    class Mover {
+
+        PVector location;
+        PVector velocity;
+        PVector acceleration;
+        float topspeed;
+        float r = 0;
+        Color color;
+
+        Mover() {
+            location = new PVector(width/2, height/2);
+            velocity = new PVector(0, 0);
+            topspeed = 10;
+
+        }
+
+        void update() {
+
+
+            // Our algorithm for calculating acceleration:
+            //topspeed += .01;
+            r += .19;
+            float xx = cos(r)*50;
+            float yy = sin(r)*50;
+            PVector aim = new PVector(xx, yy);
+
+            PVector dir = PVector.sub(aim, location);  // Find vector pointing towards aim.
+            dir.normalize();     // Normalize
+            dir.mult((float) 0.5);       // Scale
+            acceleration = aim;
+
+            // Motion 101!  Velocity changes by acceleration.  Location changes by velocity.
+            velocity.add(acceleration);
+            velocity.limit(topspeed);
+            location.add(velocity);
+
+        }
+
+        void display() {
+            noStroke();
+
+            fill(random(255), 255);
+            ellipse(location.x, location.y, 20, 20);
+        }
+
+        void checkEdges() {
+
+            if (location.x > width) {
+                location.x = 0;
+            } else if (location.x < 0) {
+                location.x = width;
+            }
+
+            if (location.y > height) {
+                location.y = 0;
+            } else if (location.y < 0) {
+                location.y = height;
+            }
         }
     }
 }

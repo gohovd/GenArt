@@ -32,10 +32,8 @@ public class Application {
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.PAGE_AXIS));
 //create an instance of your processing applet
         final MyApplet applet = new MyApplet();
-        final VectorApplet vApplet = new VectorApplet();
 //start the applet
         applet.init();
-        vApplet.init();
 //Buttons
 //create a button labled "create new ball"
         JButton buttonCreate = new JButton("create new ball");
@@ -56,7 +54,7 @@ public class Application {
 //the create button is simply linked to the applet
 //the action is executed inside applet.actionPerformed()
         buttonCreate.addActionListener(applet);
-        vectorButton.addActionListener(vApplet);
+        vectorButton.addActionListener(applet);
 //this action is implemented NOT in the PApplet on purpose
 //fileDialogues like to crash a PApplet
 //
