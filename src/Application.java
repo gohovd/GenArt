@@ -37,16 +37,17 @@ public class Application {
 //Buttons
 //create a button labled "create new ball"
         JButton buttonCreate = new JButton("create new ball");
-//create a button labeled "create new vector"
         JButton vectorButton = new JButton("create new vector");
+        JButton clearButton = new JButton("clear");
 //assing a tooltip
         buttonCreate.setToolTipText("creates a new ball ");
-//assign tooltip to button
         vectorButton.setToolTipText("creates a new vector");
+        clearButton.setToolTipText("clears the screen");
 //give a name for the command
 //if this is not assigned the actionCommand equals the button label
         buttonCreate.setActionCommand("create ball");
         vectorButton.setActionCommand("create vector");
+        clearButton.setActionCommand("clear");
 //create a button lable "load file"
         JButton buttonLoad = new JButton("load file");
         buttonLoad.setToolTipText("loads a new background image");
@@ -55,6 +56,7 @@ public class Application {
 //the action is executed inside applet.actionPerformed()
         buttonCreate.addActionListener(applet);
         vectorButton.addActionListener(applet);
+        clearButton.addActionListener(applet);
 //this action is implemented NOT in the PApplet on purpose
 //fileDialogues like to crash a PApplet
 //
@@ -79,6 +81,7 @@ public class Application {
         buttonPanel.add(buttonCreate);
         buttonPanel.add(buttonLoad);
         buttonPanel.add(vectorButton);
+        buttonPanel.add(clearButton);
 //store the applet in panel
         panel.add(applet);
 //store the buttonPanel in panel

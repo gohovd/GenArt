@@ -12,12 +12,14 @@ import processing.core.*;
  * in a singular file.
  */
 public class MyApplet extends PApplet implements ActionListener{
+    boolean pause = false;
     // Variables related to the "bouncing ball".
     ArrayList <Ball> ballList;
     boolean ballbutton = false;
     // Variables related to the mover/vector.
     ArrayList <Mover> movers;
     boolean vectorButton = false;
+    int vStep = 0; // When steps, do something different.
     // Variable holding the background image.
     PImage bgImg = null;
     // Defining the applets screen size (-300 to make room for toolbar).
@@ -29,26 +31,29 @@ public class MyApplet extends PApplet implements ActionListener{
         ballList = new ArrayList<Ball>();
         // Set up the movers/vectors.
         movers = new ArrayList<Mover>();
+        background(255);
     }
 
     public void draw() {
         // Checks whether or not a background image is loaded.
+        /*
         if (bgImg == null) {
             background(255);
         } else {
             image(bgImg,0,0, width, height);
         }
+        */
         // Draw method "never" ends, here we iterate through all
         // the objects we want to display. Whether or not we display
         // them or not, is decided by the push of the button.
-        if(ballbutton) {
+        if(ballbutton && !pause) {
             for (int i = 0; i < ballList.size(); i++) {
                 Ball ball = ballList.get(i);
                 ball.move();
                 ball.display();
             }
         }
-        if(vectorButton){
+        if(vectorButton && !pause){
             for (int i=0; i<movers.size(); i++) {
                 Mover mover = movers.get(i);
                 mover.update();
@@ -65,9 +70,15 @@ public class MyApplet extends PApplet implements ActionListener{
     public void actionPerformed(ActionEvent evt) {
         if (evt.getActionCommand().equals("create ball")) {
             createNewBall();
+            pause = false;
         }
         else if(evt.getActionCommand().equals("create vector")){
             createNewMover();
+            pause = false;
+        }
+        else if(evt.getActionCommand().equals("clear")){
+            clear();
+            pause = true;
         }
         else {
             println("actionPerformed(): can't handle " +evt.getActionCommand());
@@ -97,6 +108,15 @@ public class MyApplet extends PApplet implements ActionListener{
         Mover nMov = new Mover();
         movers.add(nMov);
         vectorButton = true; // Set to true, when button (create vector) is pressed.
+    }
+
+    /**
+     * Clear the screen.
+     */
+    public void clear(){
+        background(255);
+        movers.clear();
+        ballList.clear();
     }
     /*
     * simple inner class Ball
@@ -145,27 +165,26 @@ public class MyApplet extends PApplet implements ActionListener{
         PVector velocity;
         PVector acceleration;
         float topspeed;
-        float r = 0;
-        Color color;
+        float r = 10;
 
         Mover() {
             location = new PVector(width/2, height/2);
             velocity = new PVector(0, 0);
-            topspeed = 10;
+            topspeed = 15;
 
         }
 
         void update() {
-
-
             // Our algorithm for calculating acceleration:
             //topspeed += .01;
             r += .19;
-            float xx = cos(r)*50;
-            float yy = sin(r)*50;
+            float xx = cos(r)*60;
+            float yy = sin(r)*60;
             PVector aim = new PVector(xx, yy);
+            location = new PVector(mouseX, mouseY);
 
             PVector dir = PVector.sub(aim, location);  // Find vector pointing towards aim.
+
             dir.normalize();     // Normalize
             dir.mult((float) 0.5);       // Scale
             acceleration = aim;
@@ -180,8 +199,8 @@ public class MyApplet extends PApplet implements ActionListener{
         void display() {
             noStroke();
 
-            fill(random(255), 255);
-            ellipse(location.x, location.y, 20, 20);
+            fill(random(255), random(255), random(255), 255);
+            ellipse(location.x, location.y, random(15, 25), random(15, 20));
         }
 
         void checkEdges() {
