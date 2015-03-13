@@ -43,6 +43,7 @@ public class MyApplet extends PApplet implements ActionListener{
             image(bgImg,0,0, width, height);
         }
         */
+
         // Draw method "never" ends, here we iterate through all
         // the objects we want to display. Whether or not we display
         // them or not, is decided by the push of the button.
@@ -53,8 +54,8 @@ public class MyApplet extends PApplet implements ActionListener{
                 ball.display();
             }
         }
-        if(vectorButton && !pause){
-            for (int i=0; i<movers.size(); i++) {
+        if(vectorButton && !pause && mousePressed){
+            for (int i = 0; i < movers.size(); i++) {
                 Mover mover = movers.get(i);
                 mover.update();
                 mover.checkEdges();
@@ -170,13 +171,14 @@ public class MyApplet extends PApplet implements ActionListener{
         Mover() {
             location = new PVector(width/2, height/2);
             velocity = new PVector(0, 0);
-            topspeed = 15;
+            topspeed = 35;
 
         }
 
         void update() {
             // Our algorithm for calculating acceleration:
             //topspeed += .01;
+
             r += .19;
             float xx = cos(r)*60;
             float yy = sin(r)*60;
@@ -199,7 +201,7 @@ public class MyApplet extends PApplet implements ActionListener{
         void display() {
             noStroke();
 
-            fill(random(255), random(255), random(255), 255);
+            fill(random(255), random(255), random(255), random(255));
             ellipse(location.x, location.y, random(15, 25), random(15, 20));
         }
 
