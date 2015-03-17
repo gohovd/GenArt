@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemListener;
 import java.util.Vector;
 import javax.swing.*;
 
@@ -15,10 +16,16 @@ import javax.swing.*;
 public class Application {
     private int width;
     private int height;
+    private static final JTextField vColorField = new JTextField(5);
+    private static final JCheckBox circular = new JCheckBox("Circular");
+    private static final JCheckBox randomclr = new JCheckBox("Random Color");
+    private static final JCheckBox linear = new JCheckBox("Linear");
+
+    public Application(){}
 
     public static void main(String[] args) {
 //create a frame for the application
-        final JFrame frame = new JFrame("PApplet in Java Application");
+        final JFrame frame = new JFrame("Fantastic Art Generator");
         frame.setExtendedState(Frame.MAXIMIZED_BOTH);
 // frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" fullskjerm
 //make sure to shut down the application, when the frame is closed
@@ -34,6 +41,10 @@ public class Application {
         final MyApplet applet = new MyApplet();
 //start the applet
         applet.init();
+// Textboxes
+//create a textbox that takes three ints as inputs to form a color
+        vColorField.setToolTipText("COLOR: 255 255 255 255");
+        vColorField.addActionListener(applet);
 //Buttons
 //create a button labled "create new ball"
         JButton buttonCreate = new JButton("create new ball");
@@ -57,6 +68,10 @@ public class Application {
         buttonCreate.addActionListener(applet);
         vectorButton.addActionListener(applet);
         clearButton.addActionListener(applet);
+        circular.addItemListener(applet);
+        linear.addItemListener(applet);
+        randomclr.addItemListener(applet);
+
 //this action is implemented NOT in the PApplet on purpose
 //fileDialogues like to crash a PApplet
 //
@@ -81,7 +96,10 @@ public class Application {
         buttonPanel.add(buttonCreate);
         buttonPanel.add(buttonLoad);
         buttonPanel.add(vectorButton);
+        buttonPanel.add(randomclr); buttonPanel.add(linear); buttonPanel.add(circular);
+        buttonPanel.add(vColorField);
         buttonPanel.add(clearButton);
+
 //store the applet in panel
         panel.add(applet);
 //store the buttonPanel in panel
@@ -102,4 +120,10 @@ public class Application {
     public int getHeight() {
         return height;
     }
+
+    public String getVColor(){
+        return vColorField.getText();
+    }
+
+
 }
