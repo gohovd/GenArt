@@ -10,7 +10,7 @@ import processing.core.*;
 
 /**
  * A once, simple demonstration Applet.
- *
+ * kake
  * @author georg munkel
  *         Seeing as implementing actions across files/classes,
  *         was difficult and/or impossible. I'll try to do everything
