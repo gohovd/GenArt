@@ -11,6 +11,7 @@ import processing.core.*;
 /**
  * A once, simple demonstration Applet.
  * kake
+ *
  * @author georg munkel
  *         Seeing as implementing actions across files/classes,
  *         was difficult and/or impossible. I'll try to do everything
@@ -58,38 +59,40 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         // Draw method "never" ends, here we iterate through all
         // the objects we want to display. Whether or not we display
         // them or not, is decided by the push of the button.
-        if (ballbutton && !pause) {
-            for (int i = 0; i < ballList.size(); i++) {
-                Ball ball = ballList.get(i);
-                ball.move();
-                display(ball);
+        if (!pause) {
+            if (ballbutton) {
+                for (int i = 0; i < ballList.size(); i++) {
+                    Ball ball = ballList.get(i);
+                    ball.move();
+                    display(ball);
+                }
             }
-        }
-        if (vectorButton && !pause && mousePressed) {
-            for (int i = 0; i < movers.size(); i++) {
-                Mover mover = movers.get(i);
-                tmp = new PVector(mouseX, mouseY);
-                mover.setVecLocation(tmp);
-                mover.update();
-                mover.checkEdges();
-                vDisplay(mover);
+            if (vectorButton && mousePressed) {
+                for (int i = 0; i < movers.size(); i++) {
+                    Mover mover = movers.get(i);
+                    tmp = new PVector(mouseX, mouseY);
+                    mover.setVecLocation(tmp);
+                    mover.update();
+                    mover.checkEdges();
+                    vDisplay(mover);
+                }
             }
-        }
-        if (randomLineButton) {
+            if (randomLineButton) {
 
-            if (mousePressed && (mouseButton == LEFT)) {
-                strokeWeight(random(3,8));
-                stroke(random(0,255),random(0,255),random(0,255),random(0,255));
-                line(mouseX-random(-100, 100), mouseY, mouseX+random(-100, 100),mouseY);
-            } else if(mousePressed && (mouseButton == RIGHT)) {
-                strokeWeight(random(3,8));
-                stroke(random(0,255),random(0,255),random(0,255),random(0,255));
-                line(mouseX, mouseY-random(-100, 100), mouseX, mouseY+random(-100, 100));
+                if (mousePressed && (mouseButton == LEFT)) {
+                    strokeWeight(random(3, 8));
+                    stroke(random(0, 255), random(0, 255), random(0, 255), random(0, 255));
+                    line(mouseX - random(-100, 100), mouseY, mouseX + random(-100, 100), mouseY);
+                } else if (mousePressed && (mouseButton == RIGHT)) {
+                    strokeWeight(random(3, 8));
+                    stroke(random(0, 255), random(0, 255), random(0, 255), random(0, 255));
+                    line(mouseX, mouseY - random(-100, 100), mouseX, mouseY + random(-100, 100));
+
+
+                }
 
 
             }
-
-
         }
     }
 
@@ -99,6 +102,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
      * the String being compared is the ActionCommand from the button
      */
     public void actionPerformed(ActionEvent evt) {
+        vectorButton = false; randomLineButton = false; ballbutton = false;
         String vColor = appInit.getVColor();
         if (evt.getActionCommand().equals("create ball")) {
             createNewBall();
@@ -127,6 +131,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
         } else if (evt.getActionCommand().equals("randomLines")) {
             randomLineButton = true;
+            pause = false;
 
 
         } else {
@@ -215,6 +220,4 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         //fill(255, 0, 0, 255);
         ellipse(mov.getVecLocation().x, mov.getVecLocation().y, random(15, 20), random(15, 20));
     }
-
-
 }

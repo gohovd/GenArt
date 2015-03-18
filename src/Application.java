@@ -77,7 +77,7 @@ public class Application {
         linear.addItemListener(applet);
         linear.setSelected(false);
         randomclr.addItemListener(applet);
-        randomclr.setSelected(false);
+        randomclr.setSelected(true);
 
 //this action is implemented NOT in the PApplet on purpose
 //fileDialogues like to crash a PApplet

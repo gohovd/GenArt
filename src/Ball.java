@@ -2,14 +2,6 @@ import processing.core.*;
 
 import java.awt.Color;
 
-/*
-    * simple inner class Ball
-    * balls have a position, speed, size and color
-    * the basic constructor assign random values to all properties
-    *
-    * balls can move
-    * balls can display themselves
-    */
 class Ball extends PApplet {
     float x;
     float y;
@@ -32,7 +24,6 @@ class Ball extends PApplet {
         x += speedX;
         y += speedY;
     }
-
 
     public float getLocX() {
         return x;
