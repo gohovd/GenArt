@@ -34,6 +34,9 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     //RGB and Opacity for vector.
     float vR, vG, vB, vO;
+    //Boolean controlling whether the vectors move linearly or circularly.
+    //Also controlling whether the user wants random colored vectors.
+    boolean circular, linear, randomclr;
 
     public void setup() {
         size(screenSize.width - 300, screenSize.height);
@@ -42,6 +45,8 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         // Set up the movers/vectors.
         movers = new ArrayList<Mover>();
         background(255);
+        // Default vector color (black).
+        vR = 0; vG = 0; vB = 0; vO = 255;
     }
 
     public void draw() {
@@ -94,8 +99,6 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             ArrayList<String> clrs = new ArrayList<String>();
             if (!clrs.isEmpty()) {
                 clrs.clear();
-                vR = random(255); vG = random(255);
-                vB = random(255); vO = random(255);
             }
             if (clrs.isEmpty()) {
                 String[] separate = vColor.split(" ");
@@ -113,9 +116,24 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         }
     }
     public void itemStateChanged(ItemEvent e){
-        Object source = e.getItemSelectable();
-
-
+        if(appInit.getCircularState() == true){
+            //If the linear state is already checked, we have to deselect first..
+            if(linear){
+                appInit.setLinearState(false);
+            }
+            circular = true;
+        }
+        if(appInit.getLinearState() == true){
+            //If the circular state is already checked, we have to deselect first..
+            if(circular){
+                appInit.setCircularState(false);
+            }
+            linear = true;
+        }
+        if(appInit.getRandomColorState() == true){
+            randomclr = true;
+        }
+        else randomclr = false;
     }
 
     /**
@@ -237,7 +255,8 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
         void vDisplay() {
             noStroke();
-
+            if(randomclr) { vR = random(255); vG = random(255); vB = random(255); vO = random(255); }
+            
             fill(vR, vG, vB, vO);
             ellipse(location.x, location.y, random(15, 25), random(15, 20));
         }

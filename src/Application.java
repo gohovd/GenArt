@@ -69,8 +69,11 @@ public class Application {
         vectorButton.addActionListener(applet);
         clearButton.addActionListener(applet);
         circular.addItemListener(applet);
+        circular.setSelected(false);
         linear.addItemListener(applet);
+        linear.setSelected(false);
         randomclr.addItemListener(applet);
+        randomclr.setSelected(false);
 
 //this action is implemented NOT in the PApplet on purpose
 //fileDialogues like to crash a PApplet
@@ -123,6 +126,28 @@ public class Application {
 
     public String getVColor(){
         return vColorField.getText();
+    }
+
+
+    // Returns the states of each checkbox.
+    public boolean getCircularState(){
+        return circular.isSelected();
+    }
+    public boolean getLinearState(){
+        return linear.isSelected();
+    }
+    public boolean getRandomColorState(){
+        return randomclr.isSelected();
+    }
+    // Set the state of the checkboxes.
+    public void setCircularState(boolean b){
+        circular.setSelected(b);
+    }
+    public void setLinearState(boolean b){
+        linear.setSelected(b);
+    }
+    public void setRandomclrState(boolean b){
+        randomclr.setSelected(b);
     }
 
 
