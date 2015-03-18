@@ -34,8 +34,10 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     float vR, vG, vB, vO;
     //Boolean controlling whether the vectors move linearly or circularly.
     //Also controlling whether the user wants random colored vectors.
-    boolean circular, linear, randomclr; int steps = 0;
+    boolean circular, linear, randomclr;
+    int steps = 0;
     PVector tmp;
+    boolean randomLineButton = false;
 
     public void setup() {
         size(screenSize.width - 300, screenSize.height);
@@ -45,7 +47,10 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         movers = new ArrayList<Mover>();
         background(255);
         // Default vector color (black).
-        vR = 0; vG = 0; vB = 0; vO = 255;
+        vR = 0;
+        vG = 0;
+        vB = 0;
+        vO = 255;
 
     }
 
@@ -69,6 +74,22 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 mover.checkEdges();
                 vDisplay(mover);
             }
+        }
+        if (randomLineButton) {
+
+            if (mousePressed && (mouseButton == LEFT)) {
+                strokeWeight(random(3,8));
+                stroke(random(0,255),random(0,255),random(0,255),random(0,255));
+                line(mouseX-random(-100, 100), mouseY, mouseX+random(-100, 100),mouseY);
+            } else if(mousePressed && (mouseButton == RIGHT)) {
+                strokeWeight(random(3,8));
+                stroke(random(0,255),random(0,255),random(0,255),random(0,255));
+                line(mouseX, mouseY-random(-100, 100), mouseX, mouseY+random(-100, 100));
+
+
+            }
+
+
         }
     }
 
@@ -104,29 +125,33 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 vO = Float.parseFloat(clrs.get(3));
             }
 
+        } else if (evt.getActionCommand().equals("randomLines")) {
+            randomLineButton = true;
+
+
         } else {
             println("actionPerformed(): can't handle " + evt.getActionCommand());
         }
     }
-    public void itemStateChanged(ItemEvent e){
-        if(appInit.getCircularState() == true){
+
+    public void itemStateChanged(ItemEvent e) {
+        if (appInit.getCircularState() == true) {
             //If the linear state is already checked, we have to deselect first..
-            if(linear){
+            if (linear) {
                 appInit.setLinearState(false);
             }
             circular = true;
         }
-        if(appInit.getLinearState() == true){
+        if (appInit.getLinearState() == true) {
             //If the circular state is already checked, we have to deselect first..
-            if(circular){
+            if (circular) {
                 appInit.setCircularState(false);
             }
             linear = true;
         }
-        if(appInit.getRandomColorState() == true){
+        if (appInit.getRandomColorState() == true) {
             randomclr = true;
-        }
-        else randomclr = false;
+        } else randomclr = false;
     }
 
     /**
@@ -179,13 +204,17 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
     void vDisplay(Mover mov) {
         noStroke();
-        if(randomclr) { vR = random(255); vG = random(255); vB = random(255); vO = random(255); }
+        if (randomclr) {
+            vR = random(255);
+            vG = random(255);
+            vB = random(255);
+            vO = random(255);
+        }
 
         fill(vR, vG, vB, vO);
         //fill(255, 0, 0, 255);
         ellipse(mov.getVecLocation().x, mov.getVecLocation().y, random(15, 20), random(15, 20));
     }
-
 
 
 }

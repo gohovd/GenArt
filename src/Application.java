@@ -50,15 +50,18 @@ public class Application {
         JButton buttonCreate = new JButton("create new ball");
         JButton vectorButton = new JButton("create new vector");
         JButton clearButton = new JButton("clear");
+        JButton randomLinesButton = new JButton("randomLines");
 //assing a tooltip
         buttonCreate.setToolTipText("creates a new ball ");
         vectorButton.setToolTipText("creates a new vector");
         clearButton.setToolTipText("clears the screen");
+        randomLinesButton.setToolTipText("creates random lines");
 //give a name for the command
 //if this is not assigned the actionCommand equals the button label
         buttonCreate.setActionCommand("create ball");
         vectorButton.setActionCommand("create vector");
         clearButton.setActionCommand("clear");
+        randomLinesButton.setActionCommand("randomLines");
 //create a button lable "load file"
         JButton buttonLoad = new JButton("load file");
         buttonLoad.setToolTipText("loads a new background image");
@@ -68,6 +71,7 @@ public class Application {
         buttonCreate.addActionListener(applet);
         vectorButton.addActionListener(applet);
         clearButton.addActionListener(applet);
+        randomLinesButton.addActionListener(applet);
         circular.addItemListener(applet);
         circular.setSelected(false);
         linear.addItemListener(applet);
@@ -98,6 +102,7 @@ public class Application {
 //store the two buttons in the button panel
         buttonPanel.add(buttonCreate);
         buttonPanel.add(buttonLoad);
+        buttonPanel.add(randomLinesButton);
         buttonPanel.add(vectorButton);
         buttonPanel.add(randomclr); buttonPanel.add(linear); buttonPanel.add(circular);
         buttonPanel.add(vColorField);
