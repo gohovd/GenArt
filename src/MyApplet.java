@@ -185,7 +185,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             pause = false;
 
         }
-        else if (evt.getActionCommand().equals("pulse")) {
+        else if (evt.getActionCommand().equals("rainbow")) {
             rainbowButton = true;
             pause = false;
 
