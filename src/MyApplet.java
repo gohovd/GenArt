@@ -17,12 +17,14 @@ import processing.core.*;
  *         was difficult and/or impossible. I'll try to do everything
  *         in a singular file.
  */
+
 public class MyApplet extends PApplet implements ActionListener, ItemListener {
     Application appInit = new Application();
     boolean pause = false;
     // Variables related to the "bouncing ball".
     ArrayList<Ball> ballList;
     boolean ballbutton = false;
+    boolean varBubblesButton = false;
     // Variables related to the mover/vector.
     ArrayList<Mover> movers;
     boolean vectorButton = false;
@@ -93,6 +95,17 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
 
             }
+
+            if (varBubblesButton) {
+                int x= mouseX;
+                int y = mouseY;
+                int px = pmouseX;
+                int py = pmouseY;
+
+                float speed = abs(x-px) + abs(y-py);
+                stroke(speed);
+                ellipse(x, y, speed, speed);
+            }
         }
     }
 
@@ -102,7 +115,12 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
      * the String being compared is the ActionCommand from the button
      */
     public void actionPerformed(ActionEvent evt) {
-        vectorButton = false; randomLineButton = false; ballbutton = false;
+
+        vectorButton = false;
+        randomLineButton = false;
+        ballbutton = false;
+        varBubblesButton = false;
+
         String vColor = appInit.getVColor();
         if (evt.getActionCommand().equals("create ball")) {
             createNewBall();
@@ -133,6 +151,9 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             randomLineButton = true;
             pause = false;
 
+        } else if (evt.getActionCommand().equals("varBubbles")) {
+            varBubblesButton = true;
+            pause = false;
 
         } else {
             println("actionPerformed(): can't handle " + evt.getActionCommand());
