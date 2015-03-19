@@ -29,6 +29,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     // Variables related to the mover/vector.
     ArrayList<Mover> movers;
     boolean vectorButton = false;
+    boolean rainbowButton = false;
     int vStep = 0; // When steps, do something different.
     // Variable holding the background image.
     PImage bgImg = null;
@@ -181,6 +182,11 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
         } else if (evt.getActionCommand().equals("pulse")) {
             pulseButton = true;
+            pause = false;
+
+        }
+        else if (evt.getActionCommand().equals("pulse")) {
+            rainbowButton = true;
             pause = false;
 
         } else {

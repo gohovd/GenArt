@@ -54,6 +54,7 @@ public class Application {
         JButton randomLinesButton = new JButton("randomLines");
         JButton varBubblesButton = new JButton("varBubbles");
         JButton pulseButton = new JButton("pulse");
+        JButton rainbowButton = new JButton("Rainbow Draw");
 //assing a tooltip
         buttonCreate.setToolTipText("creates a new ball ");
         vectorButton.setToolTipText("creates a new vector");
@@ -61,6 +62,7 @@ public class Application {
         randomLinesButton.setToolTipText("creates random lines");
         varBubblesButton.setToolTipText("Draws random size bubbles depending on mouse speed");
         pulseButton.setToolTipText("Pulsing");
+        rainbowButton.setToolTipText("Draw with rainbow colors");
 //give a name for the command
 //if this is not assigned the actionCommand equals the button label
         buttonCreate.setActionCommand("create ball");
@@ -69,6 +71,7 @@ public class Application {
         randomLinesButton.setActionCommand("randomLines");
         varBubblesButton.setActionCommand("varBubbles");
         pulseButton.setActionCommand("pulse");
+        rainbowButton.setActionCommand("rainbowDraw");
 //create a button lable "load file"
         JButton buttonLoad = new JButton("load file");
         buttonLoad.setToolTipText("loads a new background image");
@@ -81,7 +84,7 @@ public class Application {
         randomLinesButton.addActionListener(applet);
         varBubblesButton.addActionListener(applet);
         pulseButton.addActionListener(applet);
-
+        rainbowButton.addActionListener(applet);
         circular.addItemListener(applet);
         circular.setSelected(false);
         linear.addItemListener(applet);
@@ -116,6 +119,7 @@ public class Application {
         buttonPanel.add(vectorButton);
         buttonPanel.add(varBubblesButton);
         buttonPanel.add(pulseButton);
+        buttonPanel.add(rainbowButton);
 
         buttonPanel.add(randomclr); buttonPanel.add(linear); buttonPanel.add(circular);
         buttonPanel.add(vColorField);
