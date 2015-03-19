@@ -73,6 +73,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                     display(ball);
                 }
             }
+
             if (vectorButton && mousePressed) {
                 for (int i = 0; i < movers.size(); i++) {
                     Mover mover = movers.get(i);
@@ -116,7 +117,8 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             if (pulseButton) {
 
                 if (mousePressed == true) {
-                    pulseAngle += 5;
+
+                   pulseAngle += 5;
 
                     float val = (float) (cos(radians(pulseAngle)) * 12.0);
                     for (int a = 0; a < 360; a += 75) {
@@ -127,6 +129,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                     }
                     fill(255);
                     ellipse(mouseX, mouseY, 2, 2);
+
                 }
 
             }
