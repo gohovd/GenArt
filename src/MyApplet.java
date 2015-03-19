@@ -118,7 +118,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
                 if (mousePressed == true) {
 
-                   pulseAngle += 5;
+                    pulseAngle += 5;
 
                     float val = (float) (cos(radians(pulseAngle)) * 12.0);
                     for (int a = 0; a < 360; a += 75) {
@@ -134,11 +134,27 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
             }
             if (rainbowButton) {
-                rdraw = new rainbowDraw();
-                rdraw.rainbowColor(mouseX,mouseY,pmouseX,pmouseY);
+                //rdraw = new rainbowDraw();
+                //rdraw.rainbowColor(mouseX,mouseY,pmouseX,pmouseY);
+                //float alpha = random(100);
+                colorMode(HSB,300,100,100,300);
+                float radius = sqrt(sq(mouseX-300)+sq(mouseY - 300));
+
+                stroke(radius, 100, 100, 30000 / radius);
+                //background(200);
+                line(300,300, mouseX, mouseY);
+                if(mousePressed){
+                float h = random(300);
+                background(h,10,50);
+                h++;    }
+
+
+
+
+
+
 
             }
-
         }
     }
 
