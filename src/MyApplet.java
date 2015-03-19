@@ -44,6 +44,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     PVector tmp;
     boolean randomLineButton = false;
     int pulseAngle = 0;
+    rainbowDraw rdraw;
 
     public void setup() {
         size(screenSize.width - 300, screenSize.height);
@@ -129,6 +130,11 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 }
 
             }
+            if (rainbowButton) {
+                rdraw = new rainbowDraw();
+                rdraw.rainbowColor(mouseX,mouseY,pmouseX,pmouseY);
+
+            }
 
         }
     }
@@ -145,6 +151,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         ballbutton = false;
         varBubblesButton = false;
         pulseButton = false;
+        rainbowButton = false;
 
         String vColor = appInit.getVColor();
         if (evt.getActionCommand().equals("create ball")) {
