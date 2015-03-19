@@ -25,6 +25,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     ArrayList<Ball> ballList;
     boolean ballbutton = false;
     boolean varBubblesButton = false;
+    boolean pulseButton = false;
     // Variables related to the mover/vector.
     ArrayList<Mover> movers;
     boolean vectorButton = false;
@@ -41,7 +42,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     int steps = 0;
     PVector tmp;
     boolean randomLineButton = false;
-
+    int pulseAngle = 0;
 
     public void setup() {
         size(screenSize.width - 300, screenSize.height);
@@ -98,18 +99,35 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             }
 
             if (varBubblesButton) {
+                if (mousePressed == true) {
+                    int x = mouseX;
+                    int y = mouseY;
+                    int px = pmouseX;
+                    int py = pmouseY;
 
-                int x= mouseX;
-                int y = mouseY;
-                int px = pmouseX;
-                int py = pmouseY;
-
-                float speed = abs(x-px) + abs(y-py);
-                stroke(speed);
-                ellipse(x, y, speed, speed);
-
+                    float speed = abs(x - px) + abs(y - py);
+                    stroke(speed);
+                    ellipse(x, y, speed, speed);
+                }
 
             }
+            if (pulseButton) {
+
+                if (mousePressed == true) {
+                    pulseAngle += 3;
+                    float val = (float) (cos(radians(pulseAngle)) * 12.0);
+                    for (int a = 0; a < 360; a += 75) {
+                        float xoff = cos(radians(a)) * val;
+                        float yoff = sin(radians(a)) * val;
+                        fill(0);
+                        ellipse(mouseX + xoff, mouseY + yoff, val, val);
+                    }
+                    fill(255);
+                    ellipse(mouseX, mouseY, 2, 2);
+                }
+
+            }
+
         }
     }
 
@@ -124,6 +142,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         randomLineButton = false;
         ballbutton = false;
         varBubblesButton = false;
+        pulseButton = false;
 
         String vColor = appInit.getVColor();
         if (evt.getActionCommand().equals("create ball")) {
@@ -158,6 +177,10 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         } else if (evt.getActionCommand().equals("varBubbles")) {
             varBubblesButton = true;
              pause = false;
+
+        } else if (evt.getActionCommand().equals("pulse")) {
+            pulseButton = true;
+            pause = false;
 
         } else {
             println("actionPerformed(): can't handle " + evt.getActionCommand());

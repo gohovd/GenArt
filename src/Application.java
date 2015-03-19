@@ -53,12 +53,14 @@ public class Application {
         JButton clearButton = new JButton("clear");
         JButton randomLinesButton = new JButton("randomLines");
         JButton varBubblesButton = new JButton("varBubbles");
+        JButton pulseButton = new JButton("pulse");
 //assing a tooltip
         buttonCreate.setToolTipText("creates a new ball ");
         vectorButton.setToolTipText("creates a new vector");
         clearButton.setToolTipText("clears the screen");
         randomLinesButton.setToolTipText("creates random lines");
         varBubblesButton.setToolTipText("Draws random size bubbles depending on mouse speed");
+        pulseButton.setToolTipText("Pulsing");
 //give a name for the command
 //if this is not assigned the actionCommand equals the button label
         buttonCreate.setActionCommand("create ball");
@@ -66,6 +68,7 @@ public class Application {
         clearButton.setActionCommand("clear");
         randomLinesButton.setActionCommand("randomLines");
         varBubblesButton.setActionCommand("varBubbles");
+        pulseButton.setActionCommand("pulse");
 //create a button lable "load file"
         JButton buttonLoad = new JButton("load file");
         buttonLoad.setToolTipText("loads a new background image");
@@ -77,6 +80,8 @@ public class Application {
         clearButton.addActionListener(applet);
         randomLinesButton.addActionListener(applet);
         varBubblesButton.addActionListener(applet);
+        pulseButton.addActionListener(applet);
+
         circular.addItemListener(applet);
         circular.setSelected(false);
         linear.addItemListener(applet);
@@ -110,6 +115,8 @@ public class Application {
         buttonPanel.add(randomLinesButton);
         buttonPanel.add(vectorButton);
         buttonPanel.add(varBubblesButton);
+        buttonPanel.add(pulseButton);
+
         buttonPanel.add(randomclr); buttonPanel.add(linear); buttonPanel.add(circular);
         buttonPanel.add(vColorField);
         buttonPanel.add(clearButton);
