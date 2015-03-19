@@ -28,6 +28,7 @@ public class Application {
         //create a frame for the application
         final JFrame frame = new JFrame("Fantastic Art Generator");
         frame.setExtendedState(Frame.MAXIMIZED_BOTH);
+        frame.setBackground(Color.white);
 //frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" fullskjerm
 //make sure to shut down the application, when the frame is closed
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -35,9 +36,11 @@ public class Application {
         JPanel panel = new JPanel();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         panel.setSize(screenSize.width, screenSize.height);
+        panel.setBackground(Color.white);
 //create a panel for the buttons
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.PAGE_AXIS));
+        buttonPanel.setBackground(Color.white);
 //create an instance of your processing applet
         final MyApplet applet = new MyApplet();
 //start the applet
