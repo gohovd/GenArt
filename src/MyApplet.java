@@ -115,11 +115,12 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
                 if (mousePressed == true) {
                     pulseAngle += 3;
+
                     float val = (float) (cos(radians(pulseAngle)) * 12.0);
                     for (int a = 0; a < 360; a += 75) {
                         float xoff = cos(radians(a)) * val;
                         float yoff = sin(radians(a)) * val;
-                        fill(0);
+                        fill(random(0, 255), random(0, 255), random(0, 255), random(0, 255));
                         ellipse(mouseX + xoff, mouseY + yoff, val, val);
                     }
                     fill(255);
