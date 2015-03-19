@@ -25,10 +25,10 @@ public class Application {
     public Application(){}
 
     public static void main(String[] args) {
-//create a frame for the application
+        //create a frame for the application
         final JFrame frame = new JFrame("Fantastic Art Generator");
         frame.setExtendedState(Frame.MAXIMIZED_BOTH);
-// frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" fullskjerm
+//frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" fullskjerm
 //make sure to shut down the application, when the frame is closed
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //create a panel for the applet and the button panel

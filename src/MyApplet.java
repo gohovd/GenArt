@@ -42,6 +42,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     PVector tmp;
     boolean randomLineButton = false;
 
+
     public void setup() {
         size(screenSize.width - 300, screenSize.height);
         // Set up the bouncing balls.
@@ -97,6 +98,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             }
 
             if (varBubblesButton) {
+
                 int x= mouseX;
                 int y = mouseY;
                 int px = pmouseX;
@@ -105,6 +107,8 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 float speed = abs(x-px) + abs(y-py);
                 stroke(speed);
                 ellipse(x, y, speed, speed);
+
+
             }
         }
     }
@@ -153,7 +157,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
         } else if (evt.getActionCommand().equals("varBubbles")) {
             varBubblesButton = true;
-            pause = false;
+             pause = false;
 
         } else {
             println("actionPerformed(): can't handle " + evt.getActionCommand());
@@ -189,8 +193,8 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     }
 
     /*
-    * creates a new Ball instance and adds it to ballList
-    */
+ * creates a new ball object
+ */
     private void createNewBall() {
         Ball nBall = new Ball();
         ballList.add(nBall);
