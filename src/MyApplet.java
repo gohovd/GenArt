@@ -44,6 +44,10 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     boolean randomLineButton = false;
     int pulseAngle = 0;
 
+    boolean crossDotsButton = false;
+    int i = 0; //variabler for crossdots
+    boolean q = false;//variabler for crossdots
+
     public void setup() {
         size(screenSize.width - 300, screenSize.height);
         // Set up the bouncing balls.
@@ -130,6 +134,47 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
                 }
 
+
+                }
+
+
+
+            if(crossDotsButton){
+
+                if(mousePressed && (mouseButton == LEFT)){
+                    if(i>=0 && q == false){
+                        i+=1;
+                    }
+
+                    ellipse(mouseX+i, mouseY, 10, 10);
+                    ellipse(mouseX-i, mouseY, 10, 10);
+                    ellipse(mouseX, mouseY+i, 10, 10);
+                    ellipse(mouseX, mouseY-i, 10, 10);
+
+                    for (int i = 0; i < 100; i++) {
+                        float r = random(0, 255);
+                        float g = random(0, 255);
+                        float b = random(0, 255);
+
+                        noStroke();
+                        fill(r,g,b);
+
+                    }
+
+                    if(i ==100){
+                        q = true;
+
+                    }
+                    if (q == true){
+                        i-=1;
+                    }
+
+                    if(i == 0){
+                        q = false;
+                    }
+                }
+
+
             }
 
         }
@@ -147,6 +192,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         ballbutton = false;
         varBubblesButton = false;
         pulseButton = false;
+        crossDotsButton = false;
 
         String vColor = appInit.getVColor();
         if (evt.getActionCommand().equals("create ball")) {
@@ -186,7 +232,15 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             pulseButton = true;
             pause = false;
 
-        } else {
+        }
+
+        else if (evt.getActionCommand().equals("crossDots")) {
+            crossDotsButton = true;
+            pause = false;
+
+        }
+
+        else {
             println("actionPerformed(): can't handle " + evt.getActionCommand());
         }
     }
