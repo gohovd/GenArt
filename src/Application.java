@@ -87,7 +87,7 @@ buttonPanel.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 0, Color.LIGHT_GR
         pulseButton.setPreferredSize(new Dimension(90, 90));
 
         ImageIcon imageForcrossDotsButton = new ImageIcon("images/crossdots.png");
-        JButton crossDotsButton = new JButton("", imageForrandomLinesButton);
+        JButton crossDotsButton = new JButton("", imageForcrossDotsButton);
         crossDotsButton.setBackground(Color.white);
         crossDotsButton.setPreferredSize(new Dimension(90, 90));
 
