@@ -26,7 +26,7 @@ public class Application {
     private static final JCheckBox randomclr = new JCheckBox("Random Color");
     private static final JCheckBox linear = new JCheckBox("Linear");
 
-    private static final int menuWidth = 200;
+    private static final int menuWidth = 200; // Husk å endre i MyApplet hvis du endrer her
 
     public Application(){}
 
@@ -36,7 +36,11 @@ public class Application {
         frame.setExtendedState(Frame.MAXIMIZED_BOTH);
         frame.setBackground(Color.white);
         frame.setLayout(null);
-// frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" fullskjerm
+
+
+
+
+//frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" fullskjerm
 //make sure to shut down the application, when the frame is closed
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -175,7 +179,7 @@ buttonPanel.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 0, Color.LIGHT_GR
         frame.add(panel);
 //assign a size for the frame
 //reading the size from the applet
-        frame.setSize(applet.getSize().width, applet.getSize().height + 200);
+        frame.setSize(applet.getSize().width, applet.getSize().height);
 //display the frame
         frame.setVisible(true);
     }

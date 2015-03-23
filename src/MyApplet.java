@@ -60,7 +60,6 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         vG = 0;
         vB = 0;
         vO = 255;
-
     }
 
     public void draw() {
