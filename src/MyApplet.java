@@ -19,7 +19,7 @@ import processing.core.*;
  */
 
 public class MyApplet extends PApplet implements ActionListener, ItemListener {
-    Application appInit = new Application();
+    static Application appInit = new Application();
     boolean pause = false;
     // Variables related to the "bouncing ball".
     ArrayList<Ball> ballList;
@@ -43,6 +43,8 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     PVector mouse;
     boolean randomLineButton = false;
     int pulseAngle = 0;
+    //Declare the robot.
+    aRobot Tormod;
 
     boolean crossDotsButton = false;
     int i = 0; //variabler for crossdots
@@ -60,6 +62,8 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         vG = 0;
         vB = 0;
         vO = 255;
+        //Instantiate the robot.
+        Tormod = new aRobot();
     }
 
     public void draw() {
@@ -139,7 +143,6 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
 
             }
-
 
             if (crossDotsButton) {
 
@@ -378,5 +381,13 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         fill(vR, vG, vB, vO);
         //fill(255, 0, 0, 255);
         ellipse(mov.getVecLocation().x, mov.getVecLocation().y, random(15, 20), random(15, 20));
+    }
+
+    void generate() throws AWTException {
+        Tormod.click(appInit.vectorButton.getX(), appInit.vectorButton.getY());
+    }
+
+    static void test(){
+        System.out.println("VB X: " + appInit.getVectorButton());
     }
 }

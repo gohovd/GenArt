@@ -221,5 +221,31 @@ buttonPanel.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 0, Color.LIGHT_GR
         randomclr.setSelected(b);
     }
 
+    public static int getVectorButton() {
+        return vectorButton.getX();
+    }
 
+    public static JButton getClearButton() {
+        return clearButton;
+    }
+
+    public static JButton getRandomLinesButton() {
+        return randomLinesButton;
+    }
+
+    public static JButton getPulseButton() {
+        return pulseButton;
+    }
+
+    public static JButton getCrossDotsButton() {
+        return crossDotsButton;
+    }
+
+    public static JButton getButtonCreate() {
+        return buttonCreate;
+    }
+
+    public static JButton getVarBubblesButton() {
+        return varBubblesButton;
+    }
 }
