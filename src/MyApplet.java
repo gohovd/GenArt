@@ -49,7 +49,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     boolean q = false;//variabler for crossdots
 
     public void setup() {
-        size(screenSize.width - 300, screenSize.height);
+        size(screenSize.width - 200, screenSize.height);
         // Set up the bouncing balls.
         ballList = new ArrayList<Ball>();
         // Set up the movers/vectors.

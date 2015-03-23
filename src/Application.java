@@ -26,6 +26,8 @@ public class Application {
     private static final JCheckBox randomclr = new JCheckBox("Random Color");
     private static final JCheckBox linear = new JCheckBox("Linear");
 
+    private static final int menuWidth = 200;
+
     public Application(){}
 
     public static void main(String[] args) {
@@ -40,8 +42,10 @@ public class Application {
 
 //create a panel for the applet and the button panel
         JPanel panel = new JPanel();
+
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        panel.setBounds(0,0,screenSize.width-200,screenSize.height);
+        int panelXChange = screenSize.width - menuWidth;
+        panel.setBounds(0,0,panelXChange,screenSize.height);
         
         panel.setBackground(Color.white);
 
@@ -49,8 +53,11 @@ public class Application {
 //create a panel for the buttons
         JPanel buttonPanel = new JPanel();
         buttonPanel.setBackground(Color.white);
-        buttonPanel.setBounds(screenSize.width-200,0,200,screenSize.height);
 
+        buttonPanel.setBounds(panelXChange,0,menuWidth,screenSize.height);
+System.out.println(screenSize.width);
+        System.out.println(screenSize.height);
+        System.out.println(panelXChange);
 
 // svart border til venstre for knapper
 buttonPanel.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 0, Color.LIGHT_GRAY));
