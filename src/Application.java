@@ -17,8 +17,10 @@ import javax.swing.border.Border;
  */
 
 public class Application {
+
     private int width;
     private int height;
+
     private static final JTextField vColorField = new JTextField(5);
     private static final JCheckBox circular = new JCheckBox("Circular");
     private static final JCheckBox randomclr = new JCheckBox("Random Color");
@@ -31,24 +33,31 @@ public class Application {
         final JFrame frame = new JFrame("Fantastic Art Generator");
         frame.setExtendedState(Frame.MAXIMIZED_BOTH);
         frame.setBackground(Color.white);
+        frame.setLayout(null);
 //frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" fullskjerm
 //make sure to shut down the application, when the frame is closed
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //create a panel for the applet and the button panel
         JPanel panel = new JPanel();
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        panel.setSize(screenSize.width, screenSize.height);
-        panel.setBackground(Color.white);
 
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
+        panel.setBounds(0,0,screenSize.width-300,screenSize.height);
+
+        panel.setBackground(Color.white);
 
 
 //create a panel for the buttons
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.PAGE_AXIS));
+//buttonPanel.setLayout(new GridLayout(0,2));
         buttonPanel.setBackground(Color.white);
+        buttonPanel.setBounds(screenSize.width-300,0,300,screenSize.height);
 
-        // svart border til venstre for knapper
-        buttonPanel.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 0, Color.BLACK));
+
+// svart border til venstre for knapper
+buttonPanel.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 0, Color.LIGHT_GRAY));
+
+
 //create an instance of your processing applet
         final MyApplet applet = new MyApplet();
 //start the applet
@@ -60,12 +69,28 @@ public class Application {
 //Buttons
 //create a button labled "create new ball"
         JButton buttonCreate = new JButton("create new ball");
+
         JButton vectorButton = new JButton("create new vector");
         JButton clearButton = new JButton("clear");
-        JButton randomLinesButton = new JButton("randomLines");
+
+        ImageIcon imageForrandomLinesButton = new ImageIcon("images/rndlines.png");
+        JButton randomLinesButton = new JButton("", imageForrandomLinesButton);
+        randomLinesButton.setBackground(Color.white);
+        randomLinesButton.setPreferredSize(new Dimension(90, 90));
+
+
         JButton varBubblesButton = new JButton("varBubbles");
-        JButton pulseButton = new JButton("pulse");
-        JButton crossDotsButton = new JButton("Cross Dots");
+
+        ImageIcon imageForpulseButton = new ImageIcon("images/pulse.png");
+        JButton pulseButton = new JButton("",imageForpulseButton);
+        pulseButton.setBackground(Color.white);
+        pulseButton.setPreferredSize(new Dimension(90, 90));
+
+        ImageIcon imageForcrossDotsButton = new ImageIcon("images/crossdots.png");
+        JButton crossDotsButton = new JButton("", imageForrandomLinesButton);
+        crossDotsButton.setBackground(Color.white);
+        crossDotsButton.setPreferredSize(new Dimension(90, 90));
+
 //assing a tooltip
         buttonCreate.setToolTipText("creates a new ball ");
         vectorButton.setToolTipText("creates a new vector");
@@ -74,6 +99,12 @@ public class Application {
         varBubblesButton.setToolTipText("Draws random size bubbles depending on mouse speed");
         pulseButton.setToolTipText("Pulsing");
         crossDotsButton.setToolTipText("Draws dots in cross formation");
+        // Adding button graphics
+
+
+      //  pulseButton.setIcon(new ImageIcon("/pulse.png"));
+
+
 //give a name for the command
 //if this is not assigned the actionCommand equals the button label
         buttonCreate.setActionCommand("create ball");
@@ -140,7 +171,7 @@ public class Application {
 //store the applet in panel
         panel.add(applet);
 //store the buttonPanel in panel
-        panel.add(buttonPanel);
+        frame.add(buttonPanel);
 //store the panel in the frame
         frame.add(panel);
 //assign a size for the frame
