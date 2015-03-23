@@ -40,7 +40,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     //Also controlling whether the user wants random colored vectors.
     boolean circular, linear, randomclr;
     int steps = 0;
-    PVector tmp;
+    PVector mouse;
     boolean randomLineButton = false;
     int pulseAngle = 0;
 
@@ -66,7 +66,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     public void draw() {
         // Draw method "never" ends, here we iterate through all
         // the objects we want to display. Whether or not we display
-        // them or not, is decided by the push of the button.
+        // them, is decided by the push of the button.
         if (!pause) {
             if (ballbutton) {
                 for (int i = 0; i < ballList.size(); i++) {
@@ -77,12 +77,20 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             }
 
             if (vectorButton && mousePressed) {
+                //Choice determines motion pattern (1: circular,  2: linear)
+                int choice = 1;
                 for (int i = 0; i < movers.size(); i++) {
                     Mover mover = movers.get(i);
-                    tmp = new PVector(mouseX, mouseY);
-                    mover.setVecLocation(tmp);
-                    mover.update();
-                    mover.checkEdges();
+                    mouse = new PVector(mouseX, mouseY);
+                    mover.setVecLocation(mouse);
+                    if (circular) {
+                        choice = 1;
+                    }
+                    if (linear) {
+                        choice = 2;
+                    }
+                    mover.update(choice);
+                    //mover.checkEdges();
                     vDisplay(mover);
                 }
             }
@@ -96,11 +104,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                     strokeWeight(random(3, 8));
                     stroke(random(0, 255), random(0, 255), random(0, 255), random(0, 255));
                     line(mouseX, mouseY - random(-100, 100), mouseX, mouseY + random(-100, 100));
-
-
                 }
-
-
             }
 
             if (varBubblesButton) {
@@ -120,7 +124,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
                 if (mousePressed == true) {
 
-                   pulseAngle += 5;
+                    pulseAngle += 5;
 
                     float val = (float) (cos(radians(pulseAngle)) * 12.0);
                     for (int a = 0; a < 360; a += 75) {
@@ -135,21 +139,20 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 }
 
 
-                }
+            }
 
 
+            if (crossDotsButton) {
 
-            if(crossDotsButton){
-
-                if(mousePressed && (mouseButton == LEFT)){
-                    if(i>=0 && q == false){
-                        i+=1;
+                if (mousePressed && (mouseButton == LEFT)) {
+                    if (i >= 0 && q == false) {
+                        i += 1;
                     }
 
-                    ellipse(mouseX+i, mouseY, 10, 10);
-                    ellipse(mouseX-i, mouseY, 10, 10);
-                    ellipse(mouseX, mouseY+i, 10, 10);
-                    ellipse(mouseX, mouseY-i, 10, 10);
+                    ellipse(mouseX + i, mouseY, 10, 10);
+                    ellipse(mouseX - i, mouseY, 10, 10);
+                    ellipse(mouseX, mouseY + i, 10, 10);
+                    ellipse(mouseX, mouseY - i, 10, 10);
 
                     for (int i = 0; i < 100; i++) {
                         float r = random(0, 255);
@@ -157,19 +160,19 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                         float b = random(0, 255);
 
                         noStroke();
-                        fill(r,g,b);
+                        fill(r, g, b);
 
                     }
 
-                    if(i ==100){
+                    if (i == 100) {
                         q = true;
 
                     }
-                    if (q == true){
-                        i-=1;
+                    if (q == true) {
+                        i -= 1;
                     }
 
-                    if(i == 0){
+                    if (i == 0) {
                         q = false;
                     }
                 }
@@ -219,28 +222,24 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 vB = Float.parseFloat(clrs.get(2));
                 vO = Float.parseFloat(clrs.get(3));
             }
-
+            randomclr = false;
         } else if (evt.getActionCommand().equals("randomLines")) {
             randomLineButton = true;
             pause = false;
 
         } else if (evt.getActionCommand().equals("varBubbles")) {
             varBubblesButton = true;
-             pause = false;
+            pause = false;
 
         } else if (evt.getActionCommand().equals("pulse")) {
             pulseButton = true;
             pause = false;
 
-        }
-
-        else if (evt.getActionCommand().equals("crossDots")) {
+        } else if (evt.getActionCommand().equals("crossDots")) {
             crossDotsButton = true;
             pause = false;
 
-        }
-
-        else {
+        } else {
             println("actionPerformed(): can't handle " + evt.getActionCommand());
         }
     }
@@ -250,14 +249,18 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             //If the linear state is already checked, we have to deselect first..
             if (linear) {
                 appInit.setLinearState(false);
+                linear = false;
             }
+            appInit.setCircularState(true);
             circular = true;
         }
         if (appInit.getLinearState() == true) {
             //If the circular state is already checked, we have to deselect first..
             if (circular) {
                 appInit.setCircularState(false);
+                circular = false;
             }
+            appInit.setLinearState(true);
             linear = true;
         }
         if (appInit.getRandomColorState() == true) {
@@ -277,11 +280,63 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
  * creates a new ball object
  */
     private void createNewBall() {
-        Ball nBall = new Ball();
-        ballList.add(nBall);
+        // X and Y speed to make the ball go in desired direction.
+        float xDir, yDir;
+        Ball up, down, left, right, left45, negleft45, right45, negright45;
+        // UP
+        xDir = 0;
+        yDir = -10;
+        up = new Ball(xDir, yDir);
+
+        // DOWN
+        xDir = 0;
+        yDir = 5;
+        down = new Ball(xDir, yDir);
+
+        // LEFT
+        xDir = -5;
+        yDir = 0;
+        left = new Ball(xDir, yDir);
+
+        // RIGHT
+        xDir = 5;
+        yDir = 0;
+        right = new Ball(xDir, yDir);
+
+        // 45 degrees left
+        xDir = -5;
+        yDir = -5;
+        left45 = new Ball(xDir, yDir);
+
+        // negative 45 degrees left
+        xDir = -5;
+        yDir = 5;
+        negleft45 = new Ball(xDir, yDir);
+
+        // 45 degrees right
+        xDir = 5;
+        yDir = -5;
+        right45 = new Ball(xDir, yDir);
+
+        // negative 45 degrees right
+        xDir = 5;
+        yDir = 5;
+        negright45 = new Ball(xDir, yDir);
+
+        ballList.add(up);
+        ballList.add(down);
+        ballList.add(left);
+        ballList.add(right);
+        ballList.add(left45);
+        ballList.add(negleft45);
+        ballList.add(right45);
+        ballList.add(negright45);
+
         // Let class ball know what width and height we're working with.
-        nBall.setWidth(width);
-        nBall.setHeight(height);
+        for(Ball b : ballList){
+            b.setWidth(width);
+            b.setHeight(height);
+        }
         ballbutton = true; // Set to true, when button (create ball) is pressed.
     }
 
@@ -321,7 +376,6 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             vB = random(255);
             vO = random(255);
         }
-
         fill(vR, vG, vB, vO);
         //fill(255, 0, 0, 255);
         ellipse(mov.getVecLocation().x, mov.getVecLocation().y, random(15, 20), random(15, 20));
