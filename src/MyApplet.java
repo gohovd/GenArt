@@ -383,11 +383,4 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         ellipse(mov.getVecLocation().x, mov.getVecLocation().y, random(15, 20), random(15, 20));
     }
 
-    void generate() throws AWTException {
-        Tormod.click(appInit.vectorButton.getX(), appInit.vectorButton.getY());
-    }
-
-    static void test(){
-        System.out.println("VB X: " + appInit.getVectorButton());
-    }
 }
