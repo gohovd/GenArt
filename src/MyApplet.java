@@ -29,7 +29,6 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     // Variables related to the mover/vector.
     ArrayList<Mover> movers;
     boolean vectorButton = false;
-    boolean rainbowButton = false;
     int vStep = 0; // When steps, do something different.
     // Variable holding the background image.
     PImage bgImg = null;
@@ -44,7 +43,6 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     PVector tmp;
     boolean randomLineButton = false;
     int pulseAngle = 0;
-    rainbowDraw rdraw;
 
     public void setup() {
         size(screenSize.width - 300, screenSize.height);
@@ -118,7 +116,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
                 if (mousePressed == true) {
 
-                    pulseAngle += 5;
+                   pulseAngle += 5;
 
                     float val = (float) (cos(radians(pulseAngle)) * 12.0);
                     for (int a = 0; a < 360; a += 75) {
@@ -133,12 +131,6 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 }
 
             }
-            if (rainbowButton) {
-                //rdraw = new rainbowDraw();
-                //rdraw.rainbowColor(mouseX,mouseY,pmouseX,pmouseY);
-                //float alpha = random(100);
-                colorMode(HSB,300,100,100,300);
-                float radius = sqrt(sq(mouseX-300)+sq(mouseY - 300));
 
                 stroke(radius, 100, 100, 30000 / radius);
                 //background(200);
@@ -155,6 +147,45 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
 
             }
+
+            if (crossDotsButton) {
+
+                if (mousePressed && (mouseButton == LEFT)) {
+                    if (i >= 0 && q == false) {
+                        i += 1;
+                    }
+
+                    ellipse(mouseX + i, mouseY, 10, 10);
+                    ellipse(mouseX - i, mouseY, 10, 10);
+                    ellipse(mouseX, mouseY + i, 10, 10);
+                    ellipse(mouseX, mouseY - i, 10, 10);
+
+                    for (int i = 0; i < 100; i++) {
+                        float r = random(0, 255);
+                        float g = random(0, 255);
+                        float b = random(0, 255);
+
+                        noStroke();
+                        fill(r, g, b);
+
+                    }
+
+                    if (i == 100) {
+                        q = true;
+
+                    }
+                    if (q == true) {
+                        i -= 1;
+                    }
+
+                    if (i == 0) {
+                        q = false;
+                    }
+                }
+
+
+            }
+
         }
     }
 
@@ -170,6 +201,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         ballbutton = false;
         varBubblesButton = false;
         pulseButton = false;
+        crossDotsButton = false;
         rainbowButton = false;
 
         String vColor = appInit.getVColor();
@@ -208,11 +240,6 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
         } else if (evt.getActionCommand().equals("pulse")) {
             pulseButton = true;
-            pause = false;
-
-        }
-        else if (evt.getActionCommand().equals("rainbowDraw")) {
-            rainbowButton = true;
             pause = false;
 
         } else {

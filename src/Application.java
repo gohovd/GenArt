@@ -58,6 +58,42 @@ public class Application {
         JButton varBubblesButton = new JButton("varBubbles");
         JButton pulseButton = new JButton("pulse");
         JButton rainbowButton = new JButton("Rainbow Draw");
+
+        ImageIcon imageForbuttonCreate = new ImageIcon("images/ballgrid.png");
+        buttonCreate = new JButton("", imageForbuttonCreate);
+        buttonCreate.setBackground(Color.white);
+        buttonCreate.setPreferredSize(new Dimension(90, 90));
+
+
+        ImageIcon imageForvectorButton = new ImageIcon("images/roundvector.png");
+        vectorButton = new JButton("", imageForvectorButton);
+        vectorButton.setBackground(Color.white);
+        vectorButton.setPreferredSize(new Dimension(90, 90));
+
+
+        clearButton = new JButton("clear");
+
+        ImageIcon imageForrandomLinesButton = new ImageIcon("images/rndlines.png");
+        randomLinesButton = new JButton("", imageForrandomLinesButton);
+        randomLinesButton.setBackground(Color.white);
+        randomLinesButton.setPreferredSize(new Dimension(90, 90));
+
+        ImageIcon imageForvarBubblesButton = new ImageIcon("images/varbubbles.png");
+        varBubblesButton = new JButton("",imageForvarBubblesButton);
+        varBubblesButton.setBackground(Color.white);
+        varBubblesButton.setPreferredSize(new Dimension(90, 90));
+
+
+        ImageIcon imageForpulseButton = new ImageIcon("images/pulse.png");
+        pulseButton = new JButton("",imageForpulseButton);
+        pulseButton.setBackground(Color.white);
+        pulseButton.setPreferredSize(new Dimension(90, 90));
+
+        ImageIcon imageForcrossDotsButton = new ImageIcon("images/crossdots.png");
+        crossDotsButton = new JButton("", imageForcrossDotsButton);
+        crossDotsButton.setBackground(Color.white);
+        crossDotsButton.setPreferredSize(new Dimension(90, 90));
+
 //assing a tooltip
         buttonCreate.setToolTipText("creates a new ball ");
         vectorButton.setToolTipText("creates a new vector");
@@ -66,6 +102,13 @@ public class Application {
         varBubblesButton.setToolTipText("Draws random size bubbles depending on mouse speed");
         pulseButton.setToolTipText("Pulsing");
         rainbowButton.setToolTipText("Draw with rainbow colors");
+        crossDotsButton.setToolTipText("Draws dots in cross formation");
+        // Adding button graphics
+
+
+      //  pulseButton.setIcon(new ImageIcon("/pulse.png"));
+
+
 //give a name for the command
 //if this is not assigned the actionCommand equals the button label
         buttonCreate.setActionCommand("create ball");
@@ -78,6 +121,10 @@ public class Application {
 //create a button lable "load file"
         JButton buttonLoad = new JButton("load file");
         buttonLoad.setToolTipText("loads a new background image");
+        crossDotsButton.setActionCommand("crossDots");
+
+
+
 //button actions
 //the create button is simply linked to the applet
 //the action is executed inside applet.actionPerformed()
@@ -87,6 +134,8 @@ public class Application {
         randomLinesButton.addActionListener(applet);
         varBubblesButton.addActionListener(applet);
         pulseButton.addActionListener(applet);
+        crossDotsButton.addActionListener(applet);
+
         rainbowButton.addActionListener(applet);
         circular.addItemListener(applet);
         circular.setSelected(false);
@@ -122,6 +171,7 @@ public class Application {
         buttonPanel.add(vectorButton);
         buttonPanel.add(varBubblesButton);
         buttonPanel.add(pulseButton);
+        buttonPanel.add(crossDotsButton);
         buttonPanel.add(rainbowButton);
 
         buttonPanel.add(randomclr); buttonPanel.add(linear); buttonPanel.add(circular);
