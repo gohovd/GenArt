@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="905e9aa0-ee52-425e-affb-f197dfe127a8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/roundvector.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/soon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/varbubbles.png" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/GenArt/Application$1.class" afterPath="" />
+    <list default="true" id="905e9aa0-ee52-425e-affb-f197dfe127a8" name="Default" comment="Grafikk for knappene..">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="GenArt.iws" />
@@ -34,8 +30,8 @@
       <file leaf-file-name="Application.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5685393" vertical-offset="542" max-vertical-offset="3285">
-              <caret line="53" column="54" selection-start-line="53" selection-start-column="54" selection-end-line="53" selection-end-column="54" />
+            <state vertical-scroll-proportion="0.43370786" vertical-offset="542" max-vertical-offset="3285">
+              <caret line="49" column="32" selection-start-line="49" selection-start-column="32" selection-end-line="49" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#6659#6660#0" expanded="true" />
@@ -554,7 +550,13 @@
       <option name="project" value="LOCAL" />
       <updated>1427114885996</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Grafikk for knappene..">
+      <created>1427114922188</created>
+      <option name="number" value="00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1427114922188</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -623,7 +625,8 @@
     <MESSAGE value="Kom bildefilene med no?" />
     <MESSAGE value="..og enda en.. :)" />
     <MESSAGE value="La til de siste knappene, endret bredde på meny jpanel" />
-    <option name="LAST_COMMIT_MESSAGE" value="La til de siste knappene, endret bredde på meny jpanel" />
+    <MESSAGE value="Grafikk for knappene.." />
+    <option name="LAST_COMMIT_MESSAGE" value="Grafikk for knappene.." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1309,8 +1312,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Application.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5685393" vertical-offset="542" max-vertical-offset="3285">
-          <caret line="53" column="54" selection-start-line="53" selection-start-column="54" selection-end-line="53" selection-end-column="54" />
+        <state vertical-scroll-proportion="0.43370786" vertical-offset="542" max-vertical-offset="3285">
+          <caret line="49" column="32" selection-start-line="49" selection-start-column="32" selection-end-line="49" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#6659#6660#0" expanded="true" />
