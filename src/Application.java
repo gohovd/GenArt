@@ -42,7 +42,7 @@ public class Application {
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
-        panel.setBounds(0,0,screenSize.width-300,screenSize.height);
+        panel.setBounds(0,0,screenSize.width-200,screenSize.height);
 
         panel.setBackground(Color.white);
 
@@ -51,7 +51,7 @@ public class Application {
         JPanel buttonPanel = new JPanel();
 //buttonPanel.setLayout(new GridLayout(0,2));
         buttonPanel.setBackground(Color.white);
-        buttonPanel.setBounds(screenSize.width-300,0,300,screenSize.height);
+        buttonPanel.setBounds(screenSize.width-200,0,200,screenSize.height);
 
 
 // svart border til venstre for knapper
@@ -68,9 +68,19 @@ buttonPanel.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 0, Color.LIGHT_GR
         vColorField.addActionListener(applet);
 //Buttons
 //create a button labled "create new ball"
-        JButton buttonCreate = new JButton("create new ball");
 
-        JButton vectorButton = new JButton("create new vector");
+        ImageIcon imageForbuttonCreate = new ImageIcon("images/soon.png");
+        JButton buttonCreate = new JButton("", imageForbuttonCreate);
+        buttonCreate.setBackground(Color.white);
+        buttonCreate.setPreferredSize(new Dimension(90, 90));
+
+
+        ImageIcon imageForvectorButton = new ImageIcon("images/roundvector.png");
+        JButton vectorButton = new JButton("", imageForvectorButton);
+        vectorButton.setBackground(Color.white);
+        vectorButton.setPreferredSize(new Dimension(90, 90));
+
+
         JButton clearButton = new JButton("clear");
 
         ImageIcon imageForrandomLinesButton = new ImageIcon("images/rndlines.png");
@@ -78,8 +88,11 @@ buttonPanel.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 0, Color.LIGHT_GR
         randomLinesButton.setBackground(Color.white);
         randomLinesButton.setPreferredSize(new Dimension(90, 90));
 
+        ImageIcon imageForvarBubblesButton = new ImageIcon("images/varbubbles.png");
+        JButton varBubblesButton = new JButton("",imageForvarBubblesButton);
+        varBubblesButton.setBackground(Color.white);
+        varBubblesButton.setPreferredSize(new Dimension(90, 90));
 
-        JButton varBubblesButton = new JButton("varBubbles");
 
         ImageIcon imageForpulseButton = new ImageIcon("images/pulse.png");
         JButton pulseButton = new JButton("",imageForpulseButton);
@@ -114,9 +127,9 @@ buttonPanel.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 0, Color.LIGHT_GR
         varBubblesButton.setActionCommand("varBubbles");
         pulseButton.setActionCommand("pulse");
         crossDotsButton.setActionCommand("crossDots");
-//create a button lable "load file"
-        JButton buttonLoad = new JButton("load file");
-        buttonLoad.setToolTipText("loads a new background image");
+
+
+
 //button actions
 //the create button is simply linked to the applet
 //the action is executed inside applet.actionPerformed()
@@ -135,29 +148,10 @@ buttonPanel.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 0, Color.LIGHT_GR
         randomclr.addItemListener(applet);
         randomclr.setSelected(true);
 
-//this action is implemented NOT in the PApplet on purpose
-//fileDialogues like to crash a PApplet
-//
-//if the JFileChooser returns a valid file
-//loadBgImage() in MyApplet is executed
-        buttonLoad.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-                JFileChooser chooser = new JFileChooser();
-//example of an image fileFilter
-//no need to use, just switch it off
-                chooser.setFileFilter(new MyImageFileFilter());
-                int returnVal = chooser.showOpenDialog(frame);
-                if (returnVal == JFileChooser.APPROVE_OPTION) {
-                    System.out.println("You chose to open this file: " +
-                            chooser.getSelectedFile().getName());
-//sending the selectedFile to loadBgImage() in the PApplet
-                    applet.loadBgImage(chooser.getSelectedFile());
-                }
-            }
-        });
+
 //store the two buttons in the button panel
         buttonPanel.add(buttonCreate);
-        buttonPanel.add(buttonLoad);
+
         buttonPanel.add(randomLinesButton);
         buttonPanel.add(vectorButton);
         buttonPanel.add(varBubblesButton);
