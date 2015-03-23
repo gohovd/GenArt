@@ -28,6 +28,8 @@ public class Application {
 
     private static final int menuWidth = 200; // Husk å endre i MyApplet hvis du endrer her
 
+    public static JButton vectorButton, clearButton, randomLinesButton, pulseButton, crossDotsButton, buttonCreate, varBubblesButton;
+
     public Application(){}
 
     public static void main(String[] args) {
@@ -79,37 +81,37 @@ buttonPanel.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 0, Color.LIGHT_GR
 //create a button labled "create new ball"
 
         ImageIcon imageForbuttonCreate = new ImageIcon("images/ballgrid.png");
-        JButton buttonCreate = new JButton("", imageForbuttonCreate);
+        buttonCreate = new JButton("", imageForbuttonCreate);
         buttonCreate.setBackground(Color.white);
         buttonCreate.setPreferredSize(new Dimension(90, 90));
 
 
         ImageIcon imageForvectorButton = new ImageIcon("images/roundvector.png");
-        JButton vectorButton = new JButton("", imageForvectorButton);
+        vectorButton = new JButton("", imageForvectorButton);
         vectorButton.setBackground(Color.white);
         vectorButton.setPreferredSize(new Dimension(90, 90));
 
 
-        JButton clearButton = new JButton("clear");
+        clearButton = new JButton("clear");
 
         ImageIcon imageForrandomLinesButton = new ImageIcon("images/rndlines.png");
-        JButton randomLinesButton = new JButton("", imageForrandomLinesButton);
+        randomLinesButton = new JButton("", imageForrandomLinesButton);
         randomLinesButton.setBackground(Color.white);
         randomLinesButton.setPreferredSize(new Dimension(90, 90));
 
         ImageIcon imageForvarBubblesButton = new ImageIcon("images/varbubbles.png");
-        JButton varBubblesButton = new JButton("",imageForvarBubblesButton);
+        varBubblesButton = new JButton("",imageForvarBubblesButton);
         varBubblesButton.setBackground(Color.white);
         varBubblesButton.setPreferredSize(new Dimension(90, 90));
 
 
         ImageIcon imageForpulseButton = new ImageIcon("images/pulse.png");
-        JButton pulseButton = new JButton("",imageForpulseButton);
+        pulseButton = new JButton("",imageForpulseButton);
         pulseButton.setBackground(Color.white);
         pulseButton.setPreferredSize(new Dimension(90, 90));
 
         ImageIcon imageForcrossDotsButton = new ImageIcon("images/crossdots.png");
-        JButton crossDotsButton = new JButton("", imageForcrossDotsButton);
+        crossDotsButton = new JButton("", imageForcrossDotsButton);
         crossDotsButton.setBackground(Color.white);
         crossDotsButton.setPreferredSize(new Dimension(90, 90));
 

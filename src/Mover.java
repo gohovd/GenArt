@@ -1,4 +1,5 @@
 import processing.core.*;
+import java.awt.*;
 
 /**
  * Second inner class 'Mover'. Makes something
@@ -13,7 +14,6 @@ class Mover extends PApplet {
     float topspeed;
     float r = 10;
     float vWidth, vHeight;
-
 
     Mover() {
         location = new PVector(0, 0);
