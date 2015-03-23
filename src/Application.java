@@ -226,5 +226,31 @@ public class Application {
         randomclr.setSelected(b);
     }
 
+    public static JButton getVectorButton() {
+        return vectorButton;
+    }
 
+    public static JButton getClearButton() {
+        return clearButton;
+    }
+
+    public static JButton getRandomLinesButton() {
+        return randomLinesButton;
+    }
+
+    public static JButton getPulseButton() {
+        return pulseButton;
+    }
+
+    public static JButton getCrossDotsButton() {
+        return crossDotsButton;
+    }
+
+    public static JButton getButtonCreate() {
+        return buttonCreate;
+    }
+
+    public static JButton getVarBubblesButton() {
+        return varBubblesButton;
+    }
 }
