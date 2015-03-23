@@ -4,6 +4,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemListener;
 import java.util.Vector;
 import javax.swing.*;
+import javax.swing.BorderFactory;
+import javax.swing.border.Border;
 
 /**
  * A simple demo application launching a Processing Applet
@@ -37,10 +39,16 @@ public class Application {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         panel.setSize(screenSize.width, screenSize.height);
         panel.setBackground(Color.white);
+
+
+
 //create a panel for the buttons
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.PAGE_AXIS));
         buttonPanel.setBackground(Color.white);
+
+        // svart border til venstre for knapper
+        buttonPanel.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 0, Color.BLACK));
 //create an instance of your processing applet
         final MyApplet applet = new MyApplet();
 //start the applet
