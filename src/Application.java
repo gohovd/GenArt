@@ -34,22 +34,20 @@ public class Application {
         frame.setExtendedState(Frame.MAXIMIZED_BOTH);
         frame.setBackground(Color.white);
         frame.setLayout(null);
-//frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" fullskjerm
+// frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" fullskjerm
 //make sure to shut down the application, when the frame is closed
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 //create a panel for the applet and the button panel
         JPanel panel = new JPanel();
-
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-
         panel.setBounds(0,0,screenSize.width-200,screenSize.height);
-
+        
         panel.setBackground(Color.white);
 
 
 //create a panel for the buttons
         JPanel buttonPanel = new JPanel();
-//buttonPanel.setLayout(new GridLayout(0,2));
         buttonPanel.setBackground(Color.white);
         buttonPanel.setBounds(screenSize.width-200,0,200,screenSize.height);
 
@@ -69,7 +67,7 @@ buttonPanel.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 0, Color.LIGHT_GR
 //Buttons
 //create a button labled "create new ball"
 
-        ImageIcon imageForbuttonCreate = new ImageIcon("images/soon.png");
+        ImageIcon imageForbuttonCreate = new ImageIcon("images/ballgrid.png");
         JButton buttonCreate = new JButton("", imageForbuttonCreate);
         buttonCreate.setBackground(Color.white);
         buttonCreate.setPreferredSize(new Dimension(90, 90));
