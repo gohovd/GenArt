@@ -70,15 +70,9 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         vO = 255;
         //Instantiate the robot.
         Tormod = new aRobot();
+        Tormod.setWidth(width);
+        Tormod.setHeight(height);
 
-    }
-
-    public void collectButtonData(){
-        try {
-            JButton VB = appInit.getVectorButton();
-            System.out.println("VBX: " + VB.getX());
-        } catch (NullPointerException e) {
-            System.out.println("NPE"); }
     }
 
     public void draw() {
@@ -271,7 +265,11 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             createNewMover();
             pause = false;
         } else if (evt.getActionCommand().equals("randomize")) {
-            collectButtonData();
+            try {
+                autoDrawVectors();
+            } catch (AWTException e) {
+                e.printStackTrace();
+            }
         } else if (evt.getActionCommand().equals("clear")) {
             clear();
             pause = true;
@@ -457,4 +455,13 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         ellipse(mov.getVecLocation().x, mov.getVecLocation().y, random(15, 20), random(15, 20));
     }
 
+    /**
+     * Collects data/info about the application class,
+     * lets the robot know where to move.
+     */
+    public void autoDrawVectors() throws AWTException {
+        //Tormod.clickVectorButton();
+        //Tormod.startPaint();
+        Tormod.printButtonData();
+    }
 }

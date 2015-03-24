@@ -29,6 +29,9 @@ public class Application {
 
     private static final int menuWidth = 200; // Husk å endre i MyApplet hvis du endrer her
 
+    // Gjør panel og buttonPanel public, for at roboten skal nå tak i info.
+    public static JPanel panel, buttonPanel;
+
     public static JButton vectorButton, clearButton, randomLinesButton, pulseButton, crossDotsButton, starzButton, squarezButton,  buttonCreate, varBubblesButton, Randomize,strokeNColourButton;
 
 
@@ -49,8 +52,7 @@ public class Application {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 //create a panel for the applet and the button panel
-        JPanel panel = new JPanel();
-
+        panel = new JPanel();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int panelXChange = screenSize.width - menuWidth;
         panel.setBounds(0,0,panelXChange,screenSize.height);
@@ -59,7 +61,7 @@ public class Application {
 
 
 //create a panel for the buttons
-        JPanel buttonPanel = new JPanel();
+        buttonPanel = new JPanel();
         buttonPanel.setBackground(Color.white);
 
         buttonPanel.setBounds(panelXChange,0,menuWidth,screenSize.height);
@@ -290,4 +292,5 @@ public class Application {
     public static JButton getStrokeNColourButton() {
         return strokeNColourButton;
     }
+
 }
