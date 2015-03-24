@@ -29,11 +29,11 @@ public class Application {
 
     private static final int menuWidth = 200; // Husk å endre i MyApplet hvis du endrer her
 
-    public static JButton vectorButton, clearButton, randomLinesButton, pulseButton, crossDotsButton, starzButton, squarezButton, trianglezButton, buttonCreate, varBubblesButton, Randomize;
+
     // Gjør panel og buttonPanel public, for at roboten skal nå tak i info.
     public static JPanel panel, buttonPanel;
 
-    public static JButton vectorButton, clearButton, randomLinesButton, pulseButton, crossDotsButton, starzButton, squarezButton,  buttonCreate, varBubblesButton, Randomize,strokeNColourButton;
+    public static JButton vectorButton, clearButton, randomLinesButton, pulseButton, crossDotsButton, starzButton, squarezButton,  buttonCreate, varBubblesButton, trianglezButton, Randomize,strokeNColourButton;
 
 
     public Application(){}
