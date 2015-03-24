@@ -29,7 +29,7 @@ public class Application {
 
     private static final int menuWidth = 200; // Husk å endre i MyApplet hvis du endrer her
 
-    public static JButton vectorButton, clearButton, randomLinesButton, pulseButton, crossDotsButton, starzButton,  buttonCreate, varBubblesButton, Randomize;
+    public static JButton vectorButton, clearButton, randomLinesButton, pulseButton, crossDotsButton, starzButton, squarezButton,  buttonCreate, varBubblesButton, Randomize;
 
 
     public Application(){}
@@ -123,6 +123,11 @@ public class Application {
         starzButton.setBackground(Color.white);
         starzButton.setPreferredSize(new Dimension(90, 90));
 
+        ImageIcon imageForsquarezButton = new ImageIcon("images/squarez.png");
+        squarezButton = new JButton("", imageForsquarezButton);
+        squarezButton.setBackground(Color.white);
+        squarezButton.setPreferredSize(new Dimension(90, 90));
+
 //assing a tooltip
         buttonCreate.setToolTipText("creates a new ball ");
         vectorButton.setToolTipText("creates a new vector");
@@ -132,6 +137,7 @@ public class Application {
         pulseButton.setToolTipText("Pulsing");
         crossDotsButton.setToolTipText("Draws dots in cross formation");
         starzButton.setToolTipText("Draws stars as you drag your mouse");
+        squarezButton.setToolTipText("Draws squares as you drag your mouse");
         // Adding button graphics
 
 
@@ -148,6 +154,7 @@ public class Application {
         pulseButton.setActionCommand("pulse");
         crossDotsButton.setActionCommand("crossDots");
         starzButton.setActionCommand("starz");
+        squarezButton.setActionCommand("squarez");
         Randomize.setActionCommand("randomize");
 
 
@@ -163,6 +170,7 @@ public class Application {
         pulseButton.addActionListener(applet);
         crossDotsButton.addActionListener(applet);
         starzButton.addActionListener(applet);
+        squarezButton.addActionListener(applet);
         Randomize.addActionListener(applet);
 
         circular.addItemListener(applet);
@@ -182,6 +190,7 @@ public class Application {
         buttonPanel.add(pulseButton);
         buttonPanel.add(crossDotsButton);
         buttonPanel.add(starzButton);
+        buttonPanel.add(squarezButton);
 
         buttonPanel.add(randomclr); buttonPanel.add(linear); buttonPanel.add(circular);
         buttonPanel.add(vColorField);
@@ -257,6 +266,10 @@ public class Application {
 
     public static JButton getStarzButton() {
         return starzButton;
+    }
+
+    public static JButton getSquarezButton() {
+        return squarezButton;
     }
 
     public static JButton getButtonCreate() {
