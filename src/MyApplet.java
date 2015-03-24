@@ -201,7 +201,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
                 if (mousePressed == true) {
 
-                    //strokeWeight(0.1);
+                    strokeWeight((float)0.1);
                     fill(random(255), random(255), random(255), 127);
                     beginShape();
                     vertex(mouseX, mouseY - 50);
@@ -224,13 +224,13 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             if (squarezButton) {
 
                 if (mousePressed == true && mouseButton == LEFT){
-                    //strokeWeight(0.1);
+                    strokeWeight((float)0.1);
                     fill(random(255), random(255), random(255), 127);
                     rect(mouseX - 25, mouseY - 25, 100, 100);
                 }
 
                 if (mousePressed == true && mouseButton == RIGHT){
-                    //strokeWeight(0.1);
+                    strokeWeight((float)0.1);
                     fill(random(255), random(255), random(255), 127);
                     rect(mouseX, mouseY,100,100);
                     rect();

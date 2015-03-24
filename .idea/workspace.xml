@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="905e9aa0-ee52-425e-affb-f197dfe127a8" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GenArt/MyApplet.class" afterPath="$PROJECT_DIR$/out/production/GenArt/MyApplet.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MyApplet.java" afterPath="$PROJECT_DIR$/src/MyApplet.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -31,8 +32,8 @@
       <file leaf-file-name="MyApplet.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MyApplet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.32506886" vertical-offset="3333" max-vertical-offset="7888">
-              <caret line="203" column="22" selection-start-line="203" selection-start-column="22" selection-end-line="203" selection-end-column="22" />
+            <state vertical-scroll-proportion="0.6528926" vertical-offset="3707" max-vertical-offset="7888">
+              <caret line="232" column="45" selection-start-line="232" selection-start-column="45" selection-end-line="232" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -607,7 +608,13 @@
       <option name="project" value="LOCAL" />
       <updated>1427198223930</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="squares and starzz added in myapplet">
+      <created>1427198906880</created>
+      <option name="number" value="00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1427198906880</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -655,7 +662,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Even more stuff." />
     <MESSAGE value="Even more stuff!" />
     <MESSAGE value="Class GUI deleted." />
     <MESSAGE value="Én mindre fil." />
@@ -680,7 +686,8 @@
     <MESSAGE value="starz button i app" />
     <MESSAGE value="starz image adde" />
     <MESSAGE value="squares image added and application updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="squares image added and application updated" />
+    <MESSAGE value="squares and starzz added in myapplet" />
+    <option name="LAST_COMMIT_MESSAGE" value="squares and starzz added in myapplet" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1164,8 +1171,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MyApplet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32506886" vertical-offset="3333" max-vertical-offset="7888">
-          <caret line="203" column="22" selection-start-line="203" selection-start-column="22" selection-end-line="203" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.6528926" vertical-offset="3707" max-vertical-offset="7888">
+          <caret line="232" column="45" selection-start-line="232" selection-start-column="45" selection-end-line="232" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
