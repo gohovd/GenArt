@@ -250,7 +250,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     }
 
     void rect(){
-        fill(255,255,255,255);
+        fill(255,255,255,200);
         rect(mouseX+10, mouseY+10,80,80);
 
     }
