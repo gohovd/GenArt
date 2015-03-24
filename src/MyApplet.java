@@ -30,6 +30,11 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     boolean pulseButton = false;
     boolean starzButton = false;
     boolean squarezButton = false;
+    boolean trianglezButton = false;
+
+    //variables for triangles
+    float x1, y1, x2, y2, x3, y3;
+
     // Variables related to the mover/vector.
     ArrayList<Mover> movers;
     boolean vectorButton = false;
@@ -231,6 +236,13 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
             }
 
+            if (trianglezButton) {
+
+                if (mousePressed == true) {
+                    drawTriz();
+                }
+            }
+
         }
     }
 
@@ -238,6 +250,19 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         fill(255,255,255,255);
         rect(mouseX+10, mouseY+10,80,80);
 
+    }
+
+
+    void drawTriz() {
+        x1=random(mouseX-random(80,100), mouseX+random(80,100));
+        y1=random(mouseY-random(80,100), mouseY+random(80,100));
+        x2=random(mouseX-random(60,80), mouseX+random(80,100));
+        y2=random(mouseY-random(60,80), mouseY+random(80,100));
+        x3=random(mouseX-random(60,80), mouseX+random(80,100));
+        y3=random(mouseY-random(60,80), mouseY+random(80,100));
+        strokeWeight((float)0.1);
+        fill(random(255), random(255), random(255), 127);
+        triangle(x1, y1, x2, y2, x3, y3);
     }
 
     /**
@@ -255,6 +280,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         crossDotsButton = false;
         starzButton = false;
         squarezButton = false;
+        trianglezButton = false;
         randomize = false;
 
         String vColor = appInit.getVColor();
@@ -311,6 +337,10 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
         } else if (evt.getActionCommand().equals("squarez")) {
             squarezButton = true;
+            pause = false;
+
+        }else if (evt.getActionCommand().equals("trianglez")) {
+            trianglezButton = true;
             pause = false;
 
         } else {

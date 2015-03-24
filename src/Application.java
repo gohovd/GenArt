@@ -29,10 +29,11 @@ public class Application {
 
     private static final int menuWidth = 200; // Husk å endre i MyApplet hvis du endrer her
 
+
     // Gjør panel og buttonPanel public, for at roboten skal nå tak i info.
     public static JPanel panel, buttonPanel;
 
-    public static JButton vectorButton, clearButton, randomLinesButton, pulseButton, crossDotsButton, starzButton, squarezButton,  buttonCreate, varBubblesButton, Randomize,strokeNColourButton;
+    public static JButton vectorButton, clearButton, randomLinesButton, pulseButton, crossDotsButton, starzButton, squarezButton,  buttonCreate, varBubblesButton, trianglezButton, Randomize,strokeNColourButton;
 
 
     public Application(){}
@@ -130,6 +131,11 @@ public class Application {
         squarezButton.setBackground(Color.white);
         squarezButton.setPreferredSize(new Dimension(90, 90));
 
+        ImageIcon imageFortrianglezButton = new ImageIcon("images/trianglez.png");
+        trianglezButton = new JButton("", imageFortrianglezButton);
+        trianglezButton.setBackground(Color.white);
+        trianglezButton.setPreferredSize(new Dimension(90, 90));
+
         ImageIcon imageForStrokeNColourButton = new ImageIcon("images/strokencolour80x80.png");
         strokeNColourButton = new JButton("", imageForStrokeNColourButton);
         strokeNColourButton.setBackground(Color.white);
@@ -145,6 +151,7 @@ public class Application {
         crossDotsButton.setToolTipText("Draws dots in cross formation");
         starzButton.setToolTipText("Draws stars as you drag your mouse");
         squarezButton.setToolTipText("Draws squares as you drag your mouse");
+        trianglezButton.setToolTipText("Draws triangles as you drag your mouse");
         strokeNColourButton.setToolTipText("Choose stroke size and colours");
         // Adding button graphics
 
@@ -163,6 +170,7 @@ public class Application {
         crossDotsButton.setActionCommand("crossDots");
         starzButton.setActionCommand("starz");
         squarezButton.setActionCommand("squarez");
+        trianglezButton.setActionCommand("trianglez");
         Randomize.setActionCommand("randomize");
         strokeNColourButton.setActionCommand("strokencolour");
 
@@ -179,6 +187,7 @@ public class Application {
         crossDotsButton.addActionListener(applet);
         starzButton.addActionListener(applet);
         squarezButton.addActionListener(applet);
+        trianglezButton.addActionListener(applet);
         Randomize.addActionListener(applet);
         strokeNColourButton.addActionListener(applet);
 
@@ -200,6 +209,7 @@ public class Application {
         buttonPanel.add(crossDotsButton);
         buttonPanel.add(starzButton);
         buttonPanel.add(squarezButton);
+        buttonPanel.add(trianglezButton);
         buttonPanel.add(strokeNColourButton);
 
         buttonPanel.add(randomclr); buttonPanel.add(linear); buttonPanel.add(circular);
@@ -278,8 +288,10 @@ public class Application {
         return starzButton;
     }
 
-    public static JButton getSquarezButton() {
-        return squarezButton;
+    public static JButton getSquarezButton() {return squarezButton;}
+
+    public static JButton getTrianglezButton() {
+        return trianglezButton;
     }
 
     public static JButton getButtonCreate() {
