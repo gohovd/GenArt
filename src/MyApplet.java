@@ -199,7 +199,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
             if (starzButton) {
 
-                if (mousePressed == true) {
+                if (mousePressed == true && mouseButton == LEFT) {
 
                     strokeWeight((float)0.1);
                     fill(random(255), random(255), random(255), 127);
@@ -215,7 +215,17 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                     vertex(mouseX-47, mouseY-15);
                     vertex(mouseX-14, mouseY-20);
                     endShape(CLOSE);
-
+                }
+                else if (mousePressed == true && mouseButton == RIGHT){
+                    strokeWeight((float)0.1);
+                    fill(random(255), random(255), random(255), 127);
+                    beginShape();
+                    vertex(mouseX+150,mouseY+150);
+                    bezierVertex( mouseX+150,mouseY+120, mouseX+100,mouseY+120, mouseX+100, mouseY+150);
+                    bezierVertex( mouseX+100,mouseY+180, mouseX+150,mouseY+185, mouseX+150, mouseY+210 );
+                    bezierVertex( mouseX+150,mouseY+185, mouseX+200,mouseY+180, mouseX+200, mouseY+150 );
+                    bezierVertex( mouseX+200,mouseY+120, mouseX+150,mouseY+120, mouseX+150, mouseY+150 );
+                    endShape();
                 }
 
             }
@@ -256,6 +266,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     }
 
 
+
     void drawTriz() {
         x1=random(mouseX-random(80,100), mouseX+random(80,100));
         y1=random(mouseY-random(80,100), mouseY+random(80,100));
@@ -267,6 +278,8 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         fill(random(255), random(255), random(255), 127);
         triangle(x1, y1, x2, y2, x3, y3);
     }
+
+
 
     /**
      * implementation from interface ActionListener
