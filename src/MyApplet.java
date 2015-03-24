@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 import processing.core.*;
 
+import javax.swing.*;
+
 /**
  * A once, simple demonstration Applet.
  * kake
@@ -19,7 +21,7 @@ import processing.core.*;
  */
 
 public class MyApplet extends PApplet implements ActionListener, ItemListener {
-    static Application appInit = new Application();
+    public static Application appInit = new Application();
     boolean pause = false;
     // Variables related to the "bouncing ball".
     ArrayList<Ball> ballList;
@@ -45,6 +47,8 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     int pulseAngle = 0;
     //Declare the robot.
     aRobot Tormod;
+    //Button for making random (auto generated art)
+    boolean randomize;
 
     boolean crossDotsButton = false;
     int i = 0; //variabler for crossdots
@@ -64,6 +68,15 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         vO = 255;
         //Instantiate the robot.
         Tormod = new aRobot();
+
+    }
+
+    public void collectButtonData(){
+        try {
+            JButton VB = appInit.getVectorButton();
+            System.out.println("VBX: " + VB.getX());
+        } catch (NullPointerException e) {
+            System.out.println("NPE"); }
     }
 
     public void draw() {
@@ -198,6 +211,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         varBubblesButton = false;
         pulseButton = false;
         crossDotsButton = false;
+        randomize = false;
 
         String vColor = appInit.getVColor();
         if (evt.getActionCommand().equals("create ball")) {
@@ -206,6 +220,8 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         } else if (evt.getActionCommand().equals("create vector")) {
             createNewMover();
             pause = false;
+        } else if (evt.getActionCommand().equals("randomize")) {
+            collectButtonData();
         } else if (evt.getActionCommand().equals("clear")) {
             clear();
             pause = true;

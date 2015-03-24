@@ -8,7 +8,8 @@ import java.awt.event.KeyEvent;
  */
 public class aRobot {
 
-    aRobot(){}
+    aRobot(){
+    }
 
     public void click(int x, int y) throws AWTException {
         try {

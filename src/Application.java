@@ -2,6 +2,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemListener;
+import java.util.Random;
 import java.util.Vector;
 import javax.swing.*;
 import javax.swing.BorderFactory;
@@ -28,7 +29,7 @@ public class Application {
 
     private static final int menuWidth = 200; // Husk å endre i MyApplet hvis du endrer her
 
-    public static JButton vectorButton, clearButton, randomLinesButton, pulseButton, crossDotsButton, buttonCreate, varBubblesButton;
+    public static JButton vectorButton, clearButton, randomLinesButton, pulseButton, crossDotsButton, buttonCreate, varBubblesButton, Randomize;
 
     public Application(){}
 
@@ -92,7 +93,8 @@ public class Application {
         vectorButton.setPreferredSize(new Dimension(90, 90));
 
 
-        clearButton = new JButton("clear");
+        clearButton = new JButton("Clear");
+        Randomize = new JButton("Randomize");
 
         ImageIcon imageForrandomLinesButton = new ImageIcon("images/rndlines.png");
         randomLinesButton = new JButton("", imageForrandomLinesButton);
@@ -138,6 +140,7 @@ public class Application {
         varBubblesButton.setActionCommand("varBubbles");
         pulseButton.setActionCommand("pulse");
         crossDotsButton.setActionCommand("crossDots");
+        Randomize.setActionCommand("randomize");
 
 
 
@@ -151,6 +154,7 @@ public class Application {
         varBubblesButton.addActionListener(applet);
         pulseButton.addActionListener(applet);
         crossDotsButton.addActionListener(applet);
+        Randomize.addActionListener(applet);
 
         circular.addItemListener(applet);
         circular.setSelected(false);
@@ -171,7 +175,7 @@ public class Application {
 
         buttonPanel.add(randomclr); buttonPanel.add(linear); buttonPanel.add(circular);
         buttonPanel.add(vColorField);
-        buttonPanel.add(clearButton);
+        buttonPanel.add(Randomize); buttonPanel.add(clearButton);
 
 //store the applet in panel
         panel.add(applet);
