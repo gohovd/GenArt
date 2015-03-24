@@ -28,6 +28,8 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     boolean ballbutton = false;
     boolean varBubblesButton = false;
     boolean pulseButton = false;
+    boolean starzButton = false;
+    boolean squarezButton = false;
     // Variables related to the mover/vector.
     ArrayList<Mover> movers;
     boolean vectorButton = false;
@@ -195,7 +197,54 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
             }
 
+            if (starzButton) {
+
+                if (mousePressed == true) {
+
+                    //strokeWeight(0.1);
+                    fill(random(255), random(255), random(255), 127);
+                    beginShape();
+                    vertex(mouseX, mouseY - 50);
+                    vertex(mouseX+14, mouseY-20);
+                    vertex(mouseX+47, mouseY-15);
+                    vertex(mouseX+23, mouseY+7);
+                    vertex(mouseX+29, mouseY+40);
+                    vertex(mouseX, mouseY+25);
+                    vertex(mouseX-29, mouseY+40);
+                    vertex(mouseX-23, mouseY+7);
+                    vertex(mouseX-47, mouseY-15);
+                    vertex(mouseX-14, mouseY-20);
+                    endShape(CLOSE);
+
+                }
+
+
+            }
+
+            if (squarezButton) {
+
+                if (mousePressed == true && mouseButton == LEFT){
+                    //strokeWeight(0.1);
+                    fill(random(255), random(255), random(255), 127);
+                    rect(mouseX - 25, mouseY - 25, 100, 100);
+                }
+
+                if (mousePressed == true && mouseButton == RIGHT){
+                    //strokeWeight(0.1);
+                    fill(random(255), random(255), random(255), 127);
+                    rect(mouseX, mouseY,100,100);
+                    rect();
+                }
+
+            }
+
         }
+    }
+
+    void rect(){
+        fill(255,255,255,255);
+        rect(mouseX+10, mouseY+10,80,80);
+
     }
 
     /**
@@ -211,6 +260,8 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         varBubblesButton = false;
         pulseButton = false;
         crossDotsButton = false;
+        starzButton = false;
+        squarezButton = false;
         randomize = false;
 
         String vColor = appInit.getVColor();
@@ -255,6 +306,14 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
         } else if (evt.getActionCommand().equals("crossDots")) {
             crossDotsButton = true;
+            pause = false;
+
+        } else if (evt.getActionCommand().equals("starz")) {
+            starzButton = true;
+            pause = false;
+
+        } else if (evt.getActionCommand().equals("squarez")) {
+            squarezButton = true;
             pause = false;
 
         } else {
