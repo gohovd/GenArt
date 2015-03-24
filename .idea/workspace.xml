@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="905e9aa0-ee52-425e-affb-f197dfe127a8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GenArt/MyApplet.class" afterPath="$PROJECT_DIR$/out/production/GenArt/MyApplet.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/starz.png" afterPath="$PROJECT_DIR$/images/starz.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MyApplet.java" afterPath="$PROJECT_DIR$/src/MyApplet.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="GenArt.iws" />
@@ -698,7 +696,13 @@
       <option name="project" value="LOCAL" />
       <updated>1427213484242</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="edited starz /hearts pic">
+      <created>1427222623329</created>
+      <option name="number" value="00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1427222623329</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -746,7 +750,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Textbox, Checkbox in progress.." />
     <MESSAGE value="Diverse. Sjekk Trello lizm" />
     <MESSAGE value="lagt til random lines&#10;bruk høgre og venstreklikk!" />
     <MESSAGE value="La til random bubbles kunst" />
@@ -771,7 +774,8 @@
     <MESSAGE value="Triangles funksjon added" />
     <MESSAGE value="update for square2" />
     <MESSAGE value="Added hearts into starbutton&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added hearts into starbutton&#10;" />
+    <MESSAGE value="edited starz /hearts pic" />
+    <option name="LAST_COMMIT_MESSAGE" value="edited starz /hearts pic" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
