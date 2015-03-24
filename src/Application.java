@@ -288,9 +288,7 @@ public class Application {
         return starzButton;
     }
 
-    public static JButton getSquarezButton() {
-        return squarezButton;
-    }
+    public static JButton getSquarezButton() {return squarezButton;}
 
     public static JButton getTrianglezButton() {
         return trianglezButton;
