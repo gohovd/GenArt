@@ -29,7 +29,7 @@ public class Application {
 
     private static final int menuWidth = 200; // Husk å endre i MyApplet hvis du endrer her
 
-    public static JButton vectorButton, clearButton, randomLinesButton, pulseButton, crossDotsButton, starzButton, squarezButton,  buttonCreate, varBubblesButton, Randomize;
+    public static JButton vectorButton, clearButton, randomLinesButton, pulseButton, crossDotsButton, starzButton, squarezButton,  buttonCreate, varBubblesButton, Randomize,strokeNColourButton;
 
 
     public Application(){}
@@ -128,6 +128,11 @@ public class Application {
         squarezButton.setBackground(Color.white);
         squarezButton.setPreferredSize(new Dimension(90, 90));
 
+        ImageIcon imageForStrokeNColourButton = new ImageIcon("images/strokencolour80x80.png");
+        strokeNColourButton = new JButton("", imageForStrokeNColourButton);
+        strokeNColourButton.setBackground(Color.white);
+        strokeNColourButton.setPreferredSize(new Dimension(90, 90));
+
 //assing a tooltip
         buttonCreate.setToolTipText("creates a new ball ");
         vectorButton.setToolTipText("creates a new vector");
@@ -138,6 +143,7 @@ public class Application {
         crossDotsButton.setToolTipText("Draws dots in cross formation");
         starzButton.setToolTipText("Draws stars as you drag your mouse");
         squarezButton.setToolTipText("Draws squares as you drag your mouse");
+        strokeNColourButton.setToolTipText("Choose stroke size and colours");
         // Adding button graphics
 
 
@@ -156,7 +162,7 @@ public class Application {
         starzButton.setActionCommand("starz");
         squarezButton.setActionCommand("squarez");
         Randomize.setActionCommand("randomize");
-
+        strokeNColourButton.setActionCommand("strokencolour");
 
 
 //button actions
@@ -172,6 +178,7 @@ public class Application {
         starzButton.addActionListener(applet);
         squarezButton.addActionListener(applet);
         Randomize.addActionListener(applet);
+        strokeNColourButton.addActionListener(applet);
 
         circular.addItemListener(applet);
         circular.setSelected(false);
@@ -191,6 +198,7 @@ public class Application {
         buttonPanel.add(crossDotsButton);
         buttonPanel.add(starzButton);
         buttonPanel.add(squarezButton);
+        buttonPanel.add(strokeNColourButton);
 
         buttonPanel.add(randomclr); buttonPanel.add(linear); buttonPanel.add(circular);
         buttonPanel.add(vColorField);
@@ -278,5 +286,8 @@ public class Application {
 
     public static JButton getVarBubblesButton() {
         return varBubblesButton;
+    }
+    public static JButton getStrokeNColourButton() {
+        return strokeNColourButton;
     }
 }

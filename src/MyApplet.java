@@ -218,7 +218,6 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
                 }
 
-
             }
 
             if (squarezButton) {
