@@ -31,6 +31,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     boolean starzButton = false;
     boolean squarezButton = false;
     boolean trianglezButton = false;
+    boolean strokeNColourButton = false;
 
     //variables for triangles
     float x1, y1, x2, y2, x3, y3;
@@ -243,6 +244,8 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 }
             }
 
+            if (strokeNColourButton) {}
+
         }
     }
 
@@ -342,6 +345,13 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         }else if (evt.getActionCommand().equals("trianglez")) {
             trianglezButton = true;
             pause = false;
+
+        }else if (evt.getActionCommand().equals("strokencolour")) {
+            strokeNColourButton = true;
+            appInit.setStrokeSize(2);
+            System.out.println(appInit.getStrokeSize());
+            pause = false;
+            ColorChooser color = new ColorChooser();
 
         } else {
             println("actionPerformed(): can't handle " + evt.getActionCommand());

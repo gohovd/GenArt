@@ -22,6 +22,10 @@ public class Application {
     private int width;
     private int height;
 
+    private int strokeSize = 1;
+
+
+
     private static final JTextField vColorField = new JTextField(5);
     private static final JCheckBox circular = new JCheckBox("Circular");
     private static final JCheckBox randomclr = new JCheckBox("Random Color");
@@ -303,6 +307,14 @@ public class Application {
     }
     public static JButton getStrokeNColourButton() {
         return strokeNColourButton;
+    }
+
+    public int getStrokeSize() {
+        return strokeSize;
+    }
+
+    public void setStrokeSize(int strokeSize) {
+        this.strokeSize = strokeSize;
     }
 
 }

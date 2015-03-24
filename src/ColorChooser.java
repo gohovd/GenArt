@@ -15,14 +15,11 @@ public class ColorChooser extends JFrame {
     private JLabel sampleText = new JLabel("Label");
     private JButton chooseButton = new JButton("Choose Color");
 
-    public static void main(String[] args) {
-        new ColorChooser();
-    }
-
     public ColorChooser() {
-        this.setSize(300, 100);
+        this.setSize(300, 300);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JPanel panel1 = new JPanel();
+        panel1.setBackground(Color.white);
         sampleText.setBackground(null);
         panel1.add(sampleText);
 
