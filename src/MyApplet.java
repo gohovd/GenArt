@@ -199,7 +199,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
             if (starzButton) {
 
-                if (mousePressed == true && mouseButton == RIGHT) {
+                if (mousePressed == true && mouseButton == LEFT) {
 
                     strokeWeight((float)0.1);
                     fill(random(255), random(255), random(255), 127);
@@ -216,7 +216,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                     vertex(mouseX-14, mouseY-20);
                     endShape(CLOSE);
                 }
-                else if (mousePressed == true && mouseButton == LEFT){
+                else if (mousePressed == true && mouseButton == RIGHT){
                     strokeWeight((float)0.1);
                     fill(random(255), random(255), random(255), 127);
                     beginShape();
