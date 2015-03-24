@@ -26,6 +26,10 @@ public class Application {
     private static final JCheckBox randomclr = new JCheckBox("Random Color");
     private static final JCheckBox linear = new JCheckBox("Linear");
 
+    private static final int menuWidth = 200; // Husk å endre i MyApplet hvis du endrer her
+
+    public static JButton vectorButton, clearButton, randomLinesButton, pulseButton, crossDotsButton, buttonCreate, varBubblesButton;
+
     public Application(){}
 
     public static void main(String[] args) {
@@ -34,28 +38,35 @@ public class Application {
         frame.setExtendedState(Frame.MAXIMIZED_BOTH);
         frame.setBackground(Color.white);
         frame.setLayout(null);
+
+
+
+
 //frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" fullskjerm
 //make sure to shut down the application, when the frame is closed
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 //create a panel for the applet and the button panel
         JPanel panel = new JPanel();
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-
-        panel.setBounds(0,0,screenSize.width-200,screenSize.height);
+        int panelXChange = screenSize.width - menuWidth;
+        panel.setBounds(0,0,panelXChange,screenSize.height);
 
         panel.setBackground(Color.white);
 
 
 //create a panel for the buttons
         JPanel buttonPanel = new JPanel();
-//buttonPanel.setLayout(new GridLayout(0,2));
         buttonPanel.setBackground(Color.white);
-        buttonPanel.setBounds(screenSize.width-200,0,200,screenSize.height);
 
+        buttonPanel.setBounds(panelXChange,0,menuWidth,screenSize.height);
+        System.out.println(screenSize.width);
+        System.out.println(screenSize.height);
+        System.out.println(panelXChange);
 
 // svart border til venstre for knapper
-buttonPanel.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 0, Color.LIGHT_GRAY));
+        buttonPanel.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 0, Color.LIGHT_GRAY));
 
 
 //create an instance of your processing applet
@@ -69,38 +80,38 @@ buttonPanel.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 0, Color.LIGHT_GR
 //Buttons
 //create a button labled "create new ball"
 
-        ImageIcon imageForbuttonCreate = new ImageIcon("images/soon.png");
-        JButton buttonCreate = new JButton("", imageForbuttonCreate);
+        ImageIcon imageForbuttonCreate = new ImageIcon("images/ballgrid.png");
+        buttonCreate = new JButton("", imageForbuttonCreate);
         buttonCreate.setBackground(Color.white);
         buttonCreate.setPreferredSize(new Dimension(90, 90));
 
 
         ImageIcon imageForvectorButton = new ImageIcon("images/roundvector.png");
-        JButton vectorButton = new JButton("", imageForvectorButton);
+        vectorButton = new JButton("", imageForvectorButton);
         vectorButton.setBackground(Color.white);
         vectorButton.setPreferredSize(new Dimension(90, 90));
 
 
-        JButton clearButton = new JButton("clear");
+        clearButton = new JButton("clear");
 
         ImageIcon imageForrandomLinesButton = new ImageIcon("images/rndlines.png");
-        JButton randomLinesButton = new JButton("", imageForrandomLinesButton);
+        randomLinesButton = new JButton("", imageForrandomLinesButton);
         randomLinesButton.setBackground(Color.white);
         randomLinesButton.setPreferredSize(new Dimension(90, 90));
 
         ImageIcon imageForvarBubblesButton = new ImageIcon("images/varbubbles.png");
-        JButton varBubblesButton = new JButton("",imageForvarBubblesButton);
+        varBubblesButton = new JButton("",imageForvarBubblesButton);
         varBubblesButton.setBackground(Color.white);
         varBubblesButton.setPreferredSize(new Dimension(90, 90));
 
 
         ImageIcon imageForpulseButton = new ImageIcon("images/pulse.png");
-        JButton pulseButton = new JButton("",imageForpulseButton);
+        pulseButton = new JButton("",imageForpulseButton);
         pulseButton.setBackground(Color.white);
         pulseButton.setPreferredSize(new Dimension(90, 90));
 
         ImageIcon imageForcrossDotsButton = new ImageIcon("images/crossdots.png");
-        JButton crossDotsButton = new JButton("", imageForcrossDotsButton);
+        crossDotsButton = new JButton("", imageForcrossDotsButton);
         crossDotsButton.setBackground(Color.white);
         crossDotsButton.setPreferredSize(new Dimension(90, 90));
 
@@ -115,7 +126,7 @@ buttonPanel.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 0, Color.LIGHT_GR
         // Adding button graphics
 
 
-      //  pulseButton.setIcon(new ImageIcon("/pulse.png"));
+        //  pulseButton.setIcon(new ImageIcon("/pulse.png"));
 
 
 //give a name for the command
@@ -170,7 +181,7 @@ buttonPanel.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 0, Color.LIGHT_GR
         frame.add(panel);
 //assign a size for the frame
 //reading the size from the applet
-        frame.setSize(applet.getSize().width, applet.getSize().height + 200);
+        frame.setSize(applet.getSize().width, applet.getSize().height);
 //display the frame
         frame.setVisible(true);
     }
@@ -210,5 +221,31 @@ buttonPanel.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 0, Color.LIGHT_GR
         randomclr.setSelected(b);
     }
 
+    public static JButton getVectorButton() {
+        return vectorButton;
+    }
 
+    public static JButton getClearButton() {
+        return clearButton;
+    }
+
+    public static JButton getRandomLinesButton() {
+        return randomLinesButton;
+    }
+
+    public static JButton getPulseButton() {
+        return pulseButton;
+    }
+
+    public static JButton getCrossDotsButton() {
+        return crossDotsButton;
+    }
+
+    public static JButton getButtonCreate() {
+        return buttonCreate;
+    }
+
+    public static JButton getVarBubblesButton() {
+        return varBubblesButton;
+    }
 }

@@ -11,11 +11,11 @@ class Ball extends PApplet {
     Color color;
     float sWidth, sHeight;
 
-    Ball() {
-        this.speedX = random(-2, 2) * 3;
-        this.speedY = random(-2, 2) * 3;
+    Ball(float xDir, float yDir) {
+        this.speedX = xDir;
+        this.speedY = yDir;
         this.color = new Color(random(1), random(1), random(1));
-        this.size = random(10, 30);
+        this.size = 5;
     }
 
     public void move() {
@@ -23,6 +23,11 @@ class Ball extends PApplet {
         if (y + size / 2f > sHeight || y - size / 2f < 0) speedY = -speedY;
         x += speedX;
         y += speedY;
+    }
+
+    public void displacement(int mouseX, int mouseY){
+        x = mouseX; y = mouseY;
+
     }
 
     public float getLocX() {
