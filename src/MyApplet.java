@@ -706,8 +706,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        generate();
-        //Tormod.rMotion();
+        //generate();
         //Tormod.rMotion();
         //Tormod.printButtonData();
     }
