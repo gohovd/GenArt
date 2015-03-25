@@ -80,8 +80,6 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         vB = 0;
         vO = 255;
         Tormod = new aRobot(); // Instantiate the robot.
-        //Tormod.setWidth(width); // Tell robot about the width.
-        //Tormod.setHeight(height); // Tell robot about the height.
         Tormod.setPapp(this); // "Export" PApplet instance (from this class).
         ////////////setup for save funksjon///////////////////////////////
         pg = createGraphics(200, 200);//størrelse på boxa
@@ -99,8 +97,6 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         if (randomize && !killTormod) {
             try {
                 Tormod.rMotion();
-                countforfun++;
-                System.out.println("CFF: " + countforfun);
             } catch (AWTException e) {
                 e.printStackTrace();
             } catch (InterruptedException e) {
@@ -397,12 +393,14 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         } else if (evt.getActionCommand().equals("randomize")) {
             try {
                 Tormod.displayInstructions();
+                Tormod.reset();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (AWTException e) {
                 e.printStackTrace();
             }
             randomize = true;
+            killTormod = false;
             pause = false;
         } else if (evt.getActionCommand().equals("clear")) {
             clear();

@@ -40,7 +40,6 @@ public class aRobot {
     int cY = cHeight / 2;
     //Boolean making sure instructions only show up once.
     boolean tutorial;
-    boolean mouseIsPrez = false;
 
     aRobot() {
         try {
@@ -93,18 +92,14 @@ public class aRobot {
         }
         r.mouseMove(cX, cY);
         r.mousePress(InputEvent.BUTTON1_MASK);
-        System.out.println("cX (before): " + cX);
         cX += 30 - rand.nextInt(60);
-        System.out.println("cX (after): " + cX);
         if (cX > cWidth) {
             cX -= cWidth;
         }
         if (cX < 0) {
             cX += cWidth;
         }
-        System.out.println("cY (before): " + cY);
         cY += 30 - rand.nextInt(60);
-        System.out.println("cY (after): " + cY);
         if (cY > cHeight) {
             cY -= cHeight;
         }
@@ -114,8 +109,6 @@ public class aRobot {
         r.mouseMove(cX, cY);
         tutorial = true;
         motionsMade++;
-        System.out.println("Random motions: " + motionsMade);
-        //return;
     }
 
     public void clickGUIButton(String key) throws AWTException, InterruptedException {
@@ -159,22 +152,6 @@ public class aRobot {
         p = input;
     }
 
-    public void startPaint() throws InterruptedException {
-        r.mouseMove(cWidth / 2, cHeight / 2);
-        try {
-            Thread.sleep(delay);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        r.mousePress(InputEvent.BUTTON1_MASK);
-        try {
-            Thread.sleep(d);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-    }
-
     /**
      * Prints data about the buttons from Application
      */
@@ -189,14 +166,6 @@ public class aRobot {
         }
     }
 
-    public void setcWidth(int w) {
-        cWidth = w;
-    }
-
-    public void setcHeight(int h) {
-        cHeight = h;
-    }
-
     /**
      * End the random session.
      */
@@ -204,12 +173,10 @@ public class aRobot {
         r.mouseRelease(InputEvent.BUTTON1_MASK);
     }
 
-    public void resetPosition() throws InterruptedException {
-        r.mouseMove(cWidth / 2, cHeight / 2);
-        try {
-            Thread.sleep(delay);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    public void reset() {
+        tutorial = false;
+        motionsMade = 0;
     }
+
+
 }
