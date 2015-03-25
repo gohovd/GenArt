@@ -10,7 +10,7 @@ import java.awt.event.KeyEvent;
 /**
  * Created by Gøran on 23.03.2015.
  */
-public class aRobot extends PApplet{
+public class aRobot extends MyApplet{
 
     public static Application instance = new Application();
     //Users screen-width and -height.
@@ -24,7 +24,6 @@ public class aRobot extends PApplet{
     private boolean keepPainting = true;
     int err = 30;
 
-
     aRobot() {
         try {
             r = new Robot();
@@ -35,7 +34,7 @@ public class aRobot extends PApplet{
 
     public void clickGUIButton(int x, int y) throws AWTException, InterruptedException {
         //Always add 'err' to make sure it hits the button.
-        int bX = instance.panel.getWidth() + x + err;
+        int bX = Application.panel.getWidth() + x + err;
         int bY = y + err;
         r.mouseMove(bX, bY);
         try {
@@ -65,6 +64,7 @@ public class aRobot extends PApplet{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        
     }
 
     public void rMotion() throws InterruptedException {
@@ -107,13 +107,13 @@ public class aRobot extends PApplet{
     }
 
     public void printButtonData(){
-        System.out.println("VB POINT: " + instance.getVectorButton().getLocation());
-        System.out.println("VB X: " + instance.getVectorButton().getX());
-        System.out.println("VB Y: " + instance.getVectorButton().getY());
-        System.out.println("CB POINT: " + instance.getClearButton().getLocation());
-        System.out.println("BALLZ POINT: " + instance.getButtonCreate().getLocation());
-        System.out.println("SIDEBAR HEIGHT: " + instance.buttonPanel.getHeight());
-        System.out.println("SIDEBAR WIDTH: " + instance.buttonPanel.getWidth());
+        System.out.println("VB POINT: " + Application.getVectorButton().getLocation());
+        System.out.println("VB X: " + Application.getVectorButton().getX());
+        System.out.println("VB Y: " + Application.getVectorButton().getY());
+        System.out.println("CB POINT: " + Application.getClearButton().getLocation());
+        System.out.println("BALLZ POINT: " + Application.getButtonCreate().getLocation());
+        System.out.println("SIDEBAR HEIGHT: " + Application.buttonPanel.getHeight());
+        System.out.println("SIDEBAR WIDTH: " + Application.buttonPanel.getWidth());
     }
 
     public void setWidth(int w) {

@@ -2,19 +2,11 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.util.ArrayList;
-
 import processing.core.*;
-
 import javax.swing.*;
 
 /**
  * A once, simple demonstration Applet.
- * kake
- *
- * @author georg munkel
- *         Seeing as implementing actions across files/classes,
- *         was difficult and/or impossible. I'll try to do everything
- *         in a singular file.
  */
 
 public class MyApplet extends PApplet implements ActionListener, ItemListener {
@@ -54,12 +46,11 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     aRobot Tormod;
     //Button for making random (auto generated art)
     boolean randomize;
-
-/////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////
     boolean crossDotsButton = false;
     int i = 0; //variabler for crossdots
     boolean q = false;//variabler for crossdots
-/////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////
     boolean saveButton = false;
     PGraphics pg;//SaveBox
     PImage c;
@@ -72,9 +63,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     String desktopPath = System.getProperty("user.home") + "/Desktop";
     boolean win = false;
     boolean takepic = false;
-
 ///////////////////////////////////////////////////////////////////////////
-
     public void setup() {
         size(screenSize.width - 200, screenSize.height);
         // Set up the bouncing balls.
@@ -91,19 +80,12 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         Tormod = new aRobot();
         Tormod.setWidth(width);
         Tormod.setHeight(height);
-
-
         ////////////setup for save funksjon///////////////////////////////
         pg = createGraphics(200, 200);//størrelse på boxa
-        f = createFont("Arial",16,true);//gir f en font og størrelse
-
-
+        f = createFont("Arial", 16, true);//gir f en font og størrelse
         // Set the font and fill for text
         textFont(f);
         fill(0);
-
-
-
         //////////////////setup for save funksjon slutt////////////////////
     }
 
@@ -111,7 +93,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         // Draw method "never" ends, here we iterate through all
         // the objects we want to display. Whether or not we display
         // them, is decided by the push of the button.
-        if(randomize) {
+        if (randomize) {
             try {
                 generate();
             } catch (InterruptedException e) {
@@ -158,7 +140,6 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                     line(mouseX, mouseY - random(-100, 100), mouseX, mouseY + random(-100, 100));
                 }
             }
-
             if (varBubblesButton) {
                 if (mousePressed == true) {
                     int x = mouseX;
@@ -192,29 +173,23 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
 
             }
-
             if (crossDotsButton) {
 
                 if (mousePressed && (mouseButton == LEFT)) {
                     if (i >= 0 && q == false) {
                         i += 1;
                     }
-
                     ellipse(mouseX + i, mouseY, 10, 10);
                     ellipse(mouseX - i, mouseY, 10, 10);
                     ellipse(mouseX, mouseY + i, 10, 10);
                     ellipse(mouseX, mouseY - i, 10, 10);
-
                     for (int i = 0; i < 100; i++) {
                         float r = random(0, 255);
                         float g = random(0, 255);
                         float b = random(0, 255);
-
                         noStroke();
                         fill(r, g, b);
-
                     }
-
                     if (i == 100) {
                         q = true;
 
@@ -227,71 +202,63 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                         q = false;
                     }
                 }
-
-
             }
-
             if (starzButton) {
 
                 if (mousePressed == true && mouseButton == LEFT) {
 
-                    strokeWeight((float)0.1);
+                    strokeWeight((float) 0.1);
                     fill(random(255), random(255), random(255), 127);
                     beginShape();
                     vertex(mouseX, mouseY - 50);
-                    vertex(mouseX+14, mouseY-20);
-                    vertex(mouseX+47, mouseY-15);
-                    vertex(mouseX+23, mouseY+7);
-                    vertex(mouseX+29, mouseY+40);
-                    vertex(mouseX, mouseY+25);
-                    vertex(mouseX-29, mouseY+40);
-                    vertex(mouseX-23, mouseY+7);
-                    vertex(mouseX-47, mouseY-15);
-                    vertex(mouseX-14, mouseY-20);
+                    vertex(mouseX + 14, mouseY - 20);
+                    vertex(mouseX + 47, mouseY - 15);
+                    vertex(mouseX + 23, mouseY + 7);
+                    vertex(mouseX + 29, mouseY + 40);
+                    vertex(mouseX, mouseY + 25);
+                    vertex(mouseX - 29, mouseY + 40);
+                    vertex(mouseX - 23, mouseY + 7);
+                    vertex(mouseX - 47, mouseY - 15);
+                    vertex(mouseX - 14, mouseY - 20);
                     endShape(CLOSE);
-                }
-                else if (mousePressed == true && mouseButton == RIGHT){
-                    strokeWeight((float)0.1);
+                } else if (mousePressed == true && mouseButton == RIGHT) {
+                    strokeWeight((float) 0.1);
                     fill(random(255), random(255), random(255), 127);
                     beginShape();
-                    vertex(mouseX+150,mouseY+150);
-                    bezierVertex( mouseX+150,mouseY+120, mouseX+100,mouseY+120, mouseX+100, mouseY+150);
-                    bezierVertex( mouseX+100,mouseY+180, mouseX+150,mouseY+185, mouseX+150, mouseY+210 );
-                    bezierVertex( mouseX+150,mouseY+185, mouseX+200,mouseY+180, mouseX+200, mouseY+150 );
-                    bezierVertex( mouseX+200,mouseY+120, mouseX+150,mouseY+120, mouseX+150, mouseY+150 );
+                    vertex(mouseX + 150, mouseY + 150);
+                    bezierVertex(mouseX + 150, mouseY + 120, mouseX + 100, mouseY + 120, mouseX + 100, mouseY + 150);
+                    bezierVertex(mouseX + 100, mouseY + 180, mouseX + 150, mouseY + 185, mouseX + 150, mouseY + 210);
+                    bezierVertex(mouseX + 150, mouseY + 185, mouseX + 200, mouseY + 180, mouseX + 200, mouseY + 150);
+                    bezierVertex(mouseX + 200, mouseY + 120, mouseX + 150, mouseY + 120, mouseX + 150, mouseY + 150);
                     endShape();
                 }
 
             }
-
             if (squarezButton) {
 
-                if (mousePressed == true && mouseButton == LEFT){
-                    strokeWeight((float)0.1);
+                if (mousePressed == true && mouseButton == LEFT) {
+                    strokeWeight((float) 0.1);
                     fill(random(255), random(255), random(255), 127);
                     rect(mouseX - 25, mouseY - 25, 100, 100);
                 }
 
-                if (mousePressed == true && mouseButton == RIGHT){
-                    strokeWeight((float)0.1);
+                if (mousePressed == true && mouseButton == RIGHT) {
+                    strokeWeight((float) 0.1);
                     fill(random(255), random(255), random(255), 127);
-                    rect(mouseX, mouseY,100,100);
+                    rect(mouseX, mouseY, 100, 100);
                     rect();
                 }
 
             }
-
             if (trianglezButton) {
 
                 if (mousePressed == true) {
                     drawTriz();
                 }
             }
-
-            if (strokeNColourButton) {}
-
-            if(saveButton){
-
+            if (strokeNColourButton) {
+            }
+            if (saveButton) {
 /*
                 if(win == false) {
                     JFrame aWindow = new JFrame("This is the Window Title");
@@ -307,154 +274,85 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                     aWindow.setVisible(true);        // Display the window
                 win = true;
                 }
-
-
-
-
                 //putte dette i en jframe!!!!!!!!!!!!!!!!
   */
-
-
-
-
-
-                    pg.beginDraw();
-
-
-                if(takepic==false) {
-
-                    c=get(width - 200, height - 200, 200, 200);
+                pg.beginDraw();
+                if (takepic == false) {
+                    c = get(width - 200, height - 200, 200, 200);
                     //c.save("temp.jpg");
                     takepic = true;
-
                     //if pause == true/false
                     //set takepic false
                 }
-
-                    pg.background(255, 255, 0);
-
-                    pg.stroke(255);
-
-                    pg.text("skriv ditt ønskede filnavn. \nF.EKS: \n'minFil.jpg' \neller \n'mittBilde.PNG'", indent, 40);
-                    pg.fill(0, 0, 0);
-
-                    pg.text(typing, indent, 120);
-
-                    //if(saved.contains(".jpg")||saved.contains(".png")){
-                    //pg.text(saved+" er nå lagret",indent,130);
-                    //}
-
-                    pg.endDraw();
-
-                    //image(pg, pg.width/0.17, pg.height/0.4);
-
-                    image(pg, width - 200, height - 200);
-//image(c,mouseX,mouseY);
-
-                    //image(c ,mouseX, mouseY);
-
-
+                pg.background(255, 255, 0);
+                pg.stroke(255);
+                pg.text("skriv ditt ønskede filnavn. \nF.EKS: \n'minFil.jpg' \neller \n'mittBilde.PNG'", indent, 40);
+                pg.fill(0, 0, 0);
+                pg.text(typing, indent, 120);
+                //if(saved.contains(".jpg")||saved.contains(".png")){
+                //pg.text(saved+" er nå lagret",indent,130);
+                //}
+                pg.endDraw();
+                //image(pg, pg.width/0.17, pg.height/0.4);
+                image(pg, width - 200, height - 200);
+                //image(c,mouseX,mouseY);
+                //image(c ,mouseX, mouseY);
             }
-
-
-
-
         }
-
-
     }
-
-    void rect(){
-        fill(255,255,255,200);
-        rect(mouseX+10, mouseY+10,80,80);
-
+    void rect() {
+        fill(255, 255, 255, 200);
+        rect(mouseX + 10, mouseY + 10, 80, 80);
     }
-
-
-
     void drawTriz() {
-        x1=random(mouseX-random(80,100), mouseX+random(80,100));
-        y1=random(mouseY-random(80,100), mouseY+random(80,100));
-        x2=random(mouseX-random(60,80), mouseX+random(80,100));
-        y2=random(mouseY-random(60,80), mouseY+random(80,100));
-        x3=random(mouseX-random(60,80), mouseX+random(80,100));
-        y3=random(mouseY-random(60,80), mouseY+random(80,100));
-        strokeWeight((float)0.1);
+        x1 = random(mouseX - random(80, 100), mouseX + random(80, 100));
+        y1 = random(mouseY - random(80, 100), mouseY + random(80, 100));
+        x2 = random(mouseX - random(60, 80), mouseX + random(80, 100));
+        y2 = random(mouseY - random(60, 80), mouseY + random(80, 100));
+        x3 = random(mouseX - random(60, 80), mouseX + random(80, 100));
+        y3 = random(mouseY - random(60, 80), mouseY + random(80, 100));
+        strokeWeight((float) 0.1);
         fill(random(255), random(255), random(255), 127);
         triangle(x1, y1, x2, y2, x3, y3);
     }
-
-
-
     ///////////////////funksjoner for save funksjon/////////////////////////////////
-
-
-
-    public void  keyPressed() {
-
-
-
-            // If the return key is pressed, save the String and clear it
-            if (key == '\n') {
-                saved = typing;
-                // A String can be cleared by setting it equal to ""
-                typing = "";
-                if (saved.contains("jpg") || saved.contains("JPG") || saved.contains("Jpg") || saved.contains("jpeg") || saved.contains("JPEG") || saved.contains("Jpeg")) {
-
-                    int dotPos = saved.lastIndexOf(".");
-                    if (dotPos > 0)
-                        saved = saved.substring(0, dotPos);
-
-                    pg.beginDraw();
-
-                    //pg.background(255, 255, 255);
-
-
-                    pg.stroke(255);
-                    image(c, width - 200, height - 200);
-                    pg.endDraw();
-
-
-
-                    save();
-
-
-                }
-                if (saved.contains("PNG") || saved.contains("Png") || saved.contains("png")) {
-
-                    int dotPos = saved.lastIndexOf(".");
-                    if (dotPos > 0)
-                        saved = saved.substring(0, dotPos);
-                    save2();
-
-                }
-
-
-            } else {
-                // Otherwise, concatenate the String
-                // Each character typed by the user is added to the end of the String variable.
-                typing = typing + key;
+    public void keyPressed() {
+        // If the return key is pressed, save the String and clear it
+        if (key == '\n') {
+            saved = typing;
+            // A String can be cleared by setting it equal to ""
+            typing = "";
+            if (saved.contains("jpg") || saved.contains("JPG") || saved.contains("Jpg") || saved.contains("jpeg") || saved.contains("JPEG") || saved.contains("Jpeg")) {
+                int dotPos = saved.lastIndexOf(".");
+                if (dotPos > 0)
+                    saved = saved.substring(0, dotPos);
+                pg.beginDraw();
+                //pg.background(255, 255, 255);
+                pg.stroke(255);
+                image(c, width - 200, height - 200);
+                pg.endDraw();
+                save();
             }
+            if (saved.contains("PNG") || saved.contains("Png") || saved.contains("png")) {
+                int dotPos = saved.lastIndexOf(".");
+                if (dotPos > 0)
+                    saved = saved.substring(0, dotPos);
+                save2();
+            }
+        } else {
+            // Otherwise, concatenate the String
+            // Each character typed by the user is added to the end of the String variable.
+            typing = typing + key;
         }
-
-    void save(){
-
+    }
+    void save() {
         String desktopPath = System.getProperty("user.home") + "/Desktop/";
         save(desktopPath + saved + ".jpg");
-
     }
-
-    void save2(){
-
+    void save2() {
         String desktopPath = System.getProperty("user.home") + "/Desktop/";
         save(desktopPath + saved + ".png");
     }
-
-
-
-
-
-
     ///////////////////funksjoner for save funksjon SLUTT/////////////////////////////////
     /**
      * implementation from interface ActionListener
@@ -527,8 +425,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             crossDotsButton = true;
             pause = false;
 
-        }
-        else if(evt.getActionCommand().equals("save")){
+        } else if (evt.getActionCommand().equals("save")) {
             saveButton = true;
             pause = false;
 
@@ -540,19 +437,17 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             squarezButton = true;
             pause = false;
 
-        }else if (evt.getActionCommand().equals("trianglez")) {
+        } else if (evt.getActionCommand().equals("trianglez")) {
             trianglezButton = true;
             pause = false;
 
-        }else if (evt.getActionCommand().equals("strokencolour")) {
+        } else if (evt.getActionCommand().equals("strokencolour")) {
             strokeNColourButton = true;
             appInit.setStrokeSize(2);
             System.out.println(appInit.getStrokeSize());
             pause = false;
             ColorChooser color = new ColorChooser();
-
-        }
-        else {
+        } else {
             println("actionPerformed(): can't handle " + evt.getActionCommand());
         }
     }
@@ -646,7 +541,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         ballList.add(negright45);
 
         // Let class ball know what width and height we're working with.
-        for(Ball b : ballList){
+        for (Ball b : ballList) {
             b.setWidth(width);
             b.setHeight(height);
         }
@@ -695,58 +590,118 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     }
 
 
-
     /**
      * Collects data/info about the application class,
      * lets the robot know where to move.
      */
     public void autoDraw() throws AWTException, InterruptedException {
         try {
-            Tormod.clickGUIButton(appInit.getVectorButton().getX(), appInit.getVectorButton().getY());
+            Tormod.clickGUIButton(Application.getVectorButton().getX(), Application.getVectorButton().getY());
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         //generate();
-        //Tormod.rMotion();
+        Tormod.rMotion();
         //Tormod.printButtonData();
     }
 
     public void generate() throws InterruptedException {
-        int x = width/2; int y = height/2;
+        int x = width / 2;
+        int y = height / 2;
         Tormod.r.mouseMove(x, y);
         Tormod.r.mousePress(InputEvent.BUTTON1_MASK);
         Thread.sleep(1000);
-        int c; int k = 200;
-        for(c = 0; c < k; c++) { x--; Tormod.r.mouseMove(x, y); c++; fill(0); ellipse(x, y, 10, 10); Thread.sleep(10); }
+        int c;
+        int k = 200;
+        for (c = 0; c < k; c++) {
+            x--;
+            Tormod.r.mouseMove(x, y);
+            c++;
+            fill(0);
+            ellipse(x, y, 10, 10);
+            Thread.sleep(10);
+        }
         k = 200;
-        for(c = 0; c < k; c++) { y++; Tormod.r.mouseMove(x, y); c++; fill(0); ellipse(x, y, 10, 10); Thread.sleep(10); }
-        k = 200;
-        Tormod.r.mouseRelease(InputEvent.BUTTON1_MASK);
-        Tormod.resetPosition();
-        x = width/2; y = height/2;
-        Thread.sleep(1000);
-        Tormod.r.mousePress(InputEvent.BUTTON1_MASK);
-        for(c = 0; c < k; c++) { x++; Tormod.r.mouseMove(x, y); c++; fill(0); ellipse(x, y, 10, 10); Thread.sleep(10);}
-        k = 200;
-        for(c = 0; c < k; c++) { y--; Tormod.r.mouseMove(x, y); c++; fill(0); ellipse(x, y, 10, 10); Thread.sleep(10);}
-        k = 200;
-        Tormod.r.mouseRelease(InputEvent.BUTTON1_MASK);
-        Tormod.resetPosition();
-        x = width/2; y = height/2;
-        Thread.sleep(1000);
-        Tormod.r.mousePress(InputEvent.BUTTON1_MASK);
-        for(c = 0; c < k; c++) { y--; Tormod.r.mouseMove(x, y); c++; fill(0); ellipse(x, y, 10, 10); Thread.sleep(10);}
-        k = 200;
-        for(c = 0; c < k; c++) { x--; Tormod.r.mouseMove(x, y); c++; fill(0); ellipse(x, y, 10, 10); Thread.sleep(10);}
+        for (c = 0; c < k; c++) {
+            y++;
+            Tormod.r.mouseMove(x, y);
+            c++;
+            fill(0);
+            ellipse(x, y, 10, 10);
+            Thread.sleep(10);
+        }
         k = 200;
         Tormod.r.mouseRelease(InputEvent.BUTTON1_MASK);
         Tormod.resetPosition();
-        x = width/2; y = height/2;
+        x = width / 2;
+        y = height / 2;
         Thread.sleep(1000);
         Tormod.r.mousePress(InputEvent.BUTTON1_MASK);
-        for(c = 0; c < k; c++) { y++; Tormod.r.mouseMove(x, y); c++; fill(0); ellipse(x, y, 10, 10); Thread.sleep(10);}
+        for (c = 0; c < k; c++) {
+            x++;
+            Tormod.r.mouseMove(x, y);
+            c++;
+            fill(0);
+            ellipse(x, y, 10, 10);
+            Thread.sleep(10);
+        }
         k = 200;
-        for(c = 0; c < k; c++) { x++; Tormod.r.mouseMove(x, y); c++; fill(0); ellipse(x, y, 10, 10); Thread.sleep(10);}
+        for (c = 0; c < k; c++) {
+            y--;
+            Tormod.r.mouseMove(x, y);
+            c++;
+            fill(0);
+            ellipse(x, y, 10, 10);
+            Thread.sleep(10);
+        }
+        k = 200;
+        Tormod.r.mouseRelease(InputEvent.BUTTON1_MASK);
+        Tormod.resetPosition();
+        x = width / 2;
+        y = height / 2;
+        Thread.sleep(1000);
+        Tormod.r.mousePress(InputEvent.BUTTON1_MASK);
+        for (c = 0; c < k; c++) {
+            y--;
+            Tormod.r.mouseMove(x, y);
+            c++;
+            fill(0);
+            ellipse(x, y, 10, 10);
+            Thread.sleep(10);
+        }
+        k = 200;
+        for (c = 0; c < k; c++) {
+            x--;
+            Tormod.r.mouseMove(x, y);
+            c++;
+            fill(0);
+            ellipse(x, y, 10, 10);
+            Thread.sleep(10);
+        }
+        k = 200;
+        Tormod.r.mouseRelease(InputEvent.BUTTON1_MASK);
+        Tormod.resetPosition();
+        x = width / 2;
+        y = height / 2;
+        Thread.sleep(1000);
+        Tormod.r.mousePress(InputEvent.BUTTON1_MASK);
+        for (c = 0; c < k; c++) {
+            y++;
+            Tormod.r.mouseMove(x, y);
+            c++;
+            fill(0);
+            ellipse(x, y, 10, 10);
+            Thread.sleep(10);
+        }
+        k = 200;
+        for (c = 0; c < k; c++) {
+            x++;
+            Tormod.r.mouseMove(x, y);
+            c++;
+            fill(0);
+            ellipse(x, y, 10, 10);
+            Thread.sleep(10);
+        }
         Tormod.r.mouseRelease(InputEvent.BUTTON1_MASK);
     }
 }
