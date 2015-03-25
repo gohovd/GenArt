@@ -1,4 +1,3 @@
-import jdk.internal.util.xml.impl.Input;
 import processing.core.PApplet;
 
 import javax.swing.*;
@@ -6,49 +5,145 @@ import java.awt.Robot;
 import java.awt.AWTException;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Set;
+import java.util.Random;
 
 /**
  * Created by Gøran on 23.03.2015.
  */
-public class aRobot extends MyApplet{
+public class aRobot {
 
     public static Application instance = new Application();
     //Users screen-width and -height.
-    private int width;
-    private int height;
+    private int width = instance.panel.getWidth();
+    private int height = instance.panel.getHeight();
     //Small pause/delay between mouse-press/-release etc.
     private static final long delay = 500;
     private static final long d = 10;
     //Instantiate a robot.
     public Robot r;
     private boolean keepPainting = true;
-    int err = 30;
+    int err = 10;
+    //Collect the PApplet from main class (MyApplet).
+    PApplet p;
+    //Collect all buttons from class Application.
+    HashMap buttons = instance.getButtons();
+    ArrayList<String> keys;
+    Random rand = new Random();
+    //Counting the number of times the rMotion method has been visited.
+    long motionsMade = 0;
+    //Variables holding the positions of the cursor.
+    int cX = width / 2;
+    int cY = height / 2;
+    //Boolean making sure instructions only show up once.
+    boolean tutorial;
 
     aRobot() {
         try {
             r = new Robot();
+            r.setAutoDelay(50);
         } catch (AWTException e) {
             e.printStackTrace();
         }
+
     }
 
-    public void clickGUIButton(int x, int y) throws AWTException, InterruptedException {
-        //Always add 'err' to make sure it hits the button.
-        int bX = Application.panel.getWidth() + x + err;
-        int bY = y + err;
-        r.mouseMove(bX, bY);
-        try {
-            Thread.sleep(delay);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+    public void displayInstructions() throws InterruptedException, AWTException {
+        p.fill(0, 0, 0, 255);
+        p.textSize(40);
+        p.text("THE ROBOT WILL SOON START TO DRAW", 150, 100);
+        p.textSize(32);
+        p.text("Press BACKSPACE and/or shout at your computer to end session.", 100, 150);
+        Thread.sleep(5000);
+        p.background(255);
+    }
+
+    private void clickRandomGUIButton() throws InterruptedException, AWTException {
+        keys = new ArrayList();
+        for (Object jb : buttons.keySet()) {
+            String nameOfButton = jb.toString();
+            keys.add(nameOfButton);
         }
-        r.mousePress(InputEvent.BUTTON1_MASK);
-        try {
-            Thread.sleep(delay);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        int roulette = rand.nextInt(keys.size());
+        //If we happen to choose the clearButton, we choose the previous button.
+        if(keys.get(roulette).equals("clearButton")) roulette -= 1;
+        clickGUIButton(keys.get(roulette));
+    }
+
+    /**
+     * "Random" motion. Via this method the robot should utilize
+     * a random variety of the tools added, and create art.
+     *
+     * @throws InterruptedException
+     */
+    public void rMotion() throws AWTException, InterruptedException {
+        if (motionsMade % 2000 == 0) clickRandomGUIButton();
+        r.mouseMove(cX, cY);
+        System.out.println("cX (before): " + cX);
+        cX += rand.nextInt(20) - 10;
+        System.out.println("cX (after): " + cX);
+        while (cX > width) {
+            cX--;
         }
-        r.mouseRelease(InputEvent.BUTTON1_MASK);
+        while (cX < 0) {
+            cX++;
+        }
+        cY += rand.nextInt(20) - 10;
+        while (cY > height) {
+            cY--;
+        }
+        while (cY < 0) {
+            cY++;
+        }
+        r.mouseMove(cX, cY);
+        tutorial = true;
+        motionsMade++;
+        System.out.println("Have drawn " + motionsMade + " random motions.");
+    }
+
+    public void clickGUIButton(String key) throws AWTException, InterruptedException {
+        buttons = instance.getButtons();
+        if (!buttons.containsKey(key)) {
+            System.out.println("No such button.");
+        }
+        if (buttons.isEmpty()) {
+            System.out.println("There are no buttons to click.");
+        } else {
+            JButton t;
+            t = (JButton) buttons.get(key);
+            //Always add 'err' to make sure it hits the button.
+            int bX = Application.panel.getWidth() + err + t.getX();
+            int bY = err + t.getY();
+            r.mouseMove(bX, bY);
+            try {
+                Thread.sleep(delay);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (NullPointerException ex) {
+                System.out.println("It seems the button doesn't exist.");
+            }
+            r.mousePress(InputEvent.BUTTON1_MASK);
+            try {
+                Thread.sleep(delay);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            r.mouseRelease(InputEvent.BUTTON1_MASK);
+        }
+    }
+
+    /**
+     * Takes the PApplet in use from main class, and renames it "p"
+     * for use in this class. Without it, this class would never be able
+     * to draw anything. In other words, this class wouldn't be able to
+     * use any processing traits without suffering a NPE.
+     *
+     * @param input - The PApplet from main class.
+     */
+    public void setPapp(PApplet input) {
+        p = input;
     }
 
     public void startPaint() throws InterruptedException {
@@ -64,56 +159,21 @@ public class aRobot extends MyApplet{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        
+
     }
 
-    public void rMotion() throws InterruptedException {
-        int x = width/2; int y = height/2;
-        r.mouseMove(x, y);
-        r.mousePress(InputEvent.BUTTON1_MASK);
-        Thread.sleep(1000);
-        int c; int k = 200;
-        for(c = 0; c < k; c++) { x--; r.mouseMove(x, y); c++; fill(0); ellipse(x, y, 10, 10); Thread.sleep(10); }
-        k = 200;
-        for(c = 0; c < k; c++) { y++; r.mouseMove(x, y); c++; fill(0); ellipse(x, y, 10, 10); Thread.sleep(10); }
-        k = 200;
-        r.mouseRelease(InputEvent.BUTTON1_MASK);
-        resetPosition();
-        x = width/2; y = height/2;
-        Thread.sleep(1000);
-        r.mousePress(InputEvent.BUTTON1_MASK);
-        for(c = 0; c < k; c++) { x++; r.mouseMove(x, y); c++; fill(0); ellipse(x, y, 10, 10); Thread.sleep(10); }
-        k = 200;
-        for(c = 0; c < k; c++) { y--; r.mouseMove(x, y); c++; fill(0); ellipse(x, y, 10, 10); Thread.sleep(10); }
-        k = 200;
-        r.mouseRelease(InputEvent.BUTTON1_MASK);
-        resetPosition();
-        x = width/2; y = height/2;
-        Thread.sleep(1000);
-        r.mousePress(InputEvent.BUTTON1_MASK);
-        for(c = 0; c < k; c++) { y--; r.mouseMove(x, y); c++; fill(0); ellipse(x, y, 10, 10); Thread.sleep(10); }
-        k = 200;
-        for(c = 0; c < k; c++) { x--; r.mouseMove(x, y); c++; fill(0); ellipse(x, y, 10, 10); Thread.sleep(10); }
-        k = 200;
-        r.mouseRelease(InputEvent.BUTTON1_MASK);
-        resetPosition();
-        x = width/2; y = height/2;
-        Thread.sleep(1000);
-        r.mousePress(InputEvent.BUTTON1_MASK);
-        for(c = 0; c < k; c++) { y++; r.mouseMove(x, y); c++; fill(0); ellipse(x, y, 10, 10); Thread.sleep(10); }
-        k = 200;
-        for(c = 0; c < k; c++) { x++; r.mouseMove(x, y); c++; fill(0); ellipse(x, y, 10, 10); Thread.sleep(10); }
-        r.mouseRelease(InputEvent.BUTTON1_MASK);
-    }
-
-    public void printButtonData(){
-        System.out.println("VB POINT: " + Application.getVectorButton().getLocation());
-        System.out.println("VB X: " + Application.getVectorButton().getX());
-        System.out.println("VB Y: " + Application.getVectorButton().getY());
-        System.out.println("CB POINT: " + Application.getClearButton().getLocation());
-        System.out.println("BALLZ POINT: " + Application.getButtonCreate().getLocation());
-        System.out.println("SIDEBAR HEIGHT: " + Application.buttonPanel.getHeight());
-        System.out.println("SIDEBAR WIDTH: " + Application.buttonPanel.getWidth());
+    /**
+     * Prints data about the buttons from Application
+     */
+    public void printButtonData() {
+        for (Object jb : buttons.keySet()) {
+            JButton t;
+            String nameOfButton = jb.toString();
+            t = (JButton) buttons.get(nameOfButton);
+            int buttonX = t.getX();
+            int buttonY = t.getY();
+            System.out.println(nameOfButton + " X: " + buttonX + " Y: " + buttonY);
+        }
     }
 
     public void setWidth(int w) {
@@ -127,12 +187,12 @@ public class aRobot extends MyApplet{
     /**
      * End the random session.
      */
-    public void end(){
+    public void end() {
         r.mouseRelease(InputEvent.BUTTON1_MASK);
     }
 
     public void resetPosition() throws InterruptedException {
-        r.mouseMove(width/2, height/2);
+        r.mouseMove(width / 2, height / 2);
         try {
             Thread.sleep(delay);
         } catch (InterruptedException e) {

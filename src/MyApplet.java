@@ -10,7 +10,7 @@ import javax.swing.*;
  */
 
 public class MyApplet extends PApplet implements ActionListener, ItemListener {
-    public static Application appInit = new Application();
+    public Application appInit = new Application();
     boolean pause = false;
     // Variables related to the "bouncing ball".
     ArrayList<Ball> ballList;
@@ -21,10 +21,8 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     boolean squarezButton = false;
     boolean trianglezButton = false;
     boolean strokeNColourButton = false;
-
     //variables for triangles
     float x1, y1, x2, y2, x3, y3;
-
     // Variables related to the mover/vector.
     ArrayList<Mover> movers;
     boolean vectorButton = false;
@@ -38,12 +36,14 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     //Boolean controlling whether the vectors move linearly or circularly.
     //Also controlling whether the user wants random colored vectors.
     boolean circular, linear, randomclr;
-    int steps = 0;
+    boolean beenHereBefore = false;
     PVector mouse;
     boolean randomLineButton = false;
     int pulseAngle = 0;
     //Declare the robot.
     aRobot Tormod;
+    boolean killTormod;
+    int countforfun = 0;
     //Button for making random (auto generated art)
     boolean randomize;
     /////////////////////////////////////////////////////////////////////////
@@ -64,6 +64,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     boolean win = false;
     boolean takepic = false;
 ///////////////////////////////////////////////////////////////////////////
+
     public void setup() {
         size(screenSize.width - 200, screenSize.height);
         // Set up the bouncing balls.
@@ -76,10 +77,10 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         vG = 0;
         vB = 0;
         vO = 255;
-        //Instantiate the robot.
-        Tormod = new aRobot();
-        Tormod.setWidth(width);
-        Tormod.setHeight(height);
+        Tormod = new aRobot(); // Instantiate the robot.
+        //Tormod.setWidth(width); // Tell robot about the width.
+        //Tormod.setHeight(height); // Tell robot about the height.
+        Tormod.setPapp(this); // "Export" PApplet instance (from this class).
         ////////////setup for save funksjon///////////////////////////////
         pg = createGraphics(200, 200);//størrelse på boxa
         f = createFont("Arial", 16, true);//gir f en font og størrelse
@@ -93,9 +94,13 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         // Draw method "never" ends, here we iterate through all
         // the objects we want to display. Whether or not we display
         // them, is decided by the push of the button.
-        if (randomize) {
+        if (randomize && !killTormod) {
             try {
-                generate();
+                Tormod.rMotion();
+                countforfun++;
+                System.out.println("CFF: " + countforfun);
+            } catch (AWTException e) {
+                e.printStackTrace();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -382,10 +387,10 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             pause = false;
         } else if (evt.getActionCommand().equals("randomize")) {
             try {
-                autoDraw();
-            } catch (AWTException e) {
-                e.printStackTrace();
+                Tormod.displayInstructions();
             } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (AWTException e) {
                 e.printStackTrace();
             }
             randomize = true;
@@ -585,123 +590,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             vO = random(255);
         }
         fill(vR, vG, vB, vO);
-        //fill(255, 0, 0, 255);
         ellipse(mov.getVecLocation().x, mov.getVecLocation().y, random(15, 20), random(15, 20));
     }
 
-
-    /**
-     * Collects data/info about the application class,
-     * lets the robot know where to move.
-     */
-    public void autoDraw() throws AWTException, InterruptedException {
-        try {
-            Tormod.clickGUIButton(Application.getVectorButton().getX(), Application.getVectorButton().getY());
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        //generate();
-        Tormod.rMotion();
-        //Tormod.printButtonData();
-    }
-
-    public void generate() throws InterruptedException {
-        int x = width / 2;
-        int y = height / 2;
-        Tormod.r.mouseMove(x, y);
-        Tormod.r.mousePress(InputEvent.BUTTON1_MASK);
-        Thread.sleep(1000);
-        int c;
-        int k = 200;
-        for (c = 0; c < k; c++) {
-            x--;
-            Tormod.r.mouseMove(x, y);
-            c++;
-            fill(0);
-            ellipse(x, y, 10, 10);
-            Thread.sleep(10);
-        }
-        k = 200;
-        for (c = 0; c < k; c++) {
-            y++;
-            Tormod.r.mouseMove(x, y);
-            c++;
-            fill(0);
-            ellipse(x, y, 10, 10);
-            Thread.sleep(10);
-        }
-        k = 200;
-        Tormod.r.mouseRelease(InputEvent.BUTTON1_MASK);
-        Tormod.resetPosition();
-        x = width / 2;
-        y = height / 2;
-        Thread.sleep(1000);
-        Tormod.r.mousePress(InputEvent.BUTTON1_MASK);
-        for (c = 0; c < k; c++) {
-            x++;
-            Tormod.r.mouseMove(x, y);
-            c++;
-            fill(0);
-            ellipse(x, y, 10, 10);
-            Thread.sleep(10);
-        }
-        k = 200;
-        for (c = 0; c < k; c++) {
-            y--;
-            Tormod.r.mouseMove(x, y);
-            c++;
-            fill(0);
-            ellipse(x, y, 10, 10);
-            Thread.sleep(10);
-        }
-        k = 200;
-        Tormod.r.mouseRelease(InputEvent.BUTTON1_MASK);
-        Tormod.resetPosition();
-        x = width / 2;
-        y = height / 2;
-        Thread.sleep(1000);
-        Tormod.r.mousePress(InputEvent.BUTTON1_MASK);
-        for (c = 0; c < k; c++) {
-            y--;
-            Tormod.r.mouseMove(x, y);
-            c++;
-            fill(0);
-            ellipse(x, y, 10, 10);
-            Thread.sleep(10);
-        }
-        k = 200;
-        for (c = 0; c < k; c++) {
-            x--;
-            Tormod.r.mouseMove(x, y);
-            c++;
-            fill(0);
-            ellipse(x, y, 10, 10);
-            Thread.sleep(10);
-        }
-        k = 200;
-        Tormod.r.mouseRelease(InputEvent.BUTTON1_MASK);
-        Tormod.resetPosition();
-        x = width / 2;
-        y = height / 2;
-        Thread.sleep(1000);
-        Tormod.r.mousePress(InputEvent.BUTTON1_MASK);
-        for (c = 0; c < k; c++) {
-            y++;
-            Tormod.r.mouseMove(x, y);
-            c++;
-            fill(0);
-            ellipse(x, y, 10, 10);
-            Thread.sleep(10);
-        }
-        k = 200;
-        for (c = 0; c < k; c++) {
-            x++;
-            Tormod.r.mouseMove(x, y);
-            c++;
-            fill(0);
-            ellipse(x, y, 10, 10);
-            Thread.sleep(10);
-        }
-        Tormod.r.mouseRelease(InputEvent.BUTTON1_MASK);
-    }
 }

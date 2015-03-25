@@ -2,6 +2,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemListener;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 import java.util.Vector;
 import javax.swing.*;
@@ -38,6 +40,7 @@ public class Application {
 
     public static JButton vectorButton, clearButton, randomLinesButton, pulseButton, crossDotsButton, starzButton, squarezButton,  buttonCreate, varBubblesButton, trianglezButton, Randomize,strokeNColourButton, saveButton;
 
+    public static HashMap<String, JButton> buttonMap = new HashMap();
 
     public Application(){}
 
@@ -228,6 +231,21 @@ frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" ful
         buttonPanel.add(vColorField);
         buttonPanel.add(Randomize); buttonPanel.add(clearButton);
 
+        //Add buttons to map. Name of button is key, while actual button is the value.
+        buttonMap.put("buttonCreate", buttonCreate);
+        buttonMap.put("vectorButton", vectorButton);
+        buttonMap.put("randomLinesButton", randomLinesButton);
+        buttonMap.put("varBubblesButton", varBubblesButton);
+        buttonMap.put("pulseButton", pulseButton);
+        buttonMap.put("crossDotsButton", crossDotsButton);
+        buttonMap.put("starzButton", starzButton);
+        buttonMap.put("tranglezButton", trianglezButton);
+        //buttonMap.put("strokeNColourButton", strokeNColourButton);
+        //buttonMap.put("saveButton", saveButton);
+        buttonMap.put("Randomize", Randomize);
+        buttonMap.put("clearButton", clearButton);
+
+
 //store the applet in panel
         panel.add(applet);
 //store the buttonPanel in panel
@@ -276,49 +294,8 @@ frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" ful
         randomclr.setSelected(b);
     }
 
-    public static JButton getVectorButton() {
-        return vectorButton;
-    }
-
-    public static JButton getClearButton() {
-        return clearButton;
-    }
-
-    public static JButton getRandomLinesButton() {
-        return randomLinesButton;
-    }
-
-    public static JButton getPulseButton() {
-        return pulseButton;
-    }
-
-    public static JButton getCrossDotsButton() {
-        return crossDotsButton;
-    }
-
-    public static JButton getStarzButton() {
-        return starzButton;
-    }
-
-    public static JButton getSquarezButton() {return squarezButton;}
-
-    public static JButton getTrianglezButton() {
-        return trianglezButton;
-    }
-
-    public static JButton getButtonCreate() {
-        return buttonCreate;
-    }
-
-    public static JButton getVarBubblesButton() {
-        return varBubblesButton;
-    }
-
-    public static JButton getSaveButtonButton() {
-        return saveButton;
-    }
-    public static JButton getStrokeNColourButton() {
-        return strokeNColourButton;
+    public HashMap getButtons(){
+        return buttonMap;
     }
 
     public int getStrokeSize() {
