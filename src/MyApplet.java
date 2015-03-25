@@ -532,8 +532,6 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             saveButton = true;
             pause = false;
 
-        }
-        else {
         } else if (evt.getActionCommand().equals("starz")) {
             starzButton = true;
             pause = false;
@@ -553,7 +551,8 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             pause = false;
             ColorChooser color = new ColorChooser();
 
-        } else {
+        }
+        else {
             println("actionPerformed(): can't handle " + evt.getActionCommand());
         }
     }
