@@ -1,8 +1,5 @@
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import java.awt.event.*;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -85,6 +82,14 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         // Draw method "never" ends, here we iterate through all
         // the objects we want to display. Whether or not we display
         // them, is decided by the push of the button.
+        if(randomize) {
+            try {
+                generate();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
         if (!pause) {
             if (ballbutton) {
                 for (int i = 0; i < ballList.size(); i++) {
@@ -308,10 +313,14 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             pause = false;
         } else if (evt.getActionCommand().equals("randomize")) {
             try {
-                autoDrawVectors();
+                autoDraw();
             } catch (AWTException e) {
                 e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
+            randomize = true;
+            pause = false;
         } else if (evt.getActionCommand().equals("clear")) {
             clear();
             pause = true;
@@ -512,9 +521,54 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
      * Collects data/info about the application class,
      * lets the robot know where to move.
      */
-    public void autoDrawVectors() throws AWTException {
-        //Tormod.clickVectorButton();
-        //Tormod.startPaint();
-        Tormod.printButtonData();
+    public void autoDraw() throws AWTException, InterruptedException {
+        try {
+            Tormod.clickGUIButton(appInit.getVectorButton().getX(), appInit.getVectorButton().getY());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        generate();
+        //Tormod.rMotion();
+        //Tormod.rMotion();
+        //Tormod.printButtonData();
+    }
+
+    public void generate() throws InterruptedException {
+        int x = width/2; int y = height/2;
+        Tormod.r.mouseMove(x, y);
+        Tormod.r.mousePress(InputEvent.BUTTON1_MASK);
+        Thread.sleep(1000);
+        int c; int k = 200;
+        for(c = 0; c < k; c++) { x--; Tormod.r.mouseMove(x, y); c++; fill(0); ellipse(x, y, 10, 10); Thread.sleep(10); }
+        k = 200;
+        for(c = 0; c < k; c++) { y++; Tormod.r.mouseMove(x, y); c++; fill(0); ellipse(x, y, 10, 10); Thread.sleep(10); }
+        k = 200;
+        Tormod.r.mouseRelease(InputEvent.BUTTON1_MASK);
+        Tormod.resetPosition();
+        x = width/2; y = height/2;
+        Thread.sleep(1000);
+        Tormod.r.mousePress(InputEvent.BUTTON1_MASK);
+        for(c = 0; c < k; c++) { x++; Tormod.r.mouseMove(x, y); c++; fill(0); ellipse(x, y, 10, 10); Thread.sleep(10);}
+        k = 200;
+        for(c = 0; c < k; c++) { y--; Tormod.r.mouseMove(x, y); c++; fill(0); ellipse(x, y, 10, 10); Thread.sleep(10);}
+        k = 200;
+        Tormod.r.mouseRelease(InputEvent.BUTTON1_MASK);
+        Tormod.resetPosition();
+        x = width/2; y = height/2;
+        Thread.sleep(1000);
+        Tormod.r.mousePress(InputEvent.BUTTON1_MASK);
+        for(c = 0; c < k; c++) { y--; Tormod.r.mouseMove(x, y); c++; fill(0); ellipse(x, y, 10, 10); Thread.sleep(10);}
+        k = 200;
+        for(c = 0; c < k; c++) { x--; Tormod.r.mouseMove(x, y); c++; fill(0); ellipse(x, y, 10, 10); Thread.sleep(10);}
+        k = 200;
+        Tormod.r.mouseRelease(InputEvent.BUTTON1_MASK);
+        Tormod.resetPosition();
+        x = width/2; y = height/2;
+        Thread.sleep(1000);
+        Tormod.r.mousePress(InputEvent.BUTTON1_MASK);
+        for(c = 0; c < k; c++) { y++; Tormod.r.mouseMove(x, y); c++; fill(0); ellipse(x, y, 10, 10); Thread.sleep(10);}
+        k = 200;
+        for(c = 0; c < k; c++) { x++; Tormod.r.mouseMove(x, y); c++; fill(0); ellipse(x, y, 10, 10); Thread.sleep(10);}
+        Tormod.r.mouseRelease(InputEvent.BUTTON1_MASK);
     }
 }
