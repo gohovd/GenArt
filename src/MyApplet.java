@@ -2,7 +2,9 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.util.ArrayList;
+
 import processing.core.*;
+
 import javax.swing.*;
 
 /**
@@ -129,7 +131,6 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                         choice = 2;
                     }
                     mover.update(choice);
-                    //mover.checkEdges();
                     vDisplay(mover);
                 }
             }
@@ -305,10 +306,12 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             }
         }
     }
+
     void rect() {
         fill(255, 255, 255, 200);
         rect(mouseX + 10, mouseY + 10, 80, 80);
     }
+
     void drawTriz() {
         x1 = random(mouseX - random(80, 100), mouseX + random(80, 100));
         y1 = random(mouseY - random(80, 100), mouseY + random(80, 100));
@@ -320,8 +323,11 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         fill(random(255), random(255), random(255), 127);
         triangle(x1, y1, x2, y2, x3, y3);
     }
-    ///////////////////funksjoner for save funksjon/////////////////////////////////
+
+    ///////////////////Funksjoner for save funksjon/////////////////////////////////
+    //////Kan legge til keyPressed events generelt. If key == 'x', do whatever//////
     public void keyPressed() {
+        if(key == 'q') { killTormod = true; Tormod.end(); randomize = false; }
         // If the return key is pressed, save the String and clear it
         if (key == '\n') {
             saved = typing;
@@ -350,15 +356,18 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             typing = typing + key;
         }
     }
+
     void save() {
         String desktopPath = System.getProperty("user.home") + "/Desktop/";
         save(desktopPath + saved + ".jpg");
     }
+
     void save2() {
         String desktopPath = System.getProperty("user.home") + "/Desktop/";
         save(desktopPath + saved + ".png");
     }
     ///////////////////funksjoner for save funksjon SLUTT/////////////////////////////////
+
     /**
      * implementation from interface ActionListener
      * method is called from the Application
@@ -376,11 +385,11 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         starzButton = false;
         squarezButton = false;
         trianglezButton = false;
-        randomize = false;
 
         String vColor = appInit.getVColor();
         if (evt.getActionCommand().equals("create ball")) {
             createNewBall();
+            ballbutton = true;
             pause = false;
         } else if (evt.getActionCommand().equals("create vector")) {
             createNewMover();
@@ -489,9 +498,9 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         bgImg = loadImage(selectedFile.getAbsolutePath());
     }
 
-    /*
- * creates a new ball object
- */
+    /**
+     * Creates multiple balls, with various directions.
+     */
     private void createNewBall() {
         // X and Y speed to make the ball go in desired direction.
         float xDir, yDir;

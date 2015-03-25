@@ -1,3 +1,4 @@
+import jdk.internal.util.xml.impl.Input;
 import processing.core.PApplet;
 
 import javax.swing.*;
@@ -16,9 +17,9 @@ import java.util.Random;
 public class aRobot {
 
     public static Application instance = new Application();
-    //Users screen-width and -height.
-    private int width = instance.panel.getWidth();
-    private int height = instance.panel.getHeight();
+    //Users screen-cWidth and -cHeight.
+    private int cWidth = instance.panel.getWidth();
+    private int cHeight = instance.panel.getHeight();
     //Small pause/delay between mouse-press/-release etc.
     private static final long delay = 500;
     private static final long d = 10;
@@ -35,15 +36,17 @@ public class aRobot {
     //Counting the number of times the rMotion method has been visited.
     long motionsMade = 0;
     //Variables holding the positions of the cursor.
-    int cX = width / 2;
-    int cY = height / 2;
+    int cX = cWidth / 2;
+    int cY = cHeight / 2;
     //Boolean making sure instructions only show up once.
     boolean tutorial;
+    boolean mouseIsPrez = false;
 
     aRobot() {
         try {
             r = new Robot();
-            r.setAutoDelay(50);
+            r.setAutoDelay(5);
+            r.waitForIdle();
         } catch (AWTException e) {
             e.printStackTrace();
         }
@@ -51,12 +54,13 @@ public class aRobot {
     }
 
     public void displayInstructions() throws InterruptedException, AWTException {
-        p.fill(0, 0, 0, 255);
+        p.fill(210, 54, 65, 255);
         p.textSize(40);
-        p.text("THE ROBOT WILL SOON START TO DRAW", 150, 100);
+        p.text("THE ROBOT WILL SOON START TO DRAW", cWidth/2, cHeight/2);
         p.textSize(32);
-        p.text("Press BACKSPACE and/or shout at your computer to end session.", 100, 150);
-        Thread.sleep(5000);
+        p.fill(110, 101, 104, 255);
+        p.text("Press 'Q' and/or shout at your computer to end session.", cWidth/2, cHeight/2+50);
+        Thread.sleep(3200);
         p.background(255);
     }
 
@@ -64,11 +68,10 @@ public class aRobot {
         keys = new ArrayList();
         for (Object jb : buttons.keySet()) {
             String nameOfButton = jb.toString();
-            keys.add(nameOfButton);
+            if(nameOfButton.contains("clearButton") || nameOfButton.contains("Randomize")) { // do nothing..
+            } else keys.add(nameOfButton);
         }
         int roulette = rand.nextInt(keys.size());
-        //If we happen to choose the clearButton, we choose the previous button.
-        if(keys.get(roulette).equals("clearButton")) roulette -= 1;
         clickGUIButton(keys.get(roulette));
     }
 
@@ -79,28 +82,40 @@ public class aRobot {
      * @throws InterruptedException
      */
     public void rMotion() throws AWTException, InterruptedException {
-        if (motionsMade % 2000 == 0) clickRandomGUIButton();
+        if (motionsMade % 600 == 0) {
+            Thread.sleep(1000);
+            r.delay(1000);
+            clickRandomGUIButton();
+            r.delay(500);
+            r.mousePress(InputEvent.BUTTON1_MASK);
+            r.delay(500);
+            r.mouseRelease(InputEvent.BUTTON1_MASK);
+        }
         r.mouseMove(cX, cY);
+        r.mousePress(InputEvent.BUTTON1_MASK);
         System.out.println("cX (before): " + cX);
-        cX += rand.nextInt(20) - 10;
+        cX += 30 - rand.nextInt(60);
         System.out.println("cX (after): " + cX);
-        while (cX > width) {
-            cX--;
+        if (cX > cWidth) {
+            cX -= cWidth;
         }
-        while (cX < 0) {
-            cX++;
+        if (cX < 0) {
+            cX += cWidth;
         }
-        cY += rand.nextInt(20) - 10;
-        while (cY > height) {
-            cY--;
+        System.out.println("cY (before): " + cY);
+        cY += 30 - rand.nextInt(60);
+        System.out.println("cY (after): " + cY);
+        if (cY > cHeight) {
+            cY -= cHeight;
         }
-        while (cY < 0) {
-            cY++;
+        if (cY < 0) {
+            cY += cHeight;
         }
         r.mouseMove(cX, cY);
         tutorial = true;
         motionsMade++;
-        System.out.println("Have drawn " + motionsMade + " random motions.");
+        System.out.println("Random motions: " + motionsMade);
+        //return;
     }
 
     public void clickGUIButton(String key) throws AWTException, InterruptedException {
@@ -121,8 +136,6 @@ public class aRobot {
                 Thread.sleep(delay);
             } catch (InterruptedException e) {
                 e.printStackTrace();
-            } catch (NullPointerException ex) {
-                System.out.println("It seems the button doesn't exist.");
             }
             r.mousePress(InputEvent.BUTTON1_MASK);
             try {
@@ -147,7 +160,7 @@ public class aRobot {
     }
 
     public void startPaint() throws InterruptedException {
-        r.mouseMove(width / 2, height / 2);
+        r.mouseMove(cWidth / 2, cHeight / 2);
         try {
             Thread.sleep(delay);
         } catch (InterruptedException e) {
@@ -176,12 +189,12 @@ public class aRobot {
         }
     }
 
-    public void setWidth(int w) {
-        width = w;
+    public void setcWidth(int w) {
+        cWidth = w;
     }
 
-    public void setHeight(int h) {
-        height = h;
+    public void setcHeight(int h) {
+        cHeight = h;
     }
 
     /**
@@ -192,7 +205,7 @@ public class aRobot {
     }
 
     public void resetPosition() throws InterruptedException {
-        r.mouseMove(width / 2, height / 2);
+        r.mouseMove(cWidth / 2, cHeight / 2);
         try {
             Thread.sleep(delay);
         } catch (InterruptedException e) {
