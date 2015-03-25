@@ -2,6 +2,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemListener;
+import java.util.Random;
 import java.util.Vector;
 import javax.swing.*;
 import javax.swing.BorderFactory;
@@ -21,6 +22,10 @@ public class Application {
     private int width;
     private int height;
 
+    private int strokeSize = 1;
+
+
+
     private static final JTextField vColorField = new JTextField(5);
     private static final JCheckBox circular = new JCheckBox("Circular");
     private static final JCheckBox randomclr = new JCheckBox("Random Color");
@@ -29,6 +34,12 @@ public class Application {
     private static final int menuWidth = 200; // Husk å endre i MyApplet hvis du endrer her
 
     public static JButton vectorButton, clearButton, randomLinesButton, pulseButton, crossDotsButton, buttonCreate, varBubblesButton, saveButton;
+
+    // Gjør panel og buttonPanel public, for at roboten skal nå tak i info.
+    public static JPanel panel, buttonPanel;
+
+    public static JButton vectorButton, clearButton, randomLinesButton, pulseButton, crossDotsButton, starzButton, squarezButton,  buttonCreate, varBubblesButton, trianglezButton, Randomize,strokeNColourButton;
+
 
     public Application(){}
 
@@ -42,13 +53,12 @@ public class Application {
 
 
 
-//frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" fullskjerm
+frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" fullskjerm
 //make sure to shut down the application, when the frame is closed
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 //create a panel for the applet and the button panel
-        JPanel panel = new JPanel();
-
+        panel = new JPanel();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int panelXChange = screenSize.width - menuWidth;
         panel.setBounds(0,0,panelXChange,screenSize.height);
@@ -57,7 +67,7 @@ public class Application {
 
 
 //create a panel for the buttons
-        JPanel buttonPanel = new JPanel();
+        buttonPanel = new JPanel();
         buttonPanel.setBackground(Color.white);
 
         buttonPanel.setBounds(panelXChange,0,menuWidth,screenSize.height);
@@ -92,7 +102,8 @@ public class Application {
         vectorButton.setPreferredSize(new Dimension(90, 90));
 
 
-        clearButton = new JButton("clear");
+        clearButton = new JButton("Clear");
+        Randomize = new JButton("Randomize");
 
         ImageIcon imageForrandomLinesButton = new ImageIcon("images/rndlines.png");
         randomLinesButton = new JButton("", imageForrandomLinesButton);
@@ -115,6 +126,26 @@ public class Application {
         crossDotsButton.setBackground(Color.white);
         crossDotsButton.setPreferredSize(new Dimension(90, 90));
 
+        ImageIcon imageForstarzButton = new ImageIcon("images/starz.png");
+        starzButton = new JButton("", imageForstarzButton);
+        starzButton.setBackground(Color.white);
+        starzButton.setPreferredSize(new Dimension(90, 90));
+
+        ImageIcon imageForsquarezButton = new ImageIcon("images/squarez.png");
+        squarezButton = new JButton("", imageForsquarezButton);
+        squarezButton.setBackground(Color.white);
+        squarezButton.setPreferredSize(new Dimension(90, 90));
+
+        ImageIcon imageFortrianglezButton = new ImageIcon("images/trianglez.png");
+        trianglezButton = new JButton("", imageFortrianglezButton);
+        trianglezButton.setBackground(Color.white);
+        trianglezButton.setPreferredSize(new Dimension(90, 90));
+
+        ImageIcon imageForStrokeNColourButton = new ImageIcon("images/strokencolour80x80.png");
+        strokeNColourButton = new JButton("", imageForStrokeNColourButton);
+        strokeNColourButton.setBackground(Color.white);
+        strokeNColourButton.setPreferredSize(new Dimension(90, 90));
+
         ImageIcon imageForSaveFunctions = new ImageIcon("images/crossdots.png");
         saveButton = new JButton("", imageForSaveFunctions);
         saveButton.setBackground(Color.white);
@@ -129,6 +160,10 @@ public class Application {
         pulseButton.setToolTipText("Pulsing");
         crossDotsButton.setToolTipText("Draws dots in cross formation");
         saveButton.setToolTipText("Draws dots in cross formation");
+        starzButton.setToolTipText("Draws stars as you drag your mouse");
+        squarezButton.setToolTipText("Draws squares as you drag your mouse");
+        trianglezButton.setToolTipText("Draws triangles as you drag your mouse");
+        strokeNColourButton.setToolTipText("Choose stroke size and colours");
         // Adding button graphics
 
 
@@ -145,6 +180,11 @@ public class Application {
         pulseButton.setActionCommand("pulse");
         crossDotsButton.setActionCommand("crossDots");
         saveButton.setActionCommand("save");
+        starzButton.setActionCommand("starz");
+        squarezButton.setActionCommand("squarez");
+        trianglezButton.setActionCommand("trianglez");
+        Randomize.setActionCommand("randomize");
+        strokeNColourButton.setActionCommand("strokencolour");
 
 
 //button actions
@@ -158,6 +198,11 @@ public class Application {
         pulseButton.addActionListener(applet);
         crossDotsButton.addActionListener(applet);
         saveButton.addActionListener(applet);
+        starzButton.addActionListener(applet);
+        squarezButton.addActionListener(applet);
+        trianglezButton.addActionListener(applet);
+        Randomize.addActionListener(applet);
+        strokeNColourButton.addActionListener(applet);
 
         circular.addItemListener(applet);
         circular.setSelected(false);
@@ -175,11 +220,15 @@ public class Application {
         buttonPanel.add(varBubblesButton);
         buttonPanel.add(pulseButton);
         buttonPanel.add(crossDotsButton);
+        buttonPanel.add(starzButton);
+        buttonPanel.add(squarezButton);
+        buttonPanel.add(trianglezButton);
+        buttonPanel.add(strokeNColourButton);
         buttonPanel.add(saveButton);
 
         buttonPanel.add(randomclr); buttonPanel.add(linear); buttonPanel.add(circular);
         buttonPanel.add(vColorField);
-        buttonPanel.add(clearButton);
+        buttonPanel.add(Randomize); buttonPanel.add(clearButton);
 
 //store the applet in panel
         panel.add(applet);
@@ -249,6 +298,16 @@ public class Application {
         return crossDotsButton;
     }
 
+    public static JButton getStarzButton() {
+        return starzButton;
+    }
+
+    public static JButton getSquarezButton() {return squarezButton;}
+
+    public static JButton getTrianglezButton() {
+        return trianglezButton;
+    }
+
     public static JButton getButtonCreate() {
         return buttonCreate;
     }
@@ -260,4 +319,16 @@ public class Application {
     public static JButton getSaveButtonButton() {
         return saveButton;
     }
+    public static JButton getStrokeNColourButton() {
+        return strokeNColourButton;
+    }
+
+    public int getStrokeSize() {
+        return strokeSize;
+    }
+
+    public void setStrokeSize(int strokeSize) {
+        this.strokeSize = strokeSize;
+    }
+
 }

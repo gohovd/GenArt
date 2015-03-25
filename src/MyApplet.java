@@ -1,8 +1,5 @@
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import java.awt.event.*;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -21,13 +18,21 @@ import javax.swing.*;
  */
 
 public class MyApplet extends PApplet implements ActionListener, ItemListener {
-    static Application appInit = new Application();
+    public static Application appInit = new Application();
     boolean pause = false;
     // Variables related to the "bouncing ball".
     ArrayList<Ball> ballList;
     boolean ballbutton = false;
     boolean varBubblesButton = false;
     boolean pulseButton = false;
+    boolean starzButton = false;
+    boolean squarezButton = false;
+    boolean trianglezButton = false;
+    boolean strokeNColourButton = false;
+
+    //variables for triangles
+    float x1, y1, x2, y2, x3, y3;
+
     // Variables related to the mover/vector.
     ArrayList<Mover> movers;
     boolean vectorButton = false;
@@ -47,6 +52,9 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     int pulseAngle = 0;
     //Declare the robot.
     aRobot Tormod;
+    //Button for making random (auto generated art)
+    boolean randomize;
+
 /////////////////////////////////////////////////////////////////////////
     boolean crossDotsButton = false;
     int i = 0; //variabler for crossdots
@@ -81,6 +89,9 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         vO = 255;
         //Instantiate the robot.
         Tormod = new aRobot();
+        Tormod.setWidth(width);
+        Tormod.setHeight(height);
+
 
         ////////////setup for save funksjon///////////////////////////////
         pg = createGraphics(200, 200);//størrelse på boxa
@@ -100,6 +111,14 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         // Draw method "never" ends, here we iterate through all
         // the objects we want to display. Whether or not we display
         // them, is decided by the push of the button.
+        if(randomize) {
+            try {
+                generate();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
         if (!pause) {
             if (ballbutton) {
                 for (int i = 0; i < ballList.size(); i++) {
@@ -212,6 +231,65 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
             }
 
+            if (starzButton) {
+
+                if (mousePressed == true && mouseButton == LEFT) {
+
+                    strokeWeight((float)0.1);
+                    fill(random(255), random(255), random(255), 127);
+                    beginShape();
+                    vertex(mouseX, mouseY - 50);
+                    vertex(mouseX+14, mouseY-20);
+                    vertex(mouseX+47, mouseY-15);
+                    vertex(mouseX+23, mouseY+7);
+                    vertex(mouseX+29, mouseY+40);
+                    vertex(mouseX, mouseY+25);
+                    vertex(mouseX-29, mouseY+40);
+                    vertex(mouseX-23, mouseY+7);
+                    vertex(mouseX-47, mouseY-15);
+                    vertex(mouseX-14, mouseY-20);
+                    endShape(CLOSE);
+                }
+                else if (mousePressed == true && mouseButton == RIGHT){
+                    strokeWeight((float)0.1);
+                    fill(random(255), random(255), random(255), 127);
+                    beginShape();
+                    vertex(mouseX+150,mouseY+150);
+                    bezierVertex( mouseX+150,mouseY+120, mouseX+100,mouseY+120, mouseX+100, mouseY+150);
+                    bezierVertex( mouseX+100,mouseY+180, mouseX+150,mouseY+185, mouseX+150, mouseY+210 );
+                    bezierVertex( mouseX+150,mouseY+185, mouseX+200,mouseY+180, mouseX+200, mouseY+150 );
+                    bezierVertex( mouseX+200,mouseY+120, mouseX+150,mouseY+120, mouseX+150, mouseY+150 );
+                    endShape();
+                }
+
+            }
+
+            if (squarezButton) {
+
+                if (mousePressed == true && mouseButton == LEFT){
+                    strokeWeight((float)0.1);
+                    fill(random(255), random(255), random(255), 127);
+                    rect(mouseX - 25, mouseY - 25, 100, 100);
+                }
+
+                if (mousePressed == true && mouseButton == RIGHT){
+                    strokeWeight((float)0.1);
+                    fill(random(255), random(255), random(255), 127);
+                    rect(mouseX, mouseY,100,100);
+                    rect();
+                }
+
+            }
+
+            if (trianglezButton) {
+
+                if (mousePressed == true) {
+                    drawTriz();
+                }
+            }
+
+            if (strokeNColourButton) {}
+
             if(saveButton){
 
 /*
@@ -285,6 +363,28 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
 
     }
+
+    void rect(){
+        fill(255,255,255,200);
+        rect(mouseX+10, mouseY+10,80,80);
+
+    }
+
+
+
+    void drawTriz() {
+        x1=random(mouseX-random(80,100), mouseX+random(80,100));
+        y1=random(mouseY-random(80,100), mouseY+random(80,100));
+        x2=random(mouseX-random(60,80), mouseX+random(80,100));
+        y2=random(mouseY-random(60,80), mouseY+random(80,100));
+        x3=random(mouseX-random(60,80), mouseX+random(80,100));
+        y3=random(mouseY-random(60,80), mouseY+random(80,100));
+        strokeWeight((float)0.1);
+        fill(random(255), random(255), random(255), 127);
+        triangle(x1, y1, x2, y2, x3, y3);
+    }
+
+
 
     ///////////////////funksjoner for save funksjon/////////////////////////////////
 
@@ -370,6 +470,10 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         pulseButton = false;
         crossDotsButton = false;
         saveButton = false;
+        starzButton = false;
+        squarezButton = false;
+        trianglezButton = false;
+        randomize = false;
 
         String vColor = appInit.getVColor();
         if (evt.getActionCommand().equals("create ball")) {
@@ -377,6 +481,16 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             pause = false;
         } else if (evt.getActionCommand().equals("create vector")) {
             createNewMover();
+            pause = false;
+        } else if (evt.getActionCommand().equals("randomize")) {
+            try {
+                autoDraw();
+            } catch (AWTException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            randomize = true;
             pause = false;
         } else if (evt.getActionCommand().equals("clear")) {
             clear();
@@ -420,6 +534,26 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
         }
         else {
+        } else if (evt.getActionCommand().equals("starz")) {
+            starzButton = true;
+            pause = false;
+
+        } else if (evt.getActionCommand().equals("squarez")) {
+            squarezButton = true;
+            pause = false;
+
+        }else if (evt.getActionCommand().equals("trianglez")) {
+            trianglezButton = true;
+            pause = false;
+
+        }else if (evt.getActionCommand().equals("strokencolour")) {
+            strokeNColourButton = true;
+            appInit.setStrokeSize(2);
+            System.out.println(appInit.getStrokeSize());
+            pause = false;
+            ColorChooser color = new ColorChooser();
+
+        } else {
             println("actionPerformed(): can't handle " + evt.getActionCommand());
         }
     }
@@ -563,4 +697,58 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
 
 
+    /**
+     * Collects data/info about the application class,
+     * lets the robot know where to move.
+     */
+    public void autoDraw() throws AWTException, InterruptedException {
+        try {
+            Tormod.clickGUIButton(appInit.getVectorButton().getX(), appInit.getVectorButton().getY());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        generate();
+        //Tormod.rMotion();
+        //Tormod.rMotion();
+        //Tormod.printButtonData();
+    }
+
+    public void generate() throws InterruptedException {
+        int x = width/2; int y = height/2;
+        Tormod.r.mouseMove(x, y);
+        Tormod.r.mousePress(InputEvent.BUTTON1_MASK);
+        Thread.sleep(1000);
+        int c; int k = 200;
+        for(c = 0; c < k; c++) { x--; Tormod.r.mouseMove(x, y); c++; fill(0); ellipse(x, y, 10, 10); Thread.sleep(10); }
+        k = 200;
+        for(c = 0; c < k; c++) { y++; Tormod.r.mouseMove(x, y); c++; fill(0); ellipse(x, y, 10, 10); Thread.sleep(10); }
+        k = 200;
+        Tormod.r.mouseRelease(InputEvent.BUTTON1_MASK);
+        Tormod.resetPosition();
+        x = width/2; y = height/2;
+        Thread.sleep(1000);
+        Tormod.r.mousePress(InputEvent.BUTTON1_MASK);
+        for(c = 0; c < k; c++) { x++; Tormod.r.mouseMove(x, y); c++; fill(0); ellipse(x, y, 10, 10); Thread.sleep(10);}
+        k = 200;
+        for(c = 0; c < k; c++) { y--; Tormod.r.mouseMove(x, y); c++; fill(0); ellipse(x, y, 10, 10); Thread.sleep(10);}
+        k = 200;
+        Tormod.r.mouseRelease(InputEvent.BUTTON1_MASK);
+        Tormod.resetPosition();
+        x = width/2; y = height/2;
+        Thread.sleep(1000);
+        Tormod.r.mousePress(InputEvent.BUTTON1_MASK);
+        for(c = 0; c < k; c++) { y--; Tormod.r.mouseMove(x, y); c++; fill(0); ellipse(x, y, 10, 10); Thread.sleep(10);}
+        k = 200;
+        for(c = 0; c < k; c++) { x--; Tormod.r.mouseMove(x, y); c++; fill(0); ellipse(x, y, 10, 10); Thread.sleep(10);}
+        k = 200;
+        Tormod.r.mouseRelease(InputEvent.BUTTON1_MASK);
+        Tormod.resetPosition();
+        x = width/2; y = height/2;
+        Thread.sleep(1000);
+        Tormod.r.mousePress(InputEvent.BUTTON1_MASK);
+        for(c = 0; c < k; c++) { y++; Tormod.r.mouseMove(x, y); c++; fill(0); ellipse(x, y, 10, 10); Thread.sleep(10);}
+        k = 200;
+        for(c = 0; c < k; c++) { x++; Tormod.r.mouseMove(x, y); c++; fill(0); ellipse(x, y, 10, 10); Thread.sleep(10);}
+        Tormod.r.mouseRelease(InputEvent.BUTTON1_MASK);
+    }
 }
