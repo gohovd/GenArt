@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 import processing.core.*;
 
+import javax.swing.*;
+
 /**
  * A once, simple demonstration Applet.
  * kake
@@ -45,10 +47,25 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     int pulseAngle = 0;
     //Declare the robot.
     aRobot Tormod;
-
+/////////////////////////////////////////////////////////////////////////
     boolean crossDotsButton = false;
     int i = 0; //variabler for crossdots
     boolean q = false;//variabler for crossdots
+/////////////////////////////////////////////////////////////////////////
+    boolean saveButton = false;
+    PGraphics pg;//SaveBox
+    PImage c;
+    PFont f; //variabler for text input
+    // Variable to store text currently being typed
+    String typing = "";
+    // Variable to store saved text when return is hit
+    String saved = "";
+    int indent = 25;
+    String desktopPath = System.getProperty("user.home") + "/Desktop";
+    boolean win = false;
+    boolean takepic = false;
+
+///////////////////////////////////////////////////////////////////////////
 
     public void setup() {
         size(screenSize.width - 200, screenSize.height);
@@ -64,6 +81,19 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         vO = 255;
         //Instantiate the robot.
         Tormod = new aRobot();
+
+        ////////////setup for save funksjon///////////////////////////////
+        pg = createGraphics(200, 200);//størrelse på boxa
+        f = createFont("Arial",16,true);//gir f en font og størrelse
+
+
+        // Set the font and fill for text
+        textFont(f);
+        fill(0);
+
+
+
+        //////////////////setup for save funksjon slutt////////////////////
     }
 
     public void draw() {
@@ -182,9 +212,150 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
             }
 
+            if(saveButton){
+
+/*
+                if(win == false) {
+                    JFrame aWindow = new JFrame("This is the Window Title");
+                    int windowWidth = 200;           // Window width in pixels
+                    int windowHeight = 200;          // Window height in pixels
+                    aWindow.setBounds(width/2, height/2-100,       // Set position
+                            windowWidth, windowHeight);  // and size
+                    /////////////////////////////////////////////////////////////
+
+                    /////////////////////////////////////////////////////////////
+
+                    aWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    aWindow.setVisible(true);        // Display the window
+                win = true;
+                }
+
+
+
+
+                //putte dette i en jframe!!!!!!!!!!!!!!!!
+  */
+
+
+
+
+
+                    pg.beginDraw();
+
+
+                if(takepic==false) {
+
+                    c=get(width - 200, height - 200, 200, 200);
+                    //c.save("temp.jpg");
+                    takepic = true;
+
+                    //if pause == true/false
+                    //set takepic false
+                }
+
+                    pg.background(255, 255, 0);
+
+                    pg.stroke(255);
+
+                    pg.text("skriv ditt ønskede filnavn. \nF.EKS: \n'minFil.jpg' \neller \n'mittBilde.PNG'", indent, 40);
+                    pg.fill(0, 0, 0);
+
+                    pg.text(typing, indent, 120);
+
+                    //if(saved.contains(".jpg")||saved.contains(".png")){
+                    //pg.text(saved+" er nå lagret",indent,130);
+                    //}
+
+                    pg.endDraw();
+
+                    //image(pg, pg.width/0.17, pg.height/0.4);
+
+                    image(pg, width - 200, height - 200);
+//image(c,mouseX,mouseY);
+
+                    //image(c ,mouseX, mouseY);
+
+
+            }
+
+
+
+
         }
+
+
     }
 
+    ///////////////////funksjoner for save funksjon/////////////////////////////////
+
+
+
+    public void  keyPressed() {
+
+
+
+            // If the return key is pressed, save the String and clear it
+            if (key == '\n') {
+                saved = typing;
+                // A String can be cleared by setting it equal to ""
+                typing = "";
+                if (saved.contains("jpg") || saved.contains("JPG") || saved.contains("Jpg") || saved.contains("jpeg") || saved.contains("JPEG") || saved.contains("Jpeg")) {
+
+                    int dotPos = saved.lastIndexOf(".");
+                    if (dotPos > 0)
+                        saved = saved.substring(0, dotPos);
+
+                    pg.beginDraw();
+
+                    //pg.background(255, 255, 255);
+
+
+                    pg.stroke(255);
+                    image(c, width - 200, height - 200);
+                    pg.endDraw();
+
+
+
+                    save();
+
+
+                }
+                if (saved.contains("PNG") || saved.contains("Png") || saved.contains("png")) {
+
+                    int dotPos = saved.lastIndexOf(".");
+                    if (dotPos > 0)
+                        saved = saved.substring(0, dotPos);
+                    save2();
+
+                }
+
+
+            } else {
+                // Otherwise, concatenate the String
+                // Each character typed by the user is added to the end of the String variable.
+                typing = typing + key;
+            }
+        }
+
+    void save(){
+
+        String desktopPath = System.getProperty("user.home") + "/Desktop/";
+        save(desktopPath + saved + ".jpg");
+
+    }
+
+    void save2(){
+
+        String desktopPath = System.getProperty("user.home") + "/Desktop/";
+        save(desktopPath + saved + ".png");
+    }
+
+
+
+
+
+
+    ///////////////////funksjoner for save funksjon SLUTT/////////////////////////////////
     /**
      * implementation from interface ActionListener
      * method is called from the Application
@@ -198,6 +369,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         varBubblesButton = false;
         pulseButton = false;
         crossDotsButton = false;
+        saveButton = false;
 
         String vColor = appInit.getVColor();
         if (evt.getActionCommand().equals("create ball")) {
@@ -241,7 +413,13 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             crossDotsButton = true;
             pause = false;
 
-        } else {
+        }
+        else if(evt.getActionCommand().equals("save")){
+            saveButton = true;
+            pause = false;
+
+        }
+        else {
             println("actionPerformed(): can't handle " + evt.getActionCommand());
         }
     }
@@ -382,5 +560,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         //fill(255, 0, 0, 255);
         ellipse(mov.getVecLocation().x, mov.getVecLocation().y, random(15, 20), random(15, 20));
     }
+
+
 
 }

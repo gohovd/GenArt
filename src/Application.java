@@ -28,7 +28,7 @@ public class Application {
 
     private static final int menuWidth = 200; // Husk å endre i MyApplet hvis du endrer her
 
-    public static JButton vectorButton, clearButton, randomLinesButton, pulseButton, crossDotsButton, buttonCreate, varBubblesButton;
+    public static JButton vectorButton, clearButton, randomLinesButton, pulseButton, crossDotsButton, buttonCreate, varBubblesButton, saveButton;
 
     public Application(){}
 
@@ -115,6 +115,11 @@ public class Application {
         crossDotsButton.setBackground(Color.white);
         crossDotsButton.setPreferredSize(new Dimension(90, 90));
 
+        ImageIcon imageForSaveFunctions = new ImageIcon("images/crossdots.png");
+        saveButton = new JButton("", imageForSaveFunctions);
+        saveButton.setBackground(Color.white);
+        saveButton.setPreferredSize(new Dimension(90, 90));
+
 //assing a tooltip
         buttonCreate.setToolTipText("creates a new ball ");
         vectorButton.setToolTipText("creates a new vector");
@@ -123,6 +128,7 @@ public class Application {
         varBubblesButton.setToolTipText("Draws random size bubbles depending on mouse speed");
         pulseButton.setToolTipText("Pulsing");
         crossDotsButton.setToolTipText("Draws dots in cross formation");
+        saveButton.setToolTipText("Draws dots in cross formation");
         // Adding button graphics
 
 
@@ -138,7 +144,7 @@ public class Application {
         varBubblesButton.setActionCommand("varBubbles");
         pulseButton.setActionCommand("pulse");
         crossDotsButton.setActionCommand("crossDots");
-
+        saveButton.setActionCommand("save");
 
 
 //button actions
@@ -151,6 +157,7 @@ public class Application {
         varBubblesButton.addActionListener(applet);
         pulseButton.addActionListener(applet);
         crossDotsButton.addActionListener(applet);
+        saveButton.addActionListener(applet);
 
         circular.addItemListener(applet);
         circular.setSelected(false);
@@ -168,6 +175,7 @@ public class Application {
         buttonPanel.add(varBubblesButton);
         buttonPanel.add(pulseButton);
         buttonPanel.add(crossDotsButton);
+        buttonPanel.add(saveButton);
 
         buttonPanel.add(randomclr); buttonPanel.add(linear); buttonPanel.add(circular);
         buttonPanel.add(vColorField);
@@ -247,5 +255,9 @@ public class Application {
 
     public static JButton getVarBubblesButton() {
         return varBubblesButton;
+    }
+
+    public static JButton getSaveButtonButton() {
+        return saveButton;
     }
 }
