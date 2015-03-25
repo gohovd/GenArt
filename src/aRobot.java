@@ -25,7 +25,6 @@ public class aRobot {
     private static final long d = 10;
     //Instantiate a robot.
     public Robot r;
-    private boolean keepPainting = true;
     int err = 10;
     //Collect the PApplet from main class (MyApplet).
     PApplet p;
@@ -44,7 +43,7 @@ public class aRobot {
     aRobot() {
         try {
             r = new Robot();
-            r.setAutoDelay(5);
+            //r.setAutoDelay(5);
             r.waitForIdle();
         } catch (AWTException e) {
             e.printStackTrace();
@@ -58,7 +57,7 @@ public class aRobot {
         p.text("THE ROBOT WILL SOON START TO DRAW", cWidth/2, cHeight/2);
         p.textSize(32);
         p.fill(110, 101, 104, 255);
-        p.text("Press 'Q' and/or shout at your computer to end session.", cWidth/2, cHeight/2+50);
+        p.text("Press 'Q' or shout at your computer to end session.", cWidth/2, cHeight/2+50);
         Thread.sleep(3200);
         p.background(255);
     }

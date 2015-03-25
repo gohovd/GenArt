@@ -1,20 +1,25 @@
 import processing.core.*;
 
 import java.awt.Color;
+import java.util.ArrayList;
 
-class Ball extends PApplet {
+class Ball {
+    private static Application a;
+    private int sWidth, sHeight;
     float x;
     float y;
     float size;
     float speedX;
     float speedY;
-    Color color;
-    float sWidth, sHeight;
+    ArrayList<Ball> ballList = new ArrayList();
+    PApplet p;
+
+    Ball(){
+    }
 
     Ball(float xDir, float yDir) {
         this.speedX = xDir;
         this.speedY = yDir;
-        this.color = new Color(random(1), random(1), random(1));
         this.size = 5;
     }
 
@@ -25,36 +30,101 @@ class Ball extends PApplet {
         y += speedY;
     }
 
-    public void displacement(int mouseX, int mouseY){
-        x = mouseX; y = mouseY;
-
+    public void display() {
+        p.stroke(p.random(255), p.random(255), p.random(255));
+        p.fill(p.random(255), p.random(255), p.random(255), 120);
+        p.ellipse(x, y, size, size);
     }
 
-    public float getLocX() {
-        return x;
+    /**
+     * Creates multiple balls, with various directions.
+     */
+    public void initializeBalls() {
+        // X and Y speed to make the ball go in desired direction.
+        float xDir, yDir;
+        Ball up, down, left, right, left45, negleft45, right45, negright45;
+        // UP
+        xDir = 0;
+        yDir = -10;
+        up = new Ball(xDir, yDir);
+
+        // DOWN
+        xDir = 0;
+        yDir = 5;
+        down = new Ball(xDir, yDir);
+
+        // LEFT
+        xDir = -5;
+        yDir = 0;
+        left = new Ball(xDir, yDir);
+
+        // RIGHT
+        xDir = 5;
+        yDir = 0;
+        right = new Ball(xDir, yDir);
+
+        // 45 degrees left
+        xDir = -5;
+        yDir = -5;
+        left45 = new Ball(xDir, yDir);
+
+        // negative 45 degrees left
+        xDir = -5;
+        yDir = 5;
+        negleft45 = new Ball(xDir, yDir);
+
+        // 45 degrees right
+        xDir = 5;
+        yDir = -5;
+        right45 = new Ball(xDir, yDir);
+
+        // negative 45 degrees right
+        xDir = 5;
+        yDir = 5;
+        negright45 = new Ball(xDir, yDir);
+
+        ballList.add(up);
+        ballList.add(down);
+        ballList.add(left);
+        ballList.add(right);
+        ballList.add(left45);
+        ballList.add(negleft45);
+        ballList.add(right45);
+        ballList.add(negright45);
     }
 
-    public Color getBallColor(){
-        return color;
-    }
 
-    public float getLocY() {
-        return y;
+    private void setIX(){
+        x = p.random(size, sWidth - size);
     }
-
-    public float getBallSize() {
-        return size;
-    }
-
-    public void setWidth(float w){
-        sWidth = w;
-        x = random(size, sWidth - size);
-    }
-    public void setHeight(float h){
-        sHeight = h;
-        y = random(size, sHeight - size);
+    private void setIY(){
+        y = p.random(size, sWidth - size);
     }
 
 
+    public ArrayList<Ball> getBallList() {
+        return ballList;
+    }
+
+    public void clearBallList(){
+        ballList.clear();
+    }
+
+    /**
+     * Since every ball has to know about the PApplet,
+     * and since they all need a starting point (x and y).
+     * This method gives all balls that information.
+     * @param input - The PApplet exported from main class (MyApplet).
+     */
+    public void setPapp(PApplet input, Application app) {
+        for(Ball b : ballList){
+            b.p = input;
+            b.a = app;
+            b.sWidth = app.panel.getWidth();
+            b.sHeight = app.panel.getHeight();
+            b.setIX(); b.setIY();
+        }
+
+    }
 
 }

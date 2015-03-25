@@ -12,11 +12,13 @@ import javax.swing.*;
  */
 
 public class MyApplet extends PApplet implements ActionListener, ItemListener {
+    //An instance of class Application, used to utilize methods/attributes from class Application.
+    //Can be sent to other classes as parameter.
     public Application appInit = new Application();
     boolean pause = false;
     // Variables related to the "bouncing ball".
-    ArrayList<Ball> ballList;
     boolean ballbutton = false;
+    Ball ballInstance;
     boolean varBubblesButton = false;
     boolean pulseButton = false;
     boolean starzButton = false;
@@ -45,7 +47,6 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     //Declare the robot.
     aRobot Tormod;
     boolean killTormod;
-    int countforfun = 0;
     //Button for making random (auto generated art)
     boolean randomize;
     /////////////////////////////////////////////////////////////////////////
@@ -70,7 +71,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     public void setup() {
         size(screenSize.width - 200, screenSize.height);
         // Set up the bouncing balls.
-        ballList = new ArrayList<Ball>();
+        ballInstance = new Ball();
         // Set up the movers/vectors.
         movers = new ArrayList<Mover>();
         background(255);
@@ -106,10 +107,10 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
         if (!pause) {
             if (ballbutton) {
-                for (int i = 0; i < ballList.size(); i++) {
-                    Ball ball = ballList.get(i);
+                for (int i = 0; i < ballInstance.getBallList().size(); i++) {
+                    Ball ball = ballInstance.getBallList().get(i);
                     ball.move();
-                    display(ball);
+                    ball.display();
                 }
             }
 
@@ -384,7 +385,8 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
         String vColor = appInit.getVColor();
         if (evt.getActionCommand().equals("create ball")) {
-            createNewBall();
+            ballInstance.initializeBalls();
+            ballInstance.setPapp(this, appInit); // "Export" PApplet instance (from this class).
             ballbutton = true;
             pause = false;
         } else if (evt.getActionCommand().equals("create vector")) {
@@ -489,78 +491,6 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     }
 
     /**
-     * this method is called by the ActionListener assigned to
-     * the JButton buttonLoad in Application
-     */
-    public void loadBgImage(File selectedFile) {
-        bgImg = loadImage(selectedFile.getAbsolutePath());
-    }
-
-    /**
-     * Creates multiple balls, with various directions.
-     */
-    private void createNewBall() {
-        // X and Y speed to make the ball go in desired direction.
-        float xDir, yDir;
-        Ball up, down, left, right, left45, negleft45, right45, negright45;
-        // UP
-        xDir = 0;
-        yDir = -10;
-        up = new Ball(xDir, yDir);
-
-        // DOWN
-        xDir = 0;
-        yDir = 5;
-        down = new Ball(xDir, yDir);
-
-        // LEFT
-        xDir = -5;
-        yDir = 0;
-        left = new Ball(xDir, yDir);
-
-        // RIGHT
-        xDir = 5;
-        yDir = 0;
-        right = new Ball(xDir, yDir);
-
-        // 45 degrees left
-        xDir = -5;
-        yDir = -5;
-        left45 = new Ball(xDir, yDir);
-
-        // negative 45 degrees left
-        xDir = -5;
-        yDir = 5;
-        negleft45 = new Ball(xDir, yDir);
-
-        // 45 degrees right
-        xDir = 5;
-        yDir = -5;
-        right45 = new Ball(xDir, yDir);
-
-        // negative 45 degrees right
-        xDir = 5;
-        yDir = 5;
-        negright45 = new Ball(xDir, yDir);
-
-        ballList.add(up);
-        ballList.add(down);
-        ballList.add(left);
-        ballList.add(right);
-        ballList.add(left45);
-        ballList.add(negleft45);
-        ballList.add(right45);
-        ballList.add(negright45);
-
-        // Let class ball know what width and height we're working with.
-        for (Ball b : ballList) {
-            b.setWidth(width);
-            b.setHeight(height);
-        }
-        ballbutton = true; // Set to true, when button (create ball) is pressed.
-    }
-
-    /**
      * Creates a new instance of mover, adds it to array.
      */
     public void createNewMover() {
@@ -578,15 +508,10 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     public void clear() {
         background(255);
         movers.clear();
-        ballList.clear();
+        ballInstance.clearBallList();
     }
 
-    // Display methods!
-    public void display(Ball ball) {
-        stroke(ball.getBallColor().getRGB());
-        fill(ball.getBallColor().getRGB(), 120);
-        ellipse(ball.getLocX(), ball.getLocY(), ball.getBallSize(), ball.getBallSize());
-    }
+
 
     void vDisplay(Mover mov) {
         noStroke();
