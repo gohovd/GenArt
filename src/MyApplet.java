@@ -167,10 +167,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                     }
                     fill(255);
                     ellipse(mouseX, mouseY, 2, 2);
-
                 }
-
-
             }
             if (crossDotsButton) {
 
@@ -203,34 +200,8 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 }
             }
             if (starzButton) {
-
-                if (mousePressed == true && mouseButton == LEFT) {
-
-                    strokeWeight((float) 0.1);
-                    fill(random(255), random(255), random(255), 127);
-                    beginShape();
-                    vertex(mouseX, mouseY - 50);
-                    vertex(mouseX + 14, mouseY - 20);
-                    vertex(mouseX + 47, mouseY - 15);
-                    vertex(mouseX + 23, mouseY + 7);
-                    vertex(mouseX + 29, mouseY + 40);
-                    vertex(mouseX, mouseY + 25);
-                    vertex(mouseX - 29, mouseY + 40);
-                    vertex(mouseX - 23, mouseY + 7);
-                    vertex(mouseX - 47, mouseY - 15);
-                    vertex(mouseX - 14, mouseY - 20);
-                    endShape(CLOSE);
-                } else if (mousePressed == true && mouseButton == RIGHT) {
-                    strokeWeight((float) 0.1);
-                    fill(random(255), random(255), random(255), 127);
-                    beginShape();
-                    vertex(mouseX + 150, mouseY + 150);
-                    bezierVertex(mouseX + 150, mouseY + 120, mouseX + 100, mouseY + 120, mouseX + 100, mouseY + 150);
-                    bezierVertex(mouseX + 100, mouseY + 180, mouseX + 150, mouseY + 185, mouseX + 150, mouseY + 210);
-                    bezierVertex(mouseX + 150, mouseY + 185, mouseX + 200, mouseY + 180, mouseX + 200, mouseY + 150);
-                    bezierVertex(mouseX + 200, mouseY + 120, mouseX + 150, mouseY + 120, mouseX + 150, mouseY + 150);
-                    endShape();
-                }
+                StarShape st = new StarShape(this);
+                st.drawStars();
 
             }
             if (squarezButton) {
@@ -386,8 +357,8 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             ballbutton = true;
             pause = false;
         } else if (evt.getActionCommand().equals("create vector")) {
-            moverInstance.setPapp(this, appInit);
             moverInstance.createNewMover();
+            moverInstance.setPapp(this, appInit);
             vectorButton = true;
             pause = false;
         } else if (evt.getActionCommand().equals("randomize")) {

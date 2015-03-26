@@ -171,6 +171,7 @@ public class aRobot {
     }
 
     public void displayInstructions() throws InterruptedException, AWTException {
+        p.background(255);
         p.fill(210, 54, 65, 255);
         p.textSize(24);
         p.text("TORMOD IS ABOUT TO MAKE A MASTERPIECE...", cWidth/2-300, cHeight/2);

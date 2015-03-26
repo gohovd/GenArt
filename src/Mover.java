@@ -16,30 +16,27 @@ class Mover extends PApplet {
     float topspeed;
     float r = 10;
     float vWidth, vHeight;
-    float vR, vG, vB, vO;
     PApplet p;
     ArrayList<Mover> movers = new ArrayList();
 
     Mover() {
         location = new PVector(0, 0);
         velocity = new PVector(0, 0);
-        topspeed = 35;
+        topspeed = 22;
 
     }
 
-    public void setPapp(PApplet input, Application a){
-        p = input;
-        this.a = a;
+    public void setPapp(PApplet input, Application a) {
+        for(Mover m : movers){
+            m.p = input;
+            m.a = a;
+        }
+
     }
 
     void display() {
         p.noStroke();
-            vR = random(255);
-            vG = random(255);
-            vB = random(255);
-            vO = random(255);
-
-        p.fill(vR, vG, vB, vO);
+        p.fill(random(255), random(255), random(255), random(255));
         p.ellipse(location.x, location.y, random(15, 20), random(15, 20));
     }
 
@@ -111,6 +108,7 @@ class Mover extends PApplet {
     }
 
     public void setVecLocation(PVector loc) {
-        location = loc;
+        this.location.x = loc.x;
+        this.location.y = loc.y;
     }
 }
