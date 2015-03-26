@@ -21,7 +21,7 @@ public class aRobot {
     private int cWidth = instance.panel.getWidth();
     private int cHeight = instance.panel.getHeight();
     //Small pause/delay between mouse-press/-release etc.
-    private static final long delay = 500;
+    private static final long delay = 200;
     private static final long d = 10;
     //Instantiate a robot.
     public Robot r;
@@ -51,22 +51,15 @@ public class aRobot {
 
     }
 
-    public void displayInstructions() throws InterruptedException, AWTException {
-        p.fill(210, 54, 65, 255);
-        p.textSize(40);
-        p.text("THE ROBOT WILL SOON START TO DRAW", cWidth/2, cHeight/2);
-        p.textSize(32);
-        p.fill(110, 101, 104, 255);
-        p.text("Press 'Q' or shout at your computer to end session.", cWidth/2, cHeight/2+50);
-        Thread.sleep(3200);
-        p.background(255);
-    }
-
     private void clickRandomGUIButton() throws InterruptedException, AWTException {
         keys = new ArrayList();
         for (Object jb : buttons.keySet()) {
             String nameOfButton = jb.toString();
-            if(nameOfButton.contains("clearButton") || nameOfButton.contains("Randomize")) { // do nothing..
+            // here we add the buttons that we want the robot to ignore..
+            if(nameOfButton.contains("clearButton") ||
+                    nameOfButton.contains("Randomize") ||
+                    nameOfButton.contains("saveButton") ||
+                    nameOfButton.contains("strokeNColourButton")) { // do nothing..
             } else keys.add(nameOfButton);
         }
         int roulette = rand.nextInt(keys.size());
@@ -177,5 +170,14 @@ public class aRobot {
         motionsMade = 0;
     }
 
-
+    public void displayInstructions() throws InterruptedException, AWTException {
+        p.fill(210, 54, 65, 255);
+        p.textSize(40);
+        p.text("TORMOD IS ABOUT TO MAKE A MASTERPIECE...", cWidth/2-300, cHeight/2);
+        p.textSize(32);
+        p.fill(110, 101, 104, 255);
+        p.text("Press 'Q' or shout at your computer to end session.", cWidth/2-300, cHeight/2+50);
+        Thread.sleep(3200);
+        p.background(255);
+    }
 }

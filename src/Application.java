@@ -38,7 +38,7 @@ public class Application {
     // Gjør panel og buttonPanel public, for at roboten skal nå tak i info.
     public static JPanel panel, buttonPanel;
 
-    public static JButton vectorButton, clearButton, randomLinesButton, pulseButton, crossDotsButton, starzButton, squarezButton,  buttonCreate, varBubblesButton, trianglezButton, Randomize,strokeNColourButton, saveButton;
+    private static JButton vectorButton, clearButton, randomLinesButton, pulseButton, crossDotsButton, starzButton, squarezButton,  buttonCreate, varBubblesButton, trianglezButton, Randomize,strokeNColourButton, saveButton;
 
     public static HashMap<String, JButton> buttonMap = new HashMap();
 
@@ -187,24 +187,29 @@ frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" ful
         Randomize.setActionCommand("randomize");
         strokeNColourButton.setActionCommand("strokencolour");
 
+        //Add buttons to map. Name of button is key, while actual button is the value.
+        buttonMap.put("buttonCreate", buttonCreate);
+        buttonMap.put("vectorButton", vectorButton);
+        buttonMap.put("randomLinesButton", randomLinesButton);
+        buttonMap.put("varBubblesButton", varBubblesButton);
+        buttonMap.put("pulseButton", pulseButton);
+        buttonMap.put("crossDotsButton", crossDotsButton);
+        buttonMap.put("starzButton", starzButton);
+        buttonMap.put("squarezButton", squarezButton);
+        buttonMap.put("tranglezButton", trianglezButton);
+        buttonMap.put("strokeNColourButton", strokeNColourButton);
+        buttonMap.put("saveButton", saveButton);
+        buttonMap.put("Randomize", Randomize);
+        buttonMap.put("clearButton", clearButton);
 
-//button actions
-//the create button is simply linked to the applet
-//the action is executed inside applet.actionPerformed()
-        buttonCreate.addActionListener(applet);
-        vectorButton.addActionListener(applet);
-        clearButton.addActionListener(applet);
-        randomLinesButton.addActionListener(applet);
-        varBubblesButton.addActionListener(applet);
-        pulseButton.addActionListener(applet);
-        crossDotsButton.addActionListener(applet);
-        saveButton.addActionListener(applet);
-        starzButton.addActionListener(applet);
-        squarezButton.addActionListener(applet);
-        trianglezButton.addActionListener(applet);
-        Randomize.addActionListener(applet);
-        strokeNColourButton.addActionListener(applet);
 
+        //Iterate through entrySet, and set class Applet as action listener for every button.
+        for(Object button : buttonMap.keySet()){
+            String nameOfButton = button.toString();
+            JButton t = buttonMap.get(nameOfButton);
+            t.addActionListener(applet);
+        }
+        //Add item listener class.
         circular.addItemListener(applet);
         circular.setSelected(false);
         linear.addItemListener(applet);
@@ -212,10 +217,8 @@ frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" ful
         randomclr.addItemListener(applet);
         randomclr.setSelected(true);
 
-
-//store the two buttons in the button panel
+        //Add you button to the button-panel.
         buttonPanel.add(buttonCreate);
-
         buttonPanel.add(randomLinesButton);
         buttonPanel.add(vectorButton);
         buttonPanel.add(varBubblesButton);
@@ -226,25 +229,10 @@ frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" ful
         buttonPanel.add(trianglezButton);
         buttonPanel.add(strokeNColourButton);
         buttonPanel.add(saveButton);
-
+        //Also add buttons/radio-buttons/check-boxes.
         buttonPanel.add(randomclr); buttonPanel.add(linear); buttonPanel.add(circular);
         buttonPanel.add(vColorField);
         buttonPanel.add(Randomize); buttonPanel.add(clearButton);
-
-        //Add buttons to map. Name of button is key, while actual button is the value.
-        buttonMap.put("buttonCreate", buttonCreate);
-        buttonMap.put("vectorButton", vectorButton);
-        buttonMap.put("randomLinesButton", randomLinesButton);
-        buttonMap.put("varBubblesButton", varBubblesButton);
-        buttonMap.put("pulseButton", pulseButton);
-        buttonMap.put("crossDotsButton", crossDotsButton);
-        buttonMap.put("starzButton", starzButton);
-        buttonMap.put("tranglezButton", trianglezButton);
-        //buttonMap.put("strokeNColourButton", strokeNColourButton);
-        //buttonMap.put("saveButton", saveButton);
-        buttonMap.put("Randomize", Randomize);
-        buttonMap.put("clearButton", clearButton);
-
 
 //store the applet in panel
         panel.add(applet);
