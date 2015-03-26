@@ -67,6 +67,9 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     boolean takepic = false;
     boolean kukk = false;
     int count = 0;
+    //////////////////////////////////////////// filterButton
+    boolean filterButton = false;
+    PGraphics pg2;
 ///////////////////////////////////////////////////////////////////////////
 
     public void setup() {
@@ -80,6 +83,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         Tormod.setPapp(this); // "Export" PApplet instance (from this class).
         ////////////setup for save funksjon///////////////////////////////
         pg = createGraphics(200, 200);//størrelse på boxa
+        pg2 = createGraphics(200, 200); //filterbox
         f = createFont("Arial", 16, true);//gir f en font og størrelse
         // Set the font and fill for text
         textFont(f);
@@ -161,7 +165,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             if (saveButton) {
 
 
-                if(kukk == false ) {
+                if (kukk == false) {
 
                     pg.beginDraw();
                     if (takepic == false) {
@@ -184,13 +188,38 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 }
 
             }
+            if (filterButton) {
+                pg2.beginDraw();
+                //må fixe teksten
+                pg2.background(255, 255, 0);
+                pg2.stroke(255);
+
+                pg2.text("forr filters, bruk nr tastene: \n 1: THRESHOLD1 = black and white \n 2: GRAY1 = grayscale \n 3: OPAQUE1 = alpha \n 4: INVERT1 = invert \n 5: POSTERIZE1 = blablabla \n 6: BLUR1 = blur \n 7: ERODE1 = bla bla \n 8: DILATE1 = bla bla \n" ,0,0);
+                pg2.fill(0, 0, 0);
+                pg2.endDraw();
+                image(pg2, 0, 0);
+
+                ;
+            }
         }
     }
 
     ///////////////////Funksjoner for save funksjon/////////////////////////////////
     //////Kan legge til keyPressed events generelt. If key == 'x', do whatever//////
     public void keyPressed() {
-        if(key == 'q') { killTormod = true; Tormod.end(); randomize = false; }
+        if(key == '1') {
+            filter(THRESHOLD);
+            pg2.beginDraw();
+            pg2.clear();
+            pg2.endDraw();
+            filterButton = false;
+        }
+
+        if (key == 'q') {
+            killTormod = true;
+            Tormod.end();
+            randomize = false;
+        }
         // If the return key is pressed, save the String and clear it
         if (key == '\n') {
             saved = typing;
@@ -202,7 +231,6 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                     saved = saved.substring(0, dotPos);
 
                 image(c, width - 200, height - 200);
-
                 save();
 
                 pg.beginDraw();
@@ -210,7 +238,6 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 pg.endDraw();
                 takepic = false;
                 saveButton = false;
-
 
 
             }
@@ -233,8 +260,8 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             // Each character typed by the user is added to the end of the String variable.
             typing = typing + key;
         }
-    }
 
+    }
     void save() {
         String desktopPath = System.getProperty("user.home") + "/Desktop/";
         save(desktopPath + saved + ".jpg");
@@ -244,6 +271,9 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         String desktopPath = System.getProperty("user.home") + "/Desktop/";
         save(desktopPath + saved + ".png");
     }
+
+
+
     ///////////////////funksjoner for save funksjon SLUTT/////////////////////////////////
 
     /**
@@ -318,7 +348,12 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             appInit.setStrokeSize(2);
             System.out.println(appInit.getStrokeSize());
             ColorChooser color = new ColorChooser();
-        } else {
+        }
+        else if (evt.getActionCommand().equals("filter")) {
+            filterButton = true;
+            pause = false;
+        }
+        else {
             println("actionPerformed(): can't handle " + evt.getActionCommand());
         }
         pause = false;

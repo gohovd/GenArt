@@ -38,7 +38,7 @@ public class Application {
     // Gjør panel og buttonPanel public, for at roboten skal nå tak i info.
     public static JPanel panel, buttonPanel;
 
-    private static JButton vectorButton, clearButton, randomLinesButton, pulseButton, crossDotsButton, starzButton, squarezButton,  buttonCreate, varBubblesButton, trianglezButton, Randomize,strokeNColourButton, saveButton;
+    private static JButton vectorButton, clearButton, randomLinesButton, pulseButton, crossDotsButton, starzButton, squarezButton,  buttonCreate, varBubblesButton, trianglezButton, Randomize,strokeNColourButton, saveButton, filterButton;
 
     public static HashMap<String, JButton> buttonMap = new HashMap();
 
@@ -106,6 +106,7 @@ frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" ful
         clearButton = new JButton("Clear");
         Randomize = new JButton("Randomize");
         saveButton = new JButton("Save");
+        filterButton = new JButton("Filters");
 
         ImageIcon imageForrandomLinesButton = new ImageIcon("images/rndlines.png");
         randomLinesButton = new JButton("", imageForrandomLinesButton);
@@ -159,6 +160,7 @@ frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" ful
         buttonCreate.setToolTipText("creates a new ball ");
         vectorButton.setToolTipText("creates a new vector");
         clearButton.setToolTipText("clears the screen");
+        filterButton.setToolTipText("add a filter");
         randomLinesButton.setToolTipText("creates random lines");
         varBubblesButton.setToolTipText("Draws random size bubbles depending on mouse speed");
         pulseButton.setToolTipText("Pulsing");
@@ -179,6 +181,7 @@ frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" ful
         buttonCreate.setActionCommand("create ball");
         vectorButton.setActionCommand("create vector");
         clearButton.setActionCommand("clear");
+        filterButton.setActionCommand("filter");
         randomLinesButton.setActionCommand("randomLines");
         varBubblesButton.setActionCommand("varBubbles");
         pulseButton.setActionCommand("pulse");
@@ -204,6 +207,7 @@ frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" ful
         buttonMap.put("saveButton", saveButton);
         buttonMap.put("Randomize", Randomize);
         buttonMap.put("clearButton", clearButton);
+        buttonMap.put("filterButton", filterButton);
 
 
         //Iterate through entrySet, and set class Applet as action listener for every button.
@@ -235,7 +239,7 @@ frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" ful
         //Also add buttons/radio-buttons/check-boxes.
         buttonPanel.add(randomclr); buttonPanel.add(linear); buttonPanel.add(circular);
         buttonPanel.add(vColorField);
-        buttonPanel.add(Randomize); buttonPanel.add(clearButton);
+        buttonPanel.add(Randomize); buttonPanel.add(clearButton); buttonPanel.add(filterButton);
         buttonPanel.add(saveButton);
 
 //store the applet in panel
