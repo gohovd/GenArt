@@ -64,6 +64,8 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     String desktopPath = System.getProperty("user.home") + "/Desktop";
     boolean win = false;
     boolean takepic = false;
+    boolean kukk = false;
+    int count = 0;
 ///////////////////////////////////////////////////////////////////////////
 
     public void setup() {
@@ -81,6 +83,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         // Set the font and fill for text
         textFont(f);
         fill(0);
+
         //////////////////setup for save funksjon slutt////////////////////
     }
 
@@ -255,44 +258,30 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             if (strokeNColourButton) {
             }
             if (saveButton) {
-/*
-                if(win == false) {
-                    JFrame aWindow = new JFrame("This is the Window Title");
-                    int windowWidth = 200;           // Window width in pixels
-                    int windowHeight = 200;          // Window height in pixels
-                    aWindow.setBounds(width/2, height/2-100,       // Set position
-                            windowWidth, windowHeight);  // and size
-                    /////////////////////////////////////////////////////////////
 
-                    /////////////////////////////////////////////////////////////
 
-                    aWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                    aWindow.setVisible(true);        // Display the window
-                win = true;
+                if(kukk == false ) {
+
+                    pg.beginDraw();
+                    if (takepic == false) {
+                        c = get(width - 200, height - 200, 200, 200);
+
+                        takepic = true;
+
+                    }
+                    pg.background(255, 255, 0);
+                    pg.stroke(255);
+                    pg.text("skriv ditt ønskede filnavn. \nF.EKS: \n'minFil.jpg' \neller \n'mittBilde.PNG'", indent, 40);
+                    pg.fill(0, 0, 0);
+                    pg.text(typing, indent, 120);
+
+                    pg.endDraw();
+
+
+                    image(pg, width - 200, height - 200);
+
                 }
-                //putte dette i en jframe!!!!!!!!!!!!!!!!
-  */
-                pg.beginDraw();
-                if (takepic == false) {
-                    c = get(width - 200, height - 200, 200, 200);
-                    //c.save("temp.jpg");
-                    takepic = true;
-                    //if pause == true/false
-                    //set takepic false
-                }
-                pg.background(255, 255, 0);
-                pg.stroke(255);
-                pg.text("skriv ditt ønskede filnavn. \nF.EKS: \n'minFil.jpg' \neller \n'mittBilde.PNG'", indent, 40);
-                pg.fill(0, 0, 0);
-                pg.text(typing, indent, 120);
-                //if(saved.contains(".jpg")||saved.contains(".png")){
-                //pg.text(saved+" er nå lagret",indent,130);
-                //}
-                pg.endDraw();
-                //image(pg, pg.width/0.17, pg.height/0.4);
-                image(pg, width - 200, height - 200);
-                //image(c,mouseX,mouseY);
-                //image(c ,mouseX, mouseY);
+
             }
         }
     }
@@ -327,18 +316,33 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 int dotPos = saved.lastIndexOf(".");
                 if (dotPos > 0)
                     saved = saved.substring(0, dotPos);
-                pg.beginDraw();
-                //pg.background(255, 255, 255);
-                pg.stroke(255);
+
                 image(c, width - 200, height - 200);
-                pg.endDraw();
+
                 save();
+
+                pg.beginDraw();
+                pg.image(c, 0, 0);
+                pg.endDraw();
+                takepic = false;
+                saveButton = false;
+
+
+
             }
             if (saved.contains("PNG") || saved.contains("Png") || saved.contains("png")) {
                 int dotPos = saved.lastIndexOf(".");
                 if (dotPos > 0)
                     saved = saved.substring(0, dotPos);
-                save2();
+                image(c, width - 200, height - 200);
+
+                save();
+
+                pg.beginDraw();
+                pg.image(c, 0, 0);
+                pg.endDraw();
+                takepic = false;
+                saveButton = false;
             }
         } else {
             // Otherwise, concatenate the String
