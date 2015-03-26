@@ -60,8 +60,8 @@
       <file leaf-file-name="MyApplet.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MyApplet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.44262296" vertical-offset="5584" max-vertical-offset="8296">
-              <caret line="338" column="21" selection-start-line="338" selection-start-column="21" selection-end-line="338" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.6854599" vertical-offset="4869" max-vertical-offset="8296">
+              <caret line="300" column="30" selection-start-line="300" selection-start-column="30" selection-end-line="300" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -716,7 +716,13 @@
       <option name="project" value="LOCAL" />
       <updated>1427396045457</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="save i orden">
+      <created>1427396242670</created>
+      <option name="number" value="00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1427396242670</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1293,8 +1299,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MyApplet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44262296" vertical-offset="5584" max-vertical-offset="8296">
-          <caret line="338" column="21" selection-start-line="338" selection-start-column="21" selection-end-line="338" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.6854599" vertical-offset="4869" max-vertical-offset="8296">
+          <caret line="300" column="30" selection-start-line="300" selection-start-column="30" selection-end-line="300" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

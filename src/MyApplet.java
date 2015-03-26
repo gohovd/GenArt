@@ -298,7 +298,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         y2 = random(mouseY - random(60, 80), mouseY + random(80, 100));
         x3 = random(mouseX - random(60, 80), mouseX + random(80, 100));
         y3 = random(mouseY - random(60, 80), mouseY + random(80, 100));
-        strokeWeight((float) 0.1);
+        strokeWeight((float) 2);
         fill(random(255), random(255), random(255), 127);
         triangle(x1, y1, x2, y2, x3, y3);
     }
