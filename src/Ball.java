@@ -20,7 +20,7 @@ class Ball {
     Ball(float xDir, float yDir) {
         this.speedX = xDir;
         this.speedY = yDir;
-        this.size = 5;
+        this.size =10;
     }
 
     public void move() {

@@ -105,6 +105,7 @@ frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" ful
 
         clearButton = new JButton("Clear");
         Randomize = new JButton("Randomize");
+        saveButton = new JButton("Save");
 
         ImageIcon imageForrandomLinesButton = new ImageIcon("images/rndlines.png");
         randomLinesButton = new JButton("", imageForrandomLinesButton);
@@ -147,10 +148,12 @@ frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" ful
         strokeNColourButton.setBackground(Color.white);
         strokeNColourButton.setPreferredSize(new Dimension(90, 90));
 
+        /*
         ImageIcon imageForSaveFunctions = new ImageIcon("images/crossdots.png");
         saveButton = new JButton("", imageForSaveFunctions);
         saveButton.setBackground(Color.white);
         saveButton.setPreferredSize(new Dimension(90, 90));
+        */
 
 //assing a tooltip
         buttonCreate.setToolTipText("creates a new ball ");
@@ -228,11 +231,12 @@ frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" ful
         buttonPanel.add(squarezButton);
         buttonPanel.add(trianglezButton);
         buttonPanel.add(strokeNColourButton);
-        buttonPanel.add(saveButton);
+
         //Also add buttons/radio-buttons/check-boxes.
         buttonPanel.add(randomclr); buttonPanel.add(linear); buttonPanel.add(circular);
         buttonPanel.add(vColorField);
         buttonPanel.add(Randomize); buttonPanel.add(clearButton);
+        buttonPanel.add(saveButton);
 
 //store the applet in panel
         panel.add(applet);
