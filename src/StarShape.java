@@ -13,7 +13,7 @@ public class StarShape {
     }
 
     public void drawStars() {
-        if (p.mousePressed == true && p.mouseButton == p.LEFT) {
+        if (p.mousePressed == true) {
             p.strokeWeight((float) 0.1);
             p.fill(p.random(255), p.random(255), p.random(255), 127);
             p.beginShape();
@@ -28,7 +28,11 @@ public class StarShape {
             p.vertex(p.mouseX - 47, p.mouseY - 15);
             p.vertex(p.mouseX - 14, p.mouseY - 20);
             p.endShape(p.CLOSE);
-        } else if (p.mousePressed == true && p.mouseButton == p.RIGHT) {
+        }
+    }
+
+    public void drawHearts(){
+        if (p.mousePressed == true) {
             p.strokeWeight((float) 0.1);
             p.fill(p.random(255), p.random(255), p.random(255), 127);
             p.beginShape();

@@ -145,6 +145,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             if (starzButton) {
                 StarShape st = new StarShape(this);
                 st.drawStars();
+                //st.drawHearts();
 
             }
             if (squarezButton) {
@@ -267,12 +268,12 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             ballInstance.initializeBalls();
             ballInstance.setPapp(this, appInit); // "Export" PApplet instance (from this class).
             ballbutton = true;
-            pause = false;
+            
         } else if (evt.getActionCommand().equals("create vector")) {
             moverInstance.createNewMover();
             moverInstance.setPapp(this, appInit);
             vectorButton = true;
-            pause = false;
+            
         } else if (evt.getActionCommand().equals("randomize")) {
             try {
                 Tormod.displayInstructions();
@@ -284,51 +285,43 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             }
             randomize = true;
             killTormod = false;
-            pause = false;
+            
         } else if (evt.getActionCommand().equals("clear")) {
             clear();
-            pause = true;
+
         } else if (evt.getActionCommand().equals("randomLines")) {
             randomLineButton = true;
-            pause = false;
 
         } else if (evt.getActionCommand().equals("varBubbles")) {
             varBubblesButton = true;
-            pause = false;
 
         } else if (evt.getActionCommand().equals("pulse")) {
             pulseButton = true;
-            pause = false;
 
         } else if (evt.getActionCommand().equals("crossDots")) {
             crossDotsButton = true;
-            pause = false;
 
         } else if (evt.getActionCommand().equals("save")) {
             saveButton = true;
-            pause = false;
 
         } else if (evt.getActionCommand().equals("starz")) {
             starzButton = true;
-            pause = false;
 
         } else if (evt.getActionCommand().equals("squarez")) {
             squarezButton = true;
-            pause = false;
 
         } else if (evt.getActionCommand().equals("trianglez")) {
             trianglezButton = true;
-            pause = false;
 
         } else if (evt.getActionCommand().equals("strokencolour")) {
             strokeNColourButton = true;
             appInit.setStrokeSize(2);
             System.out.println(appInit.getStrokeSize());
-            pause = false;
             ColorChooser color = new ColorChooser();
         } else {
             println("actionPerformed(): can't handle " + evt.getActionCommand());
         }
+        pause = false;
     }
 
     public void itemStateChanged(ItemEvent e) {
