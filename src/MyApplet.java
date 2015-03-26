@@ -21,6 +21,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
     PulseShape pu = new PulseShape(this);
     CrossShape cr = new CrossShape(this);
+    StarShape st = new StarShape(this);
 
     boolean ballbutton = false;
     Ball ballInstance;
@@ -31,6 +32,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     boolean squarezButton = false;
     boolean trianglezButton = false;
     boolean strokeNColourButton = false;
+    boolean heartButton = false;
     // Variables related to the mover/vector.
     boolean vectorButton = false;
     int vStep = 0; // When steps, do something different.
@@ -147,10 +149,10 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 cr.drawCross();
             }
             if (starzButton) {
-                StarShape st = new StarShape(this);
                 st.drawStars();
-                //st.drawHearts();
-
+            }
+            if (heartButton){
+                st.drawHearts();
             }
             if (squarezButton) {
                 SquareShape sq = new SquareShape(this);
@@ -293,6 +295,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         starzButton = false;
         squarezButton = false;
         trianglezButton = false;
+        heartButton = false;
 
         if (evt.getActionCommand().equals("create ball")) {
             ballInstance.initializeBalls();
@@ -336,6 +339,9 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
         } else if (evt.getActionCommand().equals("starz")) {
             starzButton = true;
+
+        }else if (evt.getActionCommand().equals("heartz")) {
+            heartButton = true;
 
         } else if (evt.getActionCommand().equals("squarez")) {
             squarezButton = true;

@@ -38,7 +38,9 @@ public class Application {
     // Gjør panel og buttonPanel public, for at roboten skal nå tak i info.
     public static JPanel panel, buttonPanel;
 
-    private static JButton vectorButton, clearButton, randomLinesButton, pulseButton, crossDotsButton, starzButton, squarezButton,  buttonCreate, varBubblesButton, trianglezButton, Randomize,strokeNColourButton, saveButton, filterButton;
+    private static JButton vectorButton, clearButton, randomLinesButton, pulseButton, crossDotsButton,
+            starButton, heartButton, squarezButton,  buttonCreate, varBubblesButton, trianglezButton,
+            Randomize,strokeNColourButton, filterButton, saveButton;
 
     public static HashMap<String, JButton> buttonMap = new HashMap();
 
@@ -129,10 +131,15 @@ frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" ful
         crossDotsButton.setBackground(Color.white);
         crossDotsButton.setPreferredSize(new Dimension(90, 90));
 
-        ImageIcon imageForstarzButton = new ImageIcon("images/starz.png");
-        starzButton = new JButton("", imageForstarzButton);
-        starzButton.setBackground(Color.white);
-        starzButton.setPreferredSize(new Dimension(90, 90));
+        ImageIcon imageForStarButton = new ImageIcon("images/star.png");
+        starButton = new JButton("", imageForStarButton);
+        starButton.setBackground(Color.white);
+        starButton.setPreferredSize(new Dimension(42, 90));
+
+        ImageIcon imageForHeartButton = new ImageIcon("images/heart.png");
+        heartButton = new JButton("", imageForHeartButton);
+        heartButton.setBackground(Color.white);
+        heartButton.setPreferredSize(new Dimension(42, 90));
 
         ImageIcon imageForsquarezButton = new ImageIcon("images/squarez.png");
         squarezButton = new JButton("", imageForsquarezButton);
@@ -166,7 +173,8 @@ frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" ful
         pulseButton.setToolTipText("Pulsing");
         crossDotsButton.setToolTipText("Draws dots in cross formation");
         saveButton.setToolTipText("Draws dots in cross formation");
-        starzButton.setToolTipText("Draws stars as you drag your mouse");
+        starButton.setToolTipText("Draws stars as you drag your mouse");
+        heartButton.setToolTipText("Draw hearts.");
         squarezButton.setToolTipText("Draws squares as you drag your mouse");
         trianglezButton.setToolTipText("Draws triangles as you drag your mouse");
         strokeNColourButton.setToolTipText("Choose stroke size and colours");
@@ -187,7 +195,8 @@ frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" ful
         pulseButton.setActionCommand("pulse");
         crossDotsButton.setActionCommand("crossDots");
         saveButton.setActionCommand("save");
-        starzButton.setActionCommand("starz");
+        starButton.setActionCommand("starz");
+        heartButton.setActionCommand("heartz");
         squarezButton.setActionCommand("squarez");
         trianglezButton.setActionCommand("trianglez");
         Randomize.setActionCommand("randomize");
@@ -200,7 +209,8 @@ frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" ful
         buttonMap.put("varBubblesButton", varBubblesButton);
         buttonMap.put("pulseButton", pulseButton);
         buttonMap.put("crossDotsButton", crossDotsButton);
-        buttonMap.put("starzButton", starzButton);
+        buttonMap.put("starButton", starButton);
+        buttonMap.put("heartButton", heartButton);
         buttonMap.put("squarezButton", squarezButton);
         buttonMap.put("tranglezButton", trianglezButton);
         buttonMap.put("strokeNColourButton", strokeNColourButton);
@@ -231,8 +241,7 @@ frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" ful
         buttonPanel.add(varBubblesButton);
         buttonPanel.add(pulseButton);
         buttonPanel.add(crossDotsButton);
-        buttonPanel.add(starzButton);
-        buttonPanel.add(squarezButton);
+        buttonPanel.add(starButton); buttonPanel.add(heartButton); buttonPanel.add(squarezButton);
         buttonPanel.add(trianglezButton);
         buttonPanel.add(strokeNColourButton);
 
