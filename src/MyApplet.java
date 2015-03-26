@@ -17,6 +17,11 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     public Application appInit = new Application();
     boolean pause = false;
     // Variables related to the "bouncing ball".
+
+
+    PulseShape pu = new PulseShape(this);
+    CrossShape cr = new CrossShape(this);
+
     boolean ballbutton = false;
     Ball ballInstance;
     Mover moverInstance;
@@ -26,8 +31,6 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     boolean squarezButton = false;
     boolean trianglezButton = false;
     boolean strokeNColourButton = false;
-    //variables for triangles
-    float x1, y1, x2, y2, x3, y3;
     // Variables related to the mover/vector.
     boolean vectorButton = false;
     int vStep = 0; // When steps, do something different.
@@ -41,7 +44,6 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     boolean beenHereBefore = false;
     PVector mouse;
     boolean randomLineButton = false;
-    int pulseAngle = 0;
     //Declare the robot.
     aRobot Tormod;
     boolean killTormod;
@@ -49,8 +51,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     boolean randomize;
     /////////////////////////////////////////////////////////////////////////
     boolean crossDotsButton = false;
-    int i = 0; //variabler for crossdots
-    boolean q = false;//variabler for crossdots
+
     /////////////////////////////////////////////////////////////////////////
     boolean saveButton = false;
     PGraphics pg;//SaveBox
@@ -128,76 +129,18 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 }
             }
             if (randomLineButton) {
-
-                if (mousePressed && (mouseButton == LEFT)) {
-                    strokeWeight(random(3, 8));
-                    stroke(random(0, 255), random(0, 255), random(0, 255), random(0, 255));
-                    line(mouseX - random(-100, 100), mouseY, mouseX + random(-100, 100), mouseY);
-                } else if (mousePressed && (mouseButton == RIGHT)) {
-                    strokeWeight(random(3, 8));
-                    stroke(random(0, 255), random(0, 255), random(0, 255), random(0, 255));
-                    line(mouseX, mouseY - random(-100, 100), mouseX, mouseY + random(-100, 100));
-                }
+                LineShape li = new LineShape(this);
+                li.drawLines();
             }
             if (varBubblesButton) {
-                if (mousePressed == true) {
-                    int x = mouseX;
-                    int y = mouseY;
-                    int px = pmouseX;
-                    int py = pmouseY;
-
-                    float speed = abs(x - px) + abs(y - py);
-                    stroke(speed);
-                    ellipse(x, y, speed, speed);
-                }
-
+                BubbleShape bu = new BubbleShape(this);
+                bu.drawBubbles();
             }
             if (pulseButton) {
-
-                if (mousePressed == true) {
-
-                    pulseAngle += 5;
-
-                    float val = (float) (cos(radians(pulseAngle)) * 12.0);
-                    for (int a = 0; a < 360; a += 75) {
-                        float xoff = cos(radians(a)) * val;
-                        float yoff = sin(radians(a)) * val;
-                        fill(random(0, 255), random(0, 255), random(0, 255), random(0, 255));
-                        ellipse(mouseX + xoff, mouseY + yoff, val, val);
-                    }
-                    fill(255);
-                    ellipse(mouseX, mouseY, 2, 2);
-                }
+                pu.drawPulse();
             }
             if (crossDotsButton) {
-
-                if (mousePressed && (mouseButton == LEFT)) {
-                    if (i >= 0 && q == false) {
-                        i += 1;
-                    }
-                    ellipse(mouseX + i, mouseY, 10, 10);
-                    ellipse(mouseX - i, mouseY, 10, 10);
-                    ellipse(mouseX, mouseY + i, 10, 10);
-                    ellipse(mouseX, mouseY - i, 10, 10);
-                    for (int i = 0; i < 100; i++) {
-                        float r = random(0, 255);
-                        float g = random(0, 255);
-                        float b = random(0, 255);
-                        noStroke();
-                        fill(r, g, b);
-                    }
-                    if (i == 100) {
-                        q = true;
-
-                    }
-                    if (q == true) {
-                        i -= 1;
-                    }
-
-                    if (i == 0) {
-                        q = false;
-                    }
-                }
+                cr.drawCross();
             }
             if (starzButton) {
                 StarShape st = new StarShape(this);
@@ -205,26 +148,12 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
             }
             if (squarezButton) {
-
-                if (mousePressed == true && mouseButton == LEFT) {
-                    strokeWeight((float) 0.1);
-                    fill(random(255), random(255), random(255), 127);
-                    rect(mouseX - 25, mouseY - 25, 100, 100);
-                }
-
-                if (mousePressed == true && mouseButton == RIGHT) {
-                    strokeWeight((float) 0.1);
-                    fill(random(255), random(255), random(255), 127);
-                    rect(mouseX, mouseY, 100, 100);
-                    rect();
-                }
-
+                SquareShape sq = new SquareShape(this);
+                sq.drawSquares();
             }
             if (trianglezButton) {
-
-                if (mousePressed == true) {
-                    drawTriz();
-                }
+                TriangleShape tr = new TriangleShape(this);
+                tr.drawTriangles();
             }
             if (strokeNColourButton) {
             }
@@ -255,23 +184,6 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
             }
         }
-    }
-
-    void rect() {
-        fill(255, 255, 255, 200);
-        rect(mouseX + 10, mouseY + 10, 80, 80);
-    }
-
-    void drawTriz() {
-        x1 = random(mouseX - random(80, 100), mouseX + random(80, 100));
-        y1 = random(mouseY - random(80, 100), mouseY + random(80, 100));
-        x2 = random(mouseX - random(60, 80), mouseX + random(80, 100));
-        y2 = random(mouseY - random(60, 80), mouseY + random(80, 100));
-        x3 = random(mouseX - random(60, 80), mouseX + random(80, 100));
-        y3 = random(mouseY - random(60, 80), mouseY + random(80, 100));
-        strokeWeight((float) 2);
-        fill(random(255), random(255), random(255), 127);
-        triangle(x1, y1, x2, y2, x3, y3);
     }
 
     ///////////////////Funksjoner for save funksjon/////////////////////////////////
