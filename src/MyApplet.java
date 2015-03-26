@@ -336,7 +336,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                     saved = saved.substring(0, dotPos);
                 image(c, width - 200, height - 200);
 
-                save();
+                save2();
 
                 pg.beginDraw();
                 pg.image(c, 0, 0);
