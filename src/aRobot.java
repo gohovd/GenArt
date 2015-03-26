@@ -172,9 +172,9 @@ public class aRobot {
 
     public void displayInstructions() throws InterruptedException, AWTException {
         p.fill(210, 54, 65, 255);
-        p.textSize(40);
+        p.textSize(24);
         p.text("TORMOD IS ABOUT TO MAKE A MASTERPIECE...", cWidth/2-300, cHeight/2);
-        p.textSize(32);
+        p.textSize(28);
         p.fill(110, 101, 104, 255);
         p.text("Press 'Q' or shout at your computer to end session.", cWidth/2-300, cHeight/2+50);
         Thread.sleep(3200);
