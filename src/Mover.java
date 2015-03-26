@@ -1,5 +1,6 @@
 import processing.core.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * Second inner class 'Mover'. Makes something
@@ -8,18 +9,45 @@ import java.awt.*;
  */
 class Mover extends PApplet {
 
+    private static Application a;
     PVector location;
     PVector velocity;
     PVector acceleration;
     float topspeed;
     float r = 10;
     float vWidth, vHeight;
+    float vR, vG, vB, vO;
+    PApplet p;
+    ArrayList<Mover> movers = new ArrayList();
 
     Mover() {
         location = new PVector(0, 0);
         velocity = new PVector(0, 0);
         topspeed = 35;
 
+    }
+
+    public void setPapp(PApplet input, Application a){
+        p = input;
+        this.a = a;
+    }
+
+    void display() {
+        p.noStroke();
+            vR = random(255);
+            vG = random(255);
+            vB = random(255);
+            vO = random(255);
+
+        p.fill(vR, vG, vB, vO);
+        p.ellipse(location.x, location.y, random(15, 20), random(15, 20));
+    }
+
+    public void createNewMover() {
+        Mover nMov = new Mover();
+        nMov.width = a.panel.getWidth();
+        nMov.vHeight = a.panel.getHeight();
+        movers.add(nMov);
     }
 
     void update(int choice) {
@@ -74,14 +102,12 @@ class Mover extends PApplet {
         return location;
     }
 
-    public void setWidth(float w) {
-        vWidth = w;
-        location.x = vWidth / 2;
+    public ArrayList<Mover> getMovers() {
+        return movers;
     }
 
-    public void setHeight(float h) {
-        vHeight = h;
-        location.y = vHeight / 2;
+    public void clearMovers(){
+        movers.clear();
     }
 
     public void setVecLocation(PVector loc) {

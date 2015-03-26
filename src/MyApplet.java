@@ -19,6 +19,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     // Variables related to the "bouncing ball".
     boolean ballbutton = false;
     Ball ballInstance;
+    Mover moverInstance;
     boolean varBubblesButton = false;
     boolean pulseButton = false;
     boolean starzButton = false;
@@ -28,15 +29,12 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     //variables for triangles
     float x1, y1, x2, y2, x3, y3;
     // Variables related to the mover/vector.
-    ArrayList<Mover> movers;
     boolean vectorButton = false;
     int vStep = 0; // When steps, do something different.
     // Variable holding the background image.
     PImage bgImg = null;
     // Defining the applets screen size (-300 to make room for toolbar).
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    //RGB and Opacity for vector.
-    float vR, vG, vB, vO;
     //Boolean controlling whether the vectors move linearly or circularly.
     //Also controlling whether the user wants random colored vectors.
     boolean circular, linear, randomclr;
@@ -73,13 +71,8 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         // Set up the bouncing balls.
         ballInstance = new Ball();
         // Set up the movers/vectors.
-        movers = new ArrayList<Mover>();
+        moverInstance = new Mover();
         background(255);
-        // Default vector color (black).
-        vR = 0;
-        vG = 0;
-        vB = 0;
-        vO = 255;
         Tormod = new aRobot(); // Instantiate the robot.
         Tormod.setPapp(this); // "Export" PApplet instance (from this class).
         ////////////setup for save funksjon///////////////////////////////
@@ -117,8 +110,8 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             if (vectorButton && mousePressed) {
                 //Choice determines motion pattern (1: circular,  2: linear)
                 int choice = 1;
-                for (int i = 0; i < movers.size(); i++) {
-                    Mover mover = movers.get(i);
+                for (int i = 0; i < moverInstance.getMovers().size(); i++) {
+                    Mover mover = moverInstance.getMovers().get(i);
                     mouse = new PVector(mouseX, mouseY);
                     mover.setVecLocation(mouse);
                     if (circular) {
@@ -128,7 +121,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                         choice = 2;
                     }
                     mover.update(choice);
-                    vDisplay(mover);
+                    mover.display();
                 }
             }
             if (randomLineButton) {
@@ -383,14 +376,15 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         squarezButton = false;
         trianglezButton = false;
 
-        String vColor = appInit.getVColor();
         if (evt.getActionCommand().equals("create ball")) {
             ballInstance.initializeBalls();
             ballInstance.setPapp(this, appInit); // "Export" PApplet instance (from this class).
             ballbutton = true;
             pause = false;
         } else if (evt.getActionCommand().equals("create vector")) {
-            createNewMover();
+            moverInstance.setPapp(this, appInit);
+            moverInstance.createNewMover();
+            vectorButton = true;
             pause = false;
         } else if (evt.getActionCommand().equals("randomize")) {
             try {
@@ -407,22 +401,6 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         } else if (evt.getActionCommand().equals("clear")) {
             clear();
             pause = true;
-        } else if (!vColor.isEmpty()) {
-            ArrayList<String> clrs = new ArrayList<String>();
-            if (!clrs.isEmpty()) {
-                clrs.clear();
-            }
-            if (clrs.isEmpty()) {
-                String[] separate = vColor.split(" ");
-                for (String c : separate) {
-                    clrs.add(c);
-                }
-                vR = Float.parseFloat(clrs.get(0));
-                vG = Float.parseFloat(clrs.get(1));
-                vB = Float.parseFloat(clrs.get(2));
-                vO = Float.parseFloat(clrs.get(3));
-            }
-            randomclr = false;
         } else if (evt.getActionCommand().equals("randomLines")) {
             randomLineButton = true;
             pause = false;
@@ -491,38 +469,11 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     }
 
     /**
-     * Creates a new instance of mover, adds it to array.
-     */
-    public void createNewMover() {
-        Mover nMov = new Mover();
-        // Let class mover know what width and height we're working with.
-        nMov.setWidth(width);
-        nMov.setHeight(height);
-        movers.add(nMov);
-        vectorButton = true; // Set to true, when button (create vector) is pressed.
-    }
-
-    /**
      * Clear the screen.
      */
     public void clear() {
         background(255);
-        movers.clear();
+        moverInstance.clearMovers();
         ballInstance.clearBallList();
     }
-
-
-
-    void vDisplay(Mover mov) {
-        noStroke();
-        if (randomclr) {
-            vR = random(255);
-            vG = random(255);
-            vB = random(255);
-            vO = random(255);
-        }
-        fill(vR, vG, vB, vO);
-        ellipse(mov.getVecLocation().x, mov.getVecLocation().y, random(15, 20), random(15, 20));
-    }
-
 }

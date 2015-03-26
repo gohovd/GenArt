@@ -17,7 +17,7 @@ import java.util.Random;
 public class aRobot {
 
     public static Application instance = new Application();
-    //Users screen-cWidth and -cHeight.
+    //Users screen-width and -height.
     private int cWidth = instance.panel.getWidth();
     private int cHeight = instance.panel.getHeight();
     //Small pause/delay between mouse-press/-release etc.
