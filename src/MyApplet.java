@@ -3,6 +3,12 @@ import java.awt.event.*;
 import java.io.File;
 import java.util.ArrayList;
 
+
+import java.awt.Robot;
+import java.awt.event.InputEvent;
+
+
+import javafx.application.*;
 import processing.core.*;
 
 import javax.swing.*;
@@ -72,6 +78,10 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     //////////////////////////////////////////// filterButton
     boolean filterButton = false;
     PGraphics pg2;
+    boolean nr = false;
+    boolean nr2 = false;
+    Robot robot; //deklarering av robot
+
 ///////////////////////////////////////////////////////////////////////////
 
     public void setup() {
@@ -83,6 +93,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         background(255);
         Tormod = new aRobot(); // Instantiate the robot.
         Tormod.setPapp(this); // "Export" PApplet instance (from this class).
+
         ////////////setup for save funksjon///////////////////////////////
         pg = createGraphics(200, 200);//størrelse på boxa
         pg2 = createGraphics(200, 200); //filterbox
@@ -92,6 +103,14 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         fill(0);
 
         //////////////////setup for save funksjon slutt////////////////////
+        //////////////////setup for filters/////////////////////////////
+        try {
+            robot = new Robot();
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
+        ///////////////////setup for filters slutt/////////////////
+
     }
 
     public void draw() {
@@ -191,17 +210,22 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
             }
             if (filterButton) {
+
+                if(nr == false){
+                    nr = true;
+                    nr2 = true;
+                }
+
                 pg2.beginDraw();
+                //nr = true;
                 //må fixe teksten
                 pg2.background(255, 255, 0);
                 pg2.stroke(255);
-
                 pg2.text("forr filters, bruk nr tastene: \n 1: THRESHOLD1 = black and white \n 2: GRAY1 = grayscale \n 3: OPAQUE1 = alpha \n 4: INVERT1 = invert \n 5: POSTERIZE1 = blablabla \n 6: BLUR1 = blur \n 7: ERODE1 = bla bla \n 8: DILATE1 = bla bla \n" ,0,0);
                 pg2.fill(0, 0, 0);
                 pg2.endDraw();
                 image(pg2, 0, 0);
 
-                ;
             }
         }
     }
@@ -210,11 +234,25 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     //////Kan legge til keyPressed events generelt. If key == 'x', do whatever//////
     public void keyPressed() {
         if(key == '1') {
+
+            //legge inn noke shit, som gi jpanel focus
+
+            robot.mouseMove(width / 2, height/2);
+            leftClick();
             filter(THRESHOLD);
-            pg2.beginDraw();
-            pg2.clear();
-            pg2.endDraw();
+            text("HSFHSDSDFJDFSJSD",200,200);
             filterButton = false;
+
+            //pg2.beginDraw();
+            //pg2.clear();
+
+            //pg2.endDraw();
+
+          //copy/paste over gul rute.
+
+
+
+
         }
 
         if (key == 'q') {
@@ -397,4 +435,15 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         moverInstance.clearMovers();
         ballInstance.clearBallList();
     }
+
+
+    private void leftClick() // funksjon for filters
+    {
+        robot.mousePress(InputEvent.BUTTON1_MASK);
+        robot.delay(200);
+        robot.mouseRelease(InputEvent.BUTTON1_MASK);
+        robot.delay(200);
+    }
+
+
 }
