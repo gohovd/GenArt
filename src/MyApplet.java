@@ -81,6 +81,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     boolean nr = false;
     boolean nr2 = false;
     Robot robot; //deklarering av robot
+    PImage d;
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -217,14 +218,18 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 }
 
                 pg2.beginDraw();
-                //nr = true;
-                //må fixe teksten
+
+                d = get(0,0, 200, 200);
+
                 pg2.background(255, 255, 0);
                 pg2.stroke(255);
                 pg2.text("forr filters, bruk nr tastene: \n 1: THRESHOLD1 = black and white \n 2: GRAY1 = grayscale \n 3: OPAQUE1 = alpha \n 4: INVERT1 = invert \n 5: POSTERIZE1 = blablabla \n 6: BLUR1 = blur \n 7: ERODE1 = bla bla \n 8: DILATE1 = bla bla \n" ,0,0);
                 pg2.fill(0, 0, 0);
                 pg2.endDraw();
                 image(pg2, 0, 0);
+                filterButton =  false;
+                robot.mouseMove(width / 2, height/2);
+                leftClick();
 
             }
         }
@@ -233,27 +238,58 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     ///////////////////Funksjoner for save funksjon/////////////////////////////////
     //////Kan legge til keyPressed events generelt. If key == 'x', do whatever//////
     public void keyPressed() {
-        if(key == '1') {
-
-            //legge inn noke shit, som gi jpanel focus
-
-            robot.mouseMove(width / 2, height/2);
-            leftClick();
+        if(key == '1' && nr2 == true) {
+            image(d, 0, 0);
+                    d.filter(THRESHOLD);
             filter(THRESHOLD);
-            text("HSFHSDSDFJDFSJSD",200,200);
+            image(d, 0, 0);
             filterButton = false;
-
-            //pg2.beginDraw();
-            //pg2.clear();
-
-            //pg2.endDraw();
-
-          //copy/paste over gul rute.
-
-
-
-
+            nr = false;
+            nr2 = false;
         }
+
+        if(key == '2' && nr2 == true) {
+            image(d, 0, 0);
+            d.filter(GRAY);
+            filter(GRAY);
+            image(d, 0, 0);
+            filterButton = false;
+            nr = false;
+            nr2 = false;
+        }
+
+        if(key == '3' && nr2 == true) {
+            image(d, 0, 0);
+            d.filter(INVERT);
+            filter(INVERT);
+            image(d, 0, 0);
+            filterButton = false;
+            nr = false;
+            nr2 = false;
+        }
+///////////////////////////////KAN FIXE VERDIEN TIL POSTERIZE TIL Å TA INPUT EVT//////////////////
+        if(key == '4' && nr2 == true) {
+            image(d, 0, 0);
+            d.filter(POSTERIZE, 4);
+            filter(POSTERIZE, 4);
+            image(d, 0, 0);
+            filterButton = false;
+            nr = false;
+            nr2 = false;
+        }
+
+        if(key == '5' && nr2 == true) {
+            image(d, 0, 0);
+            d.filter(BLUR, 6);
+            image(d, 0, 0);
+            filter(BLUR, 6);
+            //image(d, 0, 0);
+            filterButton = false;
+            nr = false;
+            nr2 = false;
+        }
+
+
 
         if (key == 'q') {
             killTormod = true;
