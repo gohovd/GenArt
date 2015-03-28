@@ -223,8 +223,9 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
                 pg2.background(255, 255, 0);
                 pg2.stroke(255);
-                pg2.text("forr filters, bruk nr tastene: \n 1: THRESHOLD1 = black and white \n 2: GRAY1 = grayscale \n 3: OPAQUE1 = alpha \n 4: INVERT1 = invert \n 5: POSTERIZE1 = blablabla \n 6: BLUR1 = blur \n 7: ERODE1 = bla bla \n 8: DILATE1 = bla bla \n" ,0,0);
                 pg2.fill(0, 0, 0);
+                pg2.text("forr filters, bruk nr tastene: \n 1: THRESHOLD1 = black and white \n 2: GRAY1 = grayscale \n 3: OPAQUE1 = alpha \n 4: INVERT1 = invert \n 5: POSTERIZE1 = blablabla \n 6: BLUR1 = blur \n 7: ERODE1 = bla bla \n 8: DILATE1 = bla bla \n" ,0,0);
+
                 pg2.endDraw();
                 image(pg2, 0, 0);
                 filterButton =  false;
@@ -260,8 +261,8 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
         if(key == '3' && nr2 == true) {
             image(d, 0, 0);
-            d.filter(INVERT);
-            filter(INVERT);
+            d.filter(OPAQUE );
+            filter(OPAQUE);
             image(d, 0, 0);
             filterButton = false;
             nr = false;
@@ -270,8 +271,8 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 ///////////////////////////////KAN FIXE VERDIEN TIL POSTERIZE TIL Å TA INPUT EVT//////////////////
         if(key == '4' && nr2 == true) {
             image(d, 0, 0);
-            d.filter(POSTERIZE, 4);
-            filter(POSTERIZE, 4);
+            d.filter(INVERT);
+            filter(INVERT);
             image(d, 0, 0);
             filterButton = false;
             nr = false;
@@ -280,9 +281,42 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
         if(key == '5' && nr2 == true) {
             image(d, 0, 0);
+            d.filter(POSTERIZE, 4);
+            image(d, 0, 0);
+            filter(POSTERIZE, 4);
+            //image(d, 0, 0);
+            filterButton = false;
+            nr = false;
+            nr2 = false;
+        }
+
+        if(key == '6' && nr2 == true) {
+            image(d, 0, 0);
             d.filter(BLUR, 6);
             image(d, 0, 0);
             filter(BLUR, 6);
+            //image(d, 0, 0);
+            filterButton = false;
+            nr = false;
+            nr2 = false;
+        }
+
+        if(key == '7' && nr2 == true) {
+            image(d, 0, 0);
+            d.filter(ERODE);
+            image(d, 0, 0);
+            filter(ERODE);
+            //image(d, 0, 0);
+            filterButton = false;
+            nr = false;
+            nr2 = false;
+        }
+
+        if(key == '8' && nr2 == true) {
+            image(d, 0, 0);
+            d.filter(DILATE);
+            image(d, 0, 0);
+            filter(DILATE);
             //image(d, 0, 0);
             filterButton = false;
             nr = false;
