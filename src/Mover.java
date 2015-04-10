@@ -18,6 +18,7 @@ class Mover extends PApplet {
     float vWidth, vHeight;
     PApplet p;
     ArrayList<Mover> movers = new ArrayList();
+    float incTorq = (float) 0.19;
 
     Mover() {
         location = new PVector(0, 0);
@@ -40,8 +41,10 @@ class Mover extends PApplet {
         p.ellipse(location.x, location.y, random(15, 20), random(15, 20));
     }
 
-    public void createNewMover() {
+    public void createNewMover(float ts, float inc) {
         Mover nMov = new Mover();
+        nMov.topspeed = ts;
+        nMov.incTorq = inc;
         nMov.width = a.panel.getWidth();
         nMov.vHeight = a.panel.getHeight();
         movers.add(nMov);
@@ -54,7 +57,8 @@ class Mover extends PApplet {
         //Choice 2: Linear
         PVector aim, dir;
         if (choice == 1) {
-            r += .19;
+            r += incTorq;
+            //r += .19;
             float xx = cos(r) * 60;
             float yy = sin(r) * 60;
             aim = new PVector(xx, yy);

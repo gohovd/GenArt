@@ -415,8 +415,14 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             ballbutton = true;
             
         } else if (evt.getActionCommand().equals("create vector")) {
-            moverInstance.createNewMover();
-            moverInstance.setPapp(this, appInit);
+            for(int i = 0; i < 50; i++) {
+                //Circle radius is determined through the rTopSpeed. Great value => Great circle.
+                float rTopSpeed = random(150);
+                //The speed at which the circle rotates. Should be between 0.1 and 0.4.
+                float TorqueIncrement = (float) 0.19;
+                moverInstance.createNewMover(rTopSpeed, TorqueIncrement);
+                moverInstance.setPapp(this, appInit);
+            }
             vectorButton = true;
             
         } else if (evt.getActionCommand().equals("randomize")) {
