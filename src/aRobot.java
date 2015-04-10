@@ -30,6 +30,8 @@ public class aRobot {
     PApplet p;
     //Collect all buttons from class Application.
     HashMap buttons = instance.getButtons();
+    //Store all KeyEvents in a map.
+    HashMap<Integer, Integer> filterMap = new HashMap();
     ArrayList<String> keys;
     Random rand = new Random();
     //Counting the number of times the rMotion method has been visited.
@@ -39,6 +41,9 @@ public class aRobot {
     int cY = cHeight / 2;
     //Boolean making sure instructions only show up once.
     boolean tutorial;
+    int avoidFirst = 1;
+    int randFilter;
+    boolean filterSelection = false;
 
     aRobot() {
         try {
@@ -48,7 +53,18 @@ public class aRobot {
         } catch (AWTException e) {
             e.printStackTrace();
         }
+        mapKeyEvents();
+    }
 
+    private void mapKeyEvents() {
+        filterMap.put(1, KeyEvent.VK_1);
+        filterMap.put(2, KeyEvent.VK_2);
+        filterMap.put(3, KeyEvent.VK_3);
+        filterMap.put(4, KeyEvent.VK_4);
+        filterMap.put(5, KeyEvent.VK_5);
+        filterMap.put(6, KeyEvent.VK_6);
+        filterMap.put(7, KeyEvent.VK_7);
+        filterMap.put(8, KeyEvent.VK_8);
     }
 
     private void clickRandomGUIButton() throws InterruptedException, AWTException {
@@ -56,14 +72,39 @@ public class aRobot {
         for (Object jb : buttons.keySet()) {
             String nameOfButton = jb.toString();
             // here we add the buttons that we want the robot to ignore..
-            if(nameOfButton.contains("clearButton") ||
+            if (nameOfButton.contains("clearButton") ||
                     nameOfButton.contains("Randomize") ||
                     nameOfButton.contains("saveButton") ||
-                    nameOfButton.contains("strokeNColourButton")) { // do nothing..
+                    nameOfButton.contains("strokeNColourButton") ||
+                    nameOfButton.contains("filterButton")) { // do nothing..
             } else keys.add(nameOfButton);
         }
         int roulette = rand.nextInt(keys.size());
         clickGUIButton(keys.get(roulette));
+    }
+
+    private void selectFilter() throws InterruptedException, AWTException {
+        randFilter = rand.nextInt(8) + 1; //Number of filters (8).
+        Thread.sleep(1000);
+        r.delay(1000);
+        clickGUIButton("filterButton");
+        r.delay(500);
+        r.mousePress(InputEvent.BUTTON1_MASK);
+        r.delay(500);
+        r.mouseRelease(InputEvent.BUTTON1_MASK);
+        r.delay(1000);
+        filterSelection = true;
+    }
+
+    public void selectRandomFilter(int i){
+        if(i == 1){ r.keyPress(KeyEvent.VK_1); r.delay(500); r.keyRelease(KeyEvent.VK_1);}
+        if(i == 2){ r.keyPress(KeyEvent.VK_2); r.delay(500); r.keyRelease(KeyEvent.VK_1);}
+        if(i == 3){ r.keyPress(KeyEvent.VK_3); r.delay(500); r.keyRelease(KeyEvent.VK_1);}
+        if(i == 4){ r.keyPress(KeyEvent.VK_4); r.delay(500); r.keyRelease(KeyEvent.VK_1);}
+        if(i == 5){ r.keyPress(KeyEvent.VK_5); r.delay(500); r.keyRelease(KeyEvent.VK_1);}
+        if(i == 6){ r.keyPress(KeyEvent.VK_6); r.delay(500); r.keyRelease(KeyEvent.VK_1);}
+        if(i == 7){ r.keyPress(KeyEvent.VK_7); r.delay(500); r.keyRelease(KeyEvent.VK_1);}
+        if(i == 8){ r.keyPress(KeyEvent.VK_8); r.delay(500); r.keyRelease(KeyEvent.VK_1);}
     }
 
     /**
@@ -74,33 +115,36 @@ public class aRobot {
      */
     public void rMotion() throws AWTException, InterruptedException {
         if (motionsMade % 600 == 0) {
-            Thread.sleep(1000);
+            if(avoidFirst == 0) { selectFilter(); avoidFirst += 1;}
+            Thread.sleep(1500);
             r.delay(1000);
             clickRandomGUIButton();
             r.delay(500);
             r.mousePress(InputEvent.BUTTON1_MASK);
             r.delay(500);
             r.mouseRelease(InputEvent.BUTTON1_MASK);
+            avoidFirst -= 1;
         }
-        r.mouseMove(cX, cY);
-        r.mousePress(InputEvent.BUTTON1_MASK);
-        cX += 30 - rand.nextInt(60);
-        if (cX > cWidth) {
-            cX -= cWidth;
-        }
-        if (cX < 0) {
-            cX += cWidth;
-        }
-        cY += 30 - rand.nextInt(60);
-        if (cY > cHeight) {
-            cY -= cHeight;
-        }
-        if (cY < 0) {
-            cY += cHeight;
-        }
-        r.mouseMove(cX, cY);
-        tutorial = true;
-        motionsMade++;
+            r.mouseMove(cX, cY);
+            r.mousePress(InputEvent.BUTTON1_MASK);
+            cX += 30 - rand.nextInt(60);
+            if (cX > cWidth) {
+                cX -= cWidth;
+            }
+            if (cX < 0) {
+                cX += cWidth;
+            }
+            cY += 30 - rand.nextInt(60);
+            if (cY > cHeight) {
+                cY -= cHeight;
+            }
+            if (cY < 0) {
+                cY += cHeight;
+            }
+            r.mouseMove(cX, cY);
+            tutorial = true;
+            motionsMade++;
+
     }
 
     public void clickGUIButton(String key) throws AWTException, InterruptedException {
@@ -173,12 +217,24 @@ public class aRobot {
     public void displayInstructions() throws InterruptedException, AWTException {
         p.background(255);
         p.fill(210, 54, 65, 255);
-        p.textSize(24);
-        p.text("TORMOD IS ABOUT TO MAKE A MASTERPIECE...", cWidth/2-300, cHeight/2);
+        p.textSize(32);
+        p.text("Robot will soon draw...", cWidth / 2 - 300, cHeight / 2);
         p.textSize(28);
         p.fill(110, 101, 104, 255);
-        p.text("Press 'Q' or shout at your computer to end session.", cWidth/2-300, cHeight/2+50);
+        p.text("Press 'Q' to end session.", cWidth / 2 - 300, cHeight / 2 + 50);
         Thread.sleep(3200);
         p.background(255);
+    }
+
+    public int getRandFilter(){
+        return randFilter;
+    }
+
+    public boolean getFilterSelection(){
+        return filterSelection;
+    }
+
+    public void setFilterSelection(boolean b){
+        filterSelection = b;
     }
 }

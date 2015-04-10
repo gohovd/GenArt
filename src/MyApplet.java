@@ -120,6 +120,10 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         // them, is decided by the push of the button.
         if (randomize && !killTormod) {
             try {
+                if(Tormod.getFilterSelection() == true) {
+                    Tormod.selectRandomFilter(Tormod.getRandFilter());
+                    Tormod.setFilterSelection(false);
+                }
                 Tormod.rMotion();
             } catch (AWTException e) {
                 e.printStackTrace();
