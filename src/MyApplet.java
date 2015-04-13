@@ -39,6 +39,11 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     boolean trianglezButton = false;
     boolean strokeNColourButton = false;
     boolean heartButton = false;
+
+    // Color and stroke manager
+    ColorChooser colors = new ColorChooser();
+
+
     // Variables related to the mover/vector.
     boolean vectorButton = false;
     int vStep = 0; // When steps, do something different.
@@ -187,6 +192,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 tr.drawTriangles();
             }
             if (strokeNColourButton) {
+
             }
             if (saveButton) {
 
@@ -471,7 +477,8 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             strokeNColourButton = true;
             appInit.setStrokeSize(2);
             System.out.println(appInit.getStrokeSize());
-            ColorChooser color = new ColorChooser();
+         colors.setVisible(true);
+
         }
         else if (evt.getActionCommand().equals("filter")) {
             filterButton = true;
