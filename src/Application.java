@@ -134,12 +134,12 @@ frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" ful
         ImageIcon imageForStarButton = new ImageIcon("images/star.png");
         starButton = new JButton("", imageForStarButton);
         starButton.setBackground(Color.white);
-        starButton.setPreferredSize(new Dimension(42, 90));
+        starButton.setPreferredSize(new Dimension(90, 90));
 
         ImageIcon imageForHeartButton = new ImageIcon("images/heart.png");
         heartButton = new JButton("", imageForHeartButton);
         heartButton.setBackground(Color.white);
-        heartButton.setPreferredSize(new Dimension(42, 90));
+        heartButton.setPreferredSize(new Dimension(90, 90));
 
         ImageIcon imageForsquarezButton = new ImageIcon("images/squarez.png");
         squarezButton = new JButton("", imageForsquarezButton);
@@ -241,7 +241,9 @@ frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" ful
         buttonPanel.add(varBubblesButton);
         buttonPanel.add(pulseButton);
         buttonPanel.add(crossDotsButton);
-        buttonPanel.add(starButton); buttonPanel.add(heartButton); buttonPanel.add(squarezButton);
+        buttonPanel.add(starButton);
+        buttonPanel.add(heartButton);
+        buttonPanel.add(squarezButton);
         buttonPanel.add(trianglezButton);
         buttonPanel.add(strokeNColourButton);
 
