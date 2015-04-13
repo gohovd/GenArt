@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="905e9aa0-ee52-425e-affb-f197dfe127a8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GenArt/MyApplet.class" afterPath="$PROJECT_DIR$/out/production/GenArt/MyApplet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Application.java" afterPath="$PROJECT_DIR$/src/Application.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GenArt/Application.class" afterPath="$PROJECT_DIR$/out/production/GenArt/Application.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/heart.png" afterPath="$PROJECT_DIR$/images/heart.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/star.png" afterPath="$PROJECT_DIR$/images/star.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="GenArt.iws" />
@@ -35,8 +36,8 @@
       <file leaf-file-name="Application.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.73013246" vertical-offset="1629" max-vertical-offset="4365">
-              <caret line="148" column="70" selection-start-line="148" selection-start-column="70" selection-end-line="148" selection-end-column="70" />
+            <state vertical-scroll-proportion="0.2334437" vertical-offset="1809" max-vertical-offset="4365">
+              <caret line="140" column="19" selection-start-line="140" selection-start-column="19" selection-end-line="140" selection-end-column="19" />
               <folding>
                 <element signature="e#11256#11257#0" expanded="true" />
                 <element signature="e#11300#11301#0" expanded="true" />
@@ -493,12 +494,6 @@
       <option name="number" value="Default" />
       <updated>1426006400471</updated>
     </task>
-    <task id="LOCAL-00006" summary="Class GUI deleted.">
-      <created>1426009460245</created>
-      <option name="number" value="00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1426009460245</updated>
-    </task>
     <task id="LOCAL-00007" summary="Class GUI deleted.">
       <created>1426075579733</created>
       <option name="number" value="00007" />
@@ -787,7 +782,13 @@
       <option name="project" value="LOCAL" />
       <updated>1428924621675</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="Endra heart og hjerte knapp til å være 90x90 som resten av knappene">
+      <created>1428924953950</created>
+      <option name="number" value="00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1428924953950</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -835,7 +836,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="starz image adde" />
     <MESSAGE value="squares image added and application updated" />
     <MESSAGE value="squares and starzz added in myapplet" />
     <MESSAGE value="Nye bilder, stroke 'n colour" />
@@ -860,7 +860,8 @@
     <MESSAGE value="Robot now using filters." />
     <MESSAGE value="Changed mover behavior (vector)." />
     <MESSAGE value="Velge-farge-knapp funker, men funksjoner plukker ikke opp og bruker farge enda.. Kommer?" />
-    <option name="LAST_COMMIT_MESSAGE" value="Velge-farge-knapp funker, men funksjoner plukker ikke opp og bruker farge enda.. Kommer?" />
+    <MESSAGE value="Endra heart og hjerte knapp til å være 90x90 som resten av knappene" />
+    <option name="LAST_COMMIT_MESSAGE" value="Endra heart og hjerte knapp til å være 90x90 som resten av knappene" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1377,8 +1378,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Application.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.73013246" vertical-offset="1629" max-vertical-offset="4365">
-          <caret line="148" column="70" selection-start-line="148" selection-start-column="70" selection-end-line="148" selection-end-column="70" />
+        <state vertical-scroll-proportion="0.2334437" vertical-offset="1809" max-vertical-offset="4365">
+          <caret line="140" column="19" selection-start-line="140" selection-start-column="19" selection-end-line="140" selection-end-column="19" />
           <folding>
             <element signature="e#11256#11257#0" expanded="true" />
             <element signature="e#11300#11301#0" expanded="true" />
