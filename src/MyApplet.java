@@ -432,14 +432,15 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             vectorButton = true;
             
         } else if (evt.getActionCommand().equals("randomize")) {
-            try {
+            /*try {
                 Tormod.displayInstructions();
                 Tormod.reset();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (AWTException e) {
                 e.printStackTrace();
-            }
+            }*/
+            Tormod.reset();
             randomize = true;
             killTormod = false;
             

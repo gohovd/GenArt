@@ -214,7 +214,7 @@ public class aRobot {
         motionsMade = 0;
     }
 
-    public void displayInstructions() throws InterruptedException, AWTException {
+    /*public void displayInstructions() throws InterruptedException, AWTException {
         p.background(255);
         p.fill(210, 54, 65, 255);
         p.textSize(32);
@@ -224,7 +224,7 @@ public class aRobot {
         p.text("Press 'Q' to end session.", cWidth / 2 - 300, cHeight / 2 + 50);
         Thread.sleep(3200);
         p.background(255);
-    }
+    }*/
 
     public int getRandFilter(){
         return randFilter;

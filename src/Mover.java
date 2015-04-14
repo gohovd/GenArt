@@ -38,7 +38,7 @@ class Mover extends PApplet {
     void display() {
         p.noStroke();
         p.fill(random(255), random(255), random(255), random(255));
-        p.ellipse(location.x, location.y, random(15, 20), random(15, 20));
+        p.ellipse(location.x, location.y, random(2, 10), random(2, 10));
     }
 
     public void createNewMover(float ts, float inc) {
