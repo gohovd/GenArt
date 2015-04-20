@@ -15,8 +15,10 @@ public class StarShape {
     public void drawStars() {
         if (p.mousePressed == true) {
             p.frameRate(20);
+
             p.strokeWeight((float) 0.1);
             p.fill(p.random(255), p.random(255), p.random(255), 127);
+            //p.scale(p.random(1));
             p.beginShape();
             p.vertex(p.mouseX, p.mouseY - 50);
             p.vertex(p.mouseX + 14, p.mouseY - 20);
