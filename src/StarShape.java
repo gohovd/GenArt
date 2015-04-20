@@ -14,6 +14,7 @@ public class StarShape {
 
     public void drawStars() {
         if (p.mousePressed == true) {
+            p.frameRate(20);
             p.strokeWeight((float) 0.1);
             p.fill(p.random(255), p.random(255), p.random(255), 127);
             p.beginShape();
