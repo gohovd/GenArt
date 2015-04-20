@@ -13,12 +13,12 @@ public class ColorPicker {
 
     public void color() {
         JColorChooser cc = new JColorChooser();
-        Color c = cc.showDialog(null, "Velg Farge", Color.white);
+        Color c = cc.showDialog(null, "Velg farge for rammen", Color.white);
 
         String colorPick = c.toString();
 
         System.out.println(c);
-        //fikser sånn at eg får bare int verdier
+        //fikser toString sånn at eg får bare int verdier
         colorPick = colorPick.replace("java.awt.Color[r=", "");
         colorPick = colorPick.replace("g=", "");
         colorPick = colorPick.replace("b=", "");
