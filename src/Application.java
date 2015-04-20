@@ -243,7 +243,6 @@ frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" ful
 
         //Also add buttons/radio-buttons/check-boxes.
         buttonPanel.add(randomclr); buttonPanel.add(linear); buttonPanel.add(circular);
-        buttonPanel.add(vColorField);
         buttonPanel.add(Randomize); buttonPanel.add(clearButton); buttonPanel.add(filterButton);
         buttonPanel.add(saveButton);
 
@@ -266,10 +265,6 @@ frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" ful
 
     public int getHeight() {
         return height;
-    }
-
-    public String getVColor(){
-        return vColorField.getText();
     }
 
 
