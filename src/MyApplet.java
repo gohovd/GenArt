@@ -87,6 +87,9 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     boolean nr2 = false;
     Robot robot; //deklarering av robot
     PImage d;
+////////////////////////////////////////////////// funkyvectors bytter ut hearts
+    ArrayList history;   // Define the history for pattern3
+
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -116,7 +119,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             e.printStackTrace();
         }
         ///////////////////setup for filters slutt/////////////////
-
+        history  = new ArrayList();
     }
 
     public void draw() {
@@ -181,7 +184,34 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 st.drawStars();
             }
             if (heartButton){
-                st.drawHearts();
+                //st.drawHearts(); denne skal da vekk, fått ny funksjonalitet
+
+                int extra = 3;
+                // Randomise the colours during each frame
+                stroke(random(0,255), random(0,255), random(0,255));
+                strokeWeight((float) 0.2);
+                line(mouseX, mouseY, pmouseX, pmouseY);
+                line(width-mouseX, mouseY, width-pmouseX, mouseY); // Mirror
+
+                for(int i = 0; i < history.size(); i++){
+                    PVector p = (PVector) history.get(i);
+
+                    // Draw a line from the current mouse point to
+                    // the historical point if the distance is less
+                    // than 50
+                    if(dist(mouseX, mouseY, p.x, p.y) < 50){
+                        line(mouseX, mouseY, p.x + extra, p.y + extra);
+                    }
+                    // repeat for the mirror line
+                    if(dist(width-mouseX, mouseY, p.x, p.y) < 50){
+                        line(width-mouseX, mouseY, p.x + extra, p.y + extra);
+                    }
+                }
+
+                // Add the current point to the history
+                history.add(new PVector(mouseX, mouseY));
+                history.add(new PVector(width-mouseX, mouseY));
+
             }
             if (squarezButton) {
                 SquareShape sq = new SquareShape(this);
