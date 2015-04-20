@@ -136,7 +136,7 @@ frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" ful
         starButton.setBackground(Color.white);
         starButton.setPreferredSize(new Dimension(90, 90));
 
-        ImageIcon imageForHeartButton = new ImageIcon("images/mirrorvector.png");
+        ImageIcon imageForHeartButton = new ImageIcon("images/heart.png");
         heartButton = new JButton("", imageForHeartButton);
         heartButton.setBackground(Color.white);
         heartButton.setPreferredSize(new Dimension(90, 90));
