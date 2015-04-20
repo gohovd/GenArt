@@ -211,6 +211,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                     pg.text("skriv ditt ønskede filnavn. \nF.EKS: \n'minFil.jpg' \neller \n'mittBilde.PNG'", indent, 40);
                     pg.fill(0, 0, 0);
                     pg.text(typing, indent, 120);
+                    pg.text("Filen blir lagret på skrivebordet", indent, 150);
 
                     pg.endDraw();
 
@@ -234,7 +235,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 pg2.background(255, 255, 0);
                 pg2.stroke(255);
                 pg2.fill(0, 0, 0);
-                pg2.text("forr filters, bruk nr tastene: \n 1: THRESHOLD1 = black and white \n 2: GRAY1 = grayscale \n 3: OPAQUE1 = alpha \n 4: INVERT1 = invert \n 5: POSTERIZE1 = blablabla \n 6: BLUR1 = blur \n 7: ERODE1 = bla bla \n 8: DILATE1 = bla bla \n" ,0,0);
+                pg2.text("for filters, bruk nr tastene: \n 1: Black and white \n 2: Grayscale \n 3: Opaque \n 4: Invert \n 5: Posterize \n 6: Blur \n 7: Erode \n 8: Dilate \n" ,0,0);
 
                 pg2.endDraw();
                 image(pg2, 0, 0);
