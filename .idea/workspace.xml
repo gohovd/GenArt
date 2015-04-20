@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="905e9aa0-ee52-425e-affb-f197dfe127a8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GenArt/Application.class" afterPath="$PROJECT_DIR$/out/production/GenArt/Application.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Application.java" afterPath="$PROJECT_DIR$/src/Application.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -35,11 +34,11 @@
       <file leaf-file-name="Application.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.41067284" vertical-offset="214" max-vertical-offset="4913">
-              <caret line="33" column="60" selection-start-line="33" selection-start-column="60" selection-end-line="33" selection-end-column="60" />
+            <state vertical-scroll-proportion="0.33178654" vertical-offset="1506" max-vertical-offset="4913">
+              <caret line="107" column="40" selection-start-line="107" selection-start-column="40" selection-end-line="107" selection-end-column="40" />
               <folding>
-                <element signature="e#11696#11697#0" expanded="true" />
-                <element signature="e#11735#11736#0" expanded="true" />
+                <element signature="e#11693#11694#0" expanded="true" />
+                <element signature="e#11732#11733#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -464,12 +463,6 @@
       <option name="number" value="Default" />
       <updated>1426006400471</updated>
     </task>
-    <task id="LOCAL-00012" summary="lagt til random lines&#10;bruk høgre og venstreklikk!">
-      <created>1426702313066</created>
-      <option name="number" value="00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1426702313066</updated>
-    </task>
     <task id="LOCAL-00013" summary="La til random bubbles kunst">
       <created>1426779747809</created>
       <option name="number" value="00013" />
@@ -758,7 +751,13 @@
       <option name="project" value="LOCAL" />
       <updated>1429536136500</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="english -&gt; norsk knappnavn">
+      <created>1429539313457</created>
+      <option name="number" value="00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1429539313457</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -877,8 +876,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#11696#11697#0" expanded="true" />
-            <element signature="e#11735#11736#0" expanded="true" />
+            <element signature="e#11693#11694#0" expanded="true" />
+            <element signature="e#11732#11733#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -898,8 +897,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#11696#11697#0" expanded="true" />
-            <element signature="e#11735#11736#0" expanded="true" />
+            <element signature="e#11693#11694#0" expanded="true" />
+            <element signature="e#11732#11733#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -919,8 +918,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="175" column="1" selection-start-line="175" selection-start-column="1" selection-end-line="175" selection-end-column="1" />
           <folding>
-            <element signature="e#11696#11697#0" expanded="true" />
-            <element signature="e#11735#11736#0" expanded="true" />
+            <element signature="e#11693#11694#0" expanded="true" />
+            <element signature="e#11732#11733#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -940,8 +939,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#11696#11697#0" expanded="true" />
-            <element signature="e#11735#11736#0" expanded="true" />
+            <element signature="e#11693#11694#0" expanded="true" />
+            <element signature="e#11732#11733#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -961,8 +960,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#11696#11697#0" expanded="true" />
-            <element signature="e#11735#11736#0" expanded="true" />
+            <element signature="e#11693#11694#0" expanded="true" />
+            <element signature="e#11732#11733#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1007,8 +1006,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="104" column="43" selection-start-line="104" selection-start-column="43" selection-end-line="104" selection-end-column="43" />
           <folding>
-            <element signature="e#11696#11697#0" expanded="true" />
-            <element signature="e#11735#11736#0" expanded="true" />
+            <element signature="e#11693#11694#0" expanded="true" />
+            <element signature="e#11732#11733#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1046,8 +1045,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="51" column="47" selection-start-line="51" selection-start-column="47" selection-end-line="51" selection-end-column="47" />
           <folding>
-            <element signature="e#11696#11697#0" expanded="true" />
-            <element signature="e#11735#11736#0" expanded="true" />
+            <element signature="e#11693#11694#0" expanded="true" />
+            <element signature="e#11732#11733#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1095,8 +1094,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#11696#11697#0" expanded="true" />
-            <element signature="e#11735#11736#0" expanded="true" />
+            <element signature="e#11693#11694#0" expanded="true" />
+            <element signature="e#11732#11733#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1116,8 +1115,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#11696#11697#0" expanded="true" />
-            <element signature="e#11735#11736#0" expanded="true" />
+            <element signature="e#11693#11694#0" expanded="true" />
+            <element signature="e#11732#11733#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1137,8 +1136,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#11696#11697#0" expanded="true" />
-            <element signature="e#11735#11736#0" expanded="true" />
+            <element signature="e#11693#11694#0" expanded="true" />
+            <element signature="e#11732#11733#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1148,8 +1147,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#11696#11697#0" expanded="true" />
-            <element signature="e#11735#11736#0" expanded="true" />
+            <element signature="e#11693#11694#0" expanded="true" />
+            <element signature="e#11732#11733#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1310,11 +1309,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Application.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41067284" vertical-offset="214" max-vertical-offset="4913">
-          <caret line="33" column="60" selection-start-line="33" selection-start-column="60" selection-end-line="33" selection-end-column="60" />
+        <state vertical-scroll-proportion="0.33178654" vertical-offset="1506" max-vertical-offset="4913">
+          <caret line="107" column="40" selection-start-line="107" selection-start-column="40" selection-end-line="107" selection-end-column="40" />
           <folding>
-            <element signature="e#11696#11697#0" expanded="true" />
-            <element signature="e#11735#11736#0" expanded="true" />
+            <element signature="e#11693#11694#0" expanded="true" />
+            <element signature="e#11732#11733#0" expanded="true" />
           </folding>
         </state>
       </provider>

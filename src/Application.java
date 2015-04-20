@@ -105,7 +105,7 @@ frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" ful
         vectorButton.setPreferredSize(new Dimension(90, 90));
 
 
-        clearButton = new JButton("Ny Bilde");
+        clearButton = new JButton("Clear");
         Randomize = new JButton("Randomisert");
         saveButton = new JButton("Lagre");
         filterButton = new JButton("Filterer");
