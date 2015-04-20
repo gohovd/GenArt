@@ -23,6 +23,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     public Application appInit = new Application();
     boolean pause = false;
     Border border;
+
     // Variables related to the "bouncing ball".
 
 
@@ -122,6 +123,8 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         ///////////////////setup for filters slutt/////////////////
         history  = new ArrayList();
         border = new Border(this, appInit);
+
+
     }
 
     public void draw() {
@@ -230,6 +233,10 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             if (appInit.getBorderState() == true) {
 
                 border.drawBorder();
+
+
+
+
             }
             if (appInit.getBorderState() == false) {
 

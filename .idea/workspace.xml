@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="905e9aa0-ee52-425e-affb-f197dfe127a8" name="Default" comment="Ramme">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Border.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Application.java" afterPath="$PROJECT_DIR$/src/Application.java" />
+    <list default="true" id="905e9aa0-ee52-425e-affb-f197dfe127a8" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GenArt/MyApplet.class" afterPath="$PROJECT_DIR$/out/production/GenArt/MyApplet.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Border.java" afterPath="$PROJECT_DIR$/src/Border.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MyApplet.java" afterPath="$PROJECT_DIR$/src/MyApplet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/StarShape.java" afterPath="$PROJECT_DIR$/src/StarShape.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TriangleShape.java" afterPath="$PROJECT_DIR$/src/TriangleShape.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="GenArt.iws" />
@@ -33,11 +35,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Application.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Application.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9956616" vertical-offset="4335" max-vertical-offset="4896">
-              <caret line="306" column="1" selection-start-line="306" selection-start-column="1" selection-end-line="306" selection-end-column="1" />
+            <state vertical-scroll-proportion="-0.5862069" vertical-offset="1207" max-vertical-offset="4896">
+              <caret line="72" column="29" selection-start-line="72" selection-start-column="23" selection-end-line="72" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#11139#11140#0" expanded="true" />
@@ -60,8 +62,8 @@
       <file leaf-file-name="StarShape.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/StarShape.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="952">
-              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="12" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="935">
+              <caret line="15" column="37" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -70,8 +72,8 @@
       <file leaf-file-name="TriangleShape.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TriangleShape.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="425" max-vertical-offset="578">
-              <caret line="27" column="9" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="117" max-vertical-offset="578">
+              <caret line="22" column="48" selection-start-line="22" selection-start-column="48" selection-end-line="22" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -97,11 +99,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MyApplet.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MyApplet.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MyApplet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="9962">
-              <caret line="574" column="20" selection-start-line="574" selection-start-column="20" selection-end-line="574" selection-end-column="20" />
+            <state vertical-scroll-proportion="0.6491647" vertical-offset="3757" max-vertical-offset="10081">
+              <caret line="237" column="0" selection-start-line="237" selection-start-column="0" selection-end-line="237" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -112,8 +114,8 @@
       <file leaf-file-name="Border.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Border.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="697" max-vertical-offset="1326">
-              <caret line="72" column="1" selection-start-line="72" selection-start-column="1" selection-end-line="72" selection-end-column="1" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="782" max-vertical-offset="1360">
+              <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -124,9 +126,11 @@
       <file leaf-file-name="ColorChooser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ColorChooser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="442" max-vertical-offset="1071">
-              <caret line="39" column="33" selection-start-line="39" selection-start-column="33" selection-end-line="39" selection-end-column="33" />
-              <folding />
+            <state vertical-scroll-proportion="-8.793103" vertical-offset="0" max-vertical-offset="1105">
+              <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -166,12 +170,13 @@
         <option value="$PROJECT_DIR$/src/aRobot.java" />
         <option value="$PROJECT_DIR$/src/Mover.java" />
         <option value="$PROJECT_DIR$/src/ColorChooser.java" />
-        <option value="$PROJECT_DIR$/src/TriangleShape.java" />
-        <option value="$PROJECT_DIR$/src/StarShape.java" />
         <option value="$PROJECT_DIR$/src/Boarder.java" />
-        <option value="$PROJECT_DIR$/src/MyApplet.java" />
-        <option value="$PROJECT_DIR$/src/Border.java" />
         <option value="$PROJECT_DIR$/src/Application.java" />
+        <option value="$PROJECT_DIR$/src/Border.java" />
+        <option value="$PROJECT_DIR$/src/ColorPicker.java" />
+        <option value="$PROJECT_DIR$/src/StarShape.java" />
+        <option value="$PROJECT_DIR$/src/TriangleShape.java" />
+        <option value="$PROJECT_DIR$/src/MyApplet.java" />
       </list>
     </option>
   </component>
@@ -510,12 +515,6 @@
       <option name="number" value="Default" />
       <updated>1426006400471</updated>
     </task>
-    <task id="LOCAL-00018" summary="La til svart border til venstre for knapper">
-      <created>1427097160228</created>
-      <option name="number" value="00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1427097160228</updated>
-    </task>
     <task id="LOCAL-00019" summary="- Endret layout på meny&#10;- buttonPanel blir lagt til jframe og ikke jpanel ment for processing applet&#10;- Lagt inn grafikk på 3 av knappene">
       <created>1427113775350</created>
       <option name="number" value="00019" />
@@ -804,7 +803,13 @@
       <option name="project" value="LOCAL" />
       <updated>1429548164117</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="Ramme update">
+      <created>1429548883771</created>
+      <option name="number" value="00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1429548883771</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -852,7 +857,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="edited starz /hearts pic" />
     <MESSAGE value="Tormod gone wild." />
     <MESSAGE value="Tormod restrained.&#10;" />
     <MESSAGE value="Code clean." />
@@ -877,7 +881,8 @@
     <MESSAGE value="english -&gt; norsk knappnavn" />
     <MESSAGE value="Endring i trekant" />
     <MESSAGE value="Ramme" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ramme" />
+    <MESSAGE value="Ramme update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ramme update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -890,14 +895,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ColorChooser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="442" max-vertical-offset="1071">
-          <caret line="39" column="33" selection-start-line="39" selection-start-column="33" selection-end-line="39" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MyApplet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="11004">
@@ -1282,26 +1279,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ColorChooser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="271" max-vertical-offset="1230">
-          <caret line="39" column="33" selection-start-line="39" selection-start-column="33" selection-end-line="39" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Mover.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="765" max-vertical-offset="3179">
           <caret line="94" column="34" selection-start-line="94" selection-start-column="34" selection-end-line="94" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TriangleShape.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
-          <caret line="27" column="9" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
           <folding />
         </state>
       </provider>
@@ -1314,11 +1295,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/StarShape.java">
+    <entry file="file://$PROJECT_DIR$/src/Border.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="952">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="12" selection-end-column="5" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="782" max-vertical-offset="1360">
+          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1330,34 +1313,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MyApplet.java">
+    <entry file="file://$PROJECT_DIR$/src/ColorChooser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="9962">
-          <caret line="574" column="20" selection-start-line="574" selection-start-column="20" selection-end-line="574" selection-end-column="20" />
+        <state vertical-scroll-proportion="-8.793103" vertical-offset="0" max-vertical-offset="1105">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Border.java">
+    <entry file="file://$PROJECT_DIR$/src/StarShape.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="697" max-vertical-offset="1326">
-          <caret line="72" column="1" selection-start-line="72" selection-start-column="1" selection-end-line="72" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="935">
+          <caret line="15" column="37" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TriangleShape.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="117" max-vertical-offset="578">
+          <caret line="22" column="48" selection-start-line="22" selection-start-column="48" selection-end-line="22" selection-end-column="48" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Application.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9956616" vertical-offset="4335" max-vertical-offset="4896">
-          <caret line="306" column="1" selection-start-line="306" selection-start-column="1" selection-end-line="306" selection-end-column="1" />
+        <state vertical-scroll-proportion="-0.5862069" vertical-offset="1207" max-vertical-offset="4896">
+          <caret line="72" column="29" selection-start-line="72" selection-start-column="23" selection-end-line="72" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#11139#11140#0" expanded="true" />
             <element signature="e#11181#11182#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MyApplet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6491647" vertical-offset="3757" max-vertical-offset="10081">
+          <caret line="237" column="0" selection-start-line="237" selection-start-column="0" selection-end-line="237" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

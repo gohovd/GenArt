@@ -59,6 +59,8 @@ public class Border {
             //System.exit(0);
 
 
+
+
             p.noFill();
             //rectMode(CENTER);
             p.rect(13, 10, ap.panel.getWidth() - stokeSize, ap.panel.getHeight() - stokeSize);

@@ -14,7 +14,7 @@ public class TriangleShape {
 
     public void drawTriangles() {
         if (p.mousePressed) {
-            p.frameRate(20);
+            //p.frameRate(20);
             p.strokeWeight((float) 0.1);
             p.fill(p.random(255), p.random(255), p.random(255), 127);
             x1 = p.random(p.mouseX - p.random(80, 100), p.mouseX + p.random(80, 100));
