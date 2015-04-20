@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="905e9aa0-ee52-425e-affb-f197dfe127a8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GenArt/MyApplet.class" afterPath="$PROJECT_DIR$/out/production/GenArt/MyApplet.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Application.java" afterPath="$PROJECT_DIR$/src/Application.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -35,8 +34,8 @@
       <file leaf-file-name="Application.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.14782609" vertical-offset="2108" max-vertical-offset="4879">
-              <caret line="138" column="74" selection-start-line="138" selection-start-column="74" selection-end-line="138" selection-end-column="74" />
+            <state vertical-scroll-proportion="0.25290024" vertical-offset="1540" max-vertical-offset="4879">
+              <caret line="107" column="43" selection-start-line="107" selection-start-column="43" selection-end-line="107" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -461,12 +460,6 @@
       <option name="number" value="Default" />
       <updated>1426006400471</updated>
     </task>
-    <task id="LOCAL-00010" summary="Textbox, Checkbox in progress..">
-      <created>1426595646319</created>
-      <option name="number" value="00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1426595646319</updated>
-    </task>
     <task id="LOCAL-00011" summary="Diverse. Sjekk Trello lizm">
       <created>1426676270337</created>
       <option name="number" value="00011" />
@@ -755,7 +748,13 @@
       <option name="project" value="LOCAL" />
       <updated>1429535674331</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="mirrorvector knapp added">
+      <created>1429535761463</created>
+      <option name="number" value="00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1429535761463</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -803,7 +802,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Nye bilder, stroke 'n colour" />
     <MESSAGE value="Triangles funksjon added" />
     <MESSAGE value="update for square2" />
     <MESSAGE value="Added hearts into starbutton&#10;" />
@@ -828,7 +826,8 @@
     <MESSAGE value="Endra heart og hjerte knapp til å være 90x90 som resten av knappene" />
     <MESSAGE value="litt fix i, save  og filter, ser finere ut" />
     <MESSAGE value="hearts har fått ny funksjonalitet" />
-    <option name="LAST_COMMIT_MESSAGE" value="hearts har fått ny funksjonalitet" />
+    <MESSAGE value="mirrorvector knapp added" />
+    <option name="LAST_COMMIT_MESSAGE" value="mirrorvector knapp added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1274,8 +1273,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Application.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14782609" vertical-offset="2108" max-vertical-offset="4879">
-          <caret line="138" column="74" selection-start-line="138" selection-start-column="74" selection-end-line="138" selection-end-column="74" />
+        <state vertical-scroll-proportion="0.25290024" vertical-offset="1540" max-vertical-offset="4879">
+          <caret line="107" column="43" selection-start-line="107" selection-start-column="43" selection-end-line="107" selection-end-column="43" />
           <folding />
         </state>
       </provider>
