@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="905e9aa0-ee52-425e-affb-f197dfe127a8" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GenArt/Application.class" afterPath="$PROJECT_DIR$/out/production/GenArt/Application.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Application.java" afterPath="$PROJECT_DIR$/src/Application.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -34,9 +35,12 @@
       <file leaf-file-name="Application.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.25290024" vertical-offset="1540" max-vertical-offset="4879">
-              <caret line="107" column="43" selection-start-line="107" selection-start-column="43" selection-end-line="107" selection-end-column="43" />
-              <folding />
+            <state vertical-scroll-proportion="0.41067284" vertical-offset="214" max-vertical-offset="4913">
+              <caret line="33" column="60" selection-start-line="33" selection-start-column="60" selection-end-line="33" selection-end-column="60" />
+              <folding>
+                <element signature="e#11696#11697#0" expanded="true" />
+                <element signature="e#11735#11736#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -460,12 +464,6 @@
       <option name="number" value="Default" />
       <updated>1426006400471</updated>
     </task>
-    <task id="LOCAL-00011" summary="Diverse. Sjekk Trello lizm">
-      <created>1426676270337</created>
-      <option name="number" value="00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1426676270337</updated>
-    </task>
     <task id="LOCAL-00012" summary="lagt til random lines&#10;bruk høgre og venstreklikk!">
       <created>1426702313066</created>
       <option name="number" value="00012" />
@@ -754,7 +752,13 @@
       <option name="project" value="LOCAL" />
       <updated>1429535761463</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="english -&gt; norsk knappnavn">
+      <created>1429536136500</created>
+      <option name="number" value="00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1429536136500</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -802,7 +806,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Triangles funksjon added" />
     <MESSAGE value="update for square2" />
     <MESSAGE value="Added hearts into starbutton&#10;" />
     <MESSAGE value="edited starz /hearts pic" />
@@ -827,7 +830,8 @@
     <MESSAGE value="litt fix i, save  og filter, ser finere ut" />
     <MESSAGE value="hearts har fått ny funksjonalitet" />
     <MESSAGE value="mirrorvector knapp added" />
-    <option name="LAST_COMMIT_MESSAGE" value="mirrorvector knapp added" />
+    <MESSAGE value="english -&gt; norsk knappnavn" />
+    <option name="LAST_COMMIT_MESSAGE" value="english -&gt; norsk knappnavn" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -872,7 +876,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#11696#11697#0" expanded="true" />
+            <element signature="e#11735#11736#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -890,7 +897,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#11696#11697#0" expanded="true" />
+            <element signature="e#11735#11736#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -908,7 +918,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="175" column="1" selection-start-line="175" selection-start-column="1" selection-end-line="175" selection-end-column="1" />
-          <folding />
+          <folding>
+            <element signature="e#11696#11697#0" expanded="true" />
+            <element signature="e#11735#11736#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -926,7 +939,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#11696#11697#0" expanded="true" />
+            <element signature="e#11735#11736#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -944,7 +960,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#11696#11697#0" expanded="true" />
+            <element signature="e#11735#11736#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -987,7 +1006,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="104" column="43" selection-start-line="104" selection-start-column="43" selection-end-line="104" selection-end-column="43" />
-          <folding />
+          <folding>
+            <element signature="e#11696#11697#0" expanded="true" />
+            <element signature="e#11735#11736#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1023,7 +1045,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="51" column="47" selection-start-line="51" selection-start-column="47" selection-end-line="51" selection-end-column="47" />
-          <folding />
+          <folding>
+            <element signature="e#11696#11697#0" expanded="true" />
+            <element signature="e#11735#11736#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1069,7 +1094,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#11696#11697#0" expanded="true" />
+            <element signature="e#11735#11736#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1087,7 +1115,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#11696#11697#0" expanded="true" />
+            <element signature="e#11735#11736#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1105,7 +1136,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#11696#11697#0" expanded="true" />
+            <element signature="e#11735#11736#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1113,7 +1147,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#11696#11697#0" expanded="true" />
+            <element signature="e#11735#11736#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1273,9 +1310,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Application.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25290024" vertical-offset="1540" max-vertical-offset="4879">
-          <caret line="107" column="43" selection-start-line="107" selection-start-column="43" selection-end-line="107" selection-end-column="43" />
-          <folding />
+        <state vertical-scroll-proportion="0.41067284" vertical-offset="214" max-vertical-offset="4913">
+          <caret line="33" column="60" selection-start-line="33" selection-start-column="60" selection-end-line="33" selection-end-column="60" />
+          <folding>
+            <element signature="e#11696#11697#0" expanded="true" />
+            <element signature="e#11735#11736#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

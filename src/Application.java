@@ -29,9 +29,9 @@ public class Application {
 
 
     private static final JTextField vColorField = new JTextField(5);
-    private static final JCheckBox circular = new JCheckBox("Circular");
-    private static final JCheckBox randomclr = new JCheckBox("Random Color");
-    private static final JCheckBox linear = new JCheckBox("Linear");
+    private static final JCheckBox circular = new JCheckBox("Rundskriv");
+    private static final JCheckBox randomclr = new JCheckBox("Random Farge");
+    private static final JCheckBox linear = new JCheckBox("Lineær");
 
     private static final int menuWidth = 200; // Husk å endre i MyApplet hvis du endrer her
 
