@@ -411,7 +411,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             // Each character typed by the user is added to the end of the String variable.
             typing = typing + key;
         }
-
+         //klsdjf
     }
     void save() {
         String desktopPath = System.getProperty("user.home") + "/Desktop/";
