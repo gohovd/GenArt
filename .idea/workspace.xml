@@ -642,12 +642,6 @@
       <option name="number" value="Default" />
       <updated>1426006400471</updated>
     </task>
-    <task id="LOCAL-00015" summary="La til ny &quot;kunst&quot;, pulse">
-      <created>1426782017232</created>
-      <option name="number" value="00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1426782017233</updated>
-    </task>
     <task id="LOCAL-00016" summary="Litt freshere farger på &quot;pulse&quot; kunsten">
       <created>1426782342198</created>
       <option name="number" value="00016" />
@@ -936,7 +930,13 @@
       <option name="project" value="LOCAL" />
       <updated>1429540068571</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="Ramme">
+      <created>1429548065019</created>
+      <option name="number" value="00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1429548065019</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="ToolWindowManager">
