@@ -1,14 +1,7 @@
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemListener;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Random;
-import java.util.Vector;
 import javax.swing.*;
 import javax.swing.BorderFactory;
-import javax.swing.border.Border;
 
 /**
  * A simple demo application launching a Processing Applet
@@ -29,6 +22,7 @@ public class Application {
     private static final JCheckBox circular = new JCheckBox("Sirkulær");
     private static final JCheckBox randomclr = new JCheckBox("Tilfeldig farge");
     private static final JCheckBox linear = new JCheckBox("Lineær");
+    private static final JCheckBox border = new JCheckBox("Ramme");
 
     private static final int menuWidth = 200; // Husk å endre i MyApplet hvis du endrer her
 
@@ -53,7 +47,7 @@ public class Application {
 
 
 
-frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" fullskjerm
+        frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" fullskjerm
 //make sure to shut down the application, when the frame is closed
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -225,6 +219,8 @@ frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" ful
         circular.setSelected(false);
         linear.addItemListener(applet);
         linear.setSelected(false);
+        border.addItemListener(applet);
+        border.setSelected(false);
         randomclr.addItemListener(applet);
         randomclr.setSelected(true);
 
@@ -242,7 +238,7 @@ frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" ful
         buttonPanel.add(strokeNColourButton);
 
         //Also add buttons/radio-buttons/check-boxes.
-        buttonPanel.add(randomclr); buttonPanel.add(linear); buttonPanel.add(circular);
+        buttonPanel.add(randomclr); buttonPanel.add(linear); buttonPanel.add(circular); buttonPanel.add(border);
         buttonPanel.add(Randomize); buttonPanel.add(clearButton); buttonPanel.add(filterButton);
         buttonPanel.add(saveButton);
 
@@ -275,6 +271,9 @@ frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" ful
     public boolean getLinearState(){
         return linear.isSelected();
     }
+    public boolean getBorderState(){
+        return border.isSelected();
+    }
     public boolean getRandomColorState(){
         return randomclr.isSelected();
     }
@@ -285,6 +284,9 @@ frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" ful
     }
     public void setLinearState(boolean b){
         linear.setSelected(b);
+    }
+    public void setBorderState(boolean b){
+        border.setSelected(b);
     }
     public void setRandomclrState(boolean b){
         randomclr.setSelected(b);
