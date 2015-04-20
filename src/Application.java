@@ -47,7 +47,7 @@ public class Application {
 
 
 
-frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" fullskjerm
+        frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" fullskjerm
 //make sure to shut down the application, when the frame is closed
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

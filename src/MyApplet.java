@@ -88,7 +88,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     boolean nr2 = false;
     Robot robot; //deklarering av robot
     PImage d;
-////////////////////////////////////////////////// funkyvectors bytter ut hearts
+    ////////////////////////////////////////////////// funkyvectors bytter ut hearts
     ArrayList history;   // Define the history for pattern3
 
 
@@ -294,7 +294,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     public void keyPressed() {
         if(key == '1' && nr2 == true) {
             image(d, 0, 0);
-                    d.filter(THRESHOLD);
+            d.filter(THRESHOLD);
             filter(THRESHOLD);
             image(d, 0, 0);
             filterButton = false;
@@ -462,7 +462,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             ballInstance.initializeBalls();
             ballInstance.setPapp(this, appInit); // "Export" PApplet instance (from this class).
             ballbutton = true;
-            
+
         } else if (evt.getActionCommand().equals("create vector")) {
             for(int i = 0; i < 50; i++) {
                 //Circle radius is determined through the rTopSpeed. Great value => Great circle.
@@ -473,7 +473,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 moverInstance.setPapp(this, appInit);
             }
             vectorButton = true;
-            
+
         } else if (evt.getActionCommand().equals("randomize")) {
             /*try {
                 Tormod.displayInstructions();
@@ -486,7 +486,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             Tormod.reset();
             randomize = true;
             killTormod = false;
-            
+
         } else if (evt.getActionCommand().equals("clear")) {
             clear();
 
@@ -521,7 +521,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             strokeNColourButton = true;
             appInit.setStrokeSize(2);
             System.out.println(appInit.getStrokeSize());
-         colors.setVisible(true);
+            colors.setVisible(true);
 
         }
         else if (evt.getActionCommand().equals("filter")) {
