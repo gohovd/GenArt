@@ -183,7 +183,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             if (starzButton) {
                 st.drawStars();
             }
-            if (heartButton){
+            if (heartButton && mousePressed){
                 //st.drawHearts(); denne skal da vekk, fått ny funksjonalitet
 
                 int extra = 3;
