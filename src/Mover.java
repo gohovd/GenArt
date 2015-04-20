@@ -3,9 +3,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 /**
- * Second inner class 'Mover'. Makes something
- * similar to the bouncing balls, really. Supposed to be several vectors
- * moving in a circle or another pattern of motion.
+ * Makes a vector that moves in a predefined pattern.
  */
 class Mover extends PApplet {
 
@@ -19,7 +17,12 @@ class Mover extends PApplet {
     PApplet p;
     ArrayList<Mover> movers = new ArrayList();
     float incTorq = (float) 0.19;
+    int red, g, b, o;
+    boolean cc = true; //Custom color
 
+    /***
+     * Constructor for class Mover.
+     */
     Mover() {
         location = new PVector(0, 0);
         velocity = new PVector(0, 0);
@@ -27,6 +30,16 @@ class Mover extends PApplet {
 
     }
 
+    /***
+     * Collects the PApplet instance from class MyApplet,
+     * and iterates through all existing instances of class Mover
+     * and gives the PApplet to each object.
+     * Also collects the Application instance from class MyApplet,
+     * and gives that as well to every mover in existance.
+     *
+     * @param input - PApplet instance
+     * @param a - Application instance
+     */
     public void setPapp(PApplet input, Application a) {
         for(Mover m : movers){
             m.p = input;
@@ -35,12 +48,26 @@ class Mover extends PApplet {
 
     }
 
+    /***
+     * The display method for class Mover,
+     * this is where the vectors (in the shape of ellipse)
+     * are drawn.
+     */
     void display() {
         p.noStroke();
-        p.fill(random(255), random(255), random(255), random(255));
+        if(cc == true) { p.fill(p.random(255), p.random(255), p.random(255), 127); }
+        if(cc == false) { p.fill(p.random(red), p.random(g), p.random(b), p.random(o)); }
         p.ellipse(location.x, location.y, random(2, 10), random(2, 10));
     }
 
+    /***
+     * Creates a mover. Its topspeed and radius incrementation speed
+     * is set by the parameters. Also collects the width and height of the
+     * canvas (panel) to make the checkEdges method work properly.
+     *
+     * @param ts - float Topspeed
+     * @param inc - float The rate at which the radius of the circle motion grows.
+     */
     public void createNewMover(float ts, float inc) {
         Mover nMov = new Mover();
         nMov.topspeed = ts;
@@ -50,6 +77,13 @@ class Mover extends PApplet {
         movers.add(nMov);
     }
 
+    /***
+     * Method for updating the location of the vector.
+     * The vectors either move purely linearly, or circularly,
+     * which is decided by the int parameter.
+     *
+     * @param choice - int
+     */
     void update(int choice) {
         //The choice parameter decides the pattern of motion
         //in which the vectors will move.
@@ -58,11 +92,10 @@ class Mover extends PApplet {
         PVector aim, dir;
         if (choice == 1) {
             r += incTorq;
-            //r += .19;
             float xx = cos(r) * 60;
             float yy = sin(r) * 60;
             aim = new PVector(xx, yy);
-            dir = PVector.sub(aim, location);  // Find vector pointing towards aim.'
+            dir = PVector.sub(aim, location);  // Find vector pointing towards aim.
             dir.normalize();     // Normalize
             dir.mult((float) 0.5);       // Scale
             acceleration = aim;
@@ -75,7 +108,6 @@ class Mover extends PApplet {
             acceleration = aim;
         }
 
-        // Motion 101!  Velocity changes by acceleration.  Location changes by velocity.
         velocity.add(acceleration);
         velocity.limit(topspeed);
         location.add(velocity);
@@ -83,6 +115,10 @@ class Mover extends PApplet {
 
     }
 
+    /***
+     * Checks the edges. If the vector goes over the predefined width
+     * or height, it wraps around.
+     */
     void checkEdges() {
 
         if (location.x > vWidth) {
@@ -98,21 +134,51 @@ class Mover extends PApplet {
         }
     }
 
-
+    /***
+     * Returns the location of the vector.
+     * @return PVector - location
+     */
     public PVector getVecLocation() {
         return location;
     }
 
+    /***
+     * Returns the array containing all instances
+     * of class Mover
+     * @return ArrayList(Mover)
+     */
     public ArrayList<Mover> getMovers() {
         return movers;
     }
 
+    /***
+     * Clears the arraylist containing
+     * all instances of class Mover
+     */
     public void clearMovers(){
         movers.clear();
     }
 
+    /***
+     * Forcibly changes the locational data
+     * of the PVector location for an instance
+     * of class Mover
+     * @param loc - PVector
+     */
     public void setVecLocation(PVector loc) {
         this.location.x = loc.x;
         this.location.y = loc.y;
+    }
+
+    public void setColor(String input){
+        String[] split = input.split(" ");
+        red = Integer.parseInt(split[0]);
+        g = Integer.parseInt(split[1]);
+        b = Integer.parseInt(split[2]);
+        o = Integer.parseInt(split[3]);
+    }
+
+    public void setCC(Boolean b){
+        cc = b;
     }
 }

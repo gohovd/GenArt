@@ -8,6 +8,8 @@ public class CrossShape {
     PApplet p;
     int i = 0;
     boolean q = false;
+    int r, g, b, o;
+    boolean cc = true; //Custom color
     
     CrossShape(PApplet input){
         p = input;
@@ -41,5 +43,17 @@ public class CrossShape {
                 q = false;
             }
         }
+    }
+
+    public void setColor(String input){
+        String[] split = input.split(" ");
+        r = Integer.parseInt(split[0]);
+        g = Integer.parseInt(split[1]);
+        b = Integer.parseInt(split[2]);
+        o = Integer.parseInt(split[3]);
+    }
+
+    public void setCC(Boolean b){
+        cc = b;
     }
 }

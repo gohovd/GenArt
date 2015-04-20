@@ -7,6 +7,9 @@ public class PulseShape {
     
     PApplet p;
     int pulseAngle = 0;
+
+    int r, g, b, o;
+    boolean cc = true; //Custom color
     
     PulseShape(PApplet input){
         p = input;
@@ -21,11 +24,24 @@ public class PulseShape {
             for (int a = 0; a < 360; a += 75) {
                 float xoff = p.cos(p.radians(a)) * val;
                 float yoff = p.sin(p.radians(a)) * val;
-                p.fill(p.random(0, 255), p.random(0, 255), p.random(0, 255), p.random(0, 255));
+                if(cc == true) { p.fill(p.random(255), p.random(255), p.random(255), p.random(255)); }
+                if(cc == false) { p.fill(p.random(r), p.random(g), p.random(b), p.random(o)); }
                 p.ellipse(p.mouseX + xoff, p.mouseY + yoff, val, val);
             }
             p.fill(255);
             p.ellipse(p.mouseX, p.mouseY, 2, 2);
         }
+    }
+
+    public void setColor(String input){
+        String[] split = input.split(" ");
+        r = Integer.parseInt(split[0]);
+        g = Integer.parseInt(split[1]);
+        b = Integer.parseInt(split[2]);
+        o = Integer.parseInt(split[3]);
+    }
+
+    public void setCC(Boolean b){
+        cc = b;
     }
 }

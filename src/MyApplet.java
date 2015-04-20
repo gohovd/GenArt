@@ -132,7 +132,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                     Tormod.selectRandomFilter(Tormod.getRandFilter());
                     Tormod.setFilterSelection(false);
                 }
-                Tormod.rMotion();
+                Tormod.oMotion();
             } catch (AWTException e) {
                 e.printStackTrace();
             } catch (InterruptedException e) {

@@ -26,11 +26,8 @@ public class Application {
 
     private int strokeSize = 1;
 
-
-
-    private static final JTextField vColorField = new JTextField(5);
-    private static final JCheckBox circular = new JCheckBox("Rundskriv");
-    private static final JCheckBox randomclr = new JCheckBox("Random Farge");
+    private static final JCheckBox circular = new JCheckBox("Sirkulær");
+    private static final JCheckBox randomclr = new JCheckBox("Tilfeldig farge");
     private static final JCheckBox linear = new JCheckBox("Lineær");
 
     private static final int menuWidth = 200; // Husk å endre i MyApplet hvis du endrer her
@@ -86,10 +83,7 @@ frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" ful
         final MyApplet applet = new MyApplet();
 //start the applet
         applet.init();
-// Textboxes
-//create a textbox that takes three ints as inputs to form a color
-        vColorField.setToolTipText("COLOR: 255 255 255 255");
-        vColorField.addActionListener(applet);
+
 //Buttons
 //create a button labled "create new ball"
 
@@ -108,7 +102,7 @@ frame.setUndecorated(true); // Aktiver for å fjerne tittel etc, "skikkelig" ful
         clearButton = new JButton("Clear");
         Randomize = new JButton("Randomisert");
         saveButton = new JButton("Lagre");
-        filterButton = new JButton("Filterer");
+        filterButton = new JButton("Filter");
 
         ImageIcon imageForrandomLinesButton = new ImageIcon("images/rndlines.png");
         randomLinesButton = new JButton("", imageForrandomLinesButton);

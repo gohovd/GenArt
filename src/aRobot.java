@@ -15,11 +15,11 @@ import java.util.Random;
  * Created by Gøran on 23.03.2015.
  */
 public class aRobot {
-
+    //Robots very own instance of class Application
     public static Application instance = new Application();
     //Users screen-width and -height.
-    private int cWidth = instance.panel.getWidth();
-    private int cHeight = instance.panel.getHeight();
+    private int cWidth = Application.panel.getWidth();
+    private int cHeight = Application.panel.getHeight();
     //Small pause/delay between mouse-press/-release etc.
     private static final long delay = 200;
     private static final long d = 10;
@@ -40,11 +40,15 @@ public class aRobot {
     int cX = cWidth / 2;
     int cY = cHeight / 2;
     //Boolean making sure instructions only show up once.
-    boolean tutorial;
+    boolean tutorial; // Deactivated in class MyApplet (commented out).
     int avoidFirst = 1;
     int randFilter;
     boolean filterSelection = false;
+    float radius = (float) 0.5;
 
+    /**
+     * Constructor for class Robot.
+     */
     aRobot() {
         try {
             r = new Robot();
@@ -53,20 +57,20 @@ public class aRobot {
         } catch (AWTException e) {
             e.printStackTrace();
         }
-        mapKeyEvents();
     }
 
-    private void mapKeyEvents() {
-        filterMap.put(1, KeyEvent.VK_1);
-        filterMap.put(2, KeyEvent.VK_2);
-        filterMap.put(3, KeyEvent.VK_3);
-        filterMap.put(4, KeyEvent.VK_4);
-        filterMap.put(5, KeyEvent.VK_5);
-        filterMap.put(6, KeyEvent.VK_6);
-        filterMap.put(7, KeyEvent.VK_7);
-        filterMap.put(8, KeyEvent.VK_8);
-    }
-
+    /***
+     * Selects a random button from HashMap buttons.
+     * Takes the keyset from HashMap buttons, and adds
+     * the name (String: keys) of the desired buttons
+     * to an array (datatype: string).
+     * It then goes on to generate a random int (highest value
+     * is the size of the array), and passes that value to
+     * clickGUIButton.
+     *
+     * @throws InterruptedException
+     * @throws AWTException
+     */
     private void clickRandomGUIButton() throws InterruptedException, AWTException {
         keys = new ArrayList();
         for (Object jb : buttons.keySet()) {
@@ -76,13 +80,24 @@ public class aRobot {
                     nameOfButton.contains("Randomize") ||
                     nameOfButton.contains("saveButton") ||
                     nameOfButton.contains("strokeNColourButton") ||
-                    nameOfButton.contains("filterButton")) { // do nothing..
+                    nameOfButton.contains("filterButton") ||
+                    nameOfButton.contains("clrButton")) { // do nothing..
             } else keys.add(nameOfButton);
         }
         int roulette = rand.nextInt(keys.size());
         clickGUIButton(keys.get(roulette));
     }
 
+    /***
+     * Generates a random int with the highest value being the number of
+     * available filters (+1 as highest is exclusive).
+     * Tells the clickGUIButton method to click the "filterButton",
+     * and then goes on to set the boolean filterSelection true -
+     * which prevents any other operations to interfere with the robot.
+     *
+     * @throws InterruptedException
+     * @throws AWTException
+     */
     private void selectFilter() throws InterruptedException, AWTException {
         randFilter = rand.nextInt(8) + 1; //Number of filters (8).
         Thread.sleep(1000);
@@ -96,6 +111,14 @@ public class aRobot {
         filterSelection = true;
     }
 
+    /***
+     * Selects any out of the eight available filters.
+     * The number "i" (number between 1-8) represents
+     * the numbers on your keyboard, as the robot must press (keypress)
+     * one of these buttons to invoke a filter.
+     *
+     * @param i
+     */
     public void selectRandomFilter(int i){
         if(i == 1){ r.keyPress(KeyEvent.VK_1); r.delay(500); r.keyRelease(KeyEvent.VK_1);}
         if(i == 2){ r.keyPress(KeyEvent.VK_2); r.delay(500); r.keyRelease(KeyEvent.VK_1);}
@@ -115,7 +138,7 @@ public class aRobot {
      */
     public void rMotion() throws AWTException, InterruptedException {
         if (motionsMade % 600 == 0) {
-            if(avoidFirst == 0) { selectFilter(); avoidFirst += 1;}
+            if(avoidFirst == 0) { selectFilter(); avoidFirst += 1; return; }
             Thread.sleep(1500);
             r.delay(1000);
             clickRandomGUIButton();
@@ -127,14 +150,14 @@ public class aRobot {
         }
             r.mouseMove(cX, cY);
             r.mousePress(InputEvent.BUTTON1_MASK);
-            cX += 30 - rand.nextInt(60);
+            cX += 35 - rand.nextInt(70);
             if (cX > cWidth) {
                 cX -= cWidth;
             }
             if (cX < 0) {
                 cX += cWidth;
             }
-            cY += 30 - rand.nextInt(60);
+            cY += 35 - rand.nextInt(70);
             if (cY > cHeight) {
                 cY -= cHeight;
             }
@@ -144,9 +167,57 @@ public class aRobot {
             r.mouseMove(cX, cY);
             tutorial = true;
             motionsMade++;
-
     }
 
+    public void oMotion() throws AWTException, InterruptedException {
+        if (motionsMade % 600 == 0) {
+            if(avoidFirst == 0) { selectFilter(); avoidFirst += 1; return; }
+            Thread.sleep(1500);
+            r.delay(1000);
+            clickRandomGUIButton();
+            r.delay(500);
+            r.mousePress(InputEvent.BUTTON1_MASK);
+            r.delay(500);
+            r.mouseRelease(InputEvent.BUTTON1_MASK);
+            avoidFirst -= 1;
+        }
+        r.mouseMove(cX, cY);
+        r.mousePress(InputEvent.BUTTON1_MASK);
+        cX += p.cos(radius) * 60;
+        if (cX > cWidth) {
+            cX -= cWidth;
+        }
+        if (cX < 0) {
+            cX += cWidth;
+        }
+        cY += p.sin(radius) * 60;
+        if (cY > cHeight) {
+            cY -= cHeight;
+        }
+        if (cY < 0) {
+            cY += cHeight;
+        }
+        r.mouseMove(cX, cY);
+        tutorial = true;
+        motionsMade++;
+        radius += 0.1;
+    }
+
+
+
+
+    /***
+     * Iterates through the keyset of HashMap buttons,
+     * looks for the parameter (String key), and sees if
+     * it can find a button with a name equal to that of the
+     * parameter. If it does, it collects data about the button's
+     * location on the screen - and makes the robot move the mousecursor
+     * to that specific location. And finally, makes the robot press the button.
+     *
+     * @param key
+     * @throws AWTException
+     * @throws InterruptedException
+     */
     public void clickGUIButton(String key) throws AWTException, InterruptedException {
         buttons = instance.getButtons();
         if (!buttons.containsKey(key)) {
@@ -214,6 +285,11 @@ public class aRobot {
         motionsMade = 0;
     }
 
+    /***
+     * This method clears the screen, and writes
+     * instructions on how to stop the robot after starting.
+     *
+     */
     /*public void displayInstructions() throws InterruptedException, AWTException {
         p.background(255);
         p.fill(210, 54, 65, 255);
@@ -226,14 +302,29 @@ public class aRobot {
         p.background(255);
     }*/
 
+    /***
+     * Returns the number of the filter that will be chosen.
+     * @return int - Number representing the filter to be chosen (1-8)
+     */
     public int getRandFilter(){
         return randFilter;
     }
 
+    /***
+     * Returns whether or not the robot is in the process
+     * of selecting a filter.
+     *
+     * @return boolean - State of filter selection.
+     */
     public boolean getFilterSelection(){
         return filterSelection;
     }
 
+    /***
+     * Tells the robot to enter filter selection,
+     * or exit it.
+     * @param b - Boolean.
+     */
     public void setFilterSelection(boolean b){
         filterSelection = b;
     }

@@ -14,13 +14,26 @@ class Ball {
     ArrayList<Ball> ballList = new ArrayList();
     PApplet p;
 
+    int r, g, b, o;
+    boolean cc = true; //Custom color
+
+    /***
+     * Empty (no parameter) constructor for class Ball.
+     */
     Ball(){
     }
 
+    /***
+     * Constructor for class Ball, taking the ball's direction
+     * as parameters to force it in that specific direction.
+     *
+     * @param xDir - (float) The X-direction of the ball.
+     * @param yDir - (float) The Y-direction of the ball.
+     */
     Ball(float xDir, float yDir) {
         this.speedX = xDir;
         this.speedY = yDir;
-        this.size =10;
+        this.size = 10;
     }
 
     public void move() {
@@ -32,7 +45,8 @@ class Ball {
 
     public void display() {
         p.stroke(p.random(255), p.random(255), p.random(255));
-        p.fill(p.random(255), p.random(255), p.random(255), 120);
+        if(cc == true) { p.fill(p.random(255), p.random(255), p.random(255), 127); }
+        if(cc == false) { p.fill(p.random(r), p.random(g), p.random(b), p.random(o)); }
         p.ellipse(x, y, size, size);
     }
 
@@ -125,6 +139,18 @@ class Ball {
             b.setIX(); b.setIY();
         }
 
+    }
+
+    public void setColor(String input){
+        String[] split = input.split(" ");
+        r = Integer.parseInt(split[0]);
+        g = Integer.parseInt(split[1]);
+        b = Integer.parseInt(split[2]);
+        o = Integer.parseInt(split[3]);
+    }
+
+    public void setCC(Boolean b){
+        cc = b;
     }
 
 }
