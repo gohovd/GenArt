@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="905e9aa0-ee52-425e-affb-f197dfe127a8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="C:\Users\Jarlè\Documents\GitHub\GenArt\out\production\GenArt\MyApplet.class" afterPath="C:\Users\Jarlè\Documents\GitHub\GenArt\out\production\GenArt\MyApplet.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GenArt/MyApplet.class" afterPath="$PROJECT_DIR$/out/production/GenArt/MyApplet.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MyApplet.java" afterPath="$PROJECT_DIR$/src/MyApplet.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -65,8 +65,8 @@
       <file leaf-file-name="MyApplet.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MyApplet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.31586608" vertical-offset="2945" max-vertical-offset="9741">
-              <caret line="186" column="77" selection-start-line="186" selection-start-column="77" selection-end-line="186" selection-end-column="77" />
+            <state vertical-scroll-proportion="0.18340611" vertical-offset="3597" max-vertical-offset="9741">
+              <caret line="219" column="34" selection-start-line="219" selection-start-column="34" selection-end-line="219" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -447,12 +447,6 @@
       <option name="number" value="Default" />
       <updated>1426006400471</updated>
     </task>
-    <task id="LOCAL-00008" summary="Én mindre fil.">
-      <created>1426148643012</created>
-      <option name="number" value="00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1426148643012</updated>
-    </task>
     <task id="LOCAL-00009" summary="Fikset 'clear' knapp.">
       <created>1426154001555</created>
       <option name="number" value="00009" />
@@ -741,7 +735,13 @@
       <option name="project" value="LOCAL" />
       <updated>1429524233255</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="hearts har fått ny funksjonalitet">
+      <created>1429534830854</created>
+      <option name="number" value="00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1429534830854</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -789,7 +789,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="squares and starzz added in myapplet" />
     <MESSAGE value="Nye bilder, stroke 'n colour" />
     <MESSAGE value="Triangles funksjon added" />
     <MESSAGE value="update for square2" />
@@ -814,7 +813,8 @@
     <MESSAGE value="Velge-farge-knapp funker, men funksjoner plukker ikke opp og bruker farge enda.. Kommer?" />
     <MESSAGE value="Endra heart og hjerte knapp til å være 90x90 som resten av knappene" />
     <MESSAGE value="litt fix i, save  og filter, ser finere ut" />
-    <option name="LAST_COMMIT_MESSAGE" value="litt fix i, save  og filter, ser finere ut" />
+    <MESSAGE value="hearts har fått ny funksjonalitet" />
+    <option name="LAST_COMMIT_MESSAGE" value="hearts har fått ny funksjonalitet" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1258,8 +1258,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MyApplet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31586608" vertical-offset="2945" max-vertical-offset="9741">
-          <caret line="186" column="77" selection-start-line="186" selection-start-column="77" selection-end-line="186" selection-end-column="77" />
+        <state vertical-scroll-proportion="0.18340611" vertical-offset="3597" max-vertical-offset="9741">
+          <caret line="219" column="34" selection-start-line="219" selection-start-column="34" selection-end-line="219" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
