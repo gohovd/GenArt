@@ -31,7 +31,7 @@ public class Application {
 
     private static JButton vectorButton, clearButton, randomLinesButton, pulseButton, crossDotsButton,
             starButton, heartButton, squarezButton,  buttonCreate, varBubblesButton, trianglezButton,
-            Randomize,strokeNColourButton, filterButton, saveButton;
+            Randomize,strokeNColourButton, filterButton, saveButton, signatureButton;
 
     public static HashMap<String, JButton> buttonMap = new HashMap();
 
@@ -75,6 +75,7 @@ public class Application {
 
 //create an instance of your processing applet
         final MyApplet applet = new MyApplet();
+
 //start the applet
         applet.init();
 
@@ -144,6 +145,11 @@ public class Application {
         strokeNColourButton.setBackground(Color.white);
         strokeNColourButton.setPreferredSize(new Dimension(90, 90));
 
+        ImageIcon imageForSignatureButton = new ImageIcon("images/signature.png");
+        signatureButton = new JButton("", imageForSignatureButton);
+        signatureButton.setBackground(Color.white);
+        signatureButton.setPreferredSize(new Dimension(90, 90));
+
         /*
         ImageIcon imageForSaveFunctions = new ImageIcon("images/crossdots.png");
         saveButton = new JButton("", imageForSaveFunctions);
@@ -166,6 +172,7 @@ public class Application {
         squarezButton.setToolTipText("Draws squares as you drag your mouse");
         trianglezButton.setToolTipText("Draws triangles as you drag your mouse");
         strokeNColourButton.setToolTipText("Choose stroke size and colours");
+        signatureButton.setToolTipText("Add your signature");
         // Adding button graphics
 
 
@@ -189,6 +196,7 @@ public class Application {
         trianglezButton.setActionCommand("trianglez");
         Randomize.setActionCommand("randomize");
         strokeNColourButton.setActionCommand("strokencolour");
+        signatureButton.setActionCommand("signature");
 
         //Add buttons to map. Name of button is key, while actual button is the value.
         buttonMap.put("buttonCreate", buttonCreate);
@@ -206,6 +214,7 @@ public class Application {
         buttonMap.put("Randomize", Randomize);
         buttonMap.put("clearButton", clearButton);
         buttonMap.put("filterButton", filterButton);
+        buttonMap.put("signatureButton", signatureButton);
 
 
         //Iterate through entrySet, and set class Applet as action listener for every button.
@@ -236,6 +245,7 @@ public class Application {
         buttonPanel.add(squarezButton);
         buttonPanel.add(trianglezButton);
         buttonPanel.add(strokeNColourButton);
+        buttonPanel.add(signatureButton);
 
         //Also add buttons/radio-buttons/check-boxes.
         buttonPanel.add(randomclr); buttonPanel.add(linear); buttonPanel.add(circular); buttonPanel.add(border);
