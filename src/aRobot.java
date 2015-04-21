@@ -47,6 +47,8 @@ public class aRobot {
     boolean colorNotFound;
     int red, green, blue, alpha;
 
+    float radius = 25;
+
     /**
      * Constructor for class Robot.
      */
@@ -83,7 +85,9 @@ public class aRobot {
                     nameOfButton.contains("strokeNColourButton") ||
                     nameOfButton.contains("filterButton") ||
                     nameOfButton.contains("clrButton") ||
-                    nameOfButton.contains("signatureButton")) { // do nothing..
+                    nameOfButton.contains("signatureButton") ||
+                    nameOfButton.contains("buttonCreate") ||
+                    nameOfButton.contains("closeButton")) { // do nothing..
             } else keys.add(nameOfButton);
         }
         //give it whatever value, it'll change def. anyways.
@@ -106,7 +110,10 @@ public class aRobot {
             c = r.getPixelColor(rand.nextInt(Application.panel.getWidth()), rand.nextInt(Application.panel.getHeight()));
             String cString =  "" + c.getRed() + c.getGreen() + c.getBlue() + c.getAlpha();
             System.out.println("CLR STRING: " + cString);
-            if(!cString.equals("255255255255") || !cString.equals("0000")) {
+            if(!cString.equals("255255255255") ||
+                    !cString.equals("0000") ||
+                    !cString.equals("000255") ||
+                    !cString.equals("2552552550")) {
                 colorNotFound = false;
             }
         }
@@ -167,7 +174,7 @@ public class aRobot {
      * @throws InterruptedException
      */
     public void rMotion() throws AWTException, InterruptedException {
-        if (motionsMade % 400 == 0) {
+        if (motionsMade % 800 == 0) {
             if(avoidFirst == 0) { selectFilter(); avoidFirst += 1; return; }
             Thread.sleep(1500);
             r.delay(1000);
@@ -211,8 +218,10 @@ public class aRobot {
             r.mouseRelease(InputEvent.BUTTON1_MASK);
             avoidFirst -= 1;
         }
-        //float radius = p.random((float)0.4);
-        float radius = (float) 0.3;
+        //float radius = p.random((float)1);
+        int updown = rand.nextInt(1);
+        if(updown == 1) { radius += 0.4; }
+        if(updown == 0) { radius -= 0.4; }
         r.mouseMove(cX, cY);
         r.mousePress(InputEvent.BUTTON1_MASK);
         cX += PApplet.cos(radius) * 60;

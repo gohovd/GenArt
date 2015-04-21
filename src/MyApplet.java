@@ -33,7 +33,6 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     Brush bu = new BubbleShape(this);
     Brush sq = new SquareShape(this);
     Brush tr = new TriangleShape(this);
-    Brush mover = new Mover(this);
     Brush moverInstance = new Mover(this);
 
     ArrayList<Brush> brushes = new ArrayList();
@@ -163,17 +162,18 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                     Tormod.setFilterSelection(false);
                 }
                 count++;
-                if(count % 400 == 0) { switcher = true; }
+                if(count % 900 == 0) { switcher = true; }
                 if(count % 500 == 0) {
-                    System.out.println("Let's look for colors! :D");
                     String split[] = Tormod.getColorString().split(" ");
+                    System.out.println(Tormod.getColorString());
                     reds = Integer.parseInt(split[0]);
                     greens = Integer.parseInt(split[1]);
                     blues = Integer.parseInt(split[2]);
                     alphas = Integer.parseInt(split[3]);
+                    setColorForAllBrushes();
 
                 }
-                if(count % 810 == 0) { switcher = false; count = 0; }
+                if(count % 1200 == 0) { switcher = false; count = 0; }
                 if(switcher) { Tormod.oMotion(); }
                 if(!switcher) { Tormod.rMotion(); }
             } catch (AWTException e) {
@@ -196,7 +196,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 //Choice determines motion pattern (1: circular,  2: linear)
                 int choice = 1;
                 for (int i = 0; i < ((Mover)moverInstance).getMovers().size(); i++) {
-                    mover = ((Mover)moverInstance).getMovers().get(i);
+                    Brush mover = ((Mover)moverInstance).getMovers().get(i);
                     mouse = new PVector(mouseX, mouseY);
                     ((Mover)mover).setVecLocation(mouse);
                     if (circular) {
@@ -626,15 +626,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             System.out.println("Color String: " + col.getRed() + " " + col.getGreen() + " " + col.getBlue() + " " + col.getAlpha());
 
             reds = col.getRed(); greens = col.getGreen(); blues = col.getBlue(); alphas = col.getAlpha();
-
-            for(Brush b : brushes){
-                b.setCC(true);
-                b.setColor(reds, greens, blues, alphas);
-            }
-            for(Mover m : ((Mover)moverInstance).getMovers()) {
-                m.setCC(true);
-                m.setColor(reds, greens, blues, alphas);
-            }
+            setColorForAllBrushes();
         }
         else if (evt.getActionCommand().equals("filter")) {
             filterButton = true;
@@ -709,5 +701,15 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         robot.delay(200);
     }
 
+    private void setColorForAllBrushes(){
+        for(Brush b : brushes){
+            b.setCC(true);
+            b.setColor(reds, greens, blues, alphas);
+        }
+        for(Mover m : ((Mover)moverInstance).getMovers()) {
+            m.setCC(true);
+            m.setColor(reds, greens, blues, alphas);
+        }
+    }
 
 }

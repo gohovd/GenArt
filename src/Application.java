@@ -103,7 +103,9 @@ public class Application {
 
         clearButton = new JButton("Clear");
         Randomize = new JButton("Randomisert");
-        Randomize.setBackground(Color.ORANGE);
+        Randomize.setBackground(Color.GREEN);
+        Randomize.setForeground(Color.WHITE);
+        Randomize.setBorderPainted(true);
         //Randomize.setBorder(null);
         saveButton = new JButton("Lagre");
         closeButton = new JButton("Lukk Programmet");

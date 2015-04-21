@@ -88,9 +88,9 @@ class Mover extends Brush {
         //Choice 2: Linear
         PVector aim, dir;
         if (choice == 1) {
-            r += incTorq;
-            float xx = p.cos(r) * 60;
-            float yy = p.sin(r) * 60;
+            rad += incTorq;
+            float xx = p.cos(rad) * 60;
+            float yy = p.sin(rad) * 60;
             aim = new PVector(xx, yy);
             dir = PVector.sub(aim, location);  // Find vector pointing towards aim.
             dir.normalize();     // Normalize
