@@ -76,6 +76,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     boolean saveButton = false;
     PGraphics pg;//SaveBox
     PImage c;
+    PImage screendump;
     PFont f; //variabler for text input
     // Variable to store text currently being typed
     String typing = "";
@@ -90,10 +91,12 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     //////////////////////////////////////////// filterButton
     boolean filterButton = false;
     PGraphics pg2;
+    PGraphics signatureBox;
     boolean nr = false;
     boolean nr2 = false;
     Robot robot; //deklarering av robot
     PImage d;
+
     ////////////////////////////////////////////////// funkyvectors bytter ut hearts
     ArrayList history;   // Define the history for pattern3
     boolean switcher = false;
@@ -129,6 +132,8 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         ////////////setup for save funksjon///////////////////////////////
         pg = createGraphics(200, 200);//størrelse på boxa
         pg2 = createGraphics(200, 200); //filterbox
+        signatureBox = createGraphics(300, 200);
+
         f = createFont("Arial", 16, true);//gir f en font og størrelse
         // Set the font and fill for text
         textFont(f);
@@ -305,6 +310,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
                 d = get(0,0, 200, 200);
 
+                pg2.strokeWeight(2);
                 pg2.background(255, 255, 0);
                 pg2.stroke(255);
                 pg2.fill(0, 0, 0);
@@ -317,143 +323,200 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 leftClick();
 
             }
+            if (signatureButton){
+
+
+                strokeWeight(2);
+               stroke(102, 102, 255);
+                fill(245,245,245);
+                rect((width / 2)-150, (height/2)-100, 300, 200, 3);
+                fill(0,0,0);
+                textAlign(CENTER);
+
+                PFont signatureFont;
+                signatureFont = loadFont("fonts/Purisa-Oblique-16.vlw");
+                textFont(signatureFont);
+
+                text("Signatur og trykk 'enter'",width/2 ,height/2-60);
+
+
+                text(typing,width/2,height/2+20);
+
+            }
         }
     }
 
     ///////////////////Funksjoner for save funksjon/////////////////////////////////
     //////Kan legge til keyPressed events generelt. If key == 'x', do whatever//////
     public void keyPressed() {
-        if(key == '1' && nr2 == true) {
-            image(d, 0, 0);
-            d.filter(THRESHOLD);
-            filter(THRESHOLD);
-            image(d, 0, 0);
-            filterButton = false;
-            nr = false;
-            nr2 = false;
-        }
 
-        if(key == '2' && nr2 == true) {
-            image(d, 0, 0);
-            d.filter(GRAY);
-            filter(GRAY);
-            image(d, 0, 0);
-            filterButton = false;
-            nr = false;
-            nr2 = false;
-        }
+        if (signatureButton){
 
-        if(key == '3' && nr2 == true) {
-            image(d, 0, 0);
-            d.filter(OPAQUE );
-            filter(OPAQUE);
-            image(d, 0, 0);
-            filterButton = false;
-            nr = false;
-            nr2 = false;
-        }
-///////////////////////////////KAN FIXE VERDIEN TIL POSTERIZE TIL Å TA INPUT EVT//////////////////
-        if(key == '4' && nr2 == true) {
-            image(d, 0, 0);
-            d.filter(INVERT);
-            filter(INVERT);
-            image(d, 0, 0);
-            filterButton = false;
-            nr = false;
-            nr2 = false;
-        }
+            // If the return key is pressed, save the String and clear it
+            if (key == '\n') {
+                saved = typing;
 
-        if(key == '5' && nr2 == true) {
-            image(d, 0, 0);
-            d.filter(POSTERIZE, 4);
-            image(d, 0, 0);
-            filter(POSTERIZE, 4);
-            //image(d, 0, 0);
-            filterButton = false;
-            nr = false;
-            nr2 = false;
-        }
+                // A String can be cleared by setting it equal to ""
+                typing = "";
 
-        if(key == '6' && nr2 == true) {
-            image(d, 0, 0);
-            d.filter(BLUR, 6);
-            image(d, 0, 0);
-            filter(BLUR, 6);
-            //image(d, 0, 0);
-            filterButton = false;
-            nr = false;
-            nr2 = false;
-        }
+                // Generere bilde som skal settes inn senere
+             //       image(screendump, width, height);
 
-        if(key == '7' && nr2 == true) {
-            image(d, 0, 0);
-            d.filter(ERODE);
-            image(d, 0, 0);
-            filter(ERODE);
-            //image(d, 0, 0);
-            filterButton = false;
-            nr = false;
-            nr2 = false;
-        }
+                image(screendump, 0, 0);
 
-        if(key == '8' && nr2 == true) {
-            image(d, 0, 0);
-            d.filter(DILATE);
-            image(d, 0, 0);
-            filter(DILATE);
-            //image(d, 0, 0);
-            filterButton = false;
-            nr = false;
-            nr2 = false;
-        }
+                PFont signatureFont;
+                signatureFont = loadFont("fonts/Purisa-Bold-30.vlw");
+                textFont(signatureFont);
 
+                textAlign(RIGHT);
+                text(saved,width - 20,height - 30);
 
+                signatureButton = false;
 
-        if (key == 'q') {
-            killTormod = true;
-            Tormod.end();
-            randomize = false;
-        }
-        // If the return key is pressed, save the String and clear it
-        if (key == '\n') {
-            saved = typing;
-            // A String can be cleared by setting it equal to ""
-            typing = "";
-            if (saved.contains("jpg") || saved.contains("JPG") || saved.contains("Jpg") || saved.contains("jpeg") || saved.contains("JPEG") || saved.contains("Jpeg")) {
-                int dotPos = saved.lastIndexOf(".");
-                if (dotPos > 0)
-                    saved = saved.substring(0, dotPos);
-
-                image(c, width - 200, height - 200);
-                save();
-
-                pg.beginDraw();
-                pg.image(c, 0, 0);
-                pg.endDraw();
-                takepic = false;
-                saveButton = false;
-
-
+            } else {
+                // Otherwise, concatenate the String
+                // Each character typed by the user is added to the end of the String variable.
+                typing = typing + key;
             }
-            if (saved.contains("PNG") || saved.contains("Png") || saved.contains("png")) {
-                int dotPos = saved.lastIndexOf(".");
-                if (dotPos > 0)
-                    saved = saved.substring(0, dotPos);
-                image(c, width - 200, height - 200);
 
-                save2();
 
-                pg.beginDraw();
-                pg.image(c, 0, 0);
-                pg.endDraw();
-                takepic = false;
-                saveButton = false;
-            }
         } else {
-            // Otherwise, concatenate the String
-            // Each character typed by the user is added to the end of the String variable.
-            typing = typing + key;
+
+            if(key == '1' && nr2 == true) {
+                image(d, 0, 0);
+                d.filter(THRESHOLD);
+                filter(THRESHOLD);
+                image(d, 0, 0);
+                filterButton = false;
+                nr = false;
+                nr2 = false;
+            }
+
+            if(key == '2' && nr2 == true) {
+                image(d, 0, 0);
+                d.filter(GRAY);
+                filter(GRAY);
+                image(d, 0, 0);
+                filterButton = false;
+                nr = false;
+                nr2 = false;
+            }
+
+            if(key == '3' && nr2 == true) {
+                image(d, 0, 0);
+                d.filter(OPAQUE );
+                filter(OPAQUE);
+                image(d, 0, 0);
+                filterButton = false;
+                nr = false;
+                nr2 = false;
+            }
+///////////////////////////////KAN FIXE VERDIEN TIL POSTERIZE TIL Å TA INPUT EVT//////////////////
+            if(key == '4' && nr2 == true) {
+                image(d, 0, 0);
+                d.filter(INVERT);
+                filter(INVERT);
+                image(d, 0, 0);
+                filterButton = false;
+                nr = false;
+                nr2 = false;
+            }
+
+            if(key == '5' && nr2 == true) {
+                image(d, 0, 0);
+                d.filter(POSTERIZE, 4);
+                image(d, 0, 0);
+                filter(POSTERIZE, 4);
+                //image(d, 0, 0);
+                filterButton = false;
+                nr = false;
+                nr2 = false;
+            }
+
+            if(key == '6' && nr2 == true) {
+                image(d, 0, 0);
+                d.filter(BLUR, 6);
+                image(d, 0, 0);
+                filter(BLUR, 6);
+                //image(d, 0, 0);
+                filterButton = false;
+                nr = false;
+                nr2 = false;
+            }
+
+            if(key == '7' && nr2 == true) {
+                image(d, 0, 0);
+                d.filter(ERODE);
+                image(d, 0, 0);
+                filter(ERODE);
+                //image(d, 0, 0);
+                filterButton = false;
+                nr = false;
+                nr2 = false;
+            }
+
+            if(key == '8' && nr2 == true) {
+                image(d, 0, 0);
+                d.filter(DILATE);
+                image(d, 0, 0);
+                filter(DILATE);
+                //image(d, 0, 0);
+                filterButton = false;
+                nr = false;
+                nr2 = false;
+            }
+
+
+
+            if (key == 'q') {
+                killTormod = true;
+                Tormod.end();
+                randomize = false;
+            }
+            // If the return key is pressed, save the String and clear it
+            if (key == '\n') {
+                saved = typing;
+                // A String can be cleared by setting it equal to ""
+                typing = "";
+                if (saved.contains("jpg") || saved.contains("JPG") || saved.contains("Jpg") || saved.contains("jpeg") || saved.contains("JPEG") || saved.contains("Jpeg")) {
+                    int dotPos = saved.lastIndexOf(".");
+                    if (dotPos > 0)
+                        saved = saved.substring(0, dotPos);
+
+                    image(c, width - 200, height - 200);
+                    save();
+
+                    pg.beginDraw();
+                    pg.image(c, 0, 0);
+                    pg.endDraw();
+                    takepic = false;
+                    saveButton = false;
+
+
+                }
+                if (saved.contains("PNG") || saved.contains("Png") || saved.contains("png")) {
+                    int dotPos = saved.lastIndexOf(".");
+                    if (dotPos > 0)
+                        saved = saved.substring(0, dotPos);
+                    image(c, width - 200, height - 200);
+
+                    save2();
+
+                    pg.beginDraw();
+                    pg.image(c, 0, 0);
+                    pg.endDraw();
+                    takepic = false;
+                    saveButton = false;
+                }
+            } else {
+                // Otherwise, concatenate the String
+                // Each character typed by the user is added to the end of the String variable.
+                typing = typing + key;
+            }
+
         }
+
+
 
     }
     void save() {
@@ -567,7 +630,17 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             pause = false;
         }
         else if (evt.getActionCommand().equals("signature")){
-            System.out.println("Knappen fungerer");
+            screendump = get();
+
+            // Variable to store text currently being typed
+            String typing = "";
+
+            // Variable to store saved text when return is hit
+            String saved = "";
+
+            signatureButton = true;
+
+
         }
 
 
