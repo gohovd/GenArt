@@ -47,7 +47,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     boolean strokeNColourButton = false;
     boolean heartButton = false;
     boolean signatureButton = false;
-    
+
     // Variables related to the mover/vector.
     boolean vectorButton = false;
     int vStep = 0; // When steps, do something different.
@@ -76,7 +76,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     boolean closeButton = false;
     PGraphics pg;//SaveBox
     PImage c;
-    PImage screendump;
+    PImage screenshot;
     PFont f; //variabler for text input
     // Variable to store text currently being typed
     String typing = "";
@@ -86,7 +86,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     String desktopPath = System.getProperty("user.home") + "/Desktop";
     boolean win = false;
     boolean takepic = false;
-    boolean kukk = false;
+    boolean panelActivated = false; // Settes til true hvis robot har klikket i tegning for å aktivere "panel"
     int count = 0;
     //////////////////////////////////////////// filterButton
     boolean filterButton = false;
@@ -110,16 +110,22 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
     public void setup() {
         //Put all brushes into an array.
-        brushes.add(pu); brushes.add(st); brushes.add(cr); brushes.add(li); brushes.add(bu);
-        brushes.add(sq); brushes.add(tr); brushes.add(moverInstance);
+        brushes.add(pu);
+        brushes.add(st);
+        brushes.add(cr);
+        brushes.add(li);
+        brushes.add(bu);
+        brushes.add(sq);
+        brushes.add(tr);
+        brushes.add(moverInstance);
         // Set up the movers/vectors.
         moverInstance = new Mover(this);
-        for(int i = 0; i < 50; i++) {
+        for (int i = 0; i < 50; i++) {
             //Circle radius is determined through the rTopSpeed. Great value => Great circle.
             float rTopSpeed = random(150);
             //The speed at which the circle rotates. Should be between 0.1 and 0.4.
             float TorqueIncrement = (float) 0.19;
-            ((Mover)moverInstance).createNewMover(rTopSpeed, TorqueIncrement);
+            ((Mover) moverInstance).createNewMover(rTopSpeed, TorqueIncrement);
             //moverInstance.setPapp(this, appInit);
         }
         size(screenSize.width - 200, screenSize.height);
@@ -147,7 +153,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             e.printStackTrace();
         }
         ///////////////////setup for filters slutt/////////////////
-        history  = new ArrayList();
+        history = new ArrayList();
         border = new Border(this, appInit);
     }
 
@@ -157,7 +163,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         // them, is decided by the push of the button.
         if (randomize && !killTormod) {
             try {
-                if(Tormod.getFilterSelection() == true) {
+                if (Tormod.getFilterSelection() == true) {
                     Tormod.selectRandomFilter(Tormod.getRandFilter());
                     Tormod.setFilterSelection(false);
                 }
@@ -198,73 +204,71 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 for (int i = 0; i < ((Mover)moverInstance).getMovers().size(); i++) {
                     Brush mover = ((Mover)moverInstance).getMovers().get(i);
                     mouse = new PVector(mouseX, mouseY);
-                    ((Mover)mover).setVecLocation(mouse);
+                    ((Mover) mover).setVecLocation(mouse);
                     if (circular) {
                         choice = 1;
                     }
                     if (linear) {
                         choice = 2;
                     }
-                    ((Mover)mover).update(choice);
-                    ((Mover)mover).display();
+                    ((Mover) mover).update(choice);
+                    ((Mover) mover).display();
                 }
             }
             if (randomLineButton) {
-                ((LineShape)li).drawLines();
+                ((LineShape) li).drawLines();
             }
             if (varBubblesButton) {
-                ((BubbleShape)bu).drawBubbles();
+                ((BubbleShape) bu).drawBubbles();
             }
             if (pulseButton) {
-                ((PulseShape)pu).drawPulse();
+                ((PulseShape) pu).drawPulse();
             }
             if (crossDotsButton) {
-                ((CrossShape)cr).drawCross();
+                ((CrossShape) cr).drawCross();
             }
             if (starzButton) {
-                ((StarShape)st).drawStars();
+                ((StarShape) st).drawStars();
             }
-            if (heartButton && mousePressed){
+            if (heartButton && mousePressed) {
                 //st.drawHearts(); denne skal da vekk, fått ny funksjonalitet
 
                 int extra = 3;
                 // Randomise the colours during each frame
-                stroke(random(0,255), random(0,255), random(0,255));
+                stroke(random(0, 255), random(0, 255), random(0, 255));
                 strokeWeight((float) 0.2);
                 line(mouseX, mouseY, pmouseX, pmouseY);
-                line(width-mouseX, mouseY, width-pmouseX, mouseY); // Mirror
+                line(width - mouseX, mouseY, width - pmouseX, mouseY); // Mirror
 
-                for(int i = 0; i < history.size(); i++){
+                for (int i = 0; i < history.size(); i++) {
                     PVector p = (PVector) history.get(i);
 
                     // Draw a line from the current mouse point to
                     // the historical point if the distance is less
                     // than 50
-                    if(dist(mouseX, mouseY, p.x, p.y) < 50){
+                    if (dist(mouseX, mouseY, p.x, p.y) < 50) {
                         line(mouseX, mouseY, p.x + extra, p.y + extra);
                     }
                     // repeat for the mirror line
-                    if(dist(width-mouseX, mouseY, p.x, p.y) < 50){
-                        line(width-mouseX, mouseY, p.x + extra, p.y + extra);
+                    if (dist(width - mouseX, mouseY, p.x, p.y) < 50) {
+                        line(width - mouseX, mouseY, p.x + extra, p.y + extra);
                     }
                 }
 
                 // Add the current point to the history
                 history.add(new PVector(mouseX, mouseY));
-                history.add(new PVector(width-mouseX, mouseY));
+                history.add(new PVector(width - mouseX, mouseY));
 
             }
             if (squarezButton) {
-                ((SquareShape)sq).drawSquares();
+                ((SquareShape) sq).drawSquares();
             }
             if (trianglezButton) {
-                ((TriangleShape)tr).drawTriangles();
+                ((TriangleShape) tr).drawTriangles();
             }
             if (appInit.getBorderState() == true) {
 
                 border.drawBorder();
-
-
 
 
             }
@@ -275,28 +279,32 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
             if (saveButton) {
 
+                strokeWeight(2);
+                stroke(102, 102, 255);
+                fill(245, 245, 245);
+                rect((width / 2) - 150, (height / 2) - 100, 300, 300, 3);
+                fill(0, 0, 0);
+                textAlign(CENTER);
 
-                if (kukk == false) {
+                PFont signatureFont;
+                signatureFont = loadFont("fonts/Purisa-Oblique-16.vlw");
+                textFont(signatureFont);
 
-                    pg.beginDraw();
-                    if (takepic == false) {
-                        c = get(width - 200, height - 200, 200, 200);
-
-                        takepic = true;
-
-                    }
-                    pg.background(255, 255, 0);
-                    pg.stroke(255);
-                    pg.text("skriv ditt ønskede filnavn. \nF.EKS: \n'minFil.jpg' \neller \n'mittBilde.PNG'", indent, 40);
-                    pg.fill(0, 0, 0);
-                    pg.text(typing, indent, 120);
-                    pg.text("Filen blir lagret på skrivebordet", indent, 150);
-
-                    pg.endDraw();
+                text("Skriv inn ønsket filnavn \n" +
+                        "F.eks. 'minfil.jpg'", width / 2, height / 2 - 50);
 
 
-                    image(pg, width - 200, height - 200);
 
+                text(typing, width / 2, height / 2 + 60);
+
+                text("Filen blir lagret på skrivebordet", width / 2, height / 2 + 150);
+
+                if (panelActivated) {
+                    // Do nothing
+                } else {
+                    robot.mouseMove(width / 2, height / 2);
+                    leftClick();
+                    panelActivated = true;
                 }
 
             }
@@ -305,47 +313,63 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             }
             if (filterButton) {
 
-                if(nr == false){
-                    nr = true;
-                    nr2 = true;
-                }
-
-                pg2.beginDraw();
-
-                d = get(0,0, 200, 200);
-
-                pg2.strokeWeight(2);
-                pg2.background(255, 255, 0);
-                pg2.stroke(255);
-                pg2.fill(0, 0, 0);
-                pg2.text("for filters, bruk nr tastene: \n 1: Black and white \n 2: Grayscale \n 3: Opaque \n 4: Invert \n 5: Posterize \n 6: Blur \n 7: Erode \n 8: Dilate \n" ,0,0);
-
-                pg2.endDraw();
-                image(pg2, 0, 0);
-                filterButton =  false;
-                robot.mouseMove(width / 2, height/2);
-                leftClick();
-
-            }
-            if (signatureButton){
-
 
                 strokeWeight(2);
-               stroke(102, 102, 255);
-                fill(245,245,245);
-                rect((width / 2)-150, (height/2)-100, 300, 200, 3);
-                fill(0,0,0);
+                stroke(102, 102, 255);
+                fill(245, 245, 245);
+                rect((width / 2) - 150, (height / 2) - 100, 300, 300, 3);
+                fill(0, 0, 0);
                 textAlign(CENTER);
 
                 PFont signatureFont;
                 signatureFont = loadFont("fonts/Purisa-Oblique-16.vlw");
                 textFont(signatureFont);
 
-                text("Signatur og trykk 'enter'",width/2 ,height/2-60);
+                text("for filters, bruk nr tastene: \n" +
+                        " 1: Black and white \n" +
+                        " 2: Grayscale \n" +
+                        " 3: Opaque \n" +
+                        " 4: Invert \n" +
+                        " 5: Posterize \n" +
+                        " 6: Blur \n" +
+                        " 7: Erode \n" +
+                        " 8: Dilate \n", width / 2, height / 2 - 60);
+
+                if (panelActivated) {
+                    // Do nothing
+                } else {
+                    robot.mouseMove(width / 2, height / 2);
+                    leftClick();
+                    panelActivated = true;
+                }
 
 
-                text(typing,width/2,height/2+20);
+            }
+            if (signatureButton) {
 
+                strokeWeight(2);
+                stroke(102, 102, 255);
+                fill(245, 245, 245);
+                rect((width / 2) - 150, (height / 2) - 100, 300, 200, 3);
+                fill(0, 0, 0);
+                textAlign(CENTER);
+
+                PFont signatureFont;
+                signatureFont = loadFont("fonts/Purisa-Oblique-16.vlw");
+                textFont(signatureFont);
+
+                text("Signatur og trykk 'enter'", width / 2, height / 2 - 60);
+
+
+                text(typing, width / 2, height / 2 + 20);
+
+                if (panelActivated) {
+                    // Do nothing
+                } else {
+                    robot.mouseMove(width / 2, height / 2);
+                    leftClick();
+                    panelActivated = true;
+                }
             }
         }
     }
@@ -354,7 +378,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     //////Kan legge til keyPressed events generelt. If key == 'x', do whatever//////
     public void keyPressed() {
 
-        if (signatureButton){
+        if (signatureButton) {
 
             // If the return key is pressed, save the String and clear it
             if (key == '\n') {
@@ -363,17 +387,15 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 // A String can be cleared by setting it equal to ""
                 typing = "";
 
-                // Generere bilde som skal settes inn senere
-             //       image(screendump, width, height);
 
-                image(screendump, 0, 0);
+                image(screenshot, 0, 0);
 
                 PFont signatureFont;
                 signatureFont = loadFont("fonts/Purisa-Bold-30.vlw");
                 textFont(signatureFont);
 
                 textAlign(RIGHT);
-                text(saved,width - 20,height - 30);
+                text(saved, width - 20, height - 30);
 
                 signatureButton = false;
 
@@ -384,100 +406,62 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             }
 
 
-        } else {
+        } else if (filterButton) {
 
-            if(key == '1' && nr2 == true) {
-                image(d, 0, 0);
-                d.filter(THRESHOLD);
-                filter(THRESHOLD);
-                image(d, 0, 0);
+            if (key == '1') {
+                screenshot.filter(THRESHOLD);
+                image(screenshot, 0, 0);
                 filterButton = false;
-                nr = false;
-                nr2 = false;
+
             }
 
-            if(key == '2' && nr2 == true) {
-                image(d, 0, 0);
-                d.filter(GRAY);
-                filter(GRAY);
-                image(d, 0, 0);
+            if (key == '2') {
+                screenshot.filter(GRAY);
+                image(screenshot, 0, 0);
                 filterButton = false;
-                nr = false;
-                nr2 = false;
             }
 
-            if(key == '3' && nr2 == true) {
-                image(d, 0, 0);
-                d.filter(OPAQUE );
-                filter(OPAQUE);
-                image(d, 0, 0);
+            if (key == '3') {
+                screenshot.filter(OPAQUE);
+                image(screenshot, 0, 0);
                 filterButton = false;
-                nr = false;
-                nr2 = false;
             }
-///////////////////////////////KAN FIXE VERDIEN TIL POSTERIZE TIL Å TA INPUT EVT//////////////////
-            if(key == '4' && nr2 == true) {
-                image(d, 0, 0);
-                d.filter(INVERT);
-                filter(INVERT);
-                image(d, 0, 0);
+
+            if (key == '4') {
+                screenshot.filter(INVERT);
+                image(screenshot, 0, 0);
                 filterButton = false;
-                nr = false;
-                nr2 = false;
             }
 
-            if(key == '5' && nr2 == true) {
-                image(d, 0, 0);
-                d.filter(POSTERIZE, 4);
-                image(d, 0, 0);
-                filter(POSTERIZE, 4);
-                //image(d, 0, 0);
+            if (key == '5') {
+                screenshot.filter(POSTERIZE, 5);
+                image(screenshot, 0, 0);
                 filterButton = false;
-                nr = false;
-                nr2 = false;
             }
 
-            if(key == '6' && nr2 == true) {
-                image(d, 0, 0);
-                d.filter(BLUR, 6);
-                image(d, 0, 0);
-                filter(BLUR, 6);
-                //image(d, 0, 0);
+            if (key == '6') {
+                screenshot.filter(BLUR);
+                image(screenshot, 0, 0);
                 filterButton = false;
-                nr = false;
-                nr2 = false;
             }
 
-            if(key == '7' && nr2 == true) {
-                image(d, 0, 0);
-                d.filter(ERODE);
-                image(d, 0, 0);
-                filter(ERODE);
-                //image(d, 0, 0);
+            if (key == '7') {
+                screenshot.filter(ERODE);
+                image(screenshot, 0, 0);
                 filterButton = false;
-                nr = false;
-                nr2 = false;
             }
 
-            if(key == '8' && nr2 == true) {
-                image(d, 0, 0);
-                d.filter(DILATE);
-                image(d, 0, 0);
-                filter(DILATE);
-                //image(d, 0, 0);
+            if (key == '8') {
+                screenshot.filter(DILATE);
+                image(screenshot, 0, 0);
                 filterButton = false;
-                nr = false;
-                nr2 = false;
             }
 
 
+        } else if (saveButton) {
 
-            if (key == 'q') {
-                killTormod = true;
-                Tormod.end();
-                randomize = false;
-            }
             // If the return key is pressed, save the String and clear it
+
             if (key == '\n') {
                 saved = typing;
                 // A String can be cleared by setting it equal to ""
@@ -487,29 +471,24 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                     if (dotPos > 0)
                         saved = saved.substring(0, dotPos);
 
-                    image(c, width - 200, height - 200);
-                    save();
+                    String desktopPath = System.getProperty("user.home") + "/Desktop/";
+                    screenshot.save(desktopPath + saved + ".jpg");
 
-                    pg.beginDraw();
-                    pg.image(c, 0, 0);
-                    pg.endDraw();
-                    takepic = false;
+                    image(screenshot, 0, 0);
+
                     saveButton = false;
-
 
                 }
                 if (saved.contains("PNG") || saved.contains("Png") || saved.contains("png")) {
                     int dotPos = saved.lastIndexOf(".");
                     if (dotPos > 0)
                         saved = saved.substring(0, dotPos);
-                    image(c, width - 200, height - 200);
 
-                    save2();
+                    String desktopPath = System.getProperty("user.home") + "/Desktop/";
+                    screenshot.save(desktopPath + saved + ".png");
 
-                    pg.beginDraw();
-                    pg.image(c, 0, 0);
-                    pg.endDraw();
-                    takepic = false;
+                    image(screenshot, 0, 0);
+
                     saveButton = false;
                 }
             } else {
@@ -517,25 +496,17 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 // Each character typed by the user is added to the end of the String variable.
                 typing = typing + key;
             }
+        } else if (randomize) {
 
+            if (key == 'q') {
+                killTormod = true;
+                Tormod.end();
+                randomize = false;
+            }
         }
 
-
-
-    }
-    void save() {
-        String desktopPath = System.getProperty("user.home") + "/Desktop/";
-        save(desktopPath + saved + ".jpg");
     }
 
-    void save2() {
-        String desktopPath = System.getProperty("user.home") + "/Desktop/";
-        save(desktopPath + saved + ".png");
-    }
-
-
-
-    ///////////////////funksjoner for save funksjon SLUTT/////////////////////////////////
 
     /**
      * implementation from interface ActionListener
@@ -544,7 +515,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
      */
     public void actionPerformed(ActionEvent evt) {
 
-        if(!evt.getActionCommand().equals("strokencolour")) {
+        if (!evt.getActionCommand().equals("strokencolour")) {
             vectorButton = false;
             randomLineButton = false;
             ballbutton = false;
@@ -597,6 +568,8 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             crossDotsButton = true;
 
         } else if (evt.getActionCommand().equals("save")) {
+            screenshot = get();
+            panelActivated = false;
             saveButton = true;
 
         }else if (evt.getActionCommand().equals("close")) {
@@ -605,7 +578,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         } else if (evt.getActionCommand().equals("starz")) {
             starzButton = true;
 
-        }else if (evt.getActionCommand().equals("heartz")) {
+        } else if (evt.getActionCommand().equals("heartz")) {
             heartButton = true;
 
         } else if (evt.getActionCommand().equals("squarez")) {
@@ -625,14 +598,17 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             System.out.println("Color String: " + col.getRed() + " " + col.getGreen() + " " + col.getBlue() + " " + col.getAlpha());
 
             reds = col.getRed(); greens = col.getGreen(); blues = col.getBlue(); alphas = col.getAlpha();
+
             setColorForAllBrushes();
         }
         else if (evt.getActionCommand().equals("filter")) {
+            screenshot = get();
             filterButton = true;
+            panelActivated = false;
             pause = false;
-        }
-        else if (evt.getActionCommand().equals("signature")){
-            screendump = get();
+        } else if (evt.getActionCommand().equals("signature")) {
+            screenshot = get();
+            panelActivated = false;
 
             // Variable to store text currently being typed
             String typing = "";
@@ -643,10 +619,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             signatureButton = true;
 
 
-        }
-
-
-        else {
+        } else {
             println("actionPerformed(): can't handle " + evt.getActionCommand());
         }
         pause = false;
@@ -673,10 +646,10 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         }*/
         if (appInit.getRandomColorState() == true) {
             randomclr = true;
-            for(Brush b : brushes){
+            for (Brush b : brushes) {
                 b.setCC(false);
             }
-            for(Mover m : ((Mover)moverInstance).getMovers()) {
+            for (Mover m : ((Mover) moverInstance).getMovers()) {
                 m.setCC(false);
             }
         } else randomclr = false;
@@ -687,7 +660,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
      */
     public void clear() {
         background(255);
-        ((Mover)moverInstance).clearMovers();
+        ((Mover) moverInstance).clearMovers();
         ballInstance.clearBallList();
     }
 
