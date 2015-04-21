@@ -1,23 +1,21 @@
 import processing.core.PApplet;
+import processing.core.PConstants;
 
 /**
  * Created by Gøran on 26.03.2015.
  */
-public class StarShape {
-    
-    PApplet p;
-    
+public class StarShape extends Brush {
+
     StarShape(PApplet input){
-        p = input;
+        super(input);
         
     }
 
     public void drawStars() {
         if (p.mousePressed == true) {
-            p.frameRate(20);
-
             p.strokeWeight((float) 0.1);
-            p.fill(p.random(255), p.random(255), p.random(255), 127);
+            if(!cc) { p.fill(p.random(255), p.random(255), p.random(255), 127); }
+            if(cc) { p.fill(p.random(this.r), p.random(this.g), p.random(this.b), p.random(this.o)); }
             //p.scale(p.random(1));
             p.beginShape();
             p.vertex(p.mouseX, p.mouseY - 50);
@@ -30,7 +28,7 @@ public class StarShape {
             p.vertex(p.mouseX - 23, p.mouseY + 7);
             p.vertex(p.mouseX - 47, p.mouseY - 15);
             p.vertex(p.mouseX - 14, p.mouseY - 20);
-            p.endShape(p.CLOSE);
+            p.endShape(PConstants.CLOSE);
         }
     }
 

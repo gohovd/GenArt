@@ -1,7 +1,14 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemListener;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
+import java.util.Vector;
 import javax.swing.*;
 import javax.swing.BorderFactory;
+import javax.swing.border.Border;
 
 /**
  * A simple demo application launching a Processing Applet
@@ -19,9 +26,9 @@ public class Application {
 
     private int strokeSize = 1;
 
-    private static final JCheckBox circular = new JCheckBox("Sirkulær");
+    //private static final JCheckBox circular = new JCheckBox("Sirkulær");
     private static final JCheckBox randomclr = new JCheckBox("Tilfeldig farge");
-    private static final JCheckBox linear = new JCheckBox("Lineær");
+    //private static final JCheckBox linear = new JCheckBox("Lineær");
     private static final JCheckBox border = new JCheckBox("Ramme");
 
     private static final int menuWidth = 200; // Husk å endre i MyApplet hvis du endrer her
@@ -31,7 +38,7 @@ public class Application {
 
     private static JButton vectorButton, clearButton, randomLinesButton, pulseButton, crossDotsButton,
             starButton, heartButton, squarezButton,  buttonCreate, varBubblesButton, trianglezButton,
-            Randomize,strokeNColourButton, filterButton, saveButton;
+            Randomize,strokeNColourButton, filterButton, saveButton, closeButton, signatureButton;
 
     public static HashMap<String, JButton> buttonMap = new HashMap();
 
@@ -75,6 +82,7 @@ public class Application {
 
 //create an instance of your processing applet
         final MyApplet applet = new MyApplet();
+
 //start the applet
         applet.init();
 
@@ -93,9 +101,14 @@ public class Application {
         vectorButton.setPreferredSize(new Dimension(90, 90));
 
 
-        clearButton = new JButton("Clear");
+        clearButton = new JButton("Reset");
         Randomize = new JButton("Randomisert");
+        Randomize.setBackground(Color.GREEN);
+        Randomize.setForeground(Color.WHITE);
+        Randomize.setBorderPainted(true);
+        //Randomize.setBorder(null);
         saveButton = new JButton("Lagre");
+        closeButton = new JButton("Lukk Programmet");
         filterButton = new JButton("Filter");
 
         ImageIcon imageForrandomLinesButton = new ImageIcon("images/rndlines.png");
@@ -144,6 +157,11 @@ public class Application {
         strokeNColourButton.setBackground(Color.white);
         strokeNColourButton.setPreferredSize(new Dimension(90, 90));
 
+        ImageIcon imageForSignatureButton = new ImageIcon("images/signature.png");
+        signatureButton = new JButton("", imageForSignatureButton);
+        signatureButton.setBackground(Color.white);
+        signatureButton.setPreferredSize(new Dimension(90, 90));
+
         /*
         ImageIcon imageForSaveFunctions = new ImageIcon("images/crossdots.png");
         saveButton = new JButton("", imageForSaveFunctions);
@@ -161,11 +179,13 @@ public class Application {
         pulseButton.setToolTipText("Pulsing");
         crossDotsButton.setToolTipText("Draws dots in cross formation");
         saveButton.setToolTipText("Draws dots in cross formation");
+        closeButton.setToolTipText("Lukk programmet");
         starButton.setToolTipText("Draws stars as you drag your mouse");
         heartButton.setToolTipText("Draw hearts.");
         squarezButton.setToolTipText("Draws squares as you drag your mouse");
         trianglezButton.setToolTipText("Draws triangles as you drag your mouse");
         strokeNColourButton.setToolTipText("Choose stroke size and colours");
+        signatureButton.setToolTipText("Add your signature");
         // Adding button graphics
 
 
@@ -183,12 +203,14 @@ public class Application {
         pulseButton.setActionCommand("pulse");
         crossDotsButton.setActionCommand("crossDots");
         saveButton.setActionCommand("save");
+        closeButton.setActionCommand("close");
         starButton.setActionCommand("starz");
         heartButton.setActionCommand("heartz");
         squarezButton.setActionCommand("squarez");
         trianglezButton.setActionCommand("trianglez");
         Randomize.setActionCommand("randomize");
         strokeNColourButton.setActionCommand("strokencolour");
+        signatureButton.setActionCommand("signature");
 
         //Add buttons to map. Name of button is key, while actual button is the value.
         buttonMap.put("buttonCreate", buttonCreate);
@@ -203,9 +225,11 @@ public class Application {
         buttonMap.put("tranglezButton", trianglezButton);
         buttonMap.put("strokeNColourButton", strokeNColourButton);
         buttonMap.put("saveButton", saveButton);
+        buttonMap.put("closeButton", closeButton);
         buttonMap.put("Randomize", Randomize);
         buttonMap.put("clearButton", clearButton);
         buttonMap.put("filterButton", filterButton);
+        buttonMap.put("signatureButton", signatureButton);
 
 
         //Iterate through entrySet, and set class Applet as action listener for every button.
@@ -215,14 +239,14 @@ public class Application {
             t.addActionListener(applet);
         }
         //Add item listener class.
-        circular.addItemListener(applet);
+        /*circular.addItemListener(applet);
         circular.setSelected(false);
         linear.addItemListener(applet);
-        linear.setSelected(false);
+        linear.setSelected(false);*/
         border.addItemListener(applet);
         border.setSelected(false);
         randomclr.addItemListener(applet);
-        randomclr.setSelected(true);
+        randomclr.setSelected(false);
 
         //Add you button to the button-panel.
         buttonPanel.add(buttonCreate);
@@ -236,11 +260,12 @@ public class Application {
         buttonPanel.add(squarezButton);
         buttonPanel.add(trianglezButton);
         buttonPanel.add(strokeNColourButton);
+        buttonPanel.add(signatureButton);
 
         //Also add buttons/radio-buttons/check-boxes.
-        buttonPanel.add(randomclr); buttonPanel.add(linear); buttonPanel.add(circular); buttonPanel.add(border);
+        buttonPanel.add(randomclr); /*buttonPanel.add(linear); buttonPanel.add(circular);*/ buttonPanel.add(border);
         buttonPanel.add(Randomize); buttonPanel.add(clearButton); buttonPanel.add(filterButton);
-        buttonPanel.add(saveButton);
+        buttonPanel.add(saveButton);buttonPanel.add(closeButton);
 
 //store the applet in panel
         panel.add(applet);
@@ -265,12 +290,12 @@ public class Application {
 
 
     // Returns the states of each checkbox.
-    public boolean getCircularState(){
+    /*public boolean getCircularState(){
         return circular.isSelected();
     }
     public boolean getLinearState(){
         return linear.isSelected();
-    }
+    }*/
     public boolean getBorderState(){
         return border.isSelected();
     }
@@ -279,12 +304,12 @@ public class Application {
     }
 
     // Set the state of the checkboxes.
-    public void setCircularState(boolean b){
+    /*public void setCircularState(boolean b){
         circular.setSelected(b);
     }
     public void setLinearState(boolean b){
         linear.setSelected(b);
-    }
+    }*/
     public void setBorderState(boolean b){
         border.setSelected(b);
     }

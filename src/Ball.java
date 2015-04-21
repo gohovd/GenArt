@@ -14,8 +14,6 @@ class Ball {
     ArrayList<Ball> ballList = new ArrayList();
     PApplet p;
 
-    int r, g, b, o;
-    boolean cc = true; //Custom color
 
     /***
      * Empty (no parameter) constructor for class Ball.
@@ -45,8 +43,7 @@ class Ball {
 
     public void display() {
         p.stroke(p.random(255), p.random(255), p.random(255));
-        if(cc == true) { p.fill(p.random(255), p.random(255), p.random(255), 127); }
-        if(cc == false) { p.fill(p.random(r), p.random(g), p.random(b), p.random(o)); }
+        p.fill(p.random(255), p.random(255), p.random(255), 127);
         p.ellipse(x, y, size, size);
     }
 
@@ -133,24 +130,12 @@ class Ball {
     public void setPapp(PApplet input, Application app) {
         for(Ball b : ballList){
             b.p = input;
-            b.a = app;
-            b.sWidth = app.panel.getWidth();
-            b.sHeight = app.panel.getHeight();
+            a = app;
+            b.sWidth = Application.panel.getWidth();
+            b.sHeight = Application.panel.getHeight();
             b.setIX(); b.setIY();
         }
 
-    }
-
-    public void setColor(String input){
-        String[] split = input.split(" ");
-        r = Integer.parseInt(split[0]);
-        g = Integer.parseInt(split[1]);
-        b = Integer.parseInt(split[2]);
-        o = Integer.parseInt(split[3]);
-    }
-
-    public void setCC(Boolean b){
-        cc = b;
     }
 
 }
