@@ -74,6 +74,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
     /////////////////////////////////////////////////////////////////////////
     boolean saveButton = false;
+    boolean closeButton = false;
     PGraphics pg;//SaveBox
     PImage c;
     PImage screendump;
@@ -298,6 +299,10 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
                 }
 
+            }
+            if (closeButton) {
+                System.out.println("haha");
+                System.exit(0);
             }
             if (filterButton) {
 
@@ -548,6 +553,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             pulseButton = false;
             crossDotsButton = false;
             saveButton = false;
+            closeButton =false;
             starzButton = false;
             squarezButton = false;
             trianglezButton = false;
@@ -593,6 +599,9 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
         } else if (evt.getActionCommand().equals("save")) {
             saveButton = true;
+
+        }else if (evt.getActionCommand().equals("close")) {
+            closeButton = true;
 
         } else if (evt.getActionCommand().equals("starz")) {
             starzButton = true;

@@ -38,7 +38,7 @@ public class Application {
 
     private static JButton vectorButton, clearButton, randomLinesButton, pulseButton, crossDotsButton,
             starButton, heartButton, squarezButton,  buttonCreate, varBubblesButton, trianglezButton,
-            Randomize,strokeNColourButton, filterButton, saveButton, signatureButton;
+            Randomize,strokeNColourButton, filterButton, saveButton, closeButton, signatureButton;
 
     public static HashMap<String, JButton> buttonMap = new HashMap();
 
@@ -106,6 +106,7 @@ public class Application {
         Randomize.setBackground(Color.ORANGE);
         //Randomize.setBorder(null);
         saveButton = new JButton("Lagre");
+        closeButton = new JButton("Lukk Programmet");
         filterButton = new JButton("Filter");
 
         ImageIcon imageForrandomLinesButton = new ImageIcon("images/rndlines.png");
@@ -176,6 +177,7 @@ public class Application {
         pulseButton.setToolTipText("Pulsing");
         crossDotsButton.setToolTipText("Draws dots in cross formation");
         saveButton.setToolTipText("Draws dots in cross formation");
+        closeButton.setToolTipText("Lukk programmet");
         starButton.setToolTipText("Draws stars as you drag your mouse");
         heartButton.setToolTipText("Draw hearts.");
         squarezButton.setToolTipText("Draws squares as you drag your mouse");
@@ -199,6 +201,7 @@ public class Application {
         pulseButton.setActionCommand("pulse");
         crossDotsButton.setActionCommand("crossDots");
         saveButton.setActionCommand("save");
+        closeButton.setActionCommand("close");
         starButton.setActionCommand("starz");
         heartButton.setActionCommand("heartz");
         squarezButton.setActionCommand("squarez");
@@ -220,6 +223,7 @@ public class Application {
         buttonMap.put("tranglezButton", trianglezButton);
         buttonMap.put("strokeNColourButton", strokeNColourButton);
         buttonMap.put("saveButton", saveButton);
+        buttonMap.put("closeButton", closeButton);
         buttonMap.put("Randomize", Randomize);
         buttonMap.put("clearButton", clearButton);
         buttonMap.put("filterButton", filterButton);
@@ -259,7 +263,7 @@ public class Application {
         //Also add buttons/radio-buttons/check-boxes.
         buttonPanel.add(randomclr); buttonPanel.add(linear); buttonPanel.add(circular); buttonPanel.add(border);
         buttonPanel.add(Randomize); buttonPanel.add(clearButton); buttonPanel.add(filterButton);
-        buttonPanel.add(saveButton);
+        buttonPanel.add(saveButton);buttonPanel.add(closeButton);
 
 //store the applet in panel
         panel.add(applet);
