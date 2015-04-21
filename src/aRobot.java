@@ -2,8 +2,7 @@ import jdk.internal.util.xml.impl.Input;
 import processing.core.PApplet;
 
 import javax.swing.*;
-import java.awt.Robot;
-import java.awt.AWTException;
+import java.awt.*;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -30,8 +29,6 @@ public class aRobot {
     PApplet p;
     //Collect all buttons from class Application.
     HashMap buttons = instance.getButtons();
-    //Store all KeyEvents in a map.
-    HashMap<Integer, Integer> filterMap = new HashMap();
     ArrayList<String> keys;
     Random rand = new Random();
     //Counting the number of times the rMotion method has been visited.
@@ -44,7 +41,11 @@ public class aRobot {
     int avoidFirst = 1;
     int randFilter;
     boolean filterSelection = false;
-    float radius = (float) 0.5;
+    String previousButton = "whatever"; //It'll change soon anyways, so.. whatever.
+    String currentButton;
+    //About the colors..
+    boolean colorNotFound;
+    int red, green, blue, alpha;
 
     /**
      * Constructor for class Robot.
@@ -84,9 +85,38 @@ public class aRobot {
                     nameOfButton.contains("clrButton")) { // do nothing..
             } else keys.add(nameOfButton);
         }
-        int roulette = rand.nextInt(keys.size());
+        //give it whatever value, it'll change def. anyways.
+        int roulette = 0;
+        boolean theSame = true;
+        while(theSame) {
+            roulette = rand.nextInt(keys.size());
+            currentButton = keys.get(roulette);
+            if (!previousButton.contains(currentButton)) {
+                theSame = false;
+            }
+        }
         clickGUIButton(keys.get(roulette));
     }
+
+    private void getColor() throws InterruptedException, AWTException {
+        Color c = null;
+        colorNotFound = true;
+        while(colorNotFound) {
+            c = r.getPixelColor(rand.nextInt(Application.panel.getWidth()), rand.nextInt(Application.panel.getHeight()));
+            String cString =  "" + c.getRed() + c.getGreen() + c.getBlue() + c.getAlpha();
+            System.out.println("CLR STRING: " + cString);
+            if(!cString.equals("255255255255") || !cString.equals("0000")) {
+                colorNotFound = false;
+            }
+        }
+        red = c.getRed(); green = c.getGreen(); blue = c.getBlue(); alpha = c.getAlpha();
+    }
+
+    public String getColorString() throws AWTException, InterruptedException {
+        getColor();
+        return red + " " + green + " " + blue + " " + alpha;
+    }
+
 
     /***
      * Generates a random int with the highest value being the number of
@@ -100,14 +130,13 @@ public class aRobot {
      */
     private void selectFilter() throws InterruptedException, AWTException {
         randFilter = rand.nextInt(8) + 1; //Number of filters (8).
-        Thread.sleep(1000);
-        r.delay(1000);
+        r.delay(250);
         clickGUIButton("filterButton");
-        r.delay(500);
+        r.delay(250);
         r.mousePress(InputEvent.BUTTON1_MASK);
-        r.delay(500);
+        r.delay(250);
         r.mouseRelease(InputEvent.BUTTON1_MASK);
-        r.delay(1000);
+        r.delay(250);
         filterSelection = true;
     }
 
@@ -137,7 +166,7 @@ public class aRobot {
      * @throws InterruptedException
      */
     public void rMotion() throws AWTException, InterruptedException {
-        if (motionsMade % 600 == 0) {
+        if (motionsMade % 400 == 0) {
             if(avoidFirst == 0) { selectFilter(); avoidFirst += 1; return; }
             Thread.sleep(1500);
             r.delay(1000);
@@ -147,6 +176,7 @@ public class aRobot {
             r.delay(500);
             r.mouseRelease(InputEvent.BUTTON1_MASK);
             avoidFirst -= 1;
+            motionsMade = 0;
         }
             r.mouseMove(cX, cY);
             r.mousePress(InputEvent.BUTTON1_MASK);
@@ -170,27 +200,28 @@ public class aRobot {
     }
 
     public void oMotion() throws AWTException, InterruptedException {
-        if (motionsMade % 600 == 0) {
+        if (motionsMade % 200 == 0) {
             if(avoidFirst == 0) { selectFilter(); avoidFirst += 1; return; }
-            Thread.sleep(1500);
-            r.delay(1000);
+            r.delay(250);
             clickRandomGUIButton();
-            r.delay(500);
+            r.delay(250);
             r.mousePress(InputEvent.BUTTON1_MASK);
-            r.delay(500);
+            r.delay(250);
             r.mouseRelease(InputEvent.BUTTON1_MASK);
             avoidFirst -= 1;
         }
+        //float radius = p.random((float)0.4);
+        float radius = (float) 0.3;
         r.mouseMove(cX, cY);
         r.mousePress(InputEvent.BUTTON1_MASK);
-        cX += p.cos(radius) * 60;
+        cX += PApplet.cos(radius) * 60;
         if (cX > cWidth) {
             cX -= cWidth;
         }
         if (cX < 0) {
             cX += cWidth;
         }
-        cY += p.sin(radius) * 60;
+        cY += PApplet.sin(radius) * 60;
         if (cY > cHeight) {
             cY -= cHeight;
         }
@@ -228,6 +259,7 @@ public class aRobot {
         } else {
             JButton t;
             t = (JButton) buttons.get(key);
+            if(!key.contains("filterButton")) { previousButton = key; }
             //Always add 'err' to make sure it hits the button.
             int bX = Application.panel.getWidth() + err + t.getX();
             int bY = err + t.getY();
@@ -328,4 +360,5 @@ public class aRobot {
     public void setFilterSelection(boolean b){
         filterSelection = b;
     }
+
 }

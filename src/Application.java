@@ -1,7 +1,14 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemListener;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
+import java.util.Vector;
 import javax.swing.*;
 import javax.swing.BorderFactory;
+import javax.swing.border.Border;
 
 /**
  * A simple demo application launching a Processing Applet
@@ -96,6 +103,8 @@ public class Application {
 
         clearButton = new JButton("Clear");
         Randomize = new JButton("Randomisert");
+        Randomize.setBackground(Color.ORANGE);
+        //Randomize.setBorder(null);
         saveButton = new JButton("Lagre");
         filterButton = new JButton("Filter");
 
@@ -231,7 +240,7 @@ public class Application {
         border.addItemListener(applet);
         border.setSelected(false);
         randomclr.addItemListener(applet);
-        randomclr.setSelected(true);
+        randomclr.setSelected(false);
 
         //Add you button to the button-panel.
         buttonPanel.add(buttonCreate);

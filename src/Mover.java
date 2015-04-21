@@ -5,25 +5,22 @@ import java.util.ArrayList;
 /**
  * Makes a vector that moves in a predefined pattern.
  */
-class Mover extends PApplet {
+class Mover extends Brush {
 
-    private static Application a;
     PVector location;
     PVector velocity;
     PVector acceleration;
     float topspeed;
-    float r = 10;
+    float rad = 10;
     float vWidth, vHeight;
-    PApplet p;
     ArrayList<Mover> movers = new ArrayList();
     float incTorq = (float) 0.19;
-    int red, g, b, o;
-    boolean cc = true; //Custom color
 
     /***
      * Constructor for class Mover.
      */
-    Mover() {
+    Mover(PApplet input) {
+        super(input);
         location = new PVector(0, 0);
         velocity = new PVector(0, 0);
         topspeed = 22;
@@ -40,13 +37,13 @@ class Mover extends PApplet {
      * @param input - PApplet instance
      * @param a - Application instance
      */
-    public void setPapp(PApplet input, Application a) {
+/*    public void setPapp(PApplet input, Application a) {
         for(Mover m : movers){
             m.p = input;
-            m.a = a;
+            Mover.a = a;
         }
 
-    }
+    }*/
 
     /***
      * The display method for class Mover,
@@ -55,9 +52,9 @@ class Mover extends PApplet {
      */
     void display() {
         p.noStroke();
-        if(cc == true) { p.fill(p.random(255), p.random(255), p.random(255), 127); }
-        if(cc == false) { p.fill(p.random(red), p.random(g), p.random(b), p.random(o)); }
-        p.ellipse(location.x, location.y, random(2, 10), random(2, 10));
+        if(!this.cc) { p.fill(p.random(255), p.random(255), p.random(255), 127); }
+        if(this.cc) { p.fill(p.random(this.r), p.random(this.g), p.random(this.b), p.random(this.o)); }
+        p.ellipse(location.x, location.y, p.random(2, 10), p.random(2, 10));
     }
 
     /***
@@ -69,11 +66,11 @@ class Mover extends PApplet {
      * @param inc - float The rate at which the radius of the circle motion grows.
      */
     public void createNewMover(float ts, float inc) {
-        Mover nMov = new Mover();
+        Mover nMov = new Mover(p);
         nMov.topspeed = ts;
         nMov.incTorq = inc;
-        nMov.width = a.panel.getWidth();
-        nMov.vHeight = a.panel.getHeight();
+        nMov.vWidth = Application.panel.getWidth();
+        nMov.vHeight = Application.panel.getHeight();
         movers.add(nMov);
     }
 
@@ -92,8 +89,8 @@ class Mover extends PApplet {
         PVector aim, dir;
         if (choice == 1) {
             r += incTorq;
-            float xx = cos(r) * 60;
-            float yy = sin(r) * 60;
+            float xx = p.cos(r) * 60;
+            float yy = p.sin(r) * 60;
             aim = new PVector(xx, yy);
             dir = PVector.sub(aim, location);  // Find vector pointing towards aim.
             dir.normalize();     // Normalize
@@ -101,7 +98,7 @@ class Mover extends PApplet {
             acceleration = aim;
 
         } else if (choice == 2) {
-            aim = new PVector(mouseX, mouseY);
+            aim = new PVector(p.mouseX, p.mouseY);
             dir = PVector.sub(aim, location);
             dir.normalize();     // Normalize
             dir.mult((float) 0.5);       // Scale
@@ -170,15 +167,4 @@ class Mover extends PApplet {
         this.location.y = loc.y;
     }
 
-    public void setColor(String input){
-        String[] split = input.split(" ");
-        red = Integer.parseInt(split[0]);
-        g = Integer.parseInt(split[1]);
-        b = Integer.parseInt(split[2]);
-        o = Integer.parseInt(split[3]);
-    }
-
-    public void setCC(Boolean b){
-        cc = b;
-    }
 }

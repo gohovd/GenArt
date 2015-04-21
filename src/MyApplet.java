@@ -25,15 +25,21 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     Border border;
 
     // Variables related to the "bouncing ball".
+    Brush brush = new Brush(this);
+    Brush pu = new PulseShape(this);
+    Brush cr = new CrossShape(this);
+    Brush st = new StarShape(this);
+    Brush li = new LineShape(this);
+    Brush bu = new BubbleShape(this);
+    Brush sq = new SquareShape(this);
+    Brush tr = new TriangleShape(this);
+    Brush mover = new Mover(this);
+    Brush moverInstance = new Mover(this);
 
-
-    PulseShape pu = new PulseShape(this);
-    CrossShape cr = new CrossShape(this);
-    StarShape st = new StarShape(this);
+    ArrayList<Brush> brushes = new ArrayList();
 
     boolean ballbutton = false;
     Ball ballInstance;
-    Mover moverInstance;
     boolean varBubblesButton = false;
     boolean pulseButton = false;
     boolean starzButton = false;
@@ -42,11 +48,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     boolean strokeNColourButton = false;
     boolean heartButton = false;
     boolean signatureButton = false;
-
-    // Color and stroke manager
-    ColorChooser colors = new ColorChooser();
-
-
+    
     // Variables related to the mover/vector.
     boolean vectorButton = false;
     int vStep = 0; // When steps, do something different.
@@ -65,6 +67,8 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     boolean killTormod;
     //Button for making random (auto generated art)
     boolean randomize;
+    // Color and stroke manager
+    JColorChooser colors = new JColorChooser();
     /////////////////////////////////////////////////////////////////////////
     boolean crossDotsButton = false;
 
@@ -92,16 +96,32 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     PImage d;
     ////////////////////////////////////////////////// funkyvectors bytter ut hearts
     ArrayList history;   // Define the history for pattern3
+    boolean switcher = false;
+    public Color col;
+    //The colors we want to pass to all brushes.
+    //Either chosen by the robot, or the user.
+    int reds, greens, blues, alphas;
 
 
 ///////////////////////////////////////////////////////////////////////////
 
     public void setup() {
+        //Put all brushes into an array.
+        brushes.add(pu); brushes.add(st); brushes.add(cr); brushes.add(li); brushes.add(bu);
+        brushes.add(sq); brushes.add(tr); brushes.add(moverInstance);
+        // Set up the movers/vectors.
+        moverInstance = new Mover(this);
+        for(int i = 0; i < 50; i++) {
+            //Circle radius is determined through the rTopSpeed. Great value => Great circle.
+            float rTopSpeed = random(150);
+            //The speed at which the circle rotates. Should be between 0.1 and 0.4.
+            float TorqueIncrement = (float) 0.19;
+            ((Mover)moverInstance).createNewMover(rTopSpeed, TorqueIncrement);
+            //moverInstance.setPapp(this, appInit);
+        }
         size(screenSize.width - 200, screenSize.height);
         // Set up the bouncing balls.
         ballInstance = new Ball();
-        // Set up the movers/vectors.
-        moverInstance = new Mover();
         background(255);
         Tormod = new aRobot(); // Instantiate the robot.
         Tormod.setPapp(this); // "Export" PApplet instance (from this class).
@@ -124,8 +144,6 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         ///////////////////setup for filters slutt/////////////////
         history  = new ArrayList();
         border = new Border(this, appInit);
-
-
     }
 
     public void draw() {
@@ -138,7 +156,20 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                     Tormod.selectRandomFilter(Tormod.getRandFilter());
                     Tormod.setFilterSelection(false);
                 }
-                Tormod.oMotion();
+                count++;
+                if(count % 400 == 0) { switcher = true; }
+                if(count % 500 == 0) {
+                    System.out.println("Let's look for colors! :D");
+                    String split[] = Tormod.getColorString().split(" ");
+                    reds = Integer.parseInt(split[0]);
+                    greens = Integer.parseInt(split[1]);
+                    blues = Integer.parseInt(split[2]);
+                    alphas = Integer.parseInt(split[3]);
+
+                }
+                if(count % 810 == 0) { switcher = false; count = 0; }
+                if(switcher) { Tormod.oMotion(); }
+                if(!switcher) { Tormod.rMotion(); }
             } catch (AWTException e) {
                 e.printStackTrace();
             } catch (InterruptedException e) {
@@ -158,36 +189,34 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             if (vectorButton && mousePressed) {
                 //Choice determines motion pattern (1: circular,  2: linear)
                 int choice = 1;
-                for (int i = 0; i < moverInstance.getMovers().size(); i++) {
-                    Mover mover = moverInstance.getMovers().get(i);
+                for (int i = 0; i < ((Mover)moverInstance).getMovers().size(); i++) {
+                    mover = ((Mover)moverInstance).getMovers().get(i);
                     mouse = new PVector(mouseX, mouseY);
-                    mover.setVecLocation(mouse);
+                    ((Mover)mover).setVecLocation(mouse);
                     if (circular) {
                         choice = 1;
                     }
                     if (linear) {
                         choice = 2;
                     }
-                    mover.update(choice);
-                    mover.display();
+                    ((Mover)mover).update(choice);
+                    ((Mover)mover).display();
                 }
             }
             if (randomLineButton) {
-                LineShape li = new LineShape(this);
-                li.drawLines();
+                ((LineShape)li).drawLines();
             }
             if (varBubblesButton) {
-                BubbleShape bu = new BubbleShape(this);
-                bu.drawBubbles();
+                ((BubbleShape)bu).drawBubbles();
             }
             if (pulseButton) {
-                pu.drawPulse();
+                ((PulseShape)pu).drawPulse();
             }
             if (crossDotsButton) {
-                cr.drawCross();
+                ((CrossShape)cr).drawCross();
             }
             if (starzButton) {
-                st.drawStars();
+                ((StarShape)st).drawStars();
             }
             if (heartButton && mousePressed){
                 //st.drawHearts(); denne skal da vekk, fått ny funksjonalitet
@@ -220,17 +249,11 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
             }
             if (squarezButton) {
-                SquareShape sq = new SquareShape(this);
-                sq.drawSquares();
+                ((SquareShape)sq).drawSquares();
             }
             if (trianglezButton) {
-                TriangleShape tr = new TriangleShape(this);
-                tr.drawTriangles();
+                ((TriangleShape)tr).drawTriangles();
             }
-            if (strokeNColourButton) {
-
-            }
-
             if (appInit.getBorderState() == true) {
 
                 border.drawBorder();
@@ -473,14 +496,6 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             ballbutton = true;
 
         } else if (evt.getActionCommand().equals("create vector")) {
-            for(int i = 0; i < 50; i++) {
-                //Circle radius is determined through the rTopSpeed. Great value => Great circle.
-                float rTopSpeed = random(150);
-                //The speed at which the circle rotates. Should be between 0.1 and 0.4.
-                float TorqueIncrement = (float) 0.19;
-                moverInstance.createNewMover(rTopSpeed, TorqueIncrement);
-                moverInstance.setPapp(this, appInit);
-            }
             vectorButton = true;
 
         } else if (evt.getActionCommand().equals("randomize")) {
@@ -527,11 +542,25 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             trianglezButton = true;
 
         } else if (evt.getActionCommand().equals("strokencolour")) {
-            strokeNColourButton = true;
+            /*strokeNColourButton = true;
             appInit.setStrokeSize(2);
             System.out.println(appInit.getStrokeSize());
-            colors.setVisible(true);
+            colors.setVisible(true);*/
+            strokeNColourButton = true;
+            col = colors.showDialog(null, "Choose Stroke Color", Color.GREEN);
+            appInit.setRandomclrState(false);
+            System.out.println("Color String: " + col.getRed() + " " + col.getGreen() + " " + col.getBlue() + " " + col.getAlpha());
 
+            reds = col.getRed(); greens = col.getGreen(); blues = col.getBlue(); alphas = col.getAlpha();
+
+            for(Brush b : brushes){
+                b.setCC(true);
+                b.setColor(reds, greens, blues, alphas);
+            }
+            for(Mover m : ((Mover)moverInstance).getMovers()) {
+                m.setCC(true);
+                m.setColor(reds, greens, blues, alphas);
+            }
         }
         else if (evt.getActionCommand().equals("filter")) {
             filterButton = true;
@@ -569,6 +598,12 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         }
         if (appInit.getRandomColorState() == true) {
             randomclr = true;
+            for(Brush b : brushes){
+                b.setCC(false);
+            }
+            for(Mover m : ((Mover)moverInstance).getMovers()) {
+                m.setCC(false);
+            }
         } else randomclr = false;
     }
 
@@ -577,7 +612,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
      */
     public void clear() {
         background(255);
-        moverInstance.clearMovers();
+        ((Mover)moverInstance).clearMovers();
         ballInstance.clearBallList();
     }
 
