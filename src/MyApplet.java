@@ -41,6 +41,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     boolean trianglezButton = false;
     boolean strokeNColourButton = false;
     boolean heartButton = false;
+    boolean signatureButton = false;
 
     // Color and stroke manager
     ColorChooser colors = new ColorChooser();
@@ -464,6 +465,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         squarezButton = false;
         trianglezButton = false;
         heartButton = false;
+        signatureButton = false;
 
         if (evt.getActionCommand().equals("create ball")) {
             ballInstance.initializeBalls();
@@ -535,6 +537,11 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             filterButton = true;
             pause = false;
         }
+        else if (evt.getActionCommand().equals("signature")){
+            System.out.println("Knappen fungerer");
+        }
+
+
         else {
             println("actionPerformed(): can't handle " + evt.getActionCommand());
         }
