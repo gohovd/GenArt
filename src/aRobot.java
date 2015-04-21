@@ -103,6 +103,15 @@ public class aRobot {
         clickGUIButton(keys.get(roulette));
     }
 
+    /***
+     * The robot analyzes random pixels on the canvas (Application panel),
+     * and if the pixel is colored with anything other than black or white
+     * the color is extracted and sent to MyApplet, which in turn sends the color
+     * to all instantiated objects of class Brush - thus changing the color.
+     *
+     * @throws InterruptedException
+     * @throws AWTException
+     */
     private void getColor() throws InterruptedException, AWTException {
         Color c = null;
         colorNotFound = true;
@@ -119,6 +128,13 @@ public class aRobot {
         red = c.getRed(); green = c.getGreen(); blue = c.getBlue(); alpha = c.getAlpha();
     }
 
+    /***
+     * Returns the color selected by the robot as a string.
+     *
+     * @return String - R (0-255), G (0-255), B (0-255), O (0-255).
+     * @throws AWTException
+     * @throws InterruptedException
+     */
     public String getColorString() throws AWTException, InterruptedException {
         getColor();
         return red + " " + green + " " + blue + " " + alpha;
@@ -206,6 +222,11 @@ public class aRobot {
             motionsMade++;
     }
 
+    /***
+     * Moves the mouse-cursor in a circular motion, clicking the left mouse button for each step.
+     * @throws AWTException
+     * @throws InterruptedException
+     */
     public void oMotion() throws AWTException, InterruptedException {
         if (motionsMade % 200 == 0) {
             if(avoidFirst == 0) { selectFilter(); avoidFirst += 1; return; }
@@ -315,12 +336,17 @@ public class aRobot {
     }
 
     /**
-     * End the random session.
+     * Forces the robot to release the mouse.
      */
     public void end() {
         r.mouseRelease(InputEvent.BUTTON1_MASK);
     }
 
+    /***
+     * Sets the tutorial boolean back to false, to that the next time
+     * the randomize button is clicked - the tutorial appears again.
+     * Motionsmade is set back to zero as though no steps were made in the past.
+     */
     public void reset() {
         tutorial = false;
         motionsMade = 0;

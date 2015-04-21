@@ -267,13 +267,10 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 ((TriangleShape) tr).drawTriangles();
             }
             if (appInit.getBorderState() == true) {
-
                 border.drawBorder();
-
 
             }
             if (appInit.getBorderState() == false) {
-
                 border.state = 0;
             }
 
