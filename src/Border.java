@@ -37,6 +37,7 @@ public class Border {
 
         }
         state = 1;
+        stokeSize = 1;
     }
 
 }

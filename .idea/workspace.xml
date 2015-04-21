@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="905e9aa0-ee52-425e-affb-f197dfe127a8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GenArt/MyApplet.class" afterPath="$PROJECT_DIR$/out/production/GenArt/MyApplet.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Border.java" afterPath="$PROJECT_DIR$/src/Border.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ColorPicker.java" afterPath="$PROJECT_DIR$/src/ColorPicker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MyApplet.java" afterPath="$PROJECT_DIR$/src/MyApplet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/aRobot.java" afterPath="$PROJECT_DIR$/src/aRobot.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="GenArt.iws" />
@@ -50,8 +46,8 @@
       <file leaf-file-name="MyApplet.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MyApplet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.735294" vertical-offset="5347" max-vertical-offset="14490">
-              <caret line="272" column="52" selection-start-line="272" selection-start-column="52" selection-end-line="272" selection-end-column="52" />
+            <state vertical-scroll-proportion="-8.882353" vertical-offset="5347" max-vertical-offset="14490">
+              <caret line="269" column="36" selection-start-line="269" selection-start-column="36" selection-end-line="269" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -84,8 +80,8 @@
       <file leaf-file-name="ColorPicker.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ColorPicker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="116" max-vertical-offset="1281">
-              <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="305" max-vertical-offset="1281">
+              <caret line="33" column="60" selection-start-line="33" selection-start-column="60" selection-end-line="33" selection-end-column="60" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -96,8 +92,8 @@
       <file leaf-file-name="Border.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Border.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.49167928" vertical-offset="263" max-vertical-offset="987">
-              <caret line="28" column="16" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
+            <state vertical-scroll-proportion="0.74583966" vertical-offset="326" max-vertical-offset="1008">
+              <caret line="39" column="22" selection-start-line="39" selection-start-column="22" selection-end-line="39" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -583,12 +579,6 @@
       <option name="number" value="Default" />
       <updated>1426006400471</updated>
     </task>
-    <task id="LOCAL-00025" summary="Tegner nå helt ut i sidene">
-      <created>1427117417386</created>
-      <option name="number" value="00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1427117417386</updated>
-    </task>
     <task id="LOCAL-00026" summary="Push, for sikkerheits skyld">
       <created>1427123788406</created>
       <option name="number" value="00026" />
@@ -877,7 +867,13 @@
       <option name="project" value="LOCAL" />
       <updated>1429625662355</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="Fixa ramme.">
+      <created>1429636210841</created>
+      <option name="number" value="00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1429636210841</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -925,7 +921,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="MyApplet--;" />
     <MESSAGE value="Save button edit." />
     <MESSAGE value="Text-size, robot instructions." />
     <MESSAGE value="save i orden" />
@@ -950,7 +945,8 @@
     <MESSAGE value="Signaturknapp logikk" />
     <MESSAGE value="Div smått." />
     <MESSAGE value="Siste smått." />
-    <option name="LAST_COMMIT_MESSAGE" value="Siste smått." />
+    <MESSAGE value="Fixa ramme." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixa ramme." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1387,8 +1383,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MyApplet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.735294" vertical-offset="5347" max-vertical-offset="14490">
-          <caret line="272" column="52" selection-start-line="272" selection-start-column="52" selection-end-line="272" selection-end-column="52" />
+        <state vertical-scroll-proportion="-8.882353" vertical-offset="5347" max-vertical-offset="14490">
+          <caret line="269" column="36" selection-start-line="269" selection-start-column="36" selection-end-line="269" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1397,8 +1393,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ColorPicker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="179" max-vertical-offset="1281">
-          <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="305" max-vertical-offset="1281">
+          <caret line="33" column="60" selection-start-line="33" selection-start-column="60" selection-end-line="33" selection-end-column="60" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1407,8 +1403,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Border.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49167928" vertical-offset="263" max-vertical-offset="987">
-          <caret line="28" column="16" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.74583966" vertical-offset="326" max-vertical-offset="1008">
+          <caret line="39" column="22" selection-start-line="39" selection-start-column="22" selection-end-line="39" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
