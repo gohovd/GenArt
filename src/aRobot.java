@@ -109,7 +109,6 @@ public class aRobot {
         while(colorNotFound) {
             c = r.getPixelColor(rand.nextInt(Application.panel.getWidth()), rand.nextInt(Application.panel.getHeight()));
             String cString =  "" + c.getRed() + c.getGreen() + c.getBlue() + c.getAlpha();
-            System.out.println("CLR STRING: " + cString);
             if(!cString.equals("255255255255") ||
                     !cString.equals("0000") ||
                     !cString.equals("000255") ||

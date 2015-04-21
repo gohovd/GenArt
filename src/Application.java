@@ -26,9 +26,9 @@ public class Application {
 
     private int strokeSize = 1;
 
-    private static final JCheckBox circular = new JCheckBox("Sirkulær");
+    //private static final JCheckBox circular = new JCheckBox("Sirkulær");
     private static final JCheckBox randomclr = new JCheckBox("Tilfeldig farge");
-    private static final JCheckBox linear = new JCheckBox("Lineær");
+    //private static final JCheckBox linear = new JCheckBox("Lineær");
     private static final JCheckBox border = new JCheckBox("Ramme");
 
     private static final int menuWidth = 200; // Husk å endre i MyApplet hvis du endrer her
@@ -101,7 +101,7 @@ public class Application {
         vectorButton.setPreferredSize(new Dimension(90, 90));
 
 
-        clearButton = new JButton("Clear");
+        clearButton = new JButton("Reset");
         Randomize = new JButton("Randomisert");
         Randomize.setBackground(Color.GREEN);
         Randomize.setForeground(Color.WHITE);
@@ -239,10 +239,10 @@ public class Application {
             t.addActionListener(applet);
         }
         //Add item listener class.
-        circular.addItemListener(applet);
+        /*circular.addItemListener(applet);
         circular.setSelected(false);
         linear.addItemListener(applet);
-        linear.setSelected(false);
+        linear.setSelected(false);*/
         border.addItemListener(applet);
         border.setSelected(false);
         randomclr.addItemListener(applet);
@@ -263,7 +263,7 @@ public class Application {
         buttonPanel.add(signatureButton);
 
         //Also add buttons/radio-buttons/check-boxes.
-        buttonPanel.add(randomclr); buttonPanel.add(linear); buttonPanel.add(circular); buttonPanel.add(border);
+        buttonPanel.add(randomclr); /*buttonPanel.add(linear); buttonPanel.add(circular);*/ buttonPanel.add(border);
         buttonPanel.add(Randomize); buttonPanel.add(clearButton); buttonPanel.add(filterButton);
         buttonPanel.add(saveButton);buttonPanel.add(closeButton);
 
@@ -290,12 +290,12 @@ public class Application {
 
 
     // Returns the states of each checkbox.
-    public boolean getCircularState(){
+    /*public boolean getCircularState(){
         return circular.isSelected();
     }
     public boolean getLinearState(){
         return linear.isSelected();
-    }
+    }*/
     public boolean getBorderState(){
         return border.isSelected();
     }
@@ -304,12 +304,12 @@ public class Application {
     }
 
     // Set the state of the checkboxes.
-    public void setCircularState(boolean b){
+    /*public void setCircularState(boolean b){
         circular.setSelected(b);
     }
     public void setLinearState(boolean b){
         linear.setSelected(b);
-    }
+    }*/
     public void setBorderState(boolean b){
         border.setSelected(b);
     }

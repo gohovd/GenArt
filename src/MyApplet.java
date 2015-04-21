@@ -301,7 +301,6 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
             }
             if (closeButton) {
-                System.out.println("haha");
                 System.exit(0);
             }
             if (filterButton) {
@@ -654,7 +653,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     }
 
     public void itemStateChanged(ItemEvent e) {
-        if (appInit.getCircularState() == true) {
+        /*if (appInit.getCircularState() == true) {
             //If the linear state is already checked, we have to deselect first..
             if (linear) {
                 appInit.setLinearState(false);
@@ -671,7 +670,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             }
             appInit.setLinearState(true);
             linear = true;
-        }
+        }*/
         if (appInit.getRandomColorState() == true) {
             randomclr = true;
             for(Brush b : brushes){
