@@ -82,7 +82,8 @@ public class aRobot {
                     nameOfButton.contains("saveButton") ||
                     nameOfButton.contains("strokeNColourButton") ||
                     nameOfButton.contains("filterButton") ||
-                    nameOfButton.contains("clrButton")) { // do nothing..
+                    nameOfButton.contains("clrButton") ||
+                    nameOfButton.contains("signatureButton")) { // do nothing..
             } else keys.add(nameOfButton);
         }
         //give it whatever value, it'll change def. anyways.

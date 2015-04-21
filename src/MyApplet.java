@@ -540,18 +540,20 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
      */
     public void actionPerformed(ActionEvent evt) {
 
-        vectorButton = false;
-        randomLineButton = false;
-        ballbutton = false;
-        varBubblesButton = false;
-        pulseButton = false;
-        crossDotsButton = false;
-        saveButton = false;
-        starzButton = false;
-        squarezButton = false;
-        trianglezButton = false;
-        heartButton = false;
-        signatureButton = false;
+        if(!evt.getActionCommand().equals("strokencolour")) {
+            vectorButton = false;
+            randomLineButton = false;
+            ballbutton = false;
+            varBubblesButton = false;
+            pulseButton = false;
+            crossDotsButton = false;
+            saveButton = false;
+            starzButton = false;
+            squarezButton = false;
+            trianglezButton = false;
+            heartButton = false;
+            signatureButton = false;
+        }
 
         if (evt.getActionCommand().equals("create ball")) {
             ballInstance.initializeBalls();
