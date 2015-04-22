@@ -77,7 +77,7 @@ public class Application {
         buttonCreate.setPreferredSize(new Dimension(size, size));
 
         // Round vector
-        ImageIcon imageForvectorButton = new ImageIcon("images/roundvector.png");
+        ImageIcon imageForvectorButton = new ImageIcon("images/roundvector60.png");
         vectorButton = new JButton("", imageForvectorButton);
         vectorButton.setBackground(Color.white);
         vectorButton.setPreferredSize(new Dimension(size, size));
