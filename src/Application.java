@@ -88,7 +88,7 @@ public class Application {
         drunkLinesButton.setBackground(Color.white);
         drunkLinesButton.setPreferredSize(new Dimension(size, size));
         
-        // Reset drawing area
+        // Reset drawing areaa
         clearButton = new JButton("Reset");
         
         // Randomized, automatic drawing, "Tormod"
