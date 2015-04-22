@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="GenArt:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/GenArt_jar</output-path>
+    <root id="archive" name="GenArt.jar">
+      <element id="module-output" name="GenArt" />
+      <element id="extracted-dir" path="$USER_HOME$/Programmer/processing-2.2.1/core/library/core.jar" path-in-jar="/" />
+      <element id="library" level="application" name="core" />
+    </root>
+  </artifact>
+</component>
