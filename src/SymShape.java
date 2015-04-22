@@ -1,7 +1,9 @@
 import processing.core.PApplet;
 
-/***
- * Class SymShape draws in symmetry.
+/**
+ * Drawing tool - SymShape
+ * @author Gruppe 6
+ * @version 1.0, April 2015
  */
 public class SymShape extends Brush{
     
@@ -24,7 +26,7 @@ public class SymShape extends Brush{
         p.smooth();
         p.noFill();
         if(!cc) { p.stroke(p.random(255), p.random(255), p.random(255), 127); }
-        if(cc) { p.stroke(p.random(r), p.random(g), p.random(b), p.random(o)); }
+        if(cc) { p.stroke(p.random(r), p.random(g), p.random(b), 180); }
         int n = 0;
         for(int i = 0; i < 20; i++) {
             p.line(p.mouseX + n, p.mouseY + n, p.pmouseX + n, p.pmouseY + n);
