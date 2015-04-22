@@ -10,10 +10,15 @@ import javax.swing.BorderFactory;
  */
 
 public class Application {
+    private static final JCheckBox randomclr = new JCheckBox("Tilfeldig farge");
+    private static final JCheckBox border = new JCheckBox("Ramme");
+    private static final int menuWidth = 200; // Husk å endre i MyApplet hvis du endrer her
+    public static JPanel panel, buttonPanel;
 // For availability, declare all buttons
     private static JButton vectorButton, clearButton, randomLinesButton, pulseButton, crossDotsButton,
             starButton, heartButton, squarezButton,  buttonCreate, varBubblesButton, trianglezButton,
-            Randomize,strokeNColourButton, filterButton, saveButton, closeButton, signatureButton, printButton, drunkLinesButton;
+            Randomize,strokeNColourButton, filterButton, saveButton, closeButton, signatureButton,
+        printButton, drunkLinesButton;
 
     // Hashmap to support "Tormod"
     public static HashMap<String, JButton> buttonMap = new HashMap();
@@ -75,6 +80,9 @@ public class Application {
         
         // Reset drawing area
         clearButton = new JButton("Reset");
+
+        // Print your image.
+        printButton = new JButton("printing");
         
         // Randomized, automatic drawing, "Tormod"
         Randomize = new JButton("Randomisert");
@@ -104,7 +112,7 @@ public class Application {
         varBubblesButton.setPreferredSize(new Dimension(size, size));
 
         // Pulse
-        ImageIcon imageForpulseButton = new ImageIcon("images/pulse.png");
+        ImageIcon imageForpulseButton = new ImageIcon("images/puls.png");
         pulseButton = new JButton("", imageForpulseButton);
         pulseButton.setBackground(Color.white);
         pulseButton.setPreferredSize(new Dimension(size, size));
@@ -115,8 +123,14 @@ public class Application {
         crossDotsButton.setBackground(Color.white);
         crossDotsButton.setPreferredSize(new Dimension(size, size));
 
+        // Printerbutton
+        ImageIcon imageForPrintButton = new ImageIcon("images/printer1.png");
+        printButton = new JButton("", imageForPrintButton);
+        printButton.setBackground(Color.white);
+        printButton.setPreferredSize(new Dimension(size, size));
+
         // Starbutton
-        ImageIcon imageForStarButton = new ImageIcon("images/printer1.png");
+        ImageIcon imageForStarButton = new ImageIcon("images/star.png");
         starButton = new JButton("", imageForStarButton);
         starButton.setBackground(Color.white);
         starButton.setPreferredSize(new Dimension(size, size));
@@ -129,7 +143,7 @@ public class Application {
         heartButton.setPreferredSize(new Dimension(size, size));
 
         // Squarez
-        ImageIcon imageForsquarezButton = new ImageIcon("images/squarez.png");
+        ImageIcon imageForsquarezButton = new ImageIcon("images/sq.png");
         squarezButton = new JButton("", imageForsquarezButton);
         squarezButton.setBackground(Color.white);
         squarezButton.setPreferredSize(new Dimension(size, size));
@@ -141,7 +155,7 @@ public class Application {
         trianglezButton.setPreferredSize(new Dimension(size, size));
 
         // Color chooser
-        ImageIcon imageForStrokeNColourButton = new ImageIcon("images/strokencolour80x80.png");
+        ImageIcon imageForStrokeNColourButton = new ImageIcon("images/colorPick.png");
         strokeNColourButton = new JButton("", imageForStrokeNColourButton);
         strokeNColourButton.setBackground(Color.white);
         strokeNColourButton.setPreferredSize(new Dimension(size, size));
@@ -212,6 +226,7 @@ public class Application {
         buttonMap.put("filterButton", filterButton);
         buttonMap.put("signatureButton", signatureButton);
         buttonMap.put("printButton", printButton);
+        buttonMap.put("starButton", starButton);
         buttonMap.put("drunkLinesButton", drunkLinesButton);
 
         //Iterate through entrySet, and set class Applet as action listener for every button.
