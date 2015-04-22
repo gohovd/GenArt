@@ -7,11 +7,6 @@ public class SymShape extends Brush{
     
     int h = Application.panel.getHeight(); //Height of the canvas.
     int w = Application.panel.getWidth(); //Width of the canvas.
-    int X, Y;
-    int nX, nY;
-    int pX, pY;
-    int delay = 4;
-    boolean first = true; //Holds whether or not it's the first time it's trying to draw.
 
     /***
      * Constructor for class SymShape.
