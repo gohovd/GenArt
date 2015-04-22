@@ -1,10 +1,12 @@
 import processing.core.*;
-import java.awt.*;
 import java.util.ArrayList;
 
 /**
  * Makes a vector that moves in a predefined pattern.
+ * @author Gruppe 6
+ * @version 1.0, April 2015
  */
+
 class Mover extends Brush {
 
     PVector location;
