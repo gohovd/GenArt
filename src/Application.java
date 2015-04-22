@@ -23,7 +23,7 @@ public class Application {
 
     private static JButton vectorButton, clearButton, randomLinesButton, pulseButton, crossDotsButton,
             starButton, heartButton, squarezButton,  buttonCreate, varBubblesButton, trianglezButton,
-            Randomize,strokeNColourButton, filterButton, saveButton, closeButton, signatureButton, printButton;
+            Randomize,strokeNColourButton, filterButton, saveButton, closeButton, signatureButton, printButton, drunkLinesButton;
 
     public static HashMap<String, JButton> buttonMap = new HashMap();
 
@@ -85,6 +85,13 @@ public class Application {
         vectorButton = new JButton("", imageForvectorButton);
         vectorButton.setBackground(Color.white);
         vectorButton.setPreferredSize(new Dimension(size, size));
+
+        ImageIcon imageFordrunkLines = new ImageIcon("images/soon.png");
+        drunkLinesButton = new JButton("", imageFordrunkLines);
+        drunkLinesButton.setBackground(Color.white);
+        drunkLinesButton.setPreferredSize(new Dimension(size, size));
+
+
 
 
         clearButton = new JButton("Reset");
@@ -173,6 +180,7 @@ public class Application {
         trianglezButton.setToolTipText("Tegner trekanter i forskjellig vinkel og størrelse.");
         strokeNColourButton.setToolTipText("Velger farge på penslene dine.");
         signatureButton.setToolTipText("Legg igjen din signatur på bildet.");
+        drunkLinesButton.setToolTipText("Tegner linjer som er dritings.");
         // Adding button graphics
 
 
@@ -196,6 +204,7 @@ public class Application {
         strokeNColourButton.setActionCommand("strokencolour");
         signatureButton.setActionCommand("signature");
         printButton.setActionCommand("printing");
+        drunkLinesButton.setActionCommand("drunk");
 
         //Add buttons to map. Name of button is key, while actual button is the value.
         buttonMap.put("buttonCreate", buttonCreate);
@@ -216,6 +225,7 @@ public class Application {
         buttonMap.put("filterButton", filterButton);
         buttonMap.put("signatureButton", signatureButton);
         buttonMap.put("printButton", printButton);
+        buttonMap.put("drunkLinesButton", drunkLinesButton);
 
 
         //Iterate through entrySet, and set class Applet as action listener for every button.
@@ -244,6 +254,7 @@ public class Application {
         buttonPanel.add(starButton);
         buttonPanel.add(printButton);
         buttonPanel.add(signatureButton);
+        buttonPanel.add(drunkLinesButton);
 
 
         //Also add buttons/radio-buttons/check-boxes.

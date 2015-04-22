@@ -29,6 +29,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     Brush sq = new SquareShape(this);
     Brush tr = new TriangleShape(this);
     Brush moverInstance = new Mover(this);
+    Brush dr = new DrunkShape(this);
 
     ArrayList<Brush> brushes = new ArrayList();
 
@@ -43,6 +44,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     boolean heartButton = false;
     boolean signatureButton = false;
     boolean printButton = false;
+    boolean drunkButton = false;
 
     // Variables related to the mover/vector.
     boolean vectorButton = false;
@@ -90,6 +92,10 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     // Declaring "Tormod", automatic drawing robot
     Robot robot;
 
+    //Locational data about mouseposition for drunkshape.
+    int mx = 0;
+    int my = 0;
+
     ArrayList history;   // Define the history for pattern3
 
     public Color col;
@@ -106,6 +112,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         brushes.add(bu);
         brushes.add(sq);
         brushes.add(tr);
+        brushes.add(dr);
         brushes.add(moverInstance);
 
         // Set up the movers/vectors.
@@ -208,6 +215,13 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             }
             if (varBubblesButton) {
                 ((BubbleShape) bu).drawBubbles();
+            }
+            if (drunkButton) {
+                if (mousePressed) {
+                    ((DrunkShape) dr).setX1(mouseX);
+                    ((DrunkShape) dr).setY1(mouseY);
+                }
+                ((DrunkShape) dr).display();
             }
             if (pulseButton) {
                 ((PulseShape) pu).drawPulse();
@@ -522,6 +536,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             trianglezButton = false;
             heartButton = false;
             signatureButton = false;
+            drunkButton = false;
         }
 
         if (evt.getActionCommand().equals("create ball")) {
@@ -576,6 +591,9 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
         }else if (evt.getActionCommand().equals("heartz")) {
             heartButton = true;
+
+        }else if (evt.getActionCommand().equals("drunk")) {
+            drunkButton = true;
 
         } else if (evt.getActionCommand().equals("squarez")) {
             squarezButton = true;
