@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="905e9aa0-ee52-425e-affb-f197dfe127a8" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\Ivan\Dropbox\GitHub\GenArt\out\production\GenArt\Application.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GenArt/MyApplet.class" afterPath="$PROJECT_DIR$/out/production/GenArt/MyApplet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Application.java" afterPath="$PROJECT_DIR$/src/Application.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ColorPicker.java" afterPath="$PROJECT_DIR$/src/ColorPicker.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MyApplet.java" afterPath="$PROJECT_DIR$/src/MyApplet.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -80,8 +76,8 @@
       <file leaf-file-name="MyApplet.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MyApplet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7046632" vertical-offset="10183" max-vertical-offset="12767">
-              <caret line="615" column="28" selection-start-line="615" selection-start-column="28" selection-end-line="615" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.119170986" vertical-offset="11378" max-vertical-offset="12461">
+              <caret line="672" column="47" selection-start-line="672" selection-start-column="47" selection-end-line="672" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -469,12 +465,6 @@
       <option name="number" value="Default" />
       <updated>1426006400471</updated>
     </task>
-    <task id="LOCAL-00041" summary="Tormod is alive lizm!">
-      <created>1427307549815</created>
-      <option name="number" value="00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1427307549815</updated>
-    </task>
     <task id="LOCAL-00042" summary="MyApplet--;">
       <created>1427326150517</created>
       <option name="number" value="00042" />
@@ -763,7 +753,13 @@
       <option name="project" value="LOCAL" />
       <updated>1429721789152</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="bakgrunn knapp">
+      <created>1429722795669</created>
+      <option name="number" value="00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1429722795669</updated>
+    </task>
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -811,7 +807,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="english -&gt; norsk knappnavn" />
     <MESSAGE value="Endring i trekant" />
     <MESSAGE value="Ramme" />
     <MESSAGE value="Ramme update" />
@@ -836,7 +831,8 @@
     <MESSAGE value="Ny funksjon (symshape)." />
     <MESSAGE value="Bilde for symshape." />
     <MESSAGE value="Fixa treigstart på robot, + endra symshape." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixa treigstart på robot, + endra symshape." />
+    <MESSAGE value="bakgrunn knapp" />
+    <option name="LAST_COMMIT_MESSAGE" value="bakgrunn knapp" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1249,8 +1245,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MyApplet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7046632" vertical-offset="10183" max-vertical-offset="12767">
-          <caret line="615" column="28" selection-start-line="615" selection-start-column="28" selection-end-line="615" selection-end-column="28" />
+        <state vertical-scroll-proportion="0.119170986" vertical-offset="11378" max-vertical-offset="12461">
+          <caret line="672" column="47" selection-start-line="672" selection-start-column="47" selection-end-line="672" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

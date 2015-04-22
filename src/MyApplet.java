@@ -671,24 +671,6 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     }
 
     public void itemStateChanged(ItemEvent e) {
-        /*if (appInit.getCircularState() == true) {
-            //If the linear state is already checked, we have to deselect first..
-            if (linear) {
-                appInit.setLinearState(false);
-                linear = false;
-            }
-            appInit.setCircularState(true);
-            circular = true;
-        }
-        if (appInit.getLinearState() == true) {
-            //If the circular state is already checked, we have to deselect first..
-            if (circular) {
-                appInit.setCircularState(false);
-                circular = false;
-            }
-            appInit.setLinearState(true);
-            linear = true;
-        }*/
         if (appInit.getRandomColorState() == true) {
             randomclr = true;
             for (Brush b : brushes) {
