@@ -6,11 +6,13 @@ import java.awt.event.InputEvent;
 import java.util.Random;
 
 import processing.core.*;
+
 import javax.swing.*;
 
 /**
  * Class MyApplet extends Processing core functionality, handles drawing functionality
- * @author  Gruppe 6
+ *
+ * @author Gruppe 6
  * @version 1.0, April 2015
  */
 
@@ -157,7 +159,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         border = new Border(this, appInit);
     }
 
-    /***
+    /**
      * Draws actual content to screen
      */
     public void draw() {
@@ -171,7 +173,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                     Tormod.setFilterSelection(false);
                 }
                 count++;
-                if(count % 500 == 0) {
+                if (count % 500 == 0) {
                     String split[] = Tormod.getColorString().split(" ");
                     System.out.println(Tormod.getColorString());
                     reds = Integer.parseInt(split[0]);
@@ -180,16 +182,28 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                     alphas = Integer.parseInt(split[3]);
                     setColorForAllBrushes();
                 }
-                int one = rand.nextInt(501)+200;
-                int two = rand.nextInt(911)+400;
-                int three = rand.nextInt(1330)+60;
-                if(count % one == 0) { switcher = 1; }
-                if(count % two == 0) { switcher = 2; }
-                if(count % three == 0) { switcher = 3; }
+                int one = rand.nextInt(501) + 200;
+                int two = rand.nextInt(911) + 400;
+                int three = rand.nextInt(1330) + 60;
+                if (count % one == 0) {
+                    switcher = 1;
+                }
+                if (count % two == 0) {
+                    switcher = 2;
+                }
+                if (count % three == 0) {
+                    switcher = 3;
+                }
                 //if(count % 2403 == 0) { switcher = 4; count = 0; }
-                if(switcher == 1) { Tormod.Motion(1); }
-                if(switcher == 2) { Tormod.Motion(2); }
-                if(switcher == 3) { Tormod.Motion(3); }
+                if (switcher == 1) {
+                    Tormod.Motion(1);
+                }
+                if (switcher == 2) {
+                    Tormod.Motion(2);
+                }
+                if (switcher == 3) {
+                    Tormod.Motion(3);
+                }
                 //if(switcher == 4) { Tormod.Motion(4); }
             } catch (AWTException e) {
                 e.printStackTrace();
@@ -210,8 +224,8 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             if (vectorButton && mousePressed) {
                 //Choice determines motion pattern (1: circular,  2: linear)
                 int choice = 1;
-                for (int i = 0; i < ((Mover)moverInstance).getMovers().size(); i++) {
-                    Brush mover = ((Mover)moverInstance).getMovers().get(i);
+                for (int i = 0; i < ((Mover) moverInstance).getMovers().size(); i++) {
+                    Brush mover = ((Mover) moverInstance).getMovers().get(i);
                     mouse = new PVector(mouseX, mouseY);
                     ((Mover) mover).setVecLocation(mouse);
                     if (circular) {
@@ -228,8 +242,9 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 ((LineShape) li).drawLines();
             }
             if (symButton) {
-                if(mousePressed) {
-                ((SymShape) sym).display(); }
+                if (mousePressed) {
+                    ((SymShape) sym).display();
+                }
             }
             if (varBubblesButton) {
                 ((BubbleShape) bu).drawBubbles();
@@ -251,7 +266,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 ((StarShape) st).drawStars();
 
             }
-            if(printButton){
+            if (printButton) {
                 saveToPrint();
                 TestPrint tp = new TestPrint();
                 tp.printolini();
@@ -318,10 +333,10 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                         "F.eks. 'minfil.jpg'", width / 2, height / 2 - 50);
 
 
-
                 text(typing, width / 2, height / 2 + 60);
 
                 text("Filen blir lagret på skrivebordet", width / 2, height / 2 + 150);
+                text("Trykk 'Q' for å avbryte", width / 2, height / 2 + 175);
 
                 if (panelActivated) {
                     // Do nothing
@@ -341,7 +356,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                     c1.color();
                     if (c1.getC() != null) {
 
-                        background(c1.getR(),c1.getG(),c1.getB());
+                        background(c1.getR(), c1.getG(), c1.getB());
                     }
 
                 }
@@ -375,6 +390,8 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                         " 7: Erode \n" +
                         " 8: Dilate \n", width / 2, height / 2 - 60);
 
+                text("Trykk 'Q' for å avbryte", width / 2, height / 2 +175);
+
                 if (panelActivated) {
                     // Do nothing
                 } else {
@@ -399,6 +416,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 textFont(signatureFont);
 
                 text("Signatur og trykk 'enter'", width / 2, height / 2 - 60);
+                text("Trykk 'Q' for å avbryte", width / 2, height / 2 + 70);
 
 
                 text(typing, width / 2, height / 2 + 20);
@@ -406,7 +424,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 if (panelActivated) {
                     // Do nothing
                 } else {
-                    robot.mouseMove(width -250, height / 2);
+                    robot.mouseMove(width - 250, height / 2);
                     leftClick();
                     panelActivated = true;
                 }
@@ -414,7 +432,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         }
     }
 
-    /***
+    /**
      * Behaviour for key pressing and mouse clicking
      */
     public void keyPressed() {
@@ -433,7 +451,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
                 PFont signatureFont;
                 signatureFont = loadFont("fonts/Purisa-Bold-30.vlw");
-                fill(0,0,0);
+                fill(0, 0, 0);
                 textFont(signatureFont);
 
                 textAlign(RIGHT);
@@ -441,7 +459,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
                 PFont signatureFont2;
                 signatureFont2 = loadFont("fonts/Purisa-Bold-30.vlw");
-                fill(255,255,255);
+                fill(255, 255, 255);
                 textFont(signatureFont2);
 
                 textAlign(RIGHT);
@@ -449,13 +467,17 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
                 signatureButton = false;
 
+            } else if
+                    (key == 'q' || key == 'Q') {
+                image(screenshot, 0, 0);
+                signatureButton = false;
             } else {
                 // Otherwise, concatenate the String
                 // Each character typed by the user is added to the end of the String variable.
                 typing = typing + key;
 
-                if (key == '\u0008'){
-                    typing="";
+                if (key == '\u0008') {
+                    typing = "";
                 }
             }
 
@@ -510,6 +532,11 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 image(screenshot, 0, 0);
                 filterButton = false;
             }
+            if
+                    (key == 'q' || key == 'Q') {
+                image(screenshot, 0, 0);
+                filterButton = false;
+            }
 
 
         } else if (saveButton) {
@@ -546,14 +573,18 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
                     saveButton = false;
                 }
+            } else if
+                    (key == 'q' || key == 'Q') {
+                image(screenshot, 0, 0);
+                saveButton = false;
             } else {
 
                 // Otherwise, concatenate the String
                 // Each character typed by the user is added to the end of the String variable.
                 typing = typing + key;
 
-                if (key == '\u0008'){
-                    typing="";
+                if (key == '\u0008') {
+                    typing = "";
                 }
             }
         } else if (randomize) {
@@ -585,7 +616,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             crossDotsButton = false;
             saveButton = false;
             bgButton = false;
-            closeButton =false;
+            closeButton = false;
             starzButton = false;
             squarezButton = false;
             trianglezButton = false;
@@ -636,25 +667,24 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             panelActivated = false;
             saveButton = true;
 
-        }else if (evt.getActionCommand().equals("bg")) {
-            if(state != 0) {
+        } else if (evt.getActionCommand().equals("bg")) {
+            if (state != 0) {
                 state = 0;
             }
             bgButton = true;
 
-        }else if (evt.getActionCommand().equals("close")) {
+        } else if (evt.getActionCommand().equals("close")) {
             closeButton = true;
 
         } else if (evt.getActionCommand().equals("starz")) {
             starzButton = true;
-        }
-        else if (evt.getActionCommand().equals("printing")) {
+        } else if (evt.getActionCommand().equals("printing")) {
             printButton = true;
 
-        }else if (evt.getActionCommand().equals("heartz")) {
+        } else if (evt.getActionCommand().equals("heartz")) {
             heartButton = true;
 
-        }else if (evt.getActionCommand().equals("drunk")) {
+        } else if (evt.getActionCommand().equals("drunk")) {
             drunkButton = true;
 
         } else if (evt.getActionCommand().equals("squarez")) {
@@ -663,17 +693,19 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         } else if (evt.getActionCommand().equals("trianglez")) {
             trianglezButton = true;
 
-        }else if (evt.getActionCommand().equals("syms")) {
+        } else if (evt.getActionCommand().equals("syms")) {
             symButton = true;
 
         } else if (evt.getActionCommand().equals("strokencolour")) {
             strokeNColourButton = true;
             col = colors.showDialog(null, "Velg En Farge", Color.GREEN);
             appInit.setRandomclrState(false);
-            reds = col.getRed(); greens = col.getGreen(); blues = col.getBlue(); alphas = col.getAlpha();
+            reds = col.getRed();
+            greens = col.getGreen();
+            blues = col.getBlue();
+            alphas = col.getAlpha();
             setColorForAllBrushes();
-        }
-        else if (evt.getActionCommand().equals("filter")) {
+        } else if (evt.getActionCommand().equals("filter")) {
             screenshot = get();
             filterButton = true;
             panelActivated = false;
@@ -721,8 +753,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     /**
      * Function to help set focus on drawing area after selecting filter
      */
-    private void leftClick()
-    {
+    private void leftClick() {
         robot.mousePress(InputEvent.BUTTON1_MASK);
         robot.delay(200);
         robot.mouseRelease(InputEvent.BUTTON1_MASK);
@@ -732,12 +763,12 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     /**
      * Setting colours for brushes
      */
-    private void setColorForAllBrushes(){
-        for(Brush b : brushes){
+    private void setColorForAllBrushes() {
+        for (Brush b : brushes) {
             b.setCC(true);
             b.setColor(reds, greens, blues, alphas);
         }
-        for(Mover m : ((Mover)moverInstance).getMovers()) {
+        for (Mover m : ((Mover) moverInstance).getMovers()) {
             m.setCC(true);
             m.setColor(reds, greens, blues, alphas);
         }
@@ -746,7 +777,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     /**
      * Help function to be able to print to paper
      */
-    public void saveToPrint(){
+    public void saveToPrint() {
         save(System.getProperty("user.home") + "/Desktop/PRINTMEG.jpg");
 
     }
