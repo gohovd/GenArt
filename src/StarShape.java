@@ -25,7 +25,7 @@ public class StarShape extends Brush {
             p.strokeWeight((float) 0.1);
             if(!cc) { p.fill(p.random(255), p.random(255), p.random(255), 127); }
             if(cc) { p.fill(p.random(this.r), p.random(this.g), p.random(this.b), p.random(this.o)); }
-            //p.scale(p.random(1));
+            p.scale(p.random(1));
             p.beginShape();
             p.vertex(p.mouseX, p.mouseY - 50);
             p.vertex(p.mouseX + 14, p.mouseY - 20);
