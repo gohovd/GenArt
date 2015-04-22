@@ -3,6 +3,8 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import java.awt.Robot;
 import java.awt.event.InputEvent;
+import java.util.Random;
+
 import processing.core.*;
 import javax.swing.*;
 
@@ -18,6 +20,9 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
     boolean pause = false;
     Border border;
+
+    //Random generator.
+    Random rand = new Random();
 
     // Variables related to the "bouncing ball".
     Brush brush = new Brush(this);
@@ -175,9 +180,12 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                     alphas = Integer.parseInt(split[3]);
                     setColorForAllBrushes();
                 }
-                if(count % 600 == 0) { switcher = 1; }
-                if(count % 1201 == 0) { switcher = 2; }
-                if(count % 1802 == 0) { switcher = 3; }
+                int one = rand.nextInt(501)+200;
+                int two = rand.nextInt(911)+400;
+                int three = rand.nextInt(1330)+60;
+                if(count % one == 0) { switcher = 1; }
+                if(count % two == 0) { switcher = 2; }
+                if(count % three == 0) { switcher = 3; }
                 //if(count % 2403 == 0) { switcher = 4; count = 0; }
                 if(switcher == 1) { Tormod.Motion(1); }
                 if(switcher == 2) { Tormod.Motion(2); }

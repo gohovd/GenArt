@@ -19,7 +19,7 @@ public class PulseShape extends Brush {
     
     public void drawPulse(){
         if (p.mousePressed == true) {
-
+            p.noStroke();
             pulseAngle += 5;
 
             float val = (float) (PApplet.cos(PApplet.radians(pulseAngle)) * 12.0);

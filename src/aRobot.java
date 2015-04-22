@@ -237,8 +237,9 @@ public class aRobot {
             float y = p.map(p.sin(a+(float)1.5), -1, 1, 0, Application.panel.getHeight());
             cX = Math.round(x);
             cY = Math.round(y);
-            a = a + (float)0.03;
+            a = a + rand.nextFloat();
         }
+        if(!currentButton.contains("symButton")) {
             if (cX > cWidth) {
                 cX -= cWidth;
             }
@@ -251,6 +252,7 @@ public class aRobot {
             if (cY < 0) {
                 cY += cHeight;
             }
+        }
             r.mouseMove(cX, cY);
             motionsMade++;
     }

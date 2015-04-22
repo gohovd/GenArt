@@ -30,21 +30,8 @@ public class SymShape extends Brush{
         p.noFill();
         if(!cc) { p.stroke(p.random(255), p.random(255), p.random(255), 127); }
         if(cc) { p.stroke(p.random(r), p.random(g), p.random(b), p.random(o)); }
-        if(first) {
-            X = w/2; Y = h/2;
-            nX = w/2; nY = h/2;
-            pX = w/2; pY = h/2;
-            first = false; }
-        if(!first) {
-            X += (nX - X) / delay;
-            Y += (nY - Y) / delay;
-        }
-        nX = p.mouseX;
-        nY = p.mouseY;
         int n = 0;
         for(int i = 0; i < 20; i++) {
-            /*p.line(X+n, Y+n, pX+n, pY+n);
-            p.line(Y+n, X+n, pY+n, pX+n);*/
             p.line(p.mouseX + n, p.mouseY + n, p.pmouseX + n, p.pmouseY + n);
             n++;
         }
@@ -54,8 +41,6 @@ public class SymShape extends Brush{
             n++;
         }
 
-        pX = X;
-        pY = Y;
     }
 
 
