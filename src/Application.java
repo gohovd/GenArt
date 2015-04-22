@@ -88,7 +88,7 @@ public class Application {
         drunkLinesButton.setBackground(Color.white);
         drunkLinesButton.setPreferredSize(new Dimension(size, size));
         
-        // Reset drawing areaa
+        // Reset drawing area
         clearButton = new JButton("Reset");
         
         // Randomized, automatic drawing, "Tormod"
@@ -100,13 +100,13 @@ public class Application {
         // Save
         saveButton = new JButton("Lagre");
 
-        //
+        // Bakgrunnsfarge
         bgButton = new JButton("    Bakgrunns Farge    ");
 
         // Close program
         closeButton = new JButton("   Lukk Programmet   ");
         closeButton.setBackground(Color.RED);
-        closeButton.setForeground(Color.BLACK);
+        closeButton.setForeground(Color.WHITE);
         closeButton.setBorderPainted(true);
 
         // Filters
