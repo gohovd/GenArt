@@ -398,7 +398,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 if (panelActivated) {
                     // Do nothing
                 } else {
-                    robot.mouseMove(width / 2, height / 2);
+                    robot.mouseMove(width -250, height / 2);
                     leftClick();
                     panelActivated = true;
                 }
@@ -424,8 +424,17 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 image(screenshot, 0, 0);
 
                 PFont signatureFont;
-                signatureFont = loadFont("fonts/Purisa-Bold-30.vlw");
+                signatureFont = loadFont("fonts/Purisa-Oblique-34.vlw");
+                fill(0,0,0);
                 textFont(signatureFont);
+
+                textAlign(RIGHT);
+                text(saved, width - 20, height - 30);
+
+                PFont signatureFont2;
+                signatureFont2 = loadFont("fonts/Purisa-Bold-30.vlw");
+                fill(255,255,255);
+                textFont(signatureFont2);
 
                 textAlign(RIGHT);
                 text(saved, width - 20, height - 30);
