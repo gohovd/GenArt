@@ -4,7 +4,9 @@ import java.awt.*;
 
 
 /**
- * Created by Ivan on 20.04.2015.
+ * Drawing tool - Border
+ * @author Gruppe 6
+ * @version 1.0, April 2015
  */
 public class Border {
     PApplet p;
