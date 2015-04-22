@@ -73,8 +73,6 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     boolean filterButton = false;
     boolean panelActivated = false; // Settes til true hvis robot har klikket i tegning for å aktivere "panel"
 
-    boolean switcher = false;
-
     PImage screenshot;
 
     PFont f; //variabler for text input
@@ -91,6 +89,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     Robot robot;
 
     ArrayList history;   // Define the history for pattern3
+    int switcher = 0; //Int to control which motion-pattern the robot uses.
 
     public Color col;
     //The colors we want to pass to all brushes.
@@ -166,10 +165,14 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                     alphas = Integer.parseInt(split[3]);
                     setColorForAllBrushes();
                 }
-                if(count % 900 == 0) { switcher = true; }
-                if(count % 1200 == 0) { switcher = false; count = 0; }
-                if(switcher) { Tormod.oMotion(); }
-                if(!switcher) { Tormod.sinMotion(); }
+                if(count % 600 == 0) { switcher = 1; }
+                if(count % 1201 == 0) { switcher = 2; }
+                if(count % 1802 == 0) { switcher = 3; }
+                //if(count % 2403 == 0) { switcher = 4; count = 0; }
+                if(switcher == 1) { Tormod.Motion(1); }
+                if(switcher == 2) { Tormod.Motion(2); }
+                if(switcher == 3) { Tormod.Motion(3); }
+                //if(switcher == 4) { Tormod.Motion(4); }
             } catch (AWTException e) {
                 e.printStackTrace();
             } catch (InterruptedException e) {
@@ -494,6 +497,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             if (key == 'q') {
                 killTormod = true;
                 Tormod.end();
+                Tormod.reset();
                 randomize = false;
             }
         }
