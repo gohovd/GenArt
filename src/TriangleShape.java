@@ -22,8 +22,8 @@ public class TriangleShape extends Brush {
         if (p.mousePressed) {
             //p.frameRate(20);
             p.strokeWeight((float) 0.1);
-            if(!this.cc) { p.fill(p.random(255), p.random(255), p.random(255), 127); }
-            if(this.cc) { p.fill(p.random(this.r), p.random(this.g), p.random(this.b), p.random(this.o)); }
+            if(!cc) { p.fill(p.random(255), p.random(255), p.random(255), 127); }
+            if(cc) { p.fill(p.random(r), p.random(g), p.random(b), p.random(o)); }
             x1 = p.random(p.mouseX - p.random(80, 100), p.mouseX + p.random(80, 100));
             y1 = p.random(p.mouseY - p.random(80, 100), p.mouseY + p.random(80, 100));
             x2 = p.random(p.mouseX - p.random(60, 80), p.mouseX + p.random(80, 100));
