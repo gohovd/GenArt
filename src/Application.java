@@ -92,7 +92,7 @@ public class Application {
         clearButton = new JButton("Reset");
         
         // Randomized, automatic drawing, "Tormod"
-        Randomize = new JButton("Randomisert");
+        Randomize = new JButton("Random");
         Randomize.setBackground(Color.GREEN);
         Randomize.setForeground(Color.WHITE);
         Randomize.setBorderPainted(true);
@@ -101,13 +101,16 @@ public class Application {
         saveButton = new JButton("Lagre");
 
         //
-        bgButton = new JButton("Bakgrunnsfarge");
+        bgButton = new JButton("    Bakgrunns Farge    ");
 
         // Close program
-        closeButton = new JButton("Lukk Programmet");
+        closeButton = new JButton("   Lukk Programmet   ");
+        closeButton.setBackground(Color.RED);
+        closeButton.setForeground(Color.BLACK);
+        closeButton.setBorderPainted(true);
 
         // Filters
-        filterButton = new JButton("Filter");
+        filterButton = new JButton("   Filter    ");
 
         // Random lines
         ImageIcon imageForrandomLinesButton = new ImageIcon("images/rndlines.png");
@@ -262,7 +265,13 @@ public class Application {
         border.setSelected(false);
         randomclr.addItemListener(applet);
         randomclr.setSelected(false);
-
+        //make 3 new separators
+        JSeparator separator = new JSeparator(SwingConstants.HORIZONTAL);
+        separator.setPreferredSize(new Dimension(200, 20));
+        JSeparator separator2 = new JSeparator(SwingConstants.HORIZONTAL);
+        separator2.setPreferredSize(new Dimension(200,20));
+        JSeparator separator3 = new JSeparator(SwingConstants.HORIZONTAL);
+        separator3.setPreferredSize(new Dimension(200,20));
         //Add buttons to the button-panel.
         buttonPanel.add(buttonCreate);
         buttonPanel.add(randomLinesButton);
@@ -273,17 +282,25 @@ public class Application {
         buttonPanel.add(heartButton);
         buttonPanel.add(squarezButton);
         buttonPanel.add(trianglezButton);
-        buttonPanel.add(strokeNColourButton);
         buttonPanel.add(starButton);
-        buttonPanel.add(printButton);
-        buttonPanel.add(signatureButton);
         buttonPanel.add(symButton);
         buttonPanel.add(drunkLinesButton);
+        buttonPanel.add(separator);
+        buttonPanel.add(printButton);
+        buttonPanel.add(strokeNColourButton);
+        buttonPanel.add(signatureButton);
+        buttonPanel.add(separator2);
 
         //Also add buttons/radio-buttons/check-boxes.
-        buttonPanel.add(randomclr); buttonPanel.add(border);
-        buttonPanel.add(Randomize); buttonPanel.add(clearButton); buttonPanel.add(filterButton);
-        buttonPanel.add(saveButton);buttonPanel.add(bgButton);buttonPanel.add(closeButton);
+        buttonPanel.add(randomclr);
+        buttonPanel.add(border);
+        buttonPanel.add(separator3);
+        buttonPanel.add(Randomize);
+        buttonPanel.add(clearButton);
+        buttonPanel.add(filterButton);
+        buttonPanel.add(saveButton);
+        buttonPanel.add(bgButton);
+        buttonPanel.add(closeButton);
 
         // Store the applet in panel
         panel.add(applet);
