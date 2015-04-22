@@ -611,7 +611,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             System.out.println(appInit.getStrokeSize());
             colors.setVisible(true);*/
             strokeNColourButton = true;
-            col = colors.showDialog(null, "Choose Stroke Color", Color.GREEN);
+            col = colors.showDialog(null, "Velg En Farge", Color.GREEN);
             appInit.setRandomclrState(false);
             System.out.println("Color String: " + col.getRed() + " " + col.getGreen() + " " + col.getBlue() + " " + col.getAlpha());
 
