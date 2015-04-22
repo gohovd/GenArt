@@ -73,6 +73,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     // Booleans to control which button is active
     boolean crossDotsButton = false;
     boolean saveButton = false;
+    boolean bgButton = false;
     boolean closeButton = false;
     boolean filterButton = false;
     boolean panelActivated = false; // Settes til true hvis robot har klikket i tegning for å aktivere "panel"
@@ -87,13 +88,16 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     // Variable to store saved text when return is hit
     String saved = "";
 
-    int count = 10;
+    int count = 0;
+
+    //variable for background
+    int state = 0;
 
     // Declaring "Tormod", automatic drawing robot
     Robot robot;
 
     ArrayList history;   // Define the history for pattern3
-    int switcher = 1; //Int to control which motion-pattern the robot uses.
+    int switcher = 0; //Int to control which motion-pattern the robot uses.
 
     public Color col;
     //The colors we want to pass to all brushes.
@@ -320,6 +324,22 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 }
 
             }
+
+            if (bgButton) {
+                ColorPicker c1 = new ColorPicker();
+
+                if (state == 0) {
+
+                    c1.color();
+                    if (c1.getC() != null) {
+
+                        background(c1.getR(),c1.getG(),c1.getB());
+                    }
+
+                }
+                state = 1;
+
+            }
             if (closeButton) {
                 System.exit(0);
             }
@@ -537,6 +557,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             pulseButton = false;
             crossDotsButton = false;
             saveButton = false;
+            bgButton = false;
             closeButton =false;
             starzButton = false;
             squarezButton = false;
@@ -588,6 +609,12 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             panelActivated = false;
             saveButton = true;
 
+        }else if (evt.getActionCommand().equals("bg")) {
+            if(state != 0) {
+                state = 0;
+            }
+            bgButton = true;
+
         }else if (evt.getActionCommand().equals("close")) {
             closeButton = true;
 
@@ -614,7 +641,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
         } else if (evt.getActionCommand().equals("strokencolour")) {
             strokeNColourButton = true;
-            col = colors.showDialog(null, "Velg en farge", Color.GREEN);
+            col = colors.showDialog(null, "Velg En Farge", Color.GREEN);
             appInit.setRandomclrState(false);
             reds = col.getRed(); greens = col.getGreen(); blues = col.getBlue(); alphas = col.getAlpha();
             setColorForAllBrushes();
@@ -644,6 +671,24 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     }
 
     public void itemStateChanged(ItemEvent e) {
+        /*if (appInit.getCircularState() == true) {
+            //If the linear state is already checked, we have to deselect first..
+            if (linear) {
+                appInit.setLinearState(false);
+                linear = false;
+            }
+            appInit.setCircularState(true);
+            circular = true;
+        }
+        if (appInit.getLinearState() == true) {
+            //If the circular state is already checked, we have to deselect first..
+            if (circular) {
+                appInit.setCircularState(false);
+                circular = false;
+            }
+            appInit.setLinearState(true);
+            linear = true;
+        }*/
         if (appInit.getRandomColorState() == true) {
             randomclr = true;
             for (Brush b : brushes) {

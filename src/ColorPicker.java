@@ -17,7 +17,7 @@ public class ColorPicker {
 
     public void color() {
         JColorChooser cc = new JColorChooser();
-        c = cc.showDialog(null, "Velg farge for rammen", Color.white);
+        c = cc.showDialog(null, "Velg En Farge", Color.white);
 
         if(c != null) {
             String colorPick = c.toString();
