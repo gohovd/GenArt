@@ -1,5 +1,11 @@
 import processing.core.PApplet;
 
+/**
+ * Drawing tool - DrunkShape
+ * @author Gruppe 6
+ * @version 1.0, April 2015
+ */
+
 public class DrunkShape extends Brush {
     int x, y;
 
@@ -9,10 +15,19 @@ public class DrunkShape extends Brush {
     int x1 = w/2;
     int y1 = h/2;
 
+    /***
+     * constructor for DrunkShape
+     * @param input PApplet - instance from MyApplet.
+     */
+
     public DrunkShape(PApplet input) {
         super(input);
 
     }
+
+    /***
+     * Call this method to create a new Line. The line does a randomwalk. and resets if mouse is clicked.
+     */
 
     public void display() {
         float rr = p.random(0, 255);
@@ -29,10 +44,18 @@ public class DrunkShape extends Brush {
         y1 = y;
     }
 
+    /***
+     *
+     * @param x sets the x pos
+     */
     public void setX1(int x){
         x1 = x;
     }
 
+    /***
+     *
+     * @param y sets the y pos
+     */
     public void setY1(int y){
         y1 = y;
     }
