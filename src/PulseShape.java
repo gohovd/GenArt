@@ -1,7 +1,9 @@
 import processing.core.PApplet;
 
 /**
- * Created by Gøran on 26.03.2015.
+ * Drawing tool - Pulsing Shape
+ * @author Gruppe 6
+ * @version 1.0, April 2015
  */
 public class PulseShape extends Brush {
 
@@ -10,6 +12,10 @@ public class PulseShape extends Brush {
     PulseShape(PApplet input){
         super(input);
     }
+
+    /**
+     * Creates a flower like pattern with random colors as you drag you mouse. The flower increases and decreases automatically
+     */
     
     public void drawPulse(){
         if (p.mousePressed == true) {

@@ -2,8 +2,11 @@ import processing.core.PApplet;
 import processing.core.PConstants;
 
 /**
- * Created by Gøran on 26.03.2015.
+ * Drawing tool - Bubble
+ * @author Gruppe 6
+ * @version 1.0, April 2015
  */
+
 public class SquareShape extends Brush {
 
     /***

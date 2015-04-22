@@ -1,15 +1,17 @@
-import jdk.internal.util.xml.impl.Input;
 import processing.core.PApplet;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Set;
 import java.util.Random;
 
+/**
+ * The class aRobot holds all the various movement patterns we wish our
+ * drawing robot to use. It can click buttons in the GUI and choose filters.
+ * Most of its behavior is meant to be random.
+ */
 public class aRobot {
     //Robots very own instance of class Application
     public static Application instance = new Application();
@@ -53,8 +55,7 @@ public class aRobot {
     int red, green, blue, alpha;
     //Variables connected to the sinMotion.
     float a = 0;
-
-    float radius = 25;
+    float radius = 5;
 
     /**
      * Constructor for class Robot.
@@ -161,13 +162,13 @@ public class aRobot {
      */
     private void selectFilter() throws InterruptedException, AWTException {
         randFilter = rand.nextInt(8) + 1; //Number of filters (8).
-        r.delay(250);
+        r.delay(500);
         clickGUIButton("filterButton");
-        r.delay(250);
+        r.delay(500);
         r.mousePress(InputEvent.BUTTON1_MASK);
-        r.delay(250);
+        r.delay(500);
         r.mouseRelease(InputEvent.BUTTON1_MASK);
-        r.delay(250);
+        r.delay(500);
         filterSelection = true;
     }
 
@@ -196,29 +197,52 @@ public class aRobot {
      *
      * @throws InterruptedException
      */
-    public void rMotion() throws AWTException, InterruptedException {
-        if (motionsMade % 800 == 0) {
+    public void Motion(int select) throws AWTException, InterruptedException {
+        if (motionsMade % 1200 == 0) {
             if(avoidFirst == 0) { selectFilter(); avoidFirst += 1; return; }
-            Thread.sleep(1500);
-            r.delay(1000);
+            r.delay(25);
             clickRandomGUIButton();
-            r.delay(500);
+            r.delay(25);
             r.mousePress(InputEvent.BUTTON1_MASK);
-            r.delay(500);
+            r.delay(25);
             r.mouseRelease(InputEvent.BUTTON1_MASK);
             avoidFirst -= 1;
             motionsMade = 0;
         }
-            r.mouseMove(cX, cY);
-            r.mousePress(InputEvent.BUTTON1_MASK);
+        r.mouseMove(cX, cY);
+        r.mousePress(InputEvent.BUTTON1_MASK);
+        if(select == 1) {
             cX += 35 - rand.nextInt(70);
+            cY += 35 - rand.nextInt(70);
+        }
+        else if(select == 2){
+            int updown = rand.nextInt(2);
+            if(updown == 1) { radius += 0.6; }
+            if(updown == 0) { radius -= 0.6; }
+            cX += PApplet.cos(radius) * 60;
+            cY += PApplet.sin(radius) * 60;
+            radius += 0.5;
+        }
+        else if(select == 3) {
+            float x = p.map(p.sin(a)*p.sin(a * (float) 0.8), -1, 1, 0, Application.panel.getWidth());
+            float y = p.map(p.sin(a + (float) 1.5), -1, 1, 0, Application.panel.getHeight());
+            cX = Math.round(x);
+            cY = Math.round(y);
+            a = a + (float)0.03;
+        }
+        else {
+            float x = p.map(p.sin(a)*p.sin(a*(float)0.8), -1, 1, 0, Application.panel.getWidth());
+            float y = p.map(p.sin(a+(float)1.5), -1, 1, 0, Application.panel.getHeight());
+            cX = Math.round(x);
+            cY = Math.round(y);
+            a = a + (float)0.03;
+        }
             if (cX > cWidth) {
                 cX -= cWidth;
             }
             if (cX < 0) {
                 cX += cWidth;
             }
-            cY += 35 - rand.nextInt(70);
             if (cY > cHeight) {
                 cY -= cHeight;
             }
@@ -226,90 +250,7 @@ public class aRobot {
                 cY += cHeight;
             }
             r.mouseMove(cX, cY);
-            tutorial = true;
             motionsMade++;
-    }
-
-    /***
-     * Moves the mouse-cursor in a circular motion, clicking the left mouse button for each step.
-     * @throws AWTException
-     * @throws InterruptedException
-     */
-    public void oMotion() throws AWTException, InterruptedException {
-        if (motionsMade % 200 == 0) {
-            if(avoidFirst == 0) { selectFilter(); avoidFirst += 1; return; }
-            r.delay(250);
-            clickRandomGUIButton();
-            r.delay(250);
-            r.mousePress(InputEvent.BUTTON1_MASK);
-            r.delay(250);
-            r.mouseRelease(InputEvent.BUTTON1_MASK);
-            avoidFirst -= 1;
-        }
-        //float radius = p.random((float)1);
-        int updown = rand.nextInt(1);
-        if(updown == 1) { radius += 0.4; }
-        if(updown == 0) { radius -= 0.4; }
-        r.mouseMove(cX, cY);
-        r.mousePress(InputEvent.BUTTON1_MASK);
-        cX += PApplet.cos(radius) * 60;
-        if (cX > cWidth) {
-            cX -= cWidth;
-        }
-        if (cX < 0) {
-            cX += cWidth;
-        }
-        cY += PApplet.sin(radius) * 60;
-        if (cY > cHeight) {
-            cY -= cHeight;
-        }
-        if (cY < 0) {
-            cY += cHeight;
-        }
-        r.mouseMove(cX, cY);
-        tutorial = true;
-        motionsMade++;
-        radius += 0.1;
-    }
-
-    /***
-     * Moves the mouse-cursor in a motion controlled by several calls to sin().
-     * @throws AWTException
-     * @throws InterruptedException
-     */
-    public void sinMotion() throws AWTException, InterruptedException {
-        if (motionsMade % 200 == 0) {
-            if(avoidFirst == 0) { selectFilter(); avoidFirst += 1; return; }
-            r.delay(250);
-            clickRandomGUIButton();
-            r.delay(250);
-            r.mousePress(InputEvent.BUTTON1_MASK);
-            r.delay(250);
-            r.mouseRelease(InputEvent.BUTTON1_MASK);
-            avoidFirst -= 1;
-        }
-        float x = p.map(p.sin(a)*p.sin(a*(float)0.8), -1, 1, 0, Application.panel.getWidth());
-        float y = p.map(p.sin(a+(float)1.5), -1, 1, 0, Application.panel.getHeight());
-        int cX = Math.round(x);
-        int cY = Math.round(y);
-        r.mouseMove(cX, cY);
-        r.mousePress(InputEvent.BUTTON1_MASK);
-        if (cX > cWidth) {
-            cX -= cWidth;
-        }
-        if (cX < 0) {
-            cX += cWidth;
-        }
-        if (cY > cHeight) {
-            cY -= cHeight;
-        }
-        if (cY < 0) {
-            cY += cHeight;
-        }
-        r.mouseMove(cX, cY);
-        tutorial = true;
-        motionsMade++;
-        a = a + (float)0.03;
     }
 
     /***
@@ -395,6 +336,8 @@ public class aRobot {
     public void reset() {
         tutorial = false;
         motionsMade = 0;
+        filterSelection = false;
+        avoidFirst = 1;
     }
 
     /***
