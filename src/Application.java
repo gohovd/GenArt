@@ -1,14 +1,8 @@
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemListener;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Random;
-import java.util.Vector;
 import javax.swing.*;
 import javax.swing.BorderFactory;
-import javax.swing.border.Border;
+
 
 /**
  * A simple demo application launching a Processing Applet
@@ -20,25 +14,15 @@ import javax.swing.border.Border;
  */
 
 public class Application {
-
-    private int width;
-    private int height;
-
     private int strokeSize = 1;
-
-    //private static final JCheckBox circular = new JCheckBox("Sirkulær");
     private static final JCheckBox randomclr = new JCheckBox("Tilfeldig farge");
-    //private static final JCheckBox linear = new JCheckBox("Lineær");
     private static final JCheckBox border = new JCheckBox("Ramme");
-
     private static final int menuWidth = 200; // Husk å endre i MyApplet hvis du endrer her
-
-    // Gjør panel og buttonPanel public, for at roboten skal nå tak i info.
     public static JPanel panel, buttonPanel;
 
     private static JButton vectorButton, clearButton, randomLinesButton, pulseButton, crossDotsButton,
             starButton, heartButton, squarezButton,  buttonCreate, varBubblesButton, trianglezButton,
-            Randomize,strokeNColourButton, filterButton, saveButton, closeButton, signatureButton;
+            Randomize,strokeNColourButton, filterButton, saveButton, closeButton, signatureButton, printButton;
 
     public static HashMap<String, JButton> buttonMap = new HashMap();
 
@@ -132,7 +116,12 @@ public class Application {
         crossDotsButton.setBackground(Color.white);
         crossDotsButton.setPreferredSize(new Dimension(90, 90));
 
-        ImageIcon imageForStarButton = new ImageIcon("images/printer1.png");
+        ImageIcon imageForPrintButton = new ImageIcon("images/printer1.png");
+        printButton = new JButton("", imageForPrintButton);
+        printButton.setBackground(Color.white);
+        printButton.setPreferredSize(new Dimension(90, 90));
+
+        ImageIcon imageForStarButton = new ImageIcon("images/star.png");
         starButton = new JButton("", imageForStarButton);
         starButton.setBackground(Color.white);
         starButton.setPreferredSize(new Dimension(90, 90));
@@ -162,34 +151,25 @@ public class Application {
         signatureButton.setBackground(Color.white);
         signatureButton.setPreferredSize(new Dimension(90, 90));
 
-        /*
-        ImageIcon imageForSaveFunctions = new ImageIcon("images/crossdots.png");
-        saveButton = new JButton("", imageForSaveFunctions);
-        saveButton.setBackground(Color.white);
-        saveButton.setPreferredSize(new Dimension(90, 90));
-        */
-
 //assing a tooltip
-        buttonCreate.setToolTipText("creates a new ball ");
-        vectorButton.setToolTipText("creates a new vector");
-        clearButton.setToolTipText("clears the screen");
-        filterButton.setToolTipText("add a filter");
-        randomLinesButton.setToolTipText("creates random lines");
-        varBubblesButton.setToolTipText("Draws random size bubbles depending on mouse speed");
-        pulseButton.setToolTipText("Pulsing");
-        crossDotsButton.setToolTipText("Draws dots in cross formation");
-        saveButton.setToolTipText("Draws dots in cross formation");
-        closeButton.setToolTipText("Lukk programmet");
-        starButton.setToolTipText("Print out your art");
-        heartButton.setToolTipText("Draw mirror vectors");
-        squarezButton.setToolTipText("Draws squares as you drag your mouse");
-        trianglezButton.setToolTipText("Draws triangles as you drag your mouse");
-        strokeNColourButton.setToolTipText("Choose stroke size and colours");
-        signatureButton.setToolTipText("Add your signature");
+        buttonCreate.setToolTipText("Lager baller som går i forskjellige retninger.");
+        vectorButton.setToolTipText("Lager en mengde vektorer som beveger seg i sirkel.");
+        clearButton.setToolTipText("Fjerner alt på lerretet.");
+        filterButton.setToolTipText("Tilfør et filter.");
+        randomLinesButton.setToolTipText("Tegner linjer i forskjellig størrelse.");
+        varBubblesButton.setToolTipText("Tegner bobler som varierer etter musepeker-hastigheten.");
+        pulseButton.setToolTipText("Tegner sirkler som pulserer i forskjellige størrelse.");
+        crossDotsButton.setToolTipText("Tegner 'dotter' som går i kryss formasjon.");
+        saveButton.setToolTipText("Lagrer bildet ditt på skrivebordet.");
+        closeButton.setToolTipText("Lukk programmet.");
+        printButton.setToolTipText("Printer ut bildet.");
+        starButton.setToolTipText("Tegner stjerner.");
+        heartButton.setToolTipText("Tegner hjerter.");
+        squarezButton.setToolTipText("Tegner firkanter i forskjellig størrelse.");
+        trianglezButton.setToolTipText("Tegner trekanter i forskjellig vinkel og størrelse.");
+        strokeNColourButton.setToolTipText("Velger farge på penslene dine.");
+        signatureButton.setToolTipText("Legg igjen din signatur på bildet.");
         // Adding button graphics
-
-
-        //  pulseButton.setIcon(new ImageIcon("/pulse.png"));
 
 
 //give a name for the command
@@ -211,6 +191,7 @@ public class Application {
         Randomize.setActionCommand("randomize");
         strokeNColourButton.setActionCommand("strokencolour");
         signatureButton.setActionCommand("signature");
+        printButton.setActionCommand("printing");
 
         //Add buttons to map. Name of button is key, while actual button is the value.
         buttonMap.put("buttonCreate", buttonCreate);
@@ -230,6 +211,7 @@ public class Application {
         buttonMap.put("clearButton", clearButton);
         buttonMap.put("filterButton", filterButton);
         buttonMap.put("signatureButton", signatureButton);
+        buttonMap.put("printButton", printButton);
 
 
         //Iterate through entrySet, and set class Applet as action listener for every button.
@@ -238,11 +220,7 @@ public class Application {
             JButton t = buttonMap.get(nameOfButton);
             t.addActionListener(applet);
         }
-        //Add item listener class.
-        /*circular.addItemListener(applet);
-        circular.setSelected(false);
-        linear.addItemListener(applet);
-        linear.setSelected(false);*/
+
         border.addItemListener(applet);
         border.setSelected(false);
         randomclr.addItemListener(applet);
@@ -260,11 +238,12 @@ public class Application {
         buttonPanel.add(trianglezButton);
         buttonPanel.add(strokeNColourButton);
         buttonPanel.add(starButton);
+        buttonPanel.add(printButton);
         buttonPanel.add(signatureButton);
 
 
         //Also add buttons/radio-buttons/check-boxes.
-        buttonPanel.add(randomclr); /*buttonPanel.add(linear); buttonPanel.add(circular);*/ buttonPanel.add(border);
+        buttonPanel.add(randomclr); buttonPanel.add(border);
         buttonPanel.add(Randomize); buttonPanel.add(clearButton); buttonPanel.add(filterButton);
         buttonPanel.add(saveButton);buttonPanel.add(closeButton);
 
@@ -281,53 +260,37 @@ public class Application {
         frame.setVisible(true);
     }
 
-    public int getWidth() {
-        return width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-
-    // Returns the states of each checkbox.
-    /*public boolean getCircularState(){
-        return circular.isSelected();
-    }
-    public boolean getLinearState(){
-        return linear.isSelected();
-    }*/
+    /***
+     * Returns whether or not the border checkbox is selected.
+     * @return boolean - State of the border checkbox.
+     */
     public boolean getBorderState(){
         return border.isSelected();
     }
+
+    /***
+     * Returns whether or not the randomclr checkbox is selected.
+     * @return boolean - State of the randomclr checkbox.
+     */
     public boolean getRandomColorState(){
         return randomclr.isSelected();
     }
 
-    // Set the state of the checkboxes.
-    /*public void setCircularState(boolean b){
-        circular.setSelected(b);
-    }
-    public void setLinearState(boolean b){
-        linear.setSelected(b);
-    }*/
-    public void setBorderState(boolean b){
-        border.setSelected(b);
-    }
+    /***
+     * Set the state of the randomclr checkbox.
+     * @param b - boolean
+     */
     public void setRandomclrState(boolean b){
         randomclr.setSelected(b);
     }
 
+    /***
+     * HashMap containing all the buttons in the GUI,
+     * and the keys (String values) connected to those buttons.
+     * @return
+     */
     public HashMap getButtons(){
         return buttonMap;
-    }
-
-    public int getStrokeSize() {
-        return strokeSize;
-    }
-
-    public void setStrokeSize(int strokeSize) {
-        this.strokeSize = strokeSize;
     }
 
 }

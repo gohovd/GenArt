@@ -1,9 +1,6 @@
 import processing.core.PApplet;
 import processing.core.PConstants;
 
-/**
- * Created by Gøran on 26.03.2015.
- */
 public class StarShape extends Brush {
 
     StarShape(PApplet input){

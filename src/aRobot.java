@@ -10,9 +10,6 @@ import java.util.HashMap;
 import java.util.Set;
 import java.util.Random;
 
-/**
- * Created by Gøran on 23.03.2015.
- */
 public class aRobot {
     //Robots very own instance of class Application
     public static Application instance = new Application();
@@ -21,15 +18,17 @@ public class aRobot {
     private int cHeight = Application.panel.getHeight();
     //Small pause/delay between mouse-press/-release etc.
     private static final long delay = 200;
-    private static final long d = 10;
     //Instantiate a robot.
     public Robot r;
+    //Error margin. Makes sure the robot hits the button, and not the edge/origin point.
     int err = 10;
     //Collect the PApplet from main class (MyApplet).
     PApplet p;
     //Collect all buttons from class Application.
     HashMap buttons = instance.getButtons();
+    //ArrayList holding all the keys from HashMap buttons.
     ArrayList<String> keys;
+    //A random generator.
     Random rand = new Random();
     //Counting the number of times the rMotion method has been visited.
     long motionsMade = 0;
@@ -38,14 +37,22 @@ public class aRobot {
     int cY = cHeight / 2;
     //Boolean making sure instructions only show up once.
     boolean tutorial; // Deactivated in class MyApplet (commented out).
+    //This int is to control that the robot doesn't pick a filter before we've drawn something.
     int avoidFirst = 1;
+    //Int holding the index of the filter to be chosen (1-8).
     int randFilter;
+    //Boolean controlling whether or not we are in the process of choosing a filter.
     boolean filterSelection = false;
-    String previousButton = "whatever"; //It'll change soon anyways, so.. whatever.
+    //String holding the name (key, in HashMap buttons..) of the GUI button we previously clicked.
+    String previousButton = "whatever"; //It'll change soon anyways, so we call it whatever.
+    //String holding the name (key, in HashMap buttons.) of the GUI button we just clicked.
     String currentButton;
-    //About the colors..
+    //Boolean that tells us if we've found a color that's not black or white yet.
     boolean colorNotFound;
+    //Integers holding various values for red, green, blue and alpha (opacity).
     int red, green, blue, alpha;
+    //Variables connected to the sinMotion.
+    float a = 0;
 
     float radius = 25;
 
@@ -264,8 +271,46 @@ public class aRobot {
         radius += 0.1;
     }
 
-
-
+    /***
+     * Moves the mouse-cursor in a motion controlled by several calls to sin().
+     * @throws AWTException
+     * @throws InterruptedException
+     */
+    public void sinMotion() throws AWTException, InterruptedException {
+        if (motionsMade % 200 == 0) {
+            if(avoidFirst == 0) { selectFilter(); avoidFirst += 1; return; }
+            r.delay(250);
+            clickRandomGUIButton();
+            r.delay(250);
+            r.mousePress(InputEvent.BUTTON1_MASK);
+            r.delay(250);
+            r.mouseRelease(InputEvent.BUTTON1_MASK);
+            avoidFirst -= 1;
+        }
+        float x = p.map(p.sin(a)*p.sin(a*(float)0.8), -1, 1, 0, Application.panel.getWidth());
+        float y = p.map(p.sin(a+(float)1.5), -1, 1, 0, Application.panel.getHeight());
+        int xx = Math.round(x);
+        int yy = Math.round(y);
+        r.mouseMove(xx, yy);
+        r.mousePress(InputEvent.BUTTON1_MASK);
+        if (cX > cWidth) {
+            cX -= cWidth;
+        }
+        if (cX < 0) {
+            cX += cWidth;
+        }
+        cY += PApplet.sin(radius) * 60;
+        if (cY > cHeight) {
+            cY -= cHeight;
+        }
+        if (cY < 0) {
+            cY += cHeight;
+        }
+        r.mouseMove(cX, cY);
+        tutorial = true;
+        motionsMade++;
+        radius += 0.1;
+    }
 
     /***
      * Iterates through the keyset of HashMap buttons,

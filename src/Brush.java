@@ -1,7 +1,7 @@
 import processing.core.PApplet;
 
-/**
- * Created by Gøran on 21.04.2015.
+/***
+ * The parent/super class to all brushes (art-methods).
  */
 public class Brush {
 
@@ -13,6 +13,13 @@ public class Brush {
         p = input;
     }
 
+    /***
+     *
+     * @param red int - Degree of red (0-255)
+     * @param green int - Degree of green (0-255)
+     * @param blue int - Degree of blue (0-255)
+     * @param opacity int - Degree of opacity (0-255)
+     */
     public void setColor(int red, int green, int blue, int opacity) {
         r = red;
         g = green;
