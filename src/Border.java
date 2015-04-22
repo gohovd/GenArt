@@ -11,6 +11,10 @@ public class Border {
     Application ap;
     ColorPicker colorPicker = new ColorPicker();
 
+
+    /***
+     * Creating variables
+     */
     int state = 0;
     int stokeSize = 30;
 
@@ -20,7 +24,10 @@ public class Border {
         ap = a;
     }
 
-
+    /***
+     * Runs colorpicker, if a color is picked then the border gets the picked RGB values
+     *
+     */
     public void drawBorder() {
         if (state == 0) {
 
