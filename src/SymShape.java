@@ -7,6 +7,11 @@ public class SymShape extends Brush{
     
     int h = Application.panel.getHeight(); //Height of the canvas.
     int w = Application.panel.getWidth(); //Width of the canvas.
+    int X, Y;
+    int nX, nY;
+    int pX, pY;
+    int delay = 4;
+    boolean first = true;
 
     /***
      * Constructor for class SymShape.
@@ -18,16 +23,27 @@ public class SymShape extends Brush{
 
     /***
      * Display method for class SymShape.
-     * Draws ellipses in symmetry.
+     * Draws in symmetry.
      */
     public void display(){
-        p.noStroke();
-        if(!cc) { p.fill(p.random(255), p.random(255), p.random(255), 127); }
-        if(cc) { p.fill(p.random(r), p.random(g), p.random(b), p.random(o)); }
-        p.ellipse(p.mouseX, p.mouseY, 15, 15);
-        p.ellipse(p.mouseY, p.mouseX, 15, 15);
-        p.ellipse(w - p.mouseX, h - p.mouseY, 15, 15);
-        p.ellipse(w - p.mouseY, h - p.mouseX, 15, 15);
+        p.smooth();
+        p.noFill();
+        p.stroke(p.random(255), p.random(255), p.random(255), 180);
+        if(first) {
+            X = w/2; Y = h/2;
+            nX = w/2; nY = h/2;
+            pX = w/2; pY = h/2;
+            first = false; }
+        if(!first) {
+            X += (nX - X) / delay;
+            Y += (nY - Y) / delay;
+        }
+        nX = p.mouseX;
+        nY = p.mouseY;
+        p.line(X, Y, pX, pY);
+        p.line(Y, X, pY, pX);
+        pX = X;
+        pY = Y;
     }
 
 
