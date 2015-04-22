@@ -33,7 +33,7 @@ public class aRobot {
     //A random generator.
     Random rand = new Random();
     //Counting the number of times the rMotion method has been visited.
-    long motionsMade = 0;
+    long motionsMade = 10;
     //Variables holding the positions of the cursor.
     int cX = cWidth / 2;
     int cY = cHeight / 2;
@@ -132,7 +132,9 @@ public class aRobot {
             if(!cString.equals("255255255255") ||
                     !cString.equals("0000") ||
                     !cString.equals("000255") ||
-                    !cString.equals("2552552550")) {
+                    !cString.equals("2552552550") ||
+                    !cString.equals("127127127255") ||
+                    !cString.equals("127127127127")) {
                 colorNotFound = false;
             }
         }
@@ -200,7 +202,7 @@ public class aRobot {
      * @throws InterruptedException
      */
     public void Motion(int select) throws AWTException, InterruptedException {
-        if (motionsMade % 1200 == 0) {
+        if (motionsMade % 1400 == 0) {
             if(avoidFirst == 0) { selectFilter(); avoidFirst += 1; return; }
             r.delay(25);
             clickRandomGUIButton();
@@ -239,7 +241,7 @@ public class aRobot {
             cY = Math.round(y);
             a = a + rand.nextFloat();
         }
-        if(!currentButton.contains("symButton")) {
+        if(!currentButton.contains("symButton") || !currentButton.contains("heartButton")) {
             if (cX > cWidth) {
                 cX -= cWidth;
             }

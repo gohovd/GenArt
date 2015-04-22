@@ -24,8 +24,8 @@ public class BubbleShape extends Brush {
             int py = p.pmouseY;
 
             float speed = PApplet.abs(x - px) + PApplet.abs(y - py);
-            if(!this.cc) { p.fill(p.random(255), p.random(255), p.random(255), 35); }
-            if(this.cc) { p.fill(p.random(this.r), p.random(this.g), p.random(this.b), p.random(this.o)); }
+            if(!cc) { p.fill(p.random(255), p.random(255), p.random(255), 35); }
+            if(cc) { p.fill(p.random(r), p.random(g), p.random(b), p.random(o)); }
             if(speed > 500) { speed = 300; }
             p.stroke(speed);
             p.ellipse(x, y, speed, speed);

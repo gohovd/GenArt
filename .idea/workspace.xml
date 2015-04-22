@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="905e9aa0-ee52-425e-affb-f197dfe127a8" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GenArt/Application.class" afterPath="$PROJECT_DIR$/out/production/GenArt/Application.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GenArt/MyApplet.class" afterPath="$PROJECT_DIR$/out/production/GenArt/MyApplet.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BubbleShape.java" afterPath="$PROJECT_DIR$/src/BubbleShape.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MyApplet.java" afterPath="$PROJECT_DIR$/src/MyApplet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SymShape.java" afterPath="$PROJECT_DIR$/src/SymShape.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/aRobot.java" afterPath="$PROJECT_DIR$/src/aRobot.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="GenArt.iws" />
@@ -31,11 +36,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MyApplet.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Brush.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Brush.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="483" max-vertical-offset="1302">
+              <caret line="3" column="55" selection-start-line="3" selection-start-column="55" selection-end-line="3" selection-end-column="55" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BubbleShape.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/BubbleShape.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="42" max-vertical-offset="798">
+              <caret line="27" column="63" selection-start-line="27" selection-start-column="63" selection-end-line="27" selection-end-column="63" />
+              <folding>
+                <element signature="e#188#189#0" expanded="false" />
+                <element signature="e#216#217#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MyApplet.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MyApplet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.32309443" vertical-offset="4273" max-vertical-offset="16695">
-              <caret line="217" column="105" selection-start-line="217" selection-start-column="105" selection-end-line="217" selection-end-column="105" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="5648" max-vertical-offset="16653">
+              <caret line="709" column="61" selection-start-line="709" selection-start-column="61" selection-end-line="709" selection-end-column="61" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -43,10 +71,20 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="aRobot.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/aRobot.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.70319635" vertical-offset="126" max-vertical-offset="8022">
+              <caret line="35" column="25" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Application.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1039" max-vertical-offset="7287">
+            <state vertical-scroll-proportion="0.0" vertical-offset="76" max-vertical-offset="7287">
               <caret line="201" column="56" selection-start-line="201" selection-start-column="56" selection-end-line="201" selection-end-column="56" />
               <folding />
             </state>
@@ -92,13 +130,13 @@
         <option value="$PROJECT_DIR$/src/Ball.java" />
         <option value="$PROJECT_DIR$/src/CrossShape.java" />
         <option value="$PROJECT_DIR$/src/LineShape.java" />
-        <option value="$PROJECT_DIR$/src/BubbleShape.java" />
         <option value="$PROJECT_DIR$/src/Mover.java" />
         <option value="$PROJECT_DIR$/src/Border.java" />
-        <option value="$PROJECT_DIR$/src/SymShape.java" />
-        <option value="$PROJECT_DIR$/src/aRobot.java" />
         <option value="$PROJECT_DIR$/src/Application.java" />
+        <option value="$PROJECT_DIR$/src/SymShape.java" />
+        <option value="$PROJECT_DIR$/src/BubbleShape.java" />
         <option value="$PROJECT_DIR$/src/MyApplet.java" />
+        <option value="$PROJECT_DIR$/src/aRobot.java" />
       </list>
     </option>
   </component>
@@ -427,12 +465,6 @@
       <option name="number" value="Default" />
       <updated>1426006400471</updated>
     </task>
-    <task id="LOCAL-00047" summary="Starshapes extracted from MyApplet into separate class.">
-      <created>1427399284061</created>
-      <option name="number" value="00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1427399284061</updated>
-    </task>
     <task id="LOCAL-00048" summary="New classes, smaller draw();">
       <created>1427401144997</created>
       <option name="number" value="00048" />
@@ -721,7 +753,13 @@
       <option name="project" value="LOCAL" />
       <updated>1429731354717</updated>
     </task>
-    <option name="localTasksCounter" value="96" />
+    <task id="LOCAL-00096" summary="Movers after reset fixed.">
+      <created>1429732498250</created>
+      <option name="number" value="00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1429732498250</updated>
+    </task>
+    <option name="localTasksCounter" value="97" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -731,12 +769,14 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32993197" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3225256" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32482994" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2172973" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.165625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -744,14 +784,12 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39675677" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3225256" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21768707" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39675677" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -769,7 +807,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="La til knapp for signatur" />
     <MESSAGE value="Signaturknapp logikk" />
     <MESSAGE value="Div smått." />
     <MESSAGE value="Siste smått." />
@@ -794,7 +831,8 @@
     <MESSAGE value="Fiksa mirroring på symShape" />
     <MESSAGE value="nytt colorpicker bilde&#10;" />
     <MESSAGE value="erased unused pics" />
-    <option name="LAST_COMMIT_MESSAGE" value="erased unused pics" />
+    <MESSAGE value="Movers after reset fixed." />
+    <option name="LAST_COMMIT_MESSAGE" value="Movers after reset fixed." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1093,13 +1131,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/BubbleShape.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="629">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="7" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CrossShape.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="4" max-vertical-offset="1122">
@@ -1153,34 +1184,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Brush.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="347" max-vertical-offset="1218">
-          <caret line="3" column="55" selection-start-line="3" selection-start-column="55" selection-end-line="3" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SymShape.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1386">
-          <caret line="52" column="77" selection-start-line="52" selection-start-column="77" selection-end-line="52" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ColorPicker.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="147" max-vertical-offset="1617">
           <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/aRobot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3808" max-vertical-offset="6426">
-          <caret line="242" column="29" selection-start-line="242" selection-start-column="29" selection-end-line="242" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1197,6 +1204,43 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/SymShape.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="126" max-vertical-offset="1008">
+          <caret line="28" column="76" selection-start-line="28" selection-start-column="76" selection-end-line="28" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Brush.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="347" max-vertical-offset="1218">
+          <caret line="3" column="55" selection-start-line="3" selection-start-column="55" selection-end-line="3" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BubbleShape.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="42" max-vertical-offset="798">
+          <caret line="27" column="63" selection-start-line="27" selection-start-column="63" selection-end-line="27" selection-end-column="63" />
+          <folding>
+            <element signature="e#188#189#0" expanded="false" />
+            <element signature="e#216#217#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MyApplet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="5648" max-vertical-offset="16653">
+          <caret line="709" column="61" selection-start-line="709" selection-start-column="61" selection-end-line="709" selection-end-column="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Application.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1039" max-vertical-offset="7287">
@@ -1205,13 +1249,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MyApplet.java">
+    <entry file="file://$PROJECT_DIR$/src/aRobot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32309443" vertical-offset="4273" max-vertical-offset="16695">
-          <caret line="217" column="105" selection-start-line="217" selection-start-column="105" selection-end-line="217" selection-end-column="105" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.70319635" vertical-offset="126" max-vertical-offset="8022">
+          <caret line="35" column="25" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>

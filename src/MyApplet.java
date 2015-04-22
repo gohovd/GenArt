@@ -367,8 +367,6 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 System.exit(0);
             }
             if (filterButton) {
-
-
                 strokeWeight(2);
                 stroke(102, 102, 255);
                 fill(245, 245, 245);

@@ -26,7 +26,7 @@ public class SymShape extends Brush{
         p.smooth();
         p.noFill();
         if(!cc) { p.stroke(p.random(255), p.random(255), p.random(255), 127); }
-        if(cc) { p.stroke(p.random(r), p.random(g), p.random(b), 180); }
+        if(cc) { p.stroke(p.random(r), p.random(g), p.random(b), p.random(o)); }
         int n = 0;
         for(int i = 0; i < 20; i++) {
             p.line(p.mouseX + n, p.mouseY + n, p.pmouseX + n, p.pmouseY + n);
