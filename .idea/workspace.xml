@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="905e9aa0-ee52-425e-affb-f197dfe127a8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MyApplet.java" afterPath="$PROJECT_DIR$/src/MyApplet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GenArt/Application.class" afterPath="$PROJECT_DIR$/out/production/GenArt/Application.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/roundvector.png" afterPath="$PROJECT_DIR$/images/roundvector.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/sym.png" afterPath="$PROJECT_DIR$/images/sym.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Application.java" afterPath="$PROJECT_DIR$/src/Application.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SymShape.java" afterPath="$PROJECT_DIR$/src/SymShape.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="GenArt.iws" />
@@ -34,18 +38,18 @@
       <file leaf-file-name="Brush.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Brush.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="986">
+            <state vertical-scroll-proportion="0.0" vertical-offset="63" max-vertical-offset="1218">
               <caret line="3" column="55" selection-start-line="3" selection-start-column="55" selection-end-line="3" selection-end-column="55" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SymShape.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SymShape.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SymShape.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="986">
-              <caret line="38" column="34" selection-start-line="38" selection-start-column="34" selection-end-line="38" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.87737226" vertical-offset="449" max-vertical-offset="1386">
+              <caret line="52" column="77" selection-start-line="52" selection-start-column="77" selection-end-line="52" selection-end-column="77" />
               <folding />
             </state>
           </provider>
@@ -54,8 +58,8 @@
       <file leaf-file-name="Application.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="53.068966" vertical-offset="5211" max-vertical-offset="5610">
-              <caret line="219" column="43" selection-start-line="219" selection-start-column="43" selection-end-line="219" selection-end-column="43" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1638" max-vertical-offset="6930">
+              <caret line="81" column="48" selection-start-line="81" selection-start-column="48" selection-end-line="81" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -64,7 +68,7 @@
       <file leaf-file-name="ColorPicker.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ColorPicker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="1309">
+            <state vertical-scroll-proportion="0.0" vertical-offset="420" max-vertical-offset="1617">
               <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -73,11 +77,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MyApplet.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MyApplet.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MyApplet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.119170986" vertical-offset="11378" max-vertical-offset="12461">
-              <caret line="672" column="47" selection-start-line="672" selection-start-column="47" selection-end-line="672" selection-end-column="47" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="5184" max-vertical-offset="15393">
+              <caret line="259" column="80" selection-start-line="259" selection-start-column="80" selection-end-line="259" selection-end-column="80" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -88,7 +92,7 @@
       <file leaf-file-name="aRobot.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/aRobot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4369" max-vertical-offset="6409">
+            <state vertical-scroll-proportion="0.0" vertical-offset="5397" max-vertical-offset="7917">
               <caret line="264" column="17" selection-start-line="264" selection-start-column="17" selection-end-line="264" selection-end-column="17" />
               <folding />
             </state>
@@ -138,17 +142,17 @@
         <option value="$PROJECT_DIR$/src/Mover.java" />
         <option value="$PROJECT_DIR$/src/Border.java" />
         <option value="$PROJECT_DIR$/src/aRobot.java" />
-        <option value="$PROJECT_DIR$/src/SymShape.java" />
-        <option value="$PROJECT_DIR$/src/Application.java" />
         <option value="$PROJECT_DIR$/src/MyApplet.java" />
+        <option value="$PROJECT_DIR$/src/Application.java" />
+        <option value="$PROJECT_DIR$/src/SymShape.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1296" />
-    <option name="height" value="699" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1050" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -189,7 +193,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -225,6 +228,7 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -464,12 +468,6 @@
       <created>1426006400471</created>
       <option name="number" value="Default" />
       <updated>1426006400471</updated>
-    </task>
-    <task id="LOCAL-00042" summary="MyApplet--;">
-      <created>1427326150517</created>
-      <option name="number" value="00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1427326150517</updated>
     </task>
     <task id="LOCAL-00043" summary="Save button edit.">
       <created>1427373753983</created>
@@ -759,11 +757,17 @@
       <option name="project" value="LOCAL" />
       <updated>1429722795669</updated>
     </task>
-    <option name="localTasksCounter" value="91" />
+    <task id="LOCAL-00091" summary="Bakgrunnsfarge gramm">
+      <created>1429723738964</created>
+      <option name="number" value="00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1429723738964</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="699" extended-state="0" />
+    <frame x="-9" y="-9" width="1938" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32993197" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -776,10 +780,10 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32756758" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2244898" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22378379" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16747573" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1671875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -807,7 +811,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Endring i trekant" />
     <MESSAGE value="Ramme" />
     <MESSAGE value="Ramme update" />
     <MESSAGE value="Fekk til colorPicker for rammen, Woohoo!!" />
@@ -832,7 +835,8 @@
     <MESSAGE value="Bilde for symshape." />
     <MESSAGE value="Fixa treigstart på robot, + endra symshape." />
     <MESSAGE value="bakgrunn knapp" />
-    <option name="LAST_COMMIT_MESSAGE" value="bakgrunn knapp" />
+    <MESSAGE value="Bakgrunnsfarge gramm" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bakgrunnsfarge gramm" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1201,14 +1205,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Brush.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="347" max-vertical-offset="1218">
-          <caret line="3" column="55" selection-start-line="3" selection-start-column="55" selection-end-line="3" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/aRobot.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="5282" max-vertical-offset="7917">
@@ -1227,29 +1223,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SymShape.java">
+    <entry file="file://$PROJECT_DIR$/src/Brush.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="986">
-          <caret line="38" column="34" selection-start-line="38" selection-start-column="34" selection-end-line="38" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="53.068966" vertical-offset="5211" max-vertical-offset="5610">
-          <caret line="219" column="43" selection-start-line="219" selection-start-column="43" selection-end-line="219" selection-end-column="43" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="347" max-vertical-offset="1218">
+          <caret line="3" column="55" selection-start-line="3" selection-start-column="55" selection-end-line="3" selection-end-column="55" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MyApplet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.119170986" vertical-offset="11378" max-vertical-offset="12461">
-          <caret line="672" column="47" selection-start-line="672" selection-start-column="47" selection-end-line="672" selection-end-column="47" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="5184" max-vertical-offset="15393">
+          <caret line="259" column="80" selection-start-line="259" selection-start-column="80" selection-end-line="259" selection-end-column="80" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1638" max-vertical-offset="6930">
+          <caret line="81" column="48" selection-start-line="81" selection-start-column="48" selection-end-line="81" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SymShape.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.87737226" vertical-offset="449" max-vertical-offset="1386">
+          <caret line="52" column="77" selection-start-line="52" selection-start-column="77" selection-end-line="52" selection-end-column="77" />
+          <folding />
         </state>
       </provider>
     </entry>

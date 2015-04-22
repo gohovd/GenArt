@@ -100,7 +100,7 @@ public class Application {
         // Save
         saveButton = new JButton("Lagre");
 
-        //
+        // Bakgrunnsfarge
         bgButton = new JButton("Bakgrunnsfarge");
 
         // Close program
