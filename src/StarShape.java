@@ -9,7 +9,7 @@ public class StarShape extends Brush {
     }
 
     /***
-     * Draws Star Shape as you drag your mouse, with random colors
+     * Draws Star Shape as you drag your mouse, with random colors with 50 percent alpha
      */
 
     public void drawStars() {
@@ -33,17 +33,4 @@ public class StarShape extends Brush {
         }
     }
 
-    public void drawHearts(){
-        if (p.mousePressed == true) {
-            p.strokeWeight((float) 0.1);
-            p.fill(p.random(255), p.random(255), p.random(255), 127);
-            p.beginShape();
-            p.vertex(p.mouseX + 150, p.mouseY + 150);
-            p.bezierVertex(p.mouseX + 150, p.mouseY + 120, p.mouseX + 100, p.mouseY + 120, p.mouseX + 100, p.mouseY + 150);
-            p.bezierVertex(p.mouseX + 100, p.mouseY + 180, p.mouseX + 150, p.mouseY + 185, p.mouseX + 150, p.mouseY + 210);
-            p.bezierVertex(p.mouseX + 150, p.mouseY + 185, p.mouseX + 200, p.mouseY + 180, p.mouseX + 200, p.mouseY + 150);
-            p.bezierVertex(p.mouseX + 200, p.mouseY + 120, p.mouseX + 150, p.mouseY + 120, p.mouseX + 150, p.mouseY + 150);
-            p.endShape();
-        }
-    }
 }
