@@ -2,14 +2,20 @@ import processing.core.PApplet;
 import processing.core.PConstants;
 
 /**
- * Created by Gøran on 26.03.2015.
+ * Drawing tool - LineShape
+ * @author Gruppe 6
+ * @version 1.0, April 2015
  */
+
 public class LineShape extends Brush{
     
     LineShape(PApplet input){
         super(input);
     }
-    
+
+    /***
+     * Call this method to create a new Line with random characteristics
+     */
     public void drawLines(){
         if (p.mousePressed && (p.mouseButton == PConstants.LEFT)) {
             p.strokeWeight(p.random(3, 8));

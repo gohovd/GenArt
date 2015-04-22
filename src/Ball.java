@@ -1,7 +1,11 @@
 import processing.core.*;
-
-import java.awt.Color;
 import java.util.ArrayList;
+
+/**
+ * Drawing tool - BallGrid
+ * @author Gruppe 6
+ * @version 1.0, April 2015
+ */
 
 class Ball {
     private static Application a;
@@ -15,13 +19,13 @@ class Ball {
     PApplet p;
 
 
-    /***
+    /**
      * Empty (no parameter) constructor for class Ball.
      */
-    Ball(){
+    Ball() {
     }
 
-    /***
+    /**
      * Constructor for class Ball, taking the ball's direction
      * as parameters to force it in that specific direction.
      *
@@ -104,20 +108,32 @@ class Ball {
         ballList.add(negright45);
     }
 
-
-    private void setIX(){
+    /***
+     * Call to randomly change Ball x value
+     */
+    private void setIX() {
         x = p.random(size, sWidth - size);
     }
-    private void setIY(){
+
+    /***
+     * Call this function to randomly change Ball y value
+     */
+    private void setIY() {
         y = p.random(size, sWidth - size);
     }
 
-
+    /***
+     *
+     * @return Returns an ArrayList containing all balls
+     */
     public ArrayList<Ball> getBallList() {
         return ballList;
     }
 
-    public void clearBallList(){
+    /***
+     * Call this function to clear the list of balls
+     */
+    public void clearBallList() {
         ballList.clear();
     }
 
@@ -125,15 +141,17 @@ class Ball {
      * Since every ball has to know about the PApplet,
      * and since they all need a starting point (x and y).
      * This method gives all balls that information.
+     *
      * @param input - The PApplet exported from main class (MyApplet).
      */
     public void setPapp(PApplet input, Application app) {
-        for(Ball b : ballList){
+        for (Ball b : ballList) {
             b.p = input;
             a = app;
             b.sWidth = Application.panel.getWidth();
             b.sHeight = Application.panel.getHeight();
-            b.setIX(); b.setIY();
+            b.setIX();
+            b.setIY();
         }
 
     }
