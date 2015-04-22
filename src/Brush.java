@@ -5,6 +5,7 @@ import processing.core.PApplet;
  *
  * @author Gruppe 6
  * @version 1.0, April 2015
+ * @field p PApplet instance
  */
 public class Brush {
 

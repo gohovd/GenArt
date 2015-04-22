@@ -126,14 +126,6 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
         // Set up the movers/vectors.
         moverInstance = new Mover(this);
-        for (int i = 0; i < 50; i++) {
-            //Circle radius is determined through the rTopSpeed. Great value => Great circle.
-            float rTopSpeed = random(150);
-            //The speed at which the circle rotates. Should be between 0.1 and 0.4.
-            float TorqueIncrement = (float) 0.19;
-            ((Mover) moverInstance).createNewMover(rTopSpeed, TorqueIncrement);
-            //moverInstance.setPapp(this, appInit);
-        }
 
         size(screenSize.width - 200, screenSize.height);
 
@@ -211,7 +203,6 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 e.printStackTrace();
             }
         }
-
         if (!pause) {
             if (ballbutton) {
                 for (int i = 0; i < ballInstance.getBallList().size(); i++) {
@@ -222,6 +213,15 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             }
 
             if (vectorButton && mousePressed) {
+                if(((Mover) moverInstance).getMovers().size() != 50) {
+                    for (int i = 0; i < 50; i++) {
+                        //Circle radius is determined through the rTopSpeed. Great value => Great circle.
+                        float rTopSpeed = random(150);
+                        //The speed at which the circle rotates. Should be between 0.1 and 0.4.
+                        float TorqueIncrement = (float) 0.19;
+                        ((Mover) moverInstance).createNewMover(rTopSpeed, TorqueIncrement);
+                    }
+                }
                 //Choice determines motion pattern (1: circular,  2: linear)
                 int choice = 1;
                 for (int i = 0; i < ((Mover) moverInstance).getMovers().size(); i++) {
