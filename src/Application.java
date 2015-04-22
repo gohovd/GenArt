@@ -83,7 +83,7 @@ public class Application {
         vectorButton.setPreferredSize(new Dimension(size, size));
 
         // "Drunk"-lines
-        ImageIcon imageFordrunkLines = new ImageIcon("images/soon.png");
+        ImageIcon imageFordrunkLines = new ImageIcon("images/drunk60.png");
         drunkLinesButton = new JButton("", imageFordrunkLines);
         drunkLinesButton.setBackground(Color.white);
         drunkLinesButton.setPreferredSize(new Dimension(size, size));
@@ -119,7 +119,7 @@ public class Application {
         randomLinesButton.setPreferredSize(new Dimension(size, size));
 
         // Symmetric
-        ImageIcon imageForSymButton = new ImageIcon("images/sym.png");
+        ImageIcon imageForSymButton = new ImageIcon("images/sym60.png");
         symButton = new JButton("", imageForSymButton);
         symButton.setBackground(Color.WHITE);
         symButton.setPreferredSize(new Dimension(size, size));
@@ -137,26 +137,26 @@ public class Application {
         pulseButton.setPreferredSize(new Dimension(size, size));
 
         // CrossDots
-        ImageIcon imageForcrossDotsButton = new ImageIcon("images/crossdots.png");
+        ImageIcon imageForcrossDotsButton = new ImageIcon("images/crossdots60.png");
         crossDotsButton = new JButton("", imageForcrossDotsButton);
         crossDotsButton.setBackground(Color.white);
         crossDotsButton.setPreferredSize(new Dimension(size, size));
 
         // Printerbutton
-        ImageIcon imageForPrintButton = new ImageIcon("images/printer1.png");
+        ImageIcon imageForPrintButton = new ImageIcon("images/printer60.png");
         printButton = new JButton("", imageForPrintButton);
         printButton.setBackground(Color.white);
         printButton.setPreferredSize(new Dimension(size, size));
 
         // Starbutton
-        ImageIcon imageForStarButton = new ImageIcon("images/star.png");
+        ImageIcon imageForStarButton = new ImageIcon("images/star60.png");
         starButton = new JButton("", imageForStarButton);
         starButton.setBackground(Color.white);
         starButton.setPreferredSize(new Dimension(size, size));
 
         // Mirror
         // TODO refactor heartButton (expired) to mirrorButton
-        ImageIcon imageForHeartButton = new ImageIcon("images/mirrorvector.png");
+        ImageIcon imageForHeartButton = new ImageIcon("images/mirrorvector60.png");
         heartButton = new JButton("", imageForHeartButton);
         heartButton.setBackground(Color.white);
         heartButton.setPreferredSize(new Dimension(size, size));
@@ -174,13 +174,13 @@ public class Application {
         trianglezButton.setPreferredSize(new Dimension(size, size));
 
         // Color chooser
-        ImageIcon imageForStrokeNColourButton = new ImageIcon("images/colorPick.png");
+        ImageIcon imageForStrokeNColourButton = new ImageIcon("images/colorPick60.png");
         strokeNColourButton = new JButton("", imageForStrokeNColourButton);
         strokeNColourButton.setBackground(Color.white);
         strokeNColourButton.setPreferredSize(new Dimension(size, size));
 
         // Signature
-        ImageIcon imageForSignatureButton = new ImageIcon("images/signature.png");
+        ImageIcon imageForSignatureButton = new ImageIcon("images/signature60.png");
         signatureButton = new JButton("", imageForSignatureButton);
         signatureButton.setBackground(Color.white);
         signatureButton.setPreferredSize(new Dimension(size, size));
