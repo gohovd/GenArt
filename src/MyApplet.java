@@ -4,12 +4,16 @@ import java.io.File;
 import java.util.ArrayList;
 
 
+
+
 import java.awt.Robot;
 import java.awt.event.InputEvent;
 
 
 import javafx.application.*;
 import processing.core.*;
+
+
 
 import javax.swing.*;
 
@@ -77,6 +81,9 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     PGraphics pg;//SaveBox
     PImage c;
     PImage screenshot;
+
+
+
     PFont f; //variabler for text input
     // Variable to store text currently being typed
     String typing = "";
@@ -228,7 +235,13 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 ((CrossShape) cr).drawCross();
             }
             if (starzButton) {
-                ((StarShape) st).drawStars();
+                //((StarShape) st).drawStars();
+                saveToPrint();
+                TestPrint tp = new TestPrint();
+                tp.printolini();
+                starzButton = false;
+
+                
             }
             if (heartButton && mousePressed) {
                 //st.drawHearts(); denne skal da vekk, fått ny funksjonalitet
@@ -679,6 +692,11 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             m.setCC(true);
             m.setColor(reds, greens, blues, alphas);
         }
+    }
+
+    public void saveToPrint(){
+        save(System.getProperty("user.home") + "/Desktop/PRINTMEG.jpg");
+
     }
 
 }
