@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="905e9aa0-ee52-425e-affb-f197dfe127a8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/TestPrint.java" />
-      <change type="MODIFICATION" beforePath="C:\Users\Jarlè\Documents\GitHub\GenArt\out\production\GenArt\MyApplet.class" afterPath="C:\Users\Jarlè\Documents\GitHub\GenArt\out\production\GenArt\MyApplet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MyApplet.java" afterPath="$PROJECT_DIR$/src/MyApplet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Application.java" afterPath="$PROJECT_DIR$/src/Application.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="GenArt.iws" />
@@ -33,11 +31,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Application.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Application.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="5423">
-              <caret line="21" column="26" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="26" />
+            <state vertical-scroll-proportion="0.421875" vertical-offset="4156" max-vertical-offset="5440">
+              <caret line="254" column="39" selection-start-line="254" selection-start-column="39" selection-end-line="254" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -45,10 +43,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MyApplet.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MyApplet.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MyApplet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6792453" vertical-offset="11597" max-vertical-offset="12036">
+            <state vertical-scroll-proportion="-8.689655" vertical-offset="11597" max-vertical-offset="12036">
               <caret line="697" column="70" selection-start-line="697" selection-start-column="32" selection-end-line="697" selection-end-column="70" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -106,13 +104,13 @@
         <option value="$PROJECT_DIR$/src/Boarder.java" />
         <option value="$PROJECT_DIR$/src/StarShape.java" />
         <option value="$PROJECT_DIR$/src/TriangleShape.java" />
-        <option value="$PROJECT_DIR$/src/Application.java" />
         <option value="$PROJECT_DIR$/src/aRobot.java" />
         <option value="$PROJECT_DIR$/src/ColorPicker.java" />
         <option value="$PROJECT_DIR$/src/Border.java" />
         <option value="$PROJECT_DIR$/src/PrintImage.java" />
         <option value="$PROJECT_DIR$/src/MyApplet.java" />
         <option value="$PROJECT_DIR$/src/TestPrint.java" />
+        <option value="$PROJECT_DIR$/src/Application.java" />
       </list>
     </option>
   </component>
@@ -437,12 +435,6 @@
       <option name="number" value="Default" />
       <updated>1426006400471</updated>
     </task>
-    <task id="LOCAL-00027" summary="starz button i app">
-      <created>1427197631954</created>
-      <option name="number" value="00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1427197631954</updated>
-    </task>
     <task id="LOCAL-00028" summary="starz image adde">
       <created>1427197704608</created>
       <option name="number" value="00028" />
@@ -731,7 +723,13 @@
       <option name="project" value="LOCAL" />
       <updated>1429636467717</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="PRINTER FUNKSJON">
+      <created>1429695489792</created>
+      <option name="number" value="00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1429695489795</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -779,7 +777,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Text-size, robot instructions." />
     <MESSAGE value="save i orden" />
     <MESSAGE value="Starshapes extracted from MyApplet into separate class." />
     <MESSAGE value="New classes, smaller draw();" />
@@ -804,7 +801,8 @@
     <MESSAGE value="Siste smått." />
     <MESSAGE value="Fixa ramme." />
     <MESSAGE value="Fixa MASSIV stroke etter 'Ramme'." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixa MASSIV stroke etter 'Ramme'." />
+    <MESSAGE value="PRINTER FUNKSJON" />
+    <option name="LAST_COMMIT_MESSAGE" value="PRINTER FUNKSJON" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1248,16 +1246,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="5423">
-          <caret line="21" column="26" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/TestPrint.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
@@ -1270,8 +1258,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MyApplet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6792453" vertical-offset="11597" max-vertical-offset="12036">
+        <state vertical-scroll-proportion="-8.689655" vertical-offset="11597" max-vertical-offset="12036">
           <caret line="697" column="70" selection-start-line="697" selection-start-column="32" selection-end-line="697" selection-end-column="70" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.421875" vertical-offset="4156" max-vertical-offset="5440">
+          <caret line="254" column="39" selection-start-line="254" selection-start-column="39" selection-end-line="254" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

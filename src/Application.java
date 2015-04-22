@@ -132,7 +132,7 @@ public class Application {
         crossDotsButton.setBackground(Color.white);
         crossDotsButton.setPreferredSize(new Dimension(90, 90));
 
-        ImageIcon imageForStarButton = new ImageIcon("images/star.png");
+        ImageIcon imageForStarButton = new ImageIcon("images/printer1.png");
         starButton = new JButton("", imageForStarButton);
         starButton.setBackground(Color.white);
         starButton.setPreferredSize(new Dimension(90, 90));
@@ -180,8 +180,8 @@ public class Application {
         crossDotsButton.setToolTipText("Draws dots in cross formation");
         saveButton.setToolTipText("Draws dots in cross formation");
         closeButton.setToolTipText("Lukk programmet");
-        starButton.setToolTipText("Draws stars as you drag your mouse");
-        heartButton.setToolTipText("Draw hearts.");
+        starButton.setToolTipText("Print out your art");
+        heartButton.setToolTipText("Draw mirror vectors");
         squarezButton.setToolTipText("Draws squares as you drag your mouse");
         trianglezButton.setToolTipText("Draws triangles as you drag your mouse");
         strokeNColourButton.setToolTipText("Choose stroke size and colours");
@@ -255,12 +255,13 @@ public class Application {
         buttonPanel.add(varBubblesButton);
         buttonPanel.add(pulseButton);
         buttonPanel.add(crossDotsButton);
-        buttonPanel.add(starButton);
         buttonPanel.add(heartButton);
         buttonPanel.add(squarezButton);
         buttonPanel.add(trianglezButton);
         buttonPanel.add(strokeNColourButton);
+        buttonPanel.add(starButton);
         buttonPanel.add(signatureButton);
+
 
         //Also add buttons/radio-buttons/check-boxes.
         buttonPanel.add(randomclr); /*buttonPanel.add(linear); buttonPanel.add(circular);*/ buttonPanel.add(border);
