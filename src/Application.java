@@ -199,7 +199,7 @@ public class Application {
         closeButton.setToolTipText("Lukk programmet.");
         printButton.setToolTipText("Printer ut bildet.");
         starButton.setToolTipText("Tegner stjerner.");
-        heartButton.setToolTipText("Tegner hjerter.");
+        heartButton.setToolTipText("Tegner speilvendte vektorer.");
         squarezButton.setToolTipText("Tegner firkanter i forskjellig størrelse.");
         trianglezButton.setToolTipText("Tegner trekanter i forskjellig vinkel og størrelse.");
         strokeNColourButton.setToolTipText("Velger farge på penslene dine.");
