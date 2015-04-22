@@ -20,6 +20,7 @@ class Mover extends Brush {
 
     /***
      * Constructor for class Mover.
+     * @param input PApplet - PApplet instance from MyApplet.
      */
     Mover(PApplet input) {
         super(input);
@@ -28,24 +29,6 @@ class Mover extends Brush {
         topspeed = 22;
 
     }
-
-    /***
-     * Collects the PApplet instance from class MyApplet,
-     * and iterates through all existing instances of class Mover
-     * and gives the PApplet to each object.
-     * Also collects the Application instance from class MyApplet,
-     * and gives that as well to every mover in existance.
-     *
-     * @param input - PApplet instance
-     * @param a - Application instance
-     */
-/*    public void setPapp(PApplet input, Application a) {
-        for(Mover m : movers){
-            m.p = input;
-            Mover.a = a;
-        }
-
-    }*/
 
     /***
      * The display method for class Mover,
