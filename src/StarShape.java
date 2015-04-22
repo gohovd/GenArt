@@ -1,6 +1,8 @@
 import processing.core.PApplet;
 import processing.core.PConstants;
 
+import java.util.Random;
+
 /**
  * Drawing tool - Star
  * @author Gruppe 6
@@ -36,6 +38,7 @@ public class StarShape extends Brush {
             p.vertex(p.mouseX - 47, p.mouseY - 15);
             p.vertex(p.mouseX - 14, p.mouseY - 20);
             p.endShape(PConstants.CLOSE);
+
         }
     }
 

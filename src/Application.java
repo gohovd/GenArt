@@ -101,7 +101,7 @@ public class Application {
         saveButton = new JButton("Lagre");
 
         //
-        bgButton = new JButton("Bakgrunn Farge");
+        bgButton = new JButton("Bakgrunnsfarge");
 
         // Close program
         closeButton = new JButton("Lukk Programmet");
