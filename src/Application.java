@@ -10,15 +10,24 @@ import javax.swing.BorderFactory;
  */
 
 public class Application {
+
+    //private static final JCheckBox circular = new JCheckBox("Sirkulær");
     private static final JCheckBox randomclr = new JCheckBox("Tilfeldig farge");
+
+    //private static final JCheckBox linear = new JCheckBox("Lineær");
     private static final JCheckBox border = new JCheckBox("Ramme");
+
+    // Width for right panel, menupanel
     private static final int menuWidth = 200; // Husk å endre i MyApplet hvis du endrer her
+
+    // panel holds Processing applet, buttonPanel holds menu items
     public static JPanel panel, buttonPanel;
-// For availability, declare all buttons
+
+    // For availability, declare all buttons
     private static JButton vectorButton, clearButton, randomLinesButton, pulseButton, crossDotsButton,
             starButton, heartButton, squarezButton,  buttonCreate, varBubblesButton, trianglezButton,
             Randomize,strokeNColourButton, filterButton, saveButton, closeButton, signatureButton,
-        printButton, drunkLinesButton;
+        printButton, drunkLinesButton, symButton;
 
     // Hashmap to support "Tormod"
     public static HashMap<String, JButton> buttonMap = new HashMap();
@@ -27,6 +36,7 @@ public class Application {
     }
 
     public static void main(String[] args) {
+        //Size of imageIcons (for buttons)
         int size = 60;
         // Create a JFrame for the application
         final JFrame frame = new JFrame("Fantastic Art Generator");
@@ -53,7 +63,6 @@ public class Application {
         buttonPanel.setBounds(panelXChange, 0, menuWidth, screenSize.height);
         buttonPanel.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 0, Color.LIGHT_GRAY));
 
-
         // Create an instance of Processing applet
         final MyApplet applet = new MyApplet();
 
@@ -73,6 +82,7 @@ public class Application {
         vectorButton.setBackground(Color.white);
         vectorButton.setPreferredSize(new Dimension(size, size));
 
+        // "Drunk"-lines
         ImageIcon imageFordrunkLines = new ImageIcon("images/soon.png");
         drunkLinesButton = new JButton("", imageFordrunkLines);
         drunkLinesButton.setBackground(Color.white);
@@ -80,9 +90,6 @@ public class Application {
         
         // Reset drawing area
         clearButton = new JButton("Reset");
-
-        // Print your image.
-        printButton = new JButton("printing");
         
         // Randomized, automatic drawing, "Tormod"
         Randomize = new JButton("Randomisert");
@@ -104,6 +111,12 @@ public class Application {
         randomLinesButton = new JButton("", imageForrandomLinesButton);
         randomLinesButton.setBackground(Color.white);
         randomLinesButton.setPreferredSize(new Dimension(size, size));
+
+        // Symmetric
+        ImageIcon imageForSymButton = new ImageIcon("images/sym.png");
+        symButton = new JButton("", imageForSymButton);
+        symButton.setBackground(Color.WHITE);
+        symButton.setPreferredSize(new Dimension(size, size));
 
         // Bubbles
         ImageIcon imageForvarBubblesButton = new ImageIcon("images/varbubbles.png");
@@ -185,6 +198,7 @@ public class Application {
         strokeNColourButton.setToolTipText("Velger farge på penslene dine.");
         signatureButton.setToolTipText("Legg igjen din signatur på bildet.");
         drunkLinesButton.setToolTipText("Tegner linjer som er dritings.");
+        symButton.setToolTipText("Tegn symmetrisk.");
 
         // Set names for buttons in order to initiate ActionCommand
         buttonCreate.setActionCommand("create ball");
@@ -206,6 +220,7 @@ public class Application {
         signatureButton.setActionCommand("signature");
         printButton.setActionCommand("printing");
         drunkLinesButton.setActionCommand("drunk");
+        symButton.setActionCommand("syms");
 
         // Add buttons to map. Name of button is key, while actual button is the value.
         buttonMap.put("buttonCreate", buttonCreate);
@@ -225,6 +240,7 @@ public class Application {
         buttonMap.put("clearButton", clearButton);
         buttonMap.put("filterButton", filterButton);
         buttonMap.put("signatureButton", signatureButton);
+        buttonMap.put("symButton", symButton);
         buttonMap.put("printButton", printButton);
         buttonMap.put("starButton", starButton);
         buttonMap.put("drunkLinesButton", drunkLinesButton);
@@ -255,6 +271,7 @@ public class Application {
         buttonPanel.add(starButton);
         buttonPanel.add(printButton);
         buttonPanel.add(signatureButton);
+        buttonPanel.add(symButton);
         buttonPanel.add(drunkLinesButton);
 
         //Also add buttons/radio-buttons/check-boxes.

@@ -28,6 +28,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     Brush bu = new BubbleShape(this);
     Brush sq = new SquareShape(this);
     Brush tr = new TriangleShape(this);
+    Brush sym = new SymShape(this);
     Brush moverInstance = new Mover(this);
     Brush dr = new DrunkShape(this);
 
@@ -44,6 +45,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     boolean heartButton = false;
     boolean signatureButton = false;
     boolean printButton = false;
+    boolean symButton = false;
     boolean drunkButton = false;
 
     // Variables related to the mover/vector.
@@ -90,10 +92,6 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     // Declaring "Tormod", automatic drawing robot
     Robot robot;
 
-    //Locational data about mouseposition for drunkshape.
-    int mx = 0;
-    int my = 0;
-
     ArrayList history;   // Define the history for pattern3
     int switcher = 0; //Int to control which motion-pattern the robot uses.
 
@@ -112,6 +110,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         brushes.add(sq);
         brushes.add(tr);
         brushes.add(dr);
+        brushes.add(sym);
         brushes.add(moverInstance);
 
         // Set up the movers/vectors.
@@ -215,6 +214,10 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             }
             if (randomLineButton) {
                 ((LineShape) li).drawLines();
+            }
+            if (symButton) {
+                if(mousePressed) {
+                ((SymShape) sym).display(); }
             }
             if (varBubblesButton) {
                 ((BubbleShape) bu).drawBubbles();
@@ -540,6 +543,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             trianglezButton = false;
             heartButton = false;
             signatureButton = false;
+            symButton = false;
             drunkButton = false;
         }
 
@@ -605,18 +609,14 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         } else if (evt.getActionCommand().equals("trianglez")) {
             trianglezButton = true;
 
+        }else if (evt.getActionCommand().equals("syms")) {
+            symButton = true;
+
         } else if (evt.getActionCommand().equals("strokencolour")) {
-            /*strokeNColourButton = true;
-            appInit.setStrokeSize(2);
-            System.out.println(appInit.getStrokeSize());
-            colors.setVisible(true);*/
             strokeNColourButton = true;
             col = colors.showDialog(null, "Velg En Farge", Color.GREEN);
             appInit.setRandomclrState(false);
-            System.out.println("Color String: " + col.getRed() + " " + col.getGreen() + " " + col.getBlue() + " " + col.getAlpha());
-
             reds = col.getRed(); greens = col.getGreen(); blues = col.getBlue(); alphas = col.getAlpha();
-
             setColorForAllBrushes();
         }
         else if (evt.getActionCommand().equals("filter")) {
