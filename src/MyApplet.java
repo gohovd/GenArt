@@ -88,7 +88,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     // Variable to store saved text when return is hit
     String saved = "";
 
-    int count = 0;
+    int count = 10;
 
     //variable for background
     int state = 0;
@@ -97,7 +97,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     Robot robot;
 
     ArrayList history;   // Define the history for pattern3
-    int switcher = 0; //Int to control which motion-pattern the robot uses.
+    int switcher = 2; //Int to control which motion-pattern the robot uses.
 
     public Color col;
     //The colors we want to pass to all brushes.

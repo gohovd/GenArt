@@ -97,7 +97,8 @@ public class aRobot {
                     nameOfButton.contains("buttonCreate") ||
                     nameOfButton.contains("closeButton") ||
                     nameOfButton.contains("printButton") ||
-                    nameOfButton.contains("drunkLinesButton")) { // do nothing..
+                    nameOfButton.contains("drunkLinesButton") ||
+                    nameOfButton.contains("bgButton")) { // do nothing..
             } else keys.add(nameOfButton);
         }
         //give it whatever value, it'll change def. anyways.
@@ -220,8 +221,8 @@ public class aRobot {
             int updown = rand.nextInt(2);
             if(updown == 1) { radius += 0.6; }
             if(updown == 0) { radius -= 0.6; }
-            cX += PApplet.cos(radius) * 60;
-            cY += PApplet.sin(radius) * 60;
+            cX += p.cos(radius) * 60 / 1.5;
+            cY += p.sin(radius) * 60 / 1.5;
             radius += 0.5;
         }
         else if(select == 3) {
@@ -229,7 +230,7 @@ public class aRobot {
             float y = p.map(p.sin(a + (float) 1.5), -1, 1, 0, Application.panel.getHeight());
             cX = Math.round(x);
             cY = Math.round(y);
-            a = a + (float)0.03;
+            a = a + (float)0.035;
         }
         else {
             float x = p.map(p.sin(a)*p.sin(a*(float)0.8), -1, 1, 0, Application.panel.getWidth());
