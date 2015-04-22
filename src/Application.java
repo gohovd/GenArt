@@ -111,7 +111,7 @@ public class Application {
         varBubblesButton.setPreferredSize(new Dimension(90, 90));
 
         // Pulse
-        ImageIcon imageForpulseButton = new ImageIcon("images/pulse.png");
+        ImageIcon imageForpulseButton = new ImageIcon("images/puls.png");
         pulseButton = new JButton("", imageForpulseButton);
         pulseButton.setBackground(Color.white);
         pulseButton.setPreferredSize(new Dimension(90, 90));
@@ -148,7 +148,7 @@ public class Application {
         trianglezButton.setPreferredSize(new Dimension(90, 90));
 
         // Color chooser
-        ImageIcon imageForStrokeNColourButton = new ImageIcon("images/cp.png");
+        ImageIcon imageForStrokeNColourButton = new ImageIcon("images/colorPick.png");
         strokeNColourButton = new JButton("", imageForStrokeNColourButton);
         strokeNColourButton.setBackground(Color.white);
         strokeNColourButton.setPreferredSize(new Dimension(90, 90));
