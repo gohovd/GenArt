@@ -2,8 +2,7 @@ import processing.core.PApplet;
 
 
 /**
- * Class for Bubble
- *
+ * Drawing tool - Bubble
  * @author Gruppe 6
  * @version 1.0, April 2015
  */

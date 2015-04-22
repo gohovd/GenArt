@@ -4,7 +4,7 @@ import javax.swing.*;
 import javax.swing.BorderFactory;
 
 /**
- * Main class for ArtGen. Initiate to create objects and run GenArt
+ * Main class for ArtGen. Initiate to run GenArt
  * @author  Gruppe 6
  * @version 1.0, April 2015
  */

@@ -2,8 +2,11 @@ import processing.core.PApplet;
 import processing.core.PConstants;
 
 /**
- * Created by Gøran on 26.03.2015.
+ * Drawing tool - Cross shape
+ * @author Gruppe 6
+ * @version 1.0, April 2015
  */
+
 public class CrossShape extends Brush{
 
     int i = 0;
@@ -12,7 +15,10 @@ public class CrossShape extends Brush{
     CrossShape(PApplet input){
         super(input);
     }
-    
+
+    /**
+     * Creates ellipses forming a cross
+     */
     public void drawCross(){
         if (p.mousePressed && (p.mouseButton == PConstants.LEFT)) {
             if (i >= 0 && q == false) {

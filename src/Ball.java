@@ -2,8 +2,7 @@ import processing.core.*;
 import java.util.ArrayList;
 
 /**
- * Class for BallGrid
- *
+ * Drawing tool - BallGrid
  * @author Gruppe 6
  * @version 1.0, April 2015
  */
