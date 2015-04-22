@@ -1,8 +1,11 @@
 import processing.core.PApplet;
 
 /**
- * Created by Gøran on 26.03.2015.
+ * Drawing tool - Triangle
+ * @author Gruppe 6
+ * @version 1.0, April 2015
  */
+
 public class TriangleShape extends Brush {
 
     float x1, y1, x2, y2, x3, y3;

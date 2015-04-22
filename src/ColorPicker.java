@@ -2,11 +2,11 @@
 import java.awt.Color;
 import javax.swing.JColorChooser;
 
-
 /**
- * Created by Ivan on 20.04.2015.
+ * Drawing tool - ColorPicker
+ * @author Gruppe 6
+ * @version 1.0, April 2015
  */
-
 
 public class ColorPicker {
     /***

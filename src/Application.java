@@ -136,7 +136,7 @@ public class Application {
         heartButton.setPreferredSize(new Dimension(90, 90));
 
         // Squarez
-        ImageIcon imageForsquarezButton = new ImageIcon("images/squarez.png");
+        ImageIcon imageForsquarezButton = new ImageIcon("images/sq.png");
         squarezButton = new JButton("", imageForsquarezButton);
         squarezButton.setBackground(Color.white);
         squarezButton.setPreferredSize(new Dimension(90, 90));
@@ -148,7 +148,7 @@ public class Application {
         trianglezButton.setPreferredSize(new Dimension(90, 90));
 
         // Color chooser
-        ImageIcon imageForStrokeNColourButton = new ImageIcon("images/strokencolour80x80.png");
+        ImageIcon imageForStrokeNColourButton = new ImageIcon("images/cp.png");
         strokeNColourButton = new JButton("", imageForStrokeNColourButton);
         strokeNColourButton.setBackground(Color.white);
         strokeNColourButton.setPreferredSize(new Dimension(90, 90));
