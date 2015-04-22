@@ -336,7 +336,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 text(typing, width / 2, height / 2 + 60);
 
                 text("Filen blir lagret på skrivebordet", width / 2, height / 2 + 150);
-                text("Trykk 'Q' for å avbryte", width / 2, height / 2 + 175);
+                text("Trykk 'ESC' for å avbryte", width / 2, height / 2 + 175);
 
                 if (panelActivated) {
                     // Do nothing
@@ -390,7 +390,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                         " 7: Erode \n" +
                         " 8: Dilate \n", width / 2, height / 2 - 60);
 
-                text("Trykk 'Q' for å avbryte", width / 2, height / 2 +175);
+                text("Trykk 'ESC' for å avbryte", width / 2, height / 2 +175);
 
                 if (panelActivated) {
                     // Do nothing
@@ -416,7 +416,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 textFont(signatureFont);
 
                 text("Signatur og trykk 'enter'", width / 2, height / 2 - 60);
-                text("Trykk 'Q' for å avbryte", width / 2, height / 2 + 70);
+                text("Trykk 'ESC' for å avbryte", width / 2, height / 2 + 70);
 
 
                 text(typing, width / 2, height / 2 + 20);
@@ -468,7 +468,8 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 signatureButton = false;
 
             } else if
-                    (key == 'q' || key == 'Q') {
+                    (key == ESC)  {
+                key=0;
                 image(screenshot, 0, 0);
                 signatureButton = false;
             } else {
@@ -533,7 +534,8 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 filterButton = false;
             }
             if
-                    (key == 'q' || key == 'Q') {
+                    (key == ESC)  {
+                key=0;
                 image(screenshot, 0, 0);
                 filterButton = false;
             }
@@ -574,7 +576,8 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                     saveButton = false;
                 }
             } else if
-                    (key == 'q' || key == 'Q') {
+                    (key == ESC)  {
+                key=0;
                 image(screenshot, 0, 0);
                 saveButton = false;
             } else {
@@ -589,7 +592,8 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             }
         } else if (randomize) {
 
-            if (key == 'q') {
+            if   (key == ESC)  {
+                key=0;
                 killTormod = true;
                 Tormod.end();
                 Tormod.reset();
