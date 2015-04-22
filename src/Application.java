@@ -174,7 +174,7 @@ public class Application {
         trianglezButton.setPreferredSize(new Dimension(size, size));
 
         // Color chooser
-        ImageIcon imageForStrokeNColourButton = new ImageIcon("images/colorPick60.png");
+        ImageIcon imageForStrokeNColourButton = new ImageIcon("images/colorPicker.png");
         strokeNColourButton = new JButton("", imageForStrokeNColourButton);
         strokeNColourButton.setBackground(Color.white);
         strokeNColourButton.setPreferredSize(new Dimension(size, size));
