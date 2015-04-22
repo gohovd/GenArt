@@ -453,6 +453,10 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 // Otherwise, concatenate the String
                 // Each character typed by the user is added to the end of the String variable.
                 typing = typing + key;
+
+                if (key == '\u0008'){
+                    typing="";
+                }
             }
 
 
@@ -513,6 +517,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             // If the return key is pressed, save the String and clear it
 
             if (key == '\n') {
+
                 saved = typing;
                 // A String can be cleared by setting it equal to ""
                 typing = "";
@@ -542,9 +547,14 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                     saveButton = false;
                 }
             } else {
+
                 // Otherwise, concatenate the String
                 // Each character typed by the user is added to the end of the String variable.
                 typing = typing + key;
+
+                if (key == '\u0008'){
+                    typing="";
+                }
             }
         } else if (randomize) {
 
