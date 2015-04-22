@@ -6,10 +6,16 @@ import java.awt.event.InputEvent;
 import processing.core.*;
 import javax.swing.*;
 
+/**
+ * Class MyApplet extends Processing core functionality, handles drawing functionality
+ * @author  Gruppe 6
+ * @version 1.0, April 2015
+ */
+
 public class MyApplet extends PApplet implements ActionListener, ItemListener {
-    //An instance of class Application, used to utilize methods/attributes from class Application.
-    //Can be sent to other classes as parameter.
+    //An instance of class Application, used to utilize methods/attributes from class Application. Can be sent to other classes as parameter.
     public Application appInit = new Application();
+
     boolean pause = false;
     Border border;
 
@@ -40,51 +46,56 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
     // Variables related to the mover/vector.
     boolean vectorButton = false;
+
     // Defining the applets screen size (-300 to make room for toolbar).
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
     //Boolean controlling whether the vectors move linearly or circularly.
     //Also controlling whether the user wants random colored vectors.
     boolean circular, linear, randomclr;
     PVector mouse;
     boolean randomLineButton = false;
+
     //Declare the robot.
     aRobot Tormod;
     boolean killTormod;
+
     //Button for making random (auto generated art)
     boolean randomize;
+
     // Color and stroke manager
     JColorChooser colors = new JColorChooser();
-    /////////////////////////////////////////////////////////////////////////
-    boolean crossDotsButton = false;
 
-    /////////////////////////////////////////////////////////////////////////
+    // Booleans to control which button is active
+    boolean crossDotsButton = false;
     boolean saveButton = false;
     boolean closeButton = false;
-    PGraphics pg;//SaveBox
+    boolean filterButton = false;
+    boolean panelActivated = false; // Settes til true hvis robot har klikket i tegning for å aktivere "panel"
+
+    boolean switcher = false;
+
     PImage screenshot;
+
     PFont f; //variabler for text input
+
     // Variable to store text currently being typed
     String typing = "";
+
     // Variable to store saved text when return is hit
     String saved = "";
-    boolean panelActivated = false; // Settes til true hvis robot har klikket i tegning for å aktivere "panel"
-    int count = 0;
-    //////////////////////////////////////////// filterButton
-    boolean filterButton = false;
-    PGraphics pg2;
-    PGraphics signatureBox;
-    Robot robot; //deklarering av robot
 
-    ////////////////////////////////////////////////// funkyvectors bytter ut hearts
+    int count = 0;
+
+    // Declaring "Tormod", automatic drawing robot
+    Robot robot;
+
     ArrayList history;   // Define the history for pattern3
-    boolean switcher = false;
+
     public Color col;
     //The colors we want to pass to all brushes.
     //Either chosen by the robot, or the user.
     int reds, greens, blues, alphas;
-
-
-///////////////////////////////////////////////////////////////////////////
 
     public void setup() {
         //Put all brushes into an array.
@@ -96,6 +107,7 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         brushes.add(sq);
         brushes.add(tr);
         brushes.add(moverInstance);
+
         // Set up the movers/vectors.
         moverInstance = new Mover(this);
         for (int i = 0; i < 50; i++) {
@@ -106,35 +118,34 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
             ((Mover) moverInstance).createNewMover(rTopSpeed, TorqueIncrement);
             //moverInstance.setPapp(this, appInit);
         }
+
         size(screenSize.width - 200, screenSize.height);
+
         // Set up the bouncing balls.
         ballInstance = new Ball();
+
         background(255);
         Tormod = new aRobot(); // Instantiate the robot.
         Tormod.setPapp(this); // "Export" PApplet instance (from this class).
-
-        ////////////setup for save funksjon///////////////////////////////
-        pg = createGraphics(200, 200);//størrelse på boxa
-        pg2 = createGraphics(200, 200); //filterbox
-        signatureBox = createGraphics(300, 200);
 
         f = createFont("Arial", 16, true);//gir f en font og størrelse
         // Set the font and fill for text
         textFont(f);
         fill(0);
 
-        //////////////////setup for save funksjon slutt////////////////////
-        //////////////////setup for filters/////////////////////////////
         try {
             robot = new Robot();
         } catch (AWTException e) {
             e.printStackTrace();
         }
-        ///////////////////setup for filters slutt/////////////////
+
         history = new ArrayList();
         border = new Border(this, appInit);
     }
 
+    /***
+     * Draws actual content to screen
+     */
     public void draw() {
         // Draw method "never" ends, here we iterate through all
         // the objects we want to display. Whether or not we display
@@ -355,8 +366,9 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         }
     }
 
-    ///////////////////Funksjoner for save funksjon/////////////////////////////////
-    //////Kan legge til keyPressed events generelt. If key == 'x', do whatever//////
+    /***
+     * Behaviour for key pressing and mouse clicking
+     */
     public void keyPressed() {
 
         if (signatureButton) {
@@ -648,8 +660,10 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         ballInstance.clearBallList();
     }
 
-
-    private void leftClick() // funksjon for filters
+    /**
+     * Function to help set focus on drawing area after selecting filter
+     */
+    private void leftClick()
     {
         robot.mousePress(InputEvent.BUTTON1_MASK);
         robot.delay(200);
@@ -657,6 +671,9 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         robot.delay(200);
     }
 
+    /**
+     * Setting colours for brushes
+     */
     private void setColorForAllBrushes(){
         for(Brush b : brushes){
             b.setCC(true);
@@ -668,6 +685,9 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
         }
     }
 
+    /**
+     * Help function to be able to print to paper
+     */
     public void saveToPrint(){
         save(System.getProperty("user.home") + "/Desktop/PRINTMEG.jpg");
 
