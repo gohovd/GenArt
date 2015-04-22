@@ -1,25 +1,10 @@
 import java.awt.*;
 import java.awt.event.*;
-import java.io.File;
 import java.util.ArrayList;
-
-
-
-
 import java.awt.Robot;
 import java.awt.event.InputEvent;
-
-
-import javafx.application.*;
 import processing.core.*;
-
-
-
 import javax.swing.*;
-
-/**
- * A once, simple demonstration Applet.
- */
 
 public class MyApplet extends PApplet implements ActionListener, ItemListener {
     //An instance of class Application, used to utilize methods/attributes from class Application.
@@ -51,18 +36,15 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     boolean strokeNColourButton = false;
     boolean heartButton = false;
     boolean signatureButton = false;
+    boolean printButton = false;
 
     // Variables related to the mover/vector.
     boolean vectorButton = false;
-    int vStep = 0; // When steps, do something different.
-    // Variable holding the background image.
-    PImage bgImg = null;
     // Defining the applets screen size (-300 to make room for toolbar).
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     //Boolean controlling whether the vectors move linearly or circularly.
     //Also controlling whether the user wants random colored vectors.
     boolean circular, linear, randomclr;
-    boolean beenHereBefore = false;
     PVector mouse;
     boolean randomLineButton = false;
     //Declare the robot.
@@ -79,30 +61,19 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
     boolean saveButton = false;
     boolean closeButton = false;
     PGraphics pg;//SaveBox
-    PImage c;
     PImage screenshot;
-
-
-
     PFont f; //variabler for text input
     // Variable to store text currently being typed
     String typing = "";
     // Variable to store saved text when return is hit
     String saved = "";
-    int indent = 25;
-    String desktopPath = System.getProperty("user.home") + "/Desktop";
-    boolean win = false;
-    boolean takepic = false;
     boolean panelActivated = false; // Settes til true hvis robot har klikket i tegning for å aktivere "panel"
     int count = 0;
     //////////////////////////////////////////// filterButton
     boolean filterButton = false;
     PGraphics pg2;
     PGraphics signatureBox;
-    boolean nr = false;
-    boolean nr2 = false;
     Robot robot; //deklarering av robot
-    PImage d;
 
     ////////////////////////////////////////////////// funkyvectors bytter ut hearts
     ArrayList history;   // Define the history for pattern3
@@ -175,7 +146,6 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                     Tormod.setFilterSelection(false);
                 }
                 count++;
-                if(count % 900 == 0) { switcher = true; }
                 if(count % 500 == 0) {
                     String split[] = Tormod.getColorString().split(" ");
                     System.out.println(Tormod.getColorString());
@@ -184,11 +154,11 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                     blues = Integer.parseInt(split[2]);
                     alphas = Integer.parseInt(split[3]);
                     setColorForAllBrushes();
-
                 }
+                if(count % 900 == 0) { switcher = true; }
                 if(count % 1200 == 0) { switcher = false; count = 0; }
                 if(switcher) { Tormod.oMotion(); }
-                if(!switcher) { Tormod.rMotion(); }
+                if(!switcher) { Tormod.sinMotion(); }
             } catch (AWTException e) {
                 e.printStackTrace();
             } catch (InterruptedException e) {
@@ -235,13 +205,14 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 ((CrossShape) cr).drawCross();
             }
             if (starzButton) {
-                //((StarShape) st).drawStars();
+                ((StarShape) st).drawStars();
+
+            }
+            if(printButton){
                 saveToPrint();
                 TestPrint tp = new TestPrint();
                 tp.printolini();
-                starzButton = false;
-
-                
+                printButton = false;
             }
             if (heartButton && mousePressed) {
                 //st.drawHearts(); denne skal da vekk, fått ny funksjonalitet
@@ -587,8 +558,11 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
 
         } else if (evt.getActionCommand().equals("starz")) {
             starzButton = true;
+        }
+        else if (evt.getActionCommand().equals("printing")) {
+            printButton = true;
 
-        } else if (evt.getActionCommand().equals("heartz")) {
+        }else if (evt.getActionCommand().equals("heartz")) {
             heartButton = true;
 
         } else if (evt.getActionCommand().equals("squarez")) {
