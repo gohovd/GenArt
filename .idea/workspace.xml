@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="905e9aa0-ee52-425e-affb-f197dfe127a8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MyApplet.java" afterPath="$PROJECT_DIR$/src/MyApplet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GenArt/MyApplet.class" afterPath="$PROJECT_DIR$/out/production/GenArt/MyApplet.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SymShape.java" afterPath="$PROJECT_DIR$/src/SymShape.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/aRobot.java" afterPath="$PROJECT_DIR$/src/aRobot.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="GenArt.iws" />
@@ -58,8 +57,8 @@
       <file leaf-file-name="SymShape.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SymShape.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6920821" vertical-offset="11" max-vertical-offset="1134">
-              <caret line="25" column="25" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.8460411" vertical-offset="305" max-vertical-offset="1218">
+              <caret line="44" column="41" selection-start-line="44" selection-start-column="41" selection-end-line="44" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -469,12 +468,6 @@
       <option name="number" value="Default" />
       <updated>1426006400471</updated>
     </task>
-    <task id="LOCAL-00040" summary="Code clean, robot progress.">
-      <created>1427303169911</created>
-      <option name="number" value="00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1427303169911</updated>
-    </task>
     <task id="LOCAL-00041" summary="Tormod is alive lizm!">
       <created>1427307549815</created>
       <option name="number" value="00041" />
@@ -763,7 +756,13 @@
       <option name="project" value="LOCAL" />
       <updated>1429720230406</updated>
     </task>
-    <option name="localTasksCounter" value="89" />
+    <task id="LOCAL-00089" summary="Fixa treigstart på robot, + endra symshape.">
+      <created>1429721789151</created>
+      <option name="number" value="00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1429721789152</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -811,7 +810,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="mirrorvector knapp added" />
     <MESSAGE value="english -&gt; norsk knappnavn" />
     <MESSAGE value="Endring i trekant" />
     <MESSAGE value="Ramme" />
@@ -836,7 +834,8 @@
     <MESSAGE value="div kom" />
     <MESSAGE value="Ny funksjon (symshape)." />
     <MESSAGE value="Bilde for symshape." />
-    <option name="LAST_COMMIT_MESSAGE" value="Bilde for symshape." />
+    <MESSAGE value="Fixa treigstart på robot, + endra symshape." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixa treigstart på robot, + endra symshape." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1300,8 +1299,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SymShape.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6920821" vertical-offset="11" max-vertical-offset="1134">
-          <caret line="25" column="25" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.8460411" vertical-offset="305" max-vertical-offset="1218">
+          <caret line="44" column="41" selection-start-line="44" selection-start-column="41" selection-end-line="44" selection-end-column="41" />
           <folding />
         </state>
       </provider>

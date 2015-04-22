@@ -40,8 +40,12 @@ public class SymShape extends Brush{
         }
         nX = p.mouseX;
         nY = p.mouseY;
-        p.line(X, Y, pX, pY);
-        p.line(Y, X, pY, pX);
+        int n = 0;
+        for(int i = 0; i < 20; i++) {
+            p.line(X+n, Y+n, pX+n, pY+n);
+            p.line(Y+n, X+n, pY+n, pX+n);
+            n++;
+        }
         pX = X;
         pY = Y;
     }
