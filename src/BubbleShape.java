@@ -2,14 +2,20 @@ import processing.core.PApplet;
 
 
 /**
- * Created by Gøran on 26.03.2015.
+ * Class for Bubble
+ *
+ * @author Gruppe 6
+ * @version 1.0, April 2015
  */
 public class BubbleShape extends Brush {
 
     BubbleShape(PApplet input){
         super(input);
     }
-    
+
+    /***
+     * Call this method to create new Bubble with random characteristics
+     */
     public void drawBubbles(){
         if (p.mousePressed == true) {
             int x = p.mouseX;
@@ -24,5 +30,4 @@ public class BubbleShape extends Brush {
             p.ellipse(x, y, speed, speed);
         }
     }
-
 }
