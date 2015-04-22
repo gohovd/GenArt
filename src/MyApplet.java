@@ -146,7 +146,6 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                     Tormod.setFilterSelection(false);
                 }
                 count++;
-                if(count % 900 == 0) { switcher = true; }
                 if(count % 500 == 0) {
                     String split[] = Tormod.getColorString().split(" ");
                     System.out.println(Tormod.getColorString());
@@ -156,9 +155,10 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                     alphas = Integer.parseInt(split[3]);
                     setColorForAllBrushes();
                 }
+                if(count % 900 == 0) { switcher = true; }
                 if(count % 1200 == 0) { switcher = false; count = 0; }
                 if(switcher) { Tormod.oMotion(); }
-                if(!switcher) { Tormod.rMotion(); }
+                if(!switcher) { Tormod.sinMotion(); }
             } catch (AWTException e) {
                 e.printStackTrace();
             } catch (InterruptedException e) {

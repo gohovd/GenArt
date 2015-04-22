@@ -94,7 +94,8 @@ public class aRobot {
                     nameOfButton.contains("clrButton") ||
                     nameOfButton.contains("signatureButton") ||
                     nameOfButton.contains("buttonCreate") ||
-                    nameOfButton.contains("closeButton")) { // do nothing..
+                    nameOfButton.contains("closeButton") ||
+                    nameOfButton.contains("printButton")) { // do nothing..
             } else keys.add(nameOfButton);
         }
         //give it whatever value, it'll change def. anyways.
@@ -289,9 +290,9 @@ public class aRobot {
         }
         float x = p.map(p.sin(a)*p.sin(a*(float)0.8), -1, 1, 0, Application.panel.getWidth());
         float y = p.map(p.sin(a+(float)1.5), -1, 1, 0, Application.panel.getHeight());
-        int xx = Math.round(x);
-        int yy = Math.round(y);
-        r.mouseMove(xx, yy);
+        int cX = Math.round(x);
+        int cY = Math.round(y);
+        r.mouseMove(cX, cY);
         r.mousePress(InputEvent.BUTTON1_MASK);
         if (cX > cWidth) {
             cX -= cWidth;
@@ -299,7 +300,6 @@ public class aRobot {
         if (cX < 0) {
             cX += cWidth;
         }
-        cY += PApplet.sin(radius) * 60;
         if (cY > cHeight) {
             cY -= cHeight;
         }
@@ -309,7 +309,7 @@ public class aRobot {
         r.mouseMove(cX, cY);
         tutorial = true;
         motionsMade++;
-        radius += 0.1;
+        a = a + (float)0.03;
     }
 
     /***
