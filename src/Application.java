@@ -131,7 +131,7 @@ public class Application {
         heartButton.setBackground(Color.white);
         heartButton.setPreferredSize(new Dimension(90, 90));
 
-        ImageIcon imageForsquarezButton = new ImageIcon("images/squarez.png");
+        ImageIcon imageForsquarezButton = new ImageIcon("images/sq.png");
         squarezButton = new JButton("", imageForsquarezButton);
         squarezButton.setBackground(Color.white);
         squarezButton.setPreferredSize(new Dimension(90, 90));
@@ -141,7 +141,7 @@ public class Application {
         trianglezButton.setBackground(Color.white);
         trianglezButton.setPreferredSize(new Dimension(90, 90));
 
-        ImageIcon imageForStrokeNColourButton = new ImageIcon("images/strokencolour80x80.png");
+        ImageIcon imageForStrokeNColourButton = new ImageIcon("images/cp.png");
         strokeNColourButton = new JButton("", imageForStrokeNColourButton);
         strokeNColourButton.setBackground(Color.white);
         strokeNColourButton.setPreferredSize(new Dimension(90, 90));
