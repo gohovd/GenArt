@@ -432,12 +432,12 @@ public class MyApplet extends PApplet implements ActionListener, ItemListener {
                 image(screenshot, 0, 0);
 
                 PFont signatureFont;
-                signatureFont = loadFont("fonts/Purisa-Oblique-34.vlw");
+                signatureFont = loadFont("fonts/Purisa-Bold-30.vlw");
                 fill(0,0,0);
                 textFont(signatureFont);
 
                 textAlign(RIGHT);
-                text(saved, width - 20, height - 30);
+                text(saved, width - 18, height - 28);
 
                 PFont signatureFont2;
                 signatureFont2 = loadFont("fonts/Purisa-Bold-30.vlw");
