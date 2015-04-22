@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="905e9aa0-ee52-425e-affb-f197dfe127a8" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\Ivan\Dropbox\GitHub\GenArt\images\trianglez60.png" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GenArt/MyApplet.class" afterPath="$PROJECT_DIR$/out/production/GenArt/MyApplet.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Application.java" afterPath="$PROJECT_DIR$/src/Application.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="GenArt.iws" />
@@ -34,10 +35,11 @@
       <file leaf-file-name="MyApplet.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MyApplet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1734" max-vertical-offset="12920">
-              <caret line="103" column="46" selection-start-line="103" selection-start-column="46" selection-end-line="103" selection-end-column="46" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1768" max-vertical-offset="13447">
+              <caret line="105" column="46" selection-start-line="105" selection-start-column="46" selection-end-line="105" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <marker date="1429731422907" expanded="true" signature="209:350" placeholder="/**...*/" />
               </folding>
             </state>
           </provider>
@@ -46,8 +48,8 @@
       <file leaf-file-name="Application.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.3746898" vertical-offset="2703" max-vertical-offset="5899">
-              <caret line="82" column="52" selection-start-line="82" selection-start-column="52" selection-end-line="82" selection-end-column="52" />
+            <state vertical-scroll-proportion="0.67493796" vertical-offset="3094" max-vertical-offset="5899">
+              <caret line="201" column="56" selection-start-line="201" selection-start-column="56" selection-end-line="201" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -254,9 +256,7 @@
             <option name="mySupportsDeletion" value="false" />
             <option name="myCanBeAbsent" value="false" />
             <option name="myId" value="UPDATED" />
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/Brush.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/SymShape.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/TriangleShape.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/MyApplet.java</PATH>
           </FILE-GROUP>
           <FILE-GROUP>
             <option name="myUpdateName" value="Created" />
@@ -555,12 +555,6 @@
       <option name="number" value="Default" />
       <updated>1426006400471</updated>
     </task>
-    <task id="LOCAL-00046" summary="save i orden">
-      <created>1427396242670</created>
-      <option name="number" value="00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1427396242670</updated>
-    </task>
     <task id="LOCAL-00047" summary="Starshapes extracted from MyApplet into separate class.">
       <created>1427399284061</created>
       <option name="number" value="00047" />
@@ -849,12 +843,18 @@
       <option name="project" value="LOCAL" />
       <updated>1429731243579</updated>
     </task>
-    <option name="localTasksCounter" value="95" />
+    <task id="LOCAL-00095" summary="erased unused pics">
+      <created>1429731354717</created>
+      <option name="number" value="00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1429731354717</updated>
+    </task>
+    <option name="localTasksCounter" value="96" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="699" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32993197" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -869,7 +869,8 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21768707" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1658576" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1658576" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -879,7 +880,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -941,6 +941,7 @@
           <caret line="103" column="46" selection-start-line="103" selection-start-column="46" selection-end-line="103" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
+            <marker date="1429731422907" expanded="true" signature="209:350" placeholder="/**...*/" />
           </folding>
         </state>
       </provider>
@@ -985,6 +986,7 @@
           <caret line="219" column="22" selection-start-line="219" selection-start-column="18" selection-end-line="219" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
+            <marker date="1429731422907" expanded="true" signature="209:350" placeholder="/**...*/" />
           </folding>
         </state>
       </provider>
@@ -1029,6 +1031,7 @@
           <caret line="219" column="22" selection-start-line="219" selection-start-column="18" selection-end-line="219" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
+            <marker date="1429731422907" expanded="true" signature="209:350" placeholder="/**...*/" />
           </folding>
         </state>
       </provider>
@@ -1054,6 +1057,7 @@
           <caret line="87" column="47" selection-start-line="87" selection-start-column="47" selection-end-line="87" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
+            <marker date="1429731422907" expanded="true" signature="209:350" placeholder="/**...*/" />
           </folding>
         </state>
       </provider>
@@ -1064,6 +1068,7 @@
           <caret line="87" column="47" selection-start-line="87" selection-start-column="47" selection-end-line="87" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
+            <marker date="1429731422907" expanded="true" signature="209:350" placeholder="/**...*/" />
           </folding>
         </state>
       </provider>
@@ -1074,6 +1079,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <marker date="1429731422907" expanded="true" signature="209:350" placeholder="/**...*/" />
           </folding>
         </state>
       </provider>
@@ -1084,6 +1090,7 @@
           <caret line="246" column="24" selection-start-line="246" selection-start-column="24" selection-end-line="246" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
+            <marker date="1429731422907" expanded="true" signature="209:350" placeholder="/**...*/" />
           </folding>
         </state>
       </provider>
@@ -1094,6 +1101,7 @@
           <caret line="20" column="79" selection-start-line="20" selection-start-column="79" selection-end-line="20" selection-end-column="79" />
           <folding>
             <element signature="imports" expanded="true" />
+            <marker date="1429731422907" expanded="true" signature="209:350" placeholder="/**...*/" />
           </folding>
         </state>
       </provider>
@@ -1118,6 +1126,7 @@
           <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
+            <marker date="1429731422907" expanded="true" signature="209:350" placeholder="/**...*/" />
           </folding>
         </state>
       </provider>
@@ -1142,6 +1151,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <marker date="1429731422907" expanded="true" signature="209:350" placeholder="/**...*/" />
           </folding>
         </state>
       </provider>
@@ -1166,6 +1176,7 @@
           <caret line="260" column="76" selection-start-line="260" selection-start-column="76" selection-end-line="260" selection-end-column="76" />
           <folding>
             <element signature="imports" expanded="true" />
+            <marker date="1429731422907" expanded="true" signature="209:350" placeholder="/**...*/" />
           </folding>
         </state>
       </provider>
@@ -1176,6 +1187,7 @@
           <caret line="260" column="76" selection-start-line="260" selection-start-column="76" selection-end-line="260" selection-end-column="76" />
           <folding>
             <element signature="imports" expanded="true" />
+            <marker date="1429731422907" expanded="true" signature="209:350" placeholder="/**...*/" />
           </folding>
         </state>
       </provider>
@@ -1186,6 +1198,7 @@
           <caret line="258" column="12" selection-start-line="258" selection-start-column="12" selection-end-line="258" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
+            <marker date="1429731422907" expanded="true" signature="209:350" placeholder="/**...*/" />
           </folding>
         </state>
       </provider>
@@ -1328,18 +1341,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MyApplet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1751" max-vertical-offset="12461">
-          <caret line="103" column="46" selection-start-line="103" selection-start-column="46" selection-end-line="103" selection-end-column="46" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1768" max-vertical-offset="13447">
+          <caret line="105" column="46" selection-start-line="105" selection-start-column="46" selection-end-line="105" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
+            <marker date="1429731422907" expanded="true" signature="209:350" placeholder="/**...*/" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Application.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.3746898" vertical-offset="2703" max-vertical-offset="5899">
-          <caret line="82" column="52" selection-start-line="82" selection-start-column="52" selection-end-line="82" selection-end-column="52" />
+        <state vertical-scroll-proportion="0.67493796" vertical-offset="3094" max-vertical-offset="5899">
+          <caret line="201" column="56" selection-start-line="201" selection-start-column="56" selection-end-line="201" selection-end-column="56" />
           <folding />
         </state>
       </provider>
