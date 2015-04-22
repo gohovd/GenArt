@@ -221,15 +221,15 @@ public class aRobot {
             int updown = rand.nextInt(2);
             if(updown == 1) { radius += 0.6; }
             if(updown == 0) { radius -= 0.6; }
-            cX += p.cos(radius) * 60 / 1.5;
-            cY += p.sin(radius) * 60 / 1.5;
+            cX += p.cos(radius) * 60 / 2;
+            cY += p.sin(radius) * 60 / 2;
             radius += 0.5;
         }
         else if(select == 3) {
             float x = p.map(p.sin(a)*p.sin(a * (float) 0.8), -1, 1, 0, Application.panel.getWidth());
             float y = p.map(p.sin(a + (float) 1.5), -1, 1, 0, Application.panel.getHeight());
-            cX = Math.round(x);
-            cY = Math.round(y);
+            cX = Math.round(x*2);
+            cY = Math.round(y*2);
             a = a + (float)0.035;
         }
         else {
