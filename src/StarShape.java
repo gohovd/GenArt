@@ -8,6 +8,10 @@ public class StarShape extends Brush {
         
     }
 
+    /***
+     * Draws Star Shape as you drag your mouse, with random colors
+     */
+
     public void drawStars() {
         if (p.mousePressed == true) {
             p.strokeWeight((float) 0.1);
