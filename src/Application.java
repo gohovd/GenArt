@@ -3,7 +3,6 @@ import java.util.HashMap;
 import javax.swing.*;
 import javax.swing.BorderFactory;
 
-
 /**
  * Main class for ArtGen. Initiate to run GenArt
  * @author  Gruppe 6
@@ -93,25 +92,22 @@ public class Application {
         clearButton = new JButton("Reset");
         
         // Randomized, automatic drawing, "Tormod"
-        Randomize = new JButton("Random");
+        Randomize = new JButton("Randomisert");
         Randomize.setBackground(Color.GREEN);
         Randomize.setForeground(Color.WHITE);
         Randomize.setBorderPainted(true);
 
         // Save
-        saveButton = new JButton("Lagre ");
+        saveButton = new JButton("Lagre");
 
         //
-        bgButton = new JButton("    Bakgrunns farge     ");
+        bgButton = new JButton("Bakgrunnsfarge");
 
         // Close program
-        closeButton = new JButton("   Lukk Programmet   ");
-        closeButton.setBackground(Color.RED);
-        closeButton.setForeground(Color.BLACK);
-        closeButton.setBorderPainted(true);
+        closeButton = new JButton("Lukk Programmet");
 
         // Filters
-        filterButton = new JButton("   Filter   ");
+        filterButton = new JButton("Filter");
 
         // Random lines
         ImageIcon imageForrandomLinesButton = new ImageIcon("images/rndlines.png");
@@ -266,15 +262,6 @@ public class Application {
         border.setSelected(false);
         randomclr.addItemListener(applet);
         randomclr.setSelected(false);
-        /***
-         *
-         */
-        JSeparator separator = new JSeparator(SwingConstants.HORIZONTAL);
-        JSeparator separator2 = new JSeparator(SwingConstants.HORIZONTAL);
-        JSeparator separator3 = new JSeparator(SwingConstants.HORIZONTAL);
-        separator.setPreferredSize(new Dimension(200,20));
-        separator2.setPreferredSize(new Dimension(200,20));
-        separator3.setPreferredSize(new Dimension(200,20));
 
         //Add buttons to the button-panel.
         buttonPanel.add(buttonCreate);
@@ -288,18 +275,13 @@ public class Application {
         buttonPanel.add(trianglezButton);
         buttonPanel.add(strokeNColourButton);
         buttonPanel.add(starButton);
+        buttonPanel.add(printButton);
+        buttonPanel.add(signatureButton);
         buttonPanel.add(symButton);
         buttonPanel.add(drunkLinesButton);
 
-        buttonPanel.add(separator);
-        buttonPanel.add(printButton);
-        buttonPanel.add(strokeNColourButton);
-        buttonPanel.add(signatureButton);
-        buttonPanel.add(separator2);
-
         //Also add buttons/radio-buttons/check-boxes.
         buttonPanel.add(randomclr); buttonPanel.add(border);
-        buttonPanel.add(separator3);
         buttonPanel.add(Randomize); buttonPanel.add(clearButton); buttonPanel.add(filterButton);
         buttonPanel.add(saveButton);buttonPanel.add(bgButton);buttonPanel.add(closeButton);
 

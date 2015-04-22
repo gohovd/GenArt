@@ -26,8 +26,8 @@ public class PulseShape extends Brush {
             for (int a = 0; a < 360; a += 75) {
                 float xoff = PApplet.cos(PApplet.radians(a)) * val;
                 float yoff = PApplet.sin(PApplet.radians(a)) * val;
-                if(!this.cc) { p.fill(p.random(255), p.random(255), p.random(255), p.random(255)); }
-                if(this.cc) { p.fill(p.random(this.r), p.random(this.g), p.random(this.b), p.random(this.o)); }
+                if(!cc) { p.fill(p.random(255), p.random(255), p.random(255), 127); }
+                if(cc) { p.fill(p.random(r), p.random(g), p.random(b), p.random(o)); }
                 p.ellipse(p.mouseX + xoff, p.mouseY + yoff, val, val);
             }
             p.fill(255);
