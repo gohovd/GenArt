@@ -25,8 +25,8 @@ public class Border {
     }
 
     /***
-     * Runs colorpicker, if a color is picked then the border gets the picked RGB values
-     *
+     * Runs colorpicker, if a color is picked it applies the picked RGB values to the border
+     * Creates a transparent rectangle with opaque stroke
      */
     public void drawBorder() {
         if (state == 0) {
@@ -43,6 +43,10 @@ public class Border {
             }
 
         }
+        /***
+         * Change the state to 1 to let the system know a color has been picked, else it will keep asking to pick a colour.
+         * Had to change the Stroke size to 1, else it would impact other classes stroke size.
+         */
         state = 1;
         stokeSize = 1;
     }

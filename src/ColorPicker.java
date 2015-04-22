@@ -9,6 +9,9 @@ import javax.swing.JColorChooser;
 
 
 public class ColorPicker {
+    /***
+     * Creates global variables (r,g,b an c)
+     */
     int r,g,b;
     Color c;
 
@@ -20,30 +23,43 @@ public class ColorPicker {
             String colorPick = c.toString();
 
             System.out.println(c);
-            //fikser toString sånn at eg får bare int verdier
+            /***
+             * Converts toString to only get the RGB values
+             */
             colorPick = colorPick.replace("java.awt.Color[r=", "");
             colorPick = colorPick.replace("g=", "");
             colorPick = colorPick.replace("b=", "");
             colorPick = colorPick.replace("]", "");
-        /* String to split. */
 
-            //legger til verdier inn i int array list
+
+            /***
+             * Spliting the commas and adding the values to the int array
+             */
             String[] strArray = colorPick.split(",");
             int[] intArray = new int[strArray.length];
             for (int i = 0; i < strArray.length; i++) {
                 intArray[i] = Integer.parseInt(strArray[i]);
             }
 
-            //Setter inn verdier for rgb
+            /***
+             * Adding RGB values from the int array to the r,g,b global variables
+             */
             r = intArray[0];
             g = intArray[1];
             b = intArray[2];
 
-            //Tester om det stemmer
-            System.out.println("RGB = " + r + " " + g + " " + b);
+            /***
+             * This was just a test if I get the right values
+             * Prints the RGB values from the global variables
+             */
+            //System.out.println("RGB = " + r + " " + g + " " + b);
         }
     }
 
+    /***
+     * Getters
+     * @return Color, & RGB Values
+     */
 
     public Color getC() { return c; }
 

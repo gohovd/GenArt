@@ -11,6 +11,10 @@ public class TriangleShape extends Brush {
         super(input);
     }
 
+    /***
+     * Draws triangles with unique/random angles, colors & 50 percent alpha (transparent)
+     */
+
     public void drawTriangles() {
         if (p.mousePressed) {
             //p.frameRate(20);
