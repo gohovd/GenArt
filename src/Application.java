@@ -160,7 +160,7 @@ public class Application {
         printButton.setBackground(Color.white);
         printButton.setPreferredSize(new Dimension(size, size));
 
-        // Starbutton
+        // StarButton
         Image image10 = Toolkit.getDefaultToolkit().getImage(Application.class.getResource("/images/star60.png"));
         ImageIcon imageForStarButton = new ImageIcon(image10);
         starButton = new JButton("", imageForStarButton);
