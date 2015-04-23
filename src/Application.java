@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.net.URL;
 import java.util.HashMap;
 import javax.swing.*;
 import javax.swing.BorderFactory;
@@ -71,20 +72,24 @@ public class Application {
 
         // Create buttons
         // Ball grid
-        ImageIcon imageForbuttonCreate = new ImageIcon("images/ballgrid.png");
+
+        Image image = Toolkit.getDefaultToolkit().getImage(Application.class.getResource("/images/ballgrid.png"));
+        ImageIcon imageForbuttonCreate = new ImageIcon(image);
         buttonCreate = new JButton("", imageForbuttonCreate);
         buttonCreate.setBackground(Color.white);
         buttonCreate.setPreferredSize(new Dimension(size, size));
 
         // Round vector
-        ImageIcon imageForvectorButton = new ImageIcon("images/roundvector60.png");
+        Image image2 = Toolkit.getDefaultToolkit().getImage(Application.class.getResource("/images/roundvector60.png"));
+        ImageIcon imageForvectorButton = new ImageIcon(image2);
         vectorButton = new JButton("", imageForvectorButton);
         vectorButton.setBackground(Color.white);
         vectorButton.setPreferredSize(new Dimension(size, size));
 
         // "Drunk"-lines
-        ImageIcon imageFordrunkLines = new ImageIcon("images/drunk60.png");
-        drunkLinesButton = new JButton("", imageFordrunkLines);
+        Image image3 = Toolkit.getDefaultToolkit().getImage(Application.class.getResource("/images/drunk60.png"));
+        ImageIcon imageFordrunkLines = new ImageIcon(image3);
+         drunkLinesButton = new JButton("", imageFordrunkLines);
         drunkLinesButton.setBackground(Color.white);
         drunkLinesButton.setPreferredSize(new Dimension(size, size));
         
@@ -113,74 +118,87 @@ public class Application {
         filterButton = new JButton("   Filter    ");
 
         // Random lines
-        ImageIcon imageForrandomLinesButton = new ImageIcon("images/rndlines.png");
+        Image image4 = Toolkit.getDefaultToolkit().getImage(Application.class.getResource("/images/rndlines.png"));
+        ImageIcon imageForrandomLinesButton = new ImageIcon(image4);
         randomLinesButton = new JButton("", imageForrandomLinesButton);
         randomLinesButton.setBackground(Color.white);
         randomLinesButton.setPreferredSize(new Dimension(size, size));
 
         // Symmetric
-        ImageIcon imageForSymButton = new ImageIcon("images/sym60.png");
+        Image image5 = Toolkit.getDefaultToolkit().getImage(Application.class.getResource("/images/sym60.png"));
+        ImageIcon imageForSymButton = new ImageIcon(image5);
         symButton = new JButton("", imageForSymButton);
         symButton.setBackground(Color.WHITE);
         symButton.setPreferredSize(new Dimension(size, size));
 
         // Bubbles
-        ImageIcon imageForvarBubblesButton = new ImageIcon("images/varbubbles.png");
+
+        Image image6 = Toolkit.getDefaultToolkit().getImage(Application.class.getResource("/images/varbubbles.png"));
+        ImageIcon imageForvarBubblesButton = new ImageIcon(image6);
         varBubblesButton = new JButton("", imageForvarBubblesButton);
         varBubblesButton.setBackground(Color.white);
         varBubblesButton.setPreferredSize(new Dimension(size, size));
 
         // Pulse
-        ImageIcon imageForpulseButton = new ImageIcon("images/puls.png");
+        Image image7 = Toolkit.getDefaultToolkit().getImage(Application.class.getResource("/images/puls.png"));
+        ImageIcon imageForpulseButton = new ImageIcon(image7);
         pulseButton = new JButton("", imageForpulseButton);
         pulseButton.setBackground(Color.white);
         pulseButton.setPreferredSize(new Dimension(size, size));
 
         // CrossDots
-        ImageIcon imageForcrossDotsButton = new ImageIcon("images/crossdots60.png");
+        Image image8 = Toolkit.getDefaultToolkit().getImage(Application.class.getResource("/images/crossdots60.png"));
+        ImageIcon imageForcrossDotsButton = new ImageIcon(image8);
         crossDotsButton = new JButton("", imageForcrossDotsButton);
         crossDotsButton.setBackground(Color.white);
         crossDotsButton.setPreferredSize(new Dimension(size, size));
 
         // Printerbutton
-        ImageIcon imageForPrintButton = new ImageIcon("images/printer60.png");
+        Image image9 = Toolkit.getDefaultToolkit().getImage(Application.class.getResource("/images/printer60.png"));
+        ImageIcon imageForPrintButton = new ImageIcon(image9);
         printButton = new JButton("", imageForPrintButton);
         printButton.setBackground(Color.white);
         printButton.setPreferredSize(new Dimension(size, size));
 
         // Starbutton
-        ImageIcon imageForStarButton = new ImageIcon("images/star60.png");
+        Image image10 = Toolkit.getDefaultToolkit().getImage(Application.class.getResource("/images/star60.png"));
+        ImageIcon imageForStarButton = new ImageIcon(image10);
         starButton = new JButton("", imageForStarButton);
         starButton.setBackground(Color.white);
         starButton.setPreferredSize(new Dimension(size, size));
 
         // Mirror
         // TODO refactor heartButton (expired) to mirrorButton
-        ImageIcon imageForHeartButton = new ImageIcon("images/mirrorvector60.png");
+        Image image11 = Toolkit.getDefaultToolkit().getImage(Application.class.getResource("/images/mirrorvector60.png"));
+        ImageIcon imageForHeartButton = new ImageIcon(image11);
         heartButton = new JButton("", imageForHeartButton);
         heartButton.setBackground(Color.white);
         heartButton.setPreferredSize(new Dimension(size, size));
 
         // Squarez
-        ImageIcon imageForsquarezButton = new ImageIcon("images/sq.png");
+        Image image12 = Toolkit.getDefaultToolkit().getImage(Application.class.getResource("/images/sq.png"));
+        ImageIcon imageForsquarezButton = new ImageIcon(image12);
         squarezButton = new JButton("", imageForsquarezButton);
         squarezButton.setBackground(Color.white);
         squarezButton.setPreferredSize(new Dimension(size, size));
 
         // Triangles
-        ImageIcon imageFortrianglezButton = new ImageIcon("images/trianglez.png");
+        Image image13 = Toolkit.getDefaultToolkit().getImage(Application.class.getResource("/images/trianglez.png"));
+        ImageIcon imageFortrianglezButton = new ImageIcon(image13);
         trianglezButton = new JButton("", imageFortrianglezButton);
         trianglezButton.setBackground(Color.white);
         trianglezButton.setPreferredSize(new Dimension(size, size));
 
         // Color chooser
-        ImageIcon imageForStrokeNColourButton = new ImageIcon("images/colorPicker.png");
+        Image image14 = Toolkit.getDefaultToolkit().getImage(Application.class.getResource("/images/colorPicker.png"));
+        ImageIcon imageForStrokeNColourButton = new ImageIcon(image14);
         strokeNColourButton = new JButton("", imageForStrokeNColourButton);
         strokeNColourButton.setBackground(Color.white);
         strokeNColourButton.setPreferredSize(new Dimension(size, size));
 
         // Signature
-        ImageIcon imageForSignatureButton = new ImageIcon("images/signature60.png");
+        Image image15 = Toolkit.getDefaultToolkit().getImage(Application.class.getResource("/images/signature60.png"));
+        ImageIcon imageForSignatureButton = new ImageIcon(image15);
         signatureButton = new JButton("", imageForSignatureButton);
         signatureButton.setBackground(Color.white);
         signatureButton.setPreferredSize(new Dimension(size, size));
