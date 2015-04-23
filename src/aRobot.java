@@ -1,4 +1,6 @@
+import com.sun.org.apache.xpath.internal.SourceTree;
 import processing.core.PApplet;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.InputEvent;
@@ -46,9 +48,9 @@ public class aRobot {
     //Boolean controlling whether or not we are in the process of choosing a filter.
     boolean filterSelection = false;
     //String holding the name (key, in HashMap buttons..) of the GUI button we previously clicked.
-    String previousButton = "whatever"; //It'll change soon anyways, so we call it whatever.
+    String previousButton = null;
     //String holding the name (key, in HashMap buttons.) of the GUI button we just clicked.
-    String currentButton;
+    String currentButton = null;
     //Boolean that tells us if we've found a color that's not black or white yet.
     boolean colorNotFound;
     //Integers holding various values for red, green, blue and alpha (opacity).
@@ -70,7 +72,7 @@ public class aRobot {
         }
     }
 
-    /***
+    /**
      * Selects a random button from HashMap buttons.
      * Takes the keyset from HashMap buttons, and adds
      * the name (String: keys) of the desired buttons
@@ -104,17 +106,20 @@ public class aRobot {
         //give it whatever value, it'll change def. anyways.
         int roulette = 0;
         boolean theSame = true;
-        while(theSame) {
+        while (theSame) {
             roulette = rand.nextInt(keys.size());
+            if (currentButton != null && !currentButton.equals("filterButton")) {
+                previousButton = currentButton;
+            }
             currentButton = keys.get(roulette);
-            if (!previousButton.contains(currentButton)) {
+            if (previousButton == null || !previousButton.contains(currentButton)) {
                 theSame = false;
             }
         }
         clickGUIButton(keys.get(roulette));
     }
 
-    /***
+    /**
      * The robot analyzes random pixels on the canvas (Application panel),
      * and if the pixel is colored with anything other than black or white
      * the color is extracted and sent to MyApplet, which in turn sends the color
@@ -126,10 +131,10 @@ public class aRobot {
     private void getColor() throws InterruptedException, AWTException {
         Color c = null;
         colorNotFound = true;
-        while(colorNotFound) {
+        while (colorNotFound) {
             c = r.getPixelColor(rand.nextInt(Application.panel.getWidth()), rand.nextInt(Application.panel.getHeight()));
-            String cString =  "" + c.getRed() + c.getGreen() + c.getBlue() + c.getAlpha();
-            if(!cString.equals("255255255255") ||
+            String cString = "" + c.getRed() + c.getGreen() + c.getBlue() + c.getAlpha();
+            if (!cString.equals("255255255255") ||
                     !cString.equals("0000") ||
                     !cString.equals("000255") ||
                     !cString.equals("2552552550") ||
@@ -138,10 +143,25 @@ public class aRobot {
                 colorNotFound = false;
             }
         }
-        red = c.getRed(); green = c.getGreen(); blue = c.getBlue(); alpha = c.getAlpha();
+        red = c.getRed() + 50;
+        green = c.getGreen() + 50;
+        blue = c.getBlue() + 50;
+        alpha = c.getAlpha() + 50;
+        if (red > 255) {
+            red = 255;
+        }
+        if (green > 255) {
+            green = 255;
+        }
+        if (blue > 255) {
+            blue = 255;
+        }
+        if (alpha > 255) {
+            alpha = 255;
+        }
     }
 
-    /***
+    /**
      * Returns the color selected by the robot as a string.
      *
      * @return String - R (0-255), G (0-255), B (0-255), O (0-255).
@@ -154,7 +174,7 @@ public class aRobot {
     }
 
 
-    /***
+    /**
      * Generates a random int with the highest value being the number of
      * available filters (+1 as highest is exclusive).
      * Tells the clickGUIButton method to click the "filterButton",
@@ -176,7 +196,7 @@ public class aRobot {
         filterSelection = true;
     }
 
-    /***
+    /**
      * Selects any out of the eight available filters.
      * The number "i" (number between 1-8) represents
      * the numbers on your keyboard, as the robot must press (keypress)
@@ -184,15 +204,47 @@ public class aRobot {
      *
      * @param i
      */
-    public void selectRandomFilter(int i){
-        if(i == 1){ r.keyPress(KeyEvent.VK_1); r.delay(500); r.keyRelease(KeyEvent.VK_1);}
-        if(i == 2){ r.keyPress(KeyEvent.VK_2); r.delay(500); r.keyRelease(KeyEvent.VK_1);}
-        if(i == 3){ r.keyPress(KeyEvent.VK_3); r.delay(500); r.keyRelease(KeyEvent.VK_1);}
-        if(i == 4){ r.keyPress(KeyEvent.VK_4); r.delay(500); r.keyRelease(KeyEvent.VK_1);}
-        if(i == 5){ r.keyPress(KeyEvent.VK_5); r.delay(500); r.keyRelease(KeyEvent.VK_1);}
-        if(i == 6){ r.keyPress(KeyEvent.VK_6); r.delay(500); r.keyRelease(KeyEvent.VK_1);}
-        if(i == 7){ r.keyPress(KeyEvent.VK_7); r.delay(500); r.keyRelease(KeyEvent.VK_1);}
-        if(i == 8){ r.keyPress(KeyEvent.VK_8); r.delay(500); r.keyRelease(KeyEvent.VK_1);}
+    public void selectRandomFilter(int i) {
+        if (i == 1) {
+            r.keyPress(KeyEvent.VK_1);
+            r.delay(500);
+            r.keyRelease(KeyEvent.VK_1);
+        }
+        if (i == 2) {
+            r.keyPress(KeyEvent.VK_2);
+            r.delay(500);
+            r.keyRelease(KeyEvent.VK_1);
+        }
+        if (i == 3) {
+            r.keyPress(KeyEvent.VK_3);
+            r.delay(500);
+            r.keyRelease(KeyEvent.VK_1);
+        }
+        if (i == 4) {
+            r.keyPress(KeyEvent.VK_4);
+            r.delay(500);
+            r.keyRelease(KeyEvent.VK_1);
+        }
+        if (i == 5) {
+            r.keyPress(KeyEvent.VK_5);
+            r.delay(500);
+            r.keyRelease(KeyEvent.VK_1);
+        }
+        if (i == 6) {
+            r.keyPress(KeyEvent.VK_6);
+            r.delay(500);
+            r.keyRelease(KeyEvent.VK_1);
+        }
+        if (i == 7) {
+            r.keyPress(KeyEvent.VK_7);
+            r.delay(500);
+            r.keyRelease(KeyEvent.VK_1);
+        }
+        if (i == 8) {
+            r.keyPress(KeyEvent.VK_8);
+            r.delay(500);
+            r.keyRelease(KeyEvent.VK_1);
+        }
     }
 
     /**
@@ -203,8 +255,12 @@ public class aRobot {
      */
     public void Motion(int select) throws AWTException, InterruptedException {
         if (motionsMade % 1400 == 0) {
-            if(avoidFirst == 0) { selectFilter(); avoidFirst += 1; return; }
-            r.delay(25);
+            if (avoidFirst == 0) {
+                selectFilter();
+                avoidFirst += 1;
+                return;
+            }
+            r.delay(5);
             clickRandomGUIButton();
             r.delay(25);
             r.mousePress(InputEvent.BUTTON1_MASK);
@@ -215,33 +271,56 @@ public class aRobot {
         }
         r.mouseMove(cX, cY);
         r.mousePress(InputEvent.BUTTON1_MASK);
-        if(select == 1) {
+        if (select == 1) {
             cX += 35 - rand.nextInt(70);
             cY += 35 - rand.nextInt(70);
-        }
-        else if(select == 2){
+        } else if (select == 2) {
             int updown = rand.nextInt(2);
-            if(updown == 1) { radius += 0.6; }
-            if(updown == 0) { radius -= 0.6; }
+            if (updown == 1) {
+                radius += 0.6;
+            }
+            if (updown == 0) {
+                radius -= 0.6;
+            }
             cX += p.cos(radius) * 60 / 2;
             cY += p.sin(radius) * 60 / 2;
             radius += 0.5;
-        }
-        else if(select == 3) {
-            float x = p.map(p.sin(a)*p.sin(a * (float) 0.8), -1, 1, 0, Application.panel.getWidth());
+        } else if (select == 3) {
+            float x = p.map(p.sin(a) * p.sin(a * (float) 0.8), -1, 1, 0, Application.panel.getWidth());
             float y = p.map(p.sin(a + (float) 1.5), -1, 1, 0, Application.panel.getHeight());
-            cX = Math.round(x*2);
-            cY = Math.round(y*2);
-            a = a + (float)0.035;
-        }
-        else {
-            float x = p.map(p.sin(a)*p.sin(a*(float)0.8), -1, 1, 0, Application.panel.getWidth());
-            float y = p.map(p.sin(a+(float)1.5), -1, 1, 0, Application.panel.getHeight());
+            cX = Math.round(x * 2);
+            cY = Math.round(y * 2);
+            a = a + (float) 0.035;
+        } else {
+            float x = p.map(p.sin(a) * p.sin(a * (float) 0.8), -1, 1, 0, Application.panel.getWidth());
+            float y = p.map(p.sin(a + (float) 1.5), -1, 1, 0, Application.panel.getHeight());
             cX = Math.round(x);
             cY = Math.round(y);
             a = a + rand.nextFloat();
         }
-        if(!currentButton.contains("symButton") || !currentButton.contains("heartButton")) {
+        //wrap around..
+        if (currentButton.contains("symButton") || currentButton.contains("heartButton")) {
+            if (cX > cWidth) {
+                int rsc = rand.nextInt(5) + 5;
+                cX = rand.nextInt(cWidth / rsc);
+                cX -= 250;
+            }
+            if (cX < 0) {
+                int rsc = rand.nextInt(5) + 5;
+                cX = rand.nextInt(cWidth / rsc);
+                cX += 250;
+            }
+            if (cY > cHeight) {
+                int rsc = rand.nextInt(5) + 5;
+                cY = rand.nextInt(cHeight / rsc);
+                cY -= 250;
+            }
+            if (cY < 0) {
+                int rsc = rand.nextInt(5) + 5;
+                cY = rand.nextInt(cHeight / rsc);
+                cY += 250;
+            }
+        } else {
             if (cX > cWidth) {
                 cX -= cWidth;
             }
@@ -255,11 +334,11 @@ public class aRobot {
                 cY += cHeight;
             }
         }
-            r.mouseMove(cX, cY);
-            motionsMade++;
+        r.mouseMove(cX, cY);
+        motionsMade++;
     }
 
-    /***
+    /**
      * Iterates through the keyset of HashMap buttons,
      * looks for the parameter (String key), and sees if
      * it can find a button with a name equal to that of the
@@ -281,7 +360,6 @@ public class aRobot {
         } else {
             JButton t;
             t = (JButton) buttons.get(key);
-            if(!key.contains("filterButton")) { previousButton = key; }
             //Always add 'err' to make sure it hits the button.
             int bX = Application.panel.getWidth() + err + t.getX();
             int bY = err + t.getY();
@@ -334,7 +412,7 @@ public class aRobot {
         r.mouseRelease(InputEvent.BUTTON1_MASK);
     }
 
-    /***
+    /**
      * Sets the tutorial boolean back to false, to that the next time
      * the randomize button is clicked - the tutorial appears again.
      * Motionsmade is set back to zero as though no steps were made in the past.
@@ -363,30 +441,32 @@ public class aRobot {
         p.background(255);
     }*/
 
-    /***
+    /**
      * Returns the number of the filter that will be chosen.
+     *
      * @return int - Number representing the filter to be chosen (1-8)
      */
-    public int getRandFilter(){
+    public int getRandFilter() {
         return randFilter;
     }
 
-    /***
+    /**
      * Returns whether or not the robot is in the process
      * of selecting a filter.
      *
      * @return boolean - State of filter selection.
      */
-    public boolean getFilterSelection(){
+    public boolean getFilterSelection() {
         return filterSelection;
     }
 
-    /***
+    /**
      * Tells the robot to enter filter selection,
      * or exit it.
+     *
      * @param b - Boolean.
      */
-    public void setFilterSelection(boolean b){
+    public void setFilterSelection(boolean b) {
         filterSelection = b;
     }
 
