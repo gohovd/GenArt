@@ -50,7 +50,7 @@ public class Border {
          * Had to change the Stroke size to 1, else it would impact other classes stroke size.
          */
         state = 1;
-        stokeSize = 1;
+        p.strokeWeight(1);
     }
 
 }
